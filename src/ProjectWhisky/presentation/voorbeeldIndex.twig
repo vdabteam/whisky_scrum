@@ -1,0 +1,20 @@
+{% extends "main.twig" %}
+
+{% block content %}
+
+    <section>
+        <div class="container">
+            <div class="introMessage">
+                <h1>Welkom bij bioscoop</h1>
+            </div>
+            <div id="date">
+                <form action="films.php" method="post">
+                    <label for="gekozenDatum">Kies een programmatiedatum:</label>
+                    <input type="text" id="datepicker" name="gekozenDatum">
+                    <input type="submit" value="Verder" name="kiesDatum"/>
+                </form>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
