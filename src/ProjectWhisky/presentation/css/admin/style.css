@@ -1,0 +1,373 @@
+/* Admin Website Stylesheet */
+
+/* Author: Roger Antonio Vandekerckhove -- www.rogerantonio.com ; */
+
+/* Color Cheat Sheet
+	
+	Blue : #00E2FF;
+
+*/
+
+/* Importing boilerplate */
+@import url(../main.css);
+
+
+/* @Font */
+
+@font-face {
+    font-family: 'open_sansbold';
+    src: url('../fonts/opensans-bold-webfont.eot');
+    src: url('../fonts/opensans-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/opensans-bold-webfont.woff2') format('woff2'),
+         url('../fonts/opensans-bold-webfont.woff') format('woff'),
+         url('../fonts/opensans-bold-webfont.ttf') format('truetype'),
+         url('../fonts/opensans-bold-webfont.svg#open_sansbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'open_sanslight';
+    src: url('../fonts/opensans-light-webfont.eot');
+    src: url('../fonts/opensans-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/opensans-light-webfont.woff2') format('woff2'),
+         url('../fonts/opensans-light-webfont.woff') format('woff'),
+         url('../fonts/opensans-light-webfont.ttf') format('truetype'),
+         url('../fonts/opensans-light-webfont.svg#open_sanslight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'open_sansregular';
+    src: url('../fonts/opensans-regular-webfont.eot');
+    src: url('../fonts/opensans-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/opensans-regular-webfont.woff2') format('woff2'),
+         url('../fonts/opensans-regular-webfont.woff') format('woff'),
+         url('../fonts/opensans-regular-webfont.ttf') format('truetype'),
+         url('../fonts/opensans-regular-webfont.svg#open_sansregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* CSS Resets */
+
+*{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+html {
+	font-size: 62.5%;
+}
+
+ul{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+
+/* Commence Styling Rules */
+
+body{
+	font-size: 1.4em;
+	font-family: 'open_sansregular';
+	background: #F7F9FF;
+}
+
+h1{
+	font-family: 'open_sanslight';
+}
+.right{
+	float: right;
+}
+.left{
+	float: left;
+}
+.clearfix{
+	clear: both;
+}
+.clearfix:after { 
+	content: "."; 
+	visibility: hidden; 
+	display: block; 
+	height: 0; 
+	clear: both;
+}
+.fullwidth{
+	width: 100%;
+}
+.center{
+	margin-left: auto;
+	margin-right: auto;
+}
+#navbar{
+	padding: 0.8em 0 1em 0;
+	background-color: black;
+	color: white;
+    border-bottom: 3px solid #00E2FF;
+
+}
+
+.nav_icons{
+    display: block;
+}
+.navbutton a{
+    height: 16px;
+    display: inline-block;
+    margin-right: 1.8em;
+    margin-left: 0.4em;
+    color: white;
+    line-height: 1.2em;
+    font-family: 'open_sansbold';
+}
+.navbutton a:hover{
+    color: #00E2FF;
+}
+
+aside#sidebar{
+	background-color: #C5C7CC;
+	height: 100vh;
+	min-width: 20em;
+    box-shadow: 0em 0em 1em rgba(0,0,0,0.1) inset;
+    border-right: 1px solid #FFF;
+    margin-right: 3em;
+}
+aside#sidebar #menu li a{
+	padding:2em 1.5em;
+	color: white;
+	font-size: 1.2em;
+	border-bottom: 1px solid white;
+	text-decoration: none;
+	display: list-item;
+	width: 100%;
+    position: relative;
+}
+aside#sidebar #menu li a::first-letter{
+    margin-right: 1em;
+}
+aside#sidebar #menu li a:hover{
+	background-color: #00E2FF;
+}
+aside#sidebar #menu li a.active {
+	background-color: #7B7D7F;
+}
+aside#sidebar #menu li a.active:after {
+    left: 100%;
+    top: 50%;
+	border:solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	border-left-color: #fff;
+	border-width: 1em;
+	margin-top: -1em;
+	margin-left: -1.9em;
+    -ms-transform: rotate(180deg); /* IE 9 */
+    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+    transform: rotate(180deg);
+}
+.copyrights{
+	text-align: right;
+	font-size: 0.5em;
+	color: #999;
+	text-shadow: 0 1px 0 rgba(255,255,255,0.4);
+	margin: 2em;
+}
+
+#content{
+	margin-left: 20em;
+}
+#content header{
+	padding: 3em;
+	background-color: white;
+	color: #7B7D7F;
+	font-weight: bold;
+	box-shadow: 0 -1em 1.5em -1em rgba(0,0,0,0.3) inset;
+	border-bottom: 0.2em solid white;
+	text-shadow: 0 0.15em 0.1em rgba(0,0,0,0.3);
+}
+
+#notifier{
+	margin: 1em auto 1.5em;
+	width: 90%;
+	max-width: 960px;
+	padding: 2em 6em 2em 3em;
+	color: white;
+}
+.yellow{
+	background-color: sandybrown;
+	outline:0.2em solid sandybrown;
+	border:0.2em solid #FFF;
+    /*<span class="fa fa-exclamation-circle"></span>*/
+}
+.red{
+	background-color: salmon;
+	outline:0.2em solid salmon;
+	border:0.2em solid #FFF;
+    /*<span class="fa fa-times-circle"></span>*/
+}
+.green{
+	background-color: limegreen;
+	outline:0.2em solid limegreen;
+	border:0.2em solid #FFF;
+    /*<span class="fa fa-check-circle"></span>*/
+}
+.blue{
+	background-color: deepskyblue;
+	outline:0.2em solid deepskyblue;
+	border:0.2em solid #FFF;
+    /*<span class="fa fa-info-circle"></span>*/
+}
+
+#notifier span.fa{
+    margin-right: 1em;
+    margin-top: -0.3em;
+    font-size: 3em;
+    float: left;
+}
+
+#controller{
+	margin: 1em auto;
+	width: 90%;
+	max-width: 960px;
+	padding: 2em 6em 2em 3em;
+	background-color: white;
+	color: #888;
+	border: 1px solid white;
+}
+
+.shadow{
+    position:relative;
+    -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+       -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+            box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+.shadow:before, .shadow:after{
+    content:"";
+    position:absolute;
+    z-index:-1;
+    -webkit-box-shadow:0 0 20px rgba(0,0,0,0.8);
+    -moz-box-shadow:0 0 20px rgba(0,0,0,0.8);
+    box-shadow:0 0 20px rgba(0,0,0,0.8);
+    top:50%;
+    bottom:0;
+    left:10px;
+    right:10px;
+    -moz-border-radius:100px / 10px;
+    border-radius:100px / 10px;
+}
+.shadow:after{
+    right:10px;
+    left:auto;
+    -webkit-transform:skew(8deg) rotate(3deg);
+       -moz-transform:skew(8deg) rotate(3deg);
+        -ms-transform:skew(8deg) rotate(3deg);
+         -o-transform:skew(8deg) rotate(3deg);
+            transform:skew(8deg) rotate(3deg);
+}
+
+/* FORM STYLING */
+
+/* RANGE */
+.range-slider .input-range {
+  -webkit-appearance: none;
+  width: 300px;
+  height: 10px;
+  border-radius: 5px;
+  background: #ccc;
+  outline: none;
+  box-shadow: inset 0 0.1em 1em;
+}
+.range-slider .input-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #353535;
+  cursor: pointer;
+  -webkit-transition: background .15s ease-in-out;
+  transition: background .15s ease-in-out;
+}
+.range-slider .input-range::-webkit-slider-thumb:hover {
+  background: #00E2FF;
+}
+.range-slider .input-range:active::-webkit-slider-thumb {
+  background: #00E2FF;
+}
+.range-slider .input-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: 0;
+  border-radius: 50%;
+  background: #353535;
+  cursor: pointer;
+  -webkit-transition: background .15s ease-in-out;
+  transition: background .15s ease-in-out;
+}
+.range-slider .input-range::-moz-range-thumb:hover {
+  background: #e06161;
+}
+.range-slider .input-range:active::-moz-range-thumb {
+  background: #e06161;
+}
+.range-slider .range-value {
+  display: inline-block;
+  position: relative;
+  width: 60px;
+  color: #fff;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  border-radius: 3px;
+  background: #353535;
+  padding: 5px 10px;
+  margin-left: 7px;
+}
+.range-slider .range-value:after {
+  position: absolute;
+  top: 8px;
+  left: -7px;
+  width: 0;
+  height: 0;
+  border-top: 7px solid transparent;
+  border-right: 7px solid #353535;
+  border-bottom: 7px solid transparent;
+  content: "";
+}
+
+::-moz-range-track {
+  background: #ccc;
+  border: 0;
+}
+
+input::-moz-focus-inner {
+  border: 0;
+}
+
+
+/* ///// RESPONSIVENESS ///// */
+/* Desktop */
+@media (min-width: 769px){
+
+}
+
+/* Portrait Tablet */
+@media (min-width: 481px) and (max-width: 768px){
+
+}
+
+/* Landscape smart phone */
+@media (min-width: 321px) and (max-width: 480px){
+
+}
+
+/* Portrait smart phone */
+@media (max-width: 320px){
+
+}
