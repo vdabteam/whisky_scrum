@@ -14,12 +14,12 @@ Class Distillery
     // CONSTRUCTOR
     public function __construct($id, $name, $adress, $city, $country, $region)
     {
-        $this -> id = $id;
-        $this -> name = $name;
-        $this -> adress = $adress;
-        $this -> city = $city;
-        $this -> country = $country;
-        $this -> region = $region;
+        $this->id = $id;
+        $this->name = $name;
+        $this->adress = $adress;
+        $this->city = $city;
+        $this->country = $country;
+        $this->region = $region;
     }
     
     

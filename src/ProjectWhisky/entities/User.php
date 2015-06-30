@@ -2,7 +2,6 @@
 
 namespace src\ProjectWhisky\entities;
 
-
 class User
 {
     private $id;
