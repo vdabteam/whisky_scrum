@@ -68,6 +68,7 @@ a{
 
 /* Commence Styling Rules */
 
+        
 body{
     font-size: 1.4em;
     font-family: 'open_sansregular';
@@ -83,6 +84,18 @@ h1{
 .left{
     float: left;
 }
+.top{
+    top: 0;
+    margin-top: 0;
+}
+.bottom{
+    bottom: 0;
+    margin-bottom: 0;
+}
+.center{
+    margin-left: auto;
+    margin-right: auto;
+}
 .clearfix{
     clear: both;
 }
@@ -96,143 +109,216 @@ h1{
 .fullwidth{
     width: 100%;
 }
-.center{
-    margin-left: auto;
-    margin-right: auto;
-}
-#navbar{
-    padding: 0.8em 0 1em 0;
-    background-color: black;
-    color: white;
-    border-bottom: 3px solid #CC952D;
-
-}
 
 .nav_icons{
     display: block;
 }
-.navbutton a{
-    height: 16px;
-    display: inline-block;
-    margin-right: 1.8em;
-    margin-left: 0.4em;
-    color: white;
-    line-height: 1.2em;
-    font-family: 'open_sansbold';
-}
-.navbutton a:hover{
-    color: #CC952D;
-}
 
-.container{
-    width: 90%;
-    max-width: 1080px;
-    min-width: 780px;
-    margin: 4em auto;
-}
-.containershadow{
-    position: relative;
-}
-.containershadow:before, .containershadow:after{
-    z-index: -1;
-    position: absolute;
-    content: "";
-    bottom: 15px;
-    left: 10px;
-    width: 50%;
-    top: 80%;
-    max-width:300px;
-    background: rgba(0,0,0,0.5);
-    -webkit-box-shadow: 0 15px 10px rgba(0,0,0,0.5);
-    -moz-box-shadow: 0 15px 10px rgba(0,0,0,0.5);
-    box-shadow: 0 15px 10px rgba(0,0,0,0.5);
-    -webkit-transform: rotate(-3deg);
-    -moz-transform: rotate(-3deg);
-    -o-transform: rotate(-3deg);
-    -ms-transform: rotate(-3deg);
-    transform: rotate(-3deg);
-}
-
-.containershadow:after{
-    -webkit-transform: rotate(3deg);
-    -moz-transform: rotate(3deg);
-    -o-transform: rotate(3deg);
-    -ms-transform: rotate(3deg);
-    transform: rotate(3deg);
-    right: 10px;
-    left: auto;
-}
-
-header#header_banner{
-    background-image: url("../../presentation/interface/banners/header.jpg");
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    height: 30em;
-    border-bottom: 3px solid #CC952D;
-    color: white;
-}
-
-#content_container{
-    background-color: #FFF7E7;
-    padding: 2em 3em;
-}
-
-.whisky_view ul{
-    width: 100%;
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: flex;
-    margin: 1em auto 2em auto;
-    -webkit-flex-wrap: wrap;
-    flex-wrap: wrap;
-    -webkit-justify-content: center;
-    justify-content: center;
-}
-.whisky_view ul li{
-    margin: 0 auto;
-    width: 21.9%;
-}
-.whisky_view ul li:nth-child(4n+4){
-    margin-right: 0;
-    display: list-item;
-}
-.whisky_view ul li:nth-child(4n+1){
-    margin-left: 0;
-    margin-bottom: 1.5em;
-}
-
-.whisky_box{
-    width: 100%;
-    display: block;
-    background-color: white;
-    padding: 1em;
-    -webkit-box-shadow: 0 1px 10px rgba(0,0,0,0.1);
-    -moz-box-shadow: 0 1px 10px rgba(0,0,0,0.1);
-    box-shadow: 0 1px 10px rgba(0,0,0,0.1);
-}
-
-.whisky_box img{
-    margin-bottom: 0.8em;
-    width: 100%;
-}
-
-.whisky_box_name{
-    text-align: center;
+footer{
+        padding: 0.8em 0 1em 0;
+        background-color: black;
+        color: white;
+        border-bottom: 3px solid #CC952D;
 }
 
 /* Desktop */
 @media (min-width: 769px){
 
+    #navbar{
+        padding: 0.8em 0 1em 0;
+        background-color: black;
+        color: white;
+        border-bottom: 3px solid #CC952D;
+
+    }
+    .navbutton a{
+        height: 16px;
+        display: inline-block;
+        margin-right: 1.8em;
+        margin-left: 0.4em;
+        color: white;
+        line-height: 1.2em;
+        font-family: 'open_sansbold';
+    }
+    .navbutton a:hover{
+        color: #CC952D;
+    }
+
+    .container{
+        width: 90%;
+        max-width: 1080px;
+        margin: 4em auto;
+    }
+    .containershadow{
+        position: relative;
+    }
+    .containershadow:before, .containershadow:after{
+        z-index: -1;
+        position: absolute;
+        content: "";
+        bottom: 15px;
+        left: 10px;
+        width: 50%;
+        top: 80%;
+        max-width:300px;
+        background: rgba(0,0,0,0.5);
+        -webkit-box-shadow: 0 15px 10px rgba(0,0,0,0.5);
+        -moz-box-shadow: 0 15px 10px rgba(0,0,0,0.5);
+        box-shadow: 0 15px 10px rgba(0,0,0,0.5);
+        -webkit-transform: rotate(-3deg);
+        -moz-transform: rotate(-3deg);
+        -o-transform: rotate(-3deg);
+        -ms-transform: rotate(-3deg);
+        transform: rotate(-3deg);
+    }
+
+    .containershadow:after{
+        -webkit-transform: rotate(3deg);
+        -moz-transform: rotate(3deg);
+        -o-transform: rotate(3deg);
+        -ms-transform: rotate(3deg);
+        transform: rotate(3deg);
+        right: 10px;
+        left: auto;
+    }
+
+    header#header_banner{
+        background-image: url("../../presentation/interface/banners/header.jpg");
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        height: 30em;
+        border-bottom: 3px solid #CC952D;
+        color: white;
+    }
+
+    #content_container{
+        background-color: #FFF7E7;
+        padding: 2em 3em;
+    }
+
+    .whisky_view ul{
+        width: 100%;
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        margin: 1em auto 2em auto;
+        -webkit-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -webkit-justify-content: center;
+        justify-content: center;
+    }
+    .whisky_view ul li{
+        margin: 0 auto;
+        width: 21.9%;
+    }
+    .whisky_view ul li:nth-child(4n+4){
+        margin-right: 0;
+        display: list-item;
+    }
+    .whisky_view ul li:nth-child(4n+1){
+        margin-left: 0;
+        margin-bottom: 1.5em;
+    }
+
+    .whisky_box{
+        width: 100%;
+        display: block;
+        background-color: white;
+        padding: 1em;
+        -webkit-box-shadow: 0 1px 10px rgba(0,0,0,0.1);
+        -moz-box-shadow: 0 1px 10px rgba(0,0,0,0.1);
+        box-shadow: 0 1px 10px rgba(0,0,0,0.1);
+    }
+
+    .whisky_box img{
+        margin-bottom: 0.8em;
+        width: 100%;
+    }
+
+    .whisky_box_name{
+        text-align: center;
+    }
+
 }
 
 /* Portrait Tablet */
 @media (min-width: 481px) and (max-width: 768px){
-	
+
+    #navbar{
+        padding: 0.8em 0 1em 0;
+        background-color: black;
+        color: white;
+        border-bottom: 3px solid #CC952D;
+    }
+
+    .navbutton a{
+        height: 14px;
+        display: inline-block;
+        margin-right: 1.6em;
+        margin-left: 0.3em;
+        color: white;
+        line-height: 1.2em;
+        font-family: 'open_sansbold';
+    }
+    .navbutton a:hover{
+        color: #CC952D;
+    }
+
+    .container{
+        width: 100%;
+        margin: 0;
+    }
+
+    header#header_banner{
+        background-image: url("../../presentation/interface/banners/header.jpg");
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        height: 30em;
+        border-bottom: 3px solid #CC952D;
+        color: white;
+    }
+
+    #content_container{
+        background-color: #FFF7E7;
+        padding: 2.5em 2em;
+    }
+
+    .whisky_view ul{
+        width: 100%;
+        padding:0;
+    }
+    .whisky_view ul li{
+        margin: 0 0 1em 0;
+        width: 100%;
+        display: list-item;
+        border-bottom:0.2em solid #CC952D;
+        -webkit-box-shadow: 0 1px 10px rgba(0,0,0,0.1);
+        -moz-box-shadow: 0 1px 10px rgba(0,0,0,0.1);
+        box-shadow: 0 1px 10px rgba(0,0,0,0.1);
+    }
+
+    .whisky_box{
+        width: 100%;
+        display: block;
+        background-color: white;
+        padding: 0;
+    }
+
+    .whisky_box img{
+        margin-bottom: 0.8em;
+        height: auto;
+        max-height: 8em;
+    }
+
+    .whisky_box_name{
+        text-align: center;
+    }
 }
 
 /* Landscape smart phone */
