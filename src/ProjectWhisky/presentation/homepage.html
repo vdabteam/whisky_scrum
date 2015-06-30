@@ -10,10 +10,11 @@
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <!-- Place favicon.ico in the root directory -->
 
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/default/style.css">
-        <link rel="stylesheet" href="css/iconfonts/css/font-awesome.min.css">
-        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+        <link rel="stylesheet" href="src/ProjectWhisky/presentation/css/normalize.css">
+        <link rel="stylesheet" href="src/ProjectWhisky/presentation/css/default/style.css">
+        <link rel="stylesheet" href="src/ProjectWhisky/presentation/css/progress_style.css">
+        <link rel="stylesheet" href="src/ProjectWhisky/presentation/css/iconfonts/css/font-awesome.min.css">
+        <script src="src/ProjectWhisky/presentation/js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 8]>
@@ -48,7 +49,7 @@
                         <li>
                             <a class="whisky_box" href="whisky.php?id={{ whisky_id }}">
                                 <img src="presentation/images/jack-daniels.png" alt="{{ whisky_name }} Logo">
-                                <span class="score">{{ whisky_score }}</span>
+                                <span class="score{{ whisky_score }}">{{ whisky_score }}</span>
                                 <div class="whisky_box_name">{{ whisky_name }}</div>
                             </a>
                         </li>
@@ -57,28 +58,31 @@
                         <li>
                             <a class="whisky_box" href="">
                                 <img src="presentation/images/jack-daniels.png" alt="Jack Daniels No.7 Logo">
-                                <span class="score">100.00</span>
+                                <span class="score">100</span>
+                                <div class="progress-radial progress-25">
+                                    <div class="overlay">25</div>
+                                </div>
                                 <div class="whisky_box_name">Jack Daniels No.7</div>
                             </a>
                         </li>
                         <li>
                             <a class="whisky_box" href="">
                                 <img src="presentation/images/jack-daniels.png" alt="Jack Daniels No.7 Logo">
-                                <span class="score">100.00</span>
+                                <span class="score">100</span>
                                 <div class="whisky_box_name">Jack Daniels No.7</div>
                             </a>
                         </li>
                         <li>
                             <a class="whisky_box" href="">
                                 <img src="presentation/images/jack-daniels.png" alt="Jack Daniels No.7 Logo">
-                                <span class="score">100.00</span>
+                                <span class="score">100</span>
                                 <div class="whisky_box_name">Jack Daniels No.7</div>
                             </a>
                         </li>
                         <li>
                             <a class="whisky_box" href="">
                                 <img src="presentation/images/jack-daniels.png" alt="Jack Daniels No.7 Logo">
-                                <span class="score">100.00</span>
+                                <span class="score">100</span>
                                 <div class="whisky_box_name">Jack Daniels No.7</div>
                             </a>
                         </li>
@@ -101,56 +105,56 @@
                         <li>
                             <a class="whisky_box" href="">
                                 <img src="presentation/images/jack-daniels.png" alt="Jack Daniels No.7 Logo">
-                                <span class="score">100.00</span>
+                                <span class="score">100</span>
                                 <div class="whisky_box_name">Jack Daniels No.7</div>
                             </a>
                         </li>
                         <li>
                             <a class="whisky_box" href="">
                                 <img src="presentation/images/jack-daniels.png" alt="Jack Daniels No.7 Logo">
-                                <span class="score">100.00</span>
+                                <span class="score">100</span>
                                 <div class="whisky_box_name">Jack Daniels No.7</div>
                             </a>
                         </li>
                         <li>
                             <a class="whisky_box" href="">
                                 <img src="presentation/images/jack-daniels.png" alt="Jack Daniels No.7 Logo">
-                                <span class="score">100.00</span>
+                                <span class="score">100</span>
                                 <div class="whisky_box_name">Jack Daniels No.7</div>
                             </a>
                         </li>
                         <li>
                             <a class="whisky_box" href="">
                                 <img src="presentation/images/jack-daniels.png" alt="Jack Daniels No.7 Logo">
-                                <span class="score">100.00</span>
+                                <span class="score">100</span>
                                 <div class="whisky_box_name">Jack Daniels No.7</div>
                             </a>
                         </li>
                         <li>
                             <a class="whisky_box" href="">
                                 <img src="presentation/images/jack-daniels.png" alt="Jack Daniels No.7 Logo">
-                                <span class="score">100.00</span>
+                                <span class="score">100</span>
                                 <div class="whisky_box_name">Jack Daniels No.7</div>
                             </a>
                         </li>
                         <li>
                             <a class="whisky_box" href="">
                                 <img src="presentation/images/jack-daniels.png" alt="Jack Daniels No.7 Logo">
-                                <span class="score">100.00</span>
+                                <span class="score">100</span>
                                 <div class="whisky_box_name">Jack Daniels No.7</div>
                             </a>
                         </li>
                         <li>
                             <a class="whisky_box" href="">
                                 <img src="presentation/images/jack-daniels.png" alt="Jack Daniels No.7 Logo">
-                                <span class="score">100.00</span>
+                                <span class="score">100</span>
                                 <div class="whisky_box_name">Jack Daniels No.7</div>
                             </a>
                         </li>
                         <li>
                             <a class="whisky_box" href="">
                                 <img src="presentation/images/jack-daniels.png" alt="Jack Daniels No.7 Logo">
-                                <span class="score">100.00</span>
+                                <span class="score">100</span>
                                 <div class="whisky_box_name">Jack Daniels No.7</div>
                             </a>
                         </li>
@@ -168,8 +172,8 @@
         
         <!-- Scripts below here -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')</script>
-        <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
+        <script>window.jQuery || document.write('<script src="src/ProjectWhisky/presentation/js/vendor/jquery-1.11.3.min.js"><\/script>')</script>
+        <script src="src/ProjectWhisky/presentation/js/plugins.js"></script>
+        <script src="src/ProjectWhisky/presentation/js/main.js"></script>
     </body>
 </html>
