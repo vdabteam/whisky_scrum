@@ -6,7 +6,7 @@ use PDO;
 use Exception;
 
 
-class commentsDAO
+class whiskyDAO
 {
     private $result;
     private $handler;
