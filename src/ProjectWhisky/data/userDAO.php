@@ -102,6 +102,13 @@ class UserDAO
 
 
 
+    public function createUser($username, $password, $email, $firstname, $lastname, $admin, )
+    {
+
+    }
+
+
+
     /*
     public function getFilmById($filmId)
     {
