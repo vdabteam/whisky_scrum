@@ -1,0 +1,40 @@
+    {% extends "default_template.twig" %}
+        {% block content %}
+            <header id="header_banner">
+                <div id="header_quote"><p>This smells funny..</p></div>
+            </header>
+            <div id="content_container">
+                <section class="whisky_view" id="top_whisky">
+                    <h2>Top Scoring Whiskies</h2>
+                    <ul>
+                    <!--
+                        {% for ___ in ___ %} {# MAX 4 items #}
+                        <li>
+                            <a class="whisky_box" href="whisky.php?id={{ whisky_id }}">
+                                <img src="presentation/images/jack-daniels.png" alt="{{ whisky_name }} Logo">
+                                <span class="score">{{ whisky_score }}</span>
+                                <div class="whisky_box_name">{{ whisky_name }}</div>
+                            </a>
+                        </li>
+                        {% endfor %}
+                    -->
+                    </ul>
+                </section>
+                <section class="whisky_view" id="recent_whisky">
+                    <h2>Latest Reviewed Whiskies</h2>
+                    <ul>
+                    <!--
+                        {% for ___ in ___ %} {# MAX 8 items #}
+                        <li>
+                            <a class="whisky_box" href="whisky.php?id={{ whisky_id }}">
+                                <img src="presentation/images/jack-daniels.png" alt="{{ whisky_name }} Logo">
+                                <span class="score">{{ whisky_score }}</span>
+                                <div class="whisky_box_name">{{ whisky_name }}</div>
+                            </a>
+                        </li>
+                        {% endfor %}
+                    -->
+                    </ul>
+                </section>
+            </div>
+        {% endblock %}

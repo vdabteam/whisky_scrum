@@ -128,8 +128,7 @@ h1{
     width: 90%;
     max-width: 1080px;
     min-width: 780px;
-    margin: 0 auto;
-    margin-top: 4em;
+    margin: 4em auto;
 }
 .containershadow{
     position: relative;
