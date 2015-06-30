@@ -3,7 +3,7 @@
 namespace src\ProjectWhisky\exceptions;
 use Exception;
 
-class PasswordFailureException extends Exception
+class WrongDataException extends Exception
 {
 
 }

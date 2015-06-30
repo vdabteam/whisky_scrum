@@ -2,7 +2,7 @@
 
 namespace src\ProjectWhisky\business;
 use src\ProjectWhisky\data\UserDAO;
-use src\ProjectWhisky\exceptions\LoginFailureException;
+use src\ProjectWhisky\exceptions\WrongDataException;
 use src\ProjectWhisky\exceptions\PasswordFailureException;
 
 
@@ -32,7 +32,7 @@ class AuthorizationBusiness
         /**
          * Report exception if user doesn't exit
          */
-        if (!isset($this->list)) throw new LoginFailureException(); // todo: change exception to "DataFailureException()"
+        if (!isset($this->list)) throw new WrongDataException();
 
 
         /**

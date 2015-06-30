@@ -3,7 +3,7 @@
 namespace src\ProjectWhisky\exceptions;
 use Exception;
 
-class LoginFailureException extends Exception
+class EmptyDataException extends Exception
 {
 
 }
