@@ -3,7 +3,6 @@
 
 use src\ProjectWhisky\business\UserBusiness;
 use src\ProjectWhisky\business\AuthorizationBusiness;
-use src\ProjectWhisky\exceptions\UserDoesntExistException;
 use src\ProjectWhisky\exceptions\WrongDataException;
 use src\ProjectWhisky\exceptions\EmptyDataException;
 use Doctrine\Common\ClassLoader;
@@ -51,40 +50,38 @@ if(isset($_POST['loginBtn']))
 
     try
     {
+        /**
+         * Throw error if email and password fields are empty
+         */
         if (empty($email) || empty($password)) throw new EmptyDataException();
 
 
         $email = filter_var(trim($_POST['emailField']), FILTER_VALIDATE_EMAIL); // validate e-mail
         $password = trim(htmlspecialchars($_POST['passField'])); // validate pass
 
-
+        /**
+         * Throw error if email and password contain wrong characters
+         */
         if(empty($email) && empty($password)) throw new WrongDataException();
 
 
-            
-                /**
-                 * Authorize user
-                 */
-                $authorization = new AuthorizationBusiness();
-                $user = $authorization->authorize($email, $password);
-                echo "Authorized";
+        /**
+         * Authorize user
+         * Throw error if email-password combination is wrong (Exception comes from AuthorizationBusiness)
+         */
+        $authorization = new AuthorizationBusiness();
+        $user = $authorization->authorize($email, $password);
 
-
-
-
-
+        echo "Authorized";
     }
     catch (EmptyDataException $e)
     {
         echo "E-mail and password fields can't be empty";
     }
-    catch (WrongDataException $e) //todo: change exception to "DataFailureException()" with message "Wrong e-mail - password combination"
+    catch (WrongDataException $e)
     {
         echo "Wrong e-mail and password combination.";
     }
-
-
-
 
 }
 
