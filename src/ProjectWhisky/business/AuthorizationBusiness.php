@@ -3,7 +3,7 @@
 namespace src\ProjectWhisky\business;
 use src\ProjectWhisky\data\UserDAO;
 use src\ProjectWhisky\exceptions\LoginFailureException;
-
+use src\ProjectWhisky\exceptions\PasswordFailureException;
 
 
 
@@ -32,22 +32,26 @@ class AuthorizationBusiness
         /**
          * Report exception if user doesn't exit
          */
-        if (!isset($this->lijst)) throw new LoginFailureException();
+        if (!isset($this->list)) throw new LoginFailureException(); // todo: change exception to "DataFailureException()"
 
 
         /**
          * Get hashed password from DB and check if by user inserted password matches with hashed one.
          */
-        $this->passwordHash = $this->lijst[0]->getPassword();
-        $this->checkPassword($this->passwordHash, $this->password);
+        $this->passwordHash = $this->list->getPassword();
+        self::checkPassword($this->passwordHash, $this->password);
 
-        /**
-         * Check if account is verified
-         */
-        if($this->lijst[0]->getVerification() != 1) throw new EmailNotVerifiedException();
+        return $this->list;
 
-        return $this->lijst[0];
+    }
 
+
+    /**
+     * Checking whether entered password is correct
+     */
+    private function checkPassword($passwordHash, $passwordEntered)
+    {
+        if(!password_verify($passwordEntered, $passwordHash)) throw new PasswordFailureException(); // todo: change exception to "DataFailureException()"
     }
 
 }

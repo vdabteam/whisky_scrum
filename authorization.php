@@ -1,11 +1,44 @@
 <?php
 
+
 use src\ProjectWhisky\business\UserBusiness;
 use src\ProjectWhisky\business\AuthorizationBusiness;
 use src\ProjectWhisky\exceptions\UserDoesntExistException;
 use src\ProjectWhisky\exceptions\LoginFailureException;
 use src\ProjectWhisky\exceptions\PasswordFailureException;
 use Doctrine\Common\ClassLoader;
+
+
+?>
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Authorization</title>
+</head>
+<body>
+<form action="authorization.php" method="post">
+    <input type="text" placeholder="E-mail"/>
+    <br>
+    <input type="password" placeholder="Password"/>
+</form>
+
+</body>
+</html>
+
+
+<?php
+
+
+
+
+
+
+
+
+
 
 
 /**
