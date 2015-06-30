@@ -206,14 +206,14 @@ footer{
         display: -moz-flex;
         display: -webkit-flex;
         display: flex;
-        margin: 1em auto 2em auto;
+        margin: 2em auto 2em auto;
         -webkit-flex-wrap: wrap;
         flex-wrap: wrap;
         -webkit-justify-content: center;
         justify-content: center;
     }
     .whisky_view ul li{
-        margin: 0 auto;
+        margin: 0 auto 2em auto;
         width: 21.9%;
     }
     .whisky_view ul li:nth-child(4n+4){
@@ -222,7 +222,6 @@ footer{
     }
     .whisky_view ul li:nth-child(4n+1){
         margin-left: 0;
-        margin-bottom: 1.5em;
     }
 
     .whisky_box{
@@ -237,8 +236,8 @@ footer{
 
     .whisky_box img{
         max-height: 13.5em;
-        max-width: 13.5em;
-        margin: 1em;
+        max-width: 100%;
+        margin: 1em 0;
     }
 
     .whisky_box_name{
