@@ -1,20 +1,17 @@
 <?php
 
-namespace src\ProjectBioscoop\data;
-use src\ProjectBioscoop\entities\Films;
-use src\ProjectBioscoop\entities\Programmatie;
-use src\ProjectBioscoop\data\DBConnect;
+namespace src\ProjectWhisky\data;
+use src\ProjectWhisky\data\DBConnect;
 use PDO;
 use Exception;
 
 
-class FilmsDAO
+class commentsDAO
 {
     private $result;
     private $handler;
     private $sql;
     private $query;
-    private $programmatie;
 
     private $lijst;
 
@@ -24,7 +21,9 @@ class FilmsDAO
 
     }
 
-
+    /**
+     * Method which creates a DB connection
+     */
     private function connectToDB()
     {
         $this->handler = new DBConnect();
@@ -33,7 +32,7 @@ class FilmsDAO
 
     public function getAll()
     {
-        self::connectToDB();
+        self::connectToDB(); /* Using DB connection */
         $this->sql = "SELECT * FROM films";
 
         try

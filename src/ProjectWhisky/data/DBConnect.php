@@ -1,10 +1,14 @@
 <?php
-namespace src\ProjectBioscoop\data;
+namespace src\ProjectWhisky\data;
 
 use PDO;
 use PDOException;
 
-
+/**
+ * Class DBConnect
+ * @package src\ProjectWhisky\data
+ * Establishes the database connection
+ */
 class DBConnect
 {
     private $handler;
@@ -15,9 +19,9 @@ class DBConnect
         {
             $this->handler = new PDO('mysql:
             host=localhost;
-            dbname=bioscoop;
+            dbname=whiskyclub;
             charset=utf8',
-                'admin',
+                'root',
                 '',
                 array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"));
 
