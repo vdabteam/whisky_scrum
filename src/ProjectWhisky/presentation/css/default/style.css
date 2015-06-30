@@ -311,13 +311,31 @@ footer{
     }
 
     .whisky_box img{
-        margin-bottom: 0.8em;
         height: auto;
         max-height: 8em;
     }
 
     .whisky_box_name{
         text-align: center;
+        display: inline-block;
+    }
+
+    .score{
+        float: right;
+        background-color: rgba(0,0,0,0.3);
+        color: white;
+        display: block;
+        font-family: 'open_sansbold';
+        margin-right: 1em;
+        margin-top: 1em;
+        text-align: center;
+        vertical-align: middle;
+        height:6em;
+        width:6em;
+        line-height: 6em; /* Must be equal to "height" */
+        -moz-border-radius: 50%; 
+        -webkit-border-radius: 50%; 
+        border-radius: 50%;
     }
 }
 
