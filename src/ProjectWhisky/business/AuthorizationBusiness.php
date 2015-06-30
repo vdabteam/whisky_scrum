@@ -3,8 +3,6 @@
 namespace src\ProjectWhisky\business;
 use src\ProjectWhisky\data\UserDAO;
 use src\ProjectWhisky\exceptions\WrongDataException;
-use src\ProjectWhisky\exceptions\PasswordFailureException;
-
 
 
 class AuthorizationBusiness
@@ -47,11 +45,11 @@ class AuthorizationBusiness
 
 
     /**
-     * Checking whether entered password is correct
+     * Checking whether entered password is correct or not
      */
     private function checkPassword($passwordHash, $passwordEntered)
     {
-        if(!password_verify($passwordEntered, $passwordHash)) throw new PasswordFailureException(); // todo: change exception to "DataFailureException()"
+        if(!password_verify($passwordEntered, $passwordHash)) throw new WrongDataException();
     }
 
 }

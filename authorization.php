@@ -73,6 +73,22 @@ if(isset($_POST['loginBtn']))
         $user = $authorization->authorize($email, $password);
 
         echo "Authorized";
+        /**
+         *
+         *
+         * PUT VARIABLE IN SESSION HERE
+         *
+         *
+         *
+         */
+
+        echo "<pre>";
+        print_r($user->getAdmin());
+        echo "</pre>";
+
+
+
+
     }
     catch (EmptyDataException $e)
     {
