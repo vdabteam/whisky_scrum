@@ -128,7 +128,7 @@ footer{
         padding: 0.8em 0 1em 0;
         background-color: black;
         color: white;
-        border-bottom: 3px solid #CC952D;
+        border-bottom: 3px solid #FFBA39;
 
     }
     .navbutton a{
@@ -141,7 +141,7 @@ footer{
         font-family: 'open_sansbold';
     }
     .navbutton a:hover{
-        color: #CC952D;
+        color: #FFBA39;
     }
 
     .container{
@@ -188,7 +188,7 @@ footer{
         background-position: center center;
         background-size: cover;
         height: 30em;
-        border-bottom: 3px solid #CC952D;
+        border-bottom: 3px solid #FFBA39;
         color: white;
     }
 
