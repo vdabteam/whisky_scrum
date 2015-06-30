@@ -2,7 +2,7 @@
 
 namespace src\ProjectWhisky\business;
 use src\ProjectWhisky\data\UserDAO;
-use src\ProjectWhisky\exceptions\UserDoesntExistException;
+use src\ProjectWhisky\exceptions\WrongDataException;
 
 
 
@@ -30,7 +30,7 @@ class UserBusiness
         $this->userDAO = new UserDAO();
         $this->list = $this->userDAO->findUserByEmail($email);
 
-        if(!isset($this->list)) throw new UserDoesntExistException();
+        if(!isset($this->list)) throw new WrongDataException();
         return $this->list;
 
     }

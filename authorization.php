@@ -4,8 +4,8 @@
 use src\ProjectWhisky\business\UserBusiness;
 use src\ProjectWhisky\business\AuthorizationBusiness;
 use src\ProjectWhisky\exceptions\UserDoesntExistException;
-use src\ProjectWhisky\exceptions\LoginFailureException;
-use src\ProjectWhisky\exceptions\PasswordFailureException;
+use src\ProjectWhisky\exceptions\WrongDataException;
+use src\ProjectWhisky\exceptions\EmptyDataException;
 use Doctrine\Common\ClassLoader;
 
 
@@ -20,9 +20,11 @@ use Doctrine\Common\ClassLoader;
 </head>
 <body>
 <form action="authorization.php" method="post">
-    <input type="text" placeholder="E-mail"/>
+    <input type="text" placeholder="E-mail" name="emailField"/>
     <br>
-    <input type="password" placeholder="Password"/>
+    <input type="password" placeholder="Password" name="passField"/>
+    <br>
+    <input type="submit" value="Log in" name="loginBtn"/>
 </form>
 
 </body>
@@ -32,49 +34,62 @@ use Doctrine\Common\ClassLoader;
 <?php
 
 
-
-
-
-
-
-
-
-
-
 /**
- * Connecting doctrine autoloader
+ * Check entered e-mail and password when "log in" button has been pressed
  */
-require_once'Doctrine/Common/ClassLoader.php';
-$classLoader = new ClassLoader("src");
-$classLoader->register();
-
-
-
-$obj = new UserBusiness();
-echo "<pre>";
-print_r($obj->getAllUsers());
-echo "</pre>";
-
-$obj2 = new AuthorizationBusiness();
-
-
-try
+if(isset($_POST['loginBtn']))
 {
-    $user = $obj2->authorize("admin@mail.com", "654321");
-    echo "<pre>";
-    print_r($user->getPassword());
-    echo "</pre>";
+    $email = $_POST['emailField'];
+    $password = $_POST['passField'];
+
+    /**
+     * Connecting doctrine autoloader
+     */
+    require_once'Doctrine/Common/ClassLoader.php';
+    $classLoader = new ClassLoader("src");
+    $classLoader->register();
+
+    try
+    {
+        if (empty($email) || empty($password)) throw new EmptyDataException();
+
+
+        $email = filter_var(trim($_POST['emailField']), FILTER_VALIDATE_EMAIL); // validate e-mail
+        $password = trim(htmlspecialchars($_POST['passField'])); // validate pass
+
+
+        if(empty($email) && empty($password)) throw new WrongDataException();
+
+
+            
+                /**
+                 * Authorize user
+                 */
+                $authorization = new AuthorizationBusiness();
+                $user = $authorization->authorize($email, $password);
+                echo "Authorized";
+
+
+
+
+
+    }
+    catch (EmptyDataException $e)
+    {
+        echo "E-mail and password fields can't be empty";
+    }
+    catch (WrongDataException $e) //todo: change exception to "DataFailureException()" with message "Wrong e-mail - password combination"
+    {
+        echo "Wrong e-mail and password combination.";
+    }
+
+
+
 
 }
-catch (UserDoesntExistException $e) //todo: change exception to "DataFailureException()" with message "Wrong e-mail - password combination"
-{
-    echo "This user doesn't exist";
-}
-catch (LoginFailureException $e) //todo: change exception to "DataFailureException()" with message "Wrong e-mail - password combination"
-{
-    echo "Wrong login";
-}
-catch (PasswordFailureException $e) //todo: change exception to "DataFailureException()" with message "Wrong e-mail - password combination"
-{
-    echo "Wrong pass";
-}
+
+
+
+
+
+
