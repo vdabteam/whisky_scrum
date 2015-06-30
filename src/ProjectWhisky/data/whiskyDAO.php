@@ -2,6 +2,7 @@
 
 namespace src\ProjectWhisky\data;
 use src\ProjectWhisky\data\DBConnect;
+use src\ProjectWhisky\entities\Whisky;
 use PDO;
 use Exception;
 
@@ -12,8 +13,7 @@ class WhiskyDAO
     private $handler;
     private $sql;
     private $query;
-
-    private $lijst;
+    private $list;
 
 
     /**
@@ -35,25 +35,29 @@ class WhiskyDAO
     public function getAll()
     {
         self::connectToDB(); /* Using DB connection */
-        $this->sql = "SELECT * FROM films";
+        $this->sql = "SELECT * FROM whiskies";
 
         try
         {
             $this->query = $this->handler->query($this->sql);
             $this->result = $this->query->fetchAll(PDO::FETCH_ASSOC);
-
+            
+             
+             /**
+             * Closing DB connection
+             */
             $this->query->closeCursor();
             $this->handler = null;
 
             foreach ($this->result as $row)
             {
-                $this->programmatie = new ProgrammatieDAO();
-                $this->programmatie = $this->programmatie->getProgrammatieTijdByFilmId($row['film_id']);
-
-                $this->lijst[] = new Films($row['film_id'], $row['film_naam'], $row['film_omschrijving'], $row['film_image'], $this->programmatie);
+                $this->list[] = new Whisky($row['id'], $row['name'], $row['distillery_id'], $row['price'], $row['age'],
+                                            $row['strength'], $row['barrel_id'], $row['image_path'], $row['hidden'], $row['creation_date'],
+                                            $row['rating_aroma'],$row['rating_color'],$row['rating_taste'],$row['rating_aftertaste'],
+                                            $row['text_aroma'],$row['text_color'],$row['text_taste'],$row['text_aftertaste'],$row['review'],$row['user_id']);
             }
 
-            return $this->lijst;
+            return $this->list;
         }
         catch (Exception $e)
         {
@@ -62,7 +66,7 @@ class WhiskyDAO
         }
     }
 
-
+/* ======== even in comment gezet tot het terug gebruikt word ========
     public function getFilmById($filmId)
     {
         self::connectToDB();
@@ -79,9 +83,9 @@ class WhiskyDAO
 
             foreach ($this->result as $row)
             {
-                $this->lijst[] = new Films($row['film_id'], $row['film_naam'], $row['film_omschrijving'], $row['film_image'], 0);
+                $this->list[] = new Films($row['film_id'], $row['film_naam'], $row['film_omschrijving'], $row['film_image'], 0);
             }
-            return $this->lijst;
+            return $this->list;
         }
         catch (Exception $e)
         {
@@ -89,6 +93,6 @@ class WhiskyDAO
             return false;
         }
     }
-
+*/
 
 }
