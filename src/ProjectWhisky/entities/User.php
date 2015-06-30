@@ -17,7 +17,7 @@ class User
     private $registrationDate;
 
 
-    private function __construct($id, $username, $password, $email, $firstname, $lastname, $admin, $blocked, $imagePath, $registrationDate)
+    public function __construct($id, $username, $password, $email, $firstname, $lastname, $admin, $blocked, $imagePath, $registrationDate)
     {
         $this -> id = $id;
         $this -> username = $username;
@@ -31,12 +31,6 @@ class User
         $this -> registrationDate = $registrationDate;
     }
 
-    public static function create($id, $username, $password, $email, $firstname, $lastname, $admin, $blocked, $imagePath, $registrationDate)
-    {
-        $user = new User($id, $username, $password, $email, $firstname, $lastname, $admin, $blocked, $imagePath, $registrationDate);
-        
-        return $user;
-    }
     
     // ACCESSORS (Getters)
     

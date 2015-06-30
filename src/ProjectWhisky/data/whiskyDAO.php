@@ -6,7 +6,7 @@ use PDO;
 use Exception;
 
 
-class whiskyDAO
+class WhiskyDAO
 {
     private $result;
     private $handler;
@@ -16,9 +16,11 @@ class whiskyDAO
     private $lijst;
 
 
+    /**
+     * Defining constructor
+     */
     public function __construct()
     {
-
     }
 
     /**

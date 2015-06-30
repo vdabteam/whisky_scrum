@@ -6,7 +6,7 @@ use PDO;
 use Exception;
 
 
-class barrelDAO
+class BarrelDAO
 {
     private $result;
     private $handler;
@@ -16,9 +16,11 @@ class barrelDAO
     private $lijst;
 
 
+    /**
+     * Defining constructor
+     */
     public function __construct()
     {
-
     }
 
     /**
