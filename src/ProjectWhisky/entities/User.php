@@ -38,7 +38,7 @@ class User
         return $user;
     }
     
-    //getters
+    // ACCESSORS (Getters)
     
     public function getId()
     {
@@ -90,7 +90,7 @@ class User
         return $this -> registrationDate;
     }
     
-    //setters
+    // TRANSFORMERS (Setters)
     
     public function setId($id)
     {
