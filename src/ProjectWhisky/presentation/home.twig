@@ -7,33 +7,29 @@
                 <section class="whisky_view" id="top_whisky">
                     <h2>Top Scoring Whiskies</h2>
                     <ul>
-                    <!--
-                        {% for ___ in ___ %} {# MAX 4 items #}
+                        {% for whisky in whiskies %} {# MAX 4 items #}
                         <li>
-                            <a class="whisky_box" href="whisky.php?id={{ whisky_id }}">
-                                <img src="{{ img_path }}" alt="{{ whisky_name }} Logo">
-                                <span class="score">{{ whisky_score }}</span>
-                                <div class="whisky_box_name">{{ whisky_name }}</div>
+                            <a class="whisky_box" href="whisky.php?id={{ whisky.id }}">
+                                <img src="src/ProjectWhisky/presentation/img/{{ whisky.imagePath }}" alt="{{ whisky.name }} Logo">
+                                <span class="score"></span>
+                                <div class="whisky_box_name">{{ whisky.name }}</div>
                             </a>
                         </li>
                         {% endfor %}
-                    -->
                     </ul>
                 </section>
                 <section class="whisky_view" id="recent_whisky">
                     <h2>Latest Reviewed Whiskies</h2>
                     <ul>
-                    <!--
-                        {% for ___ in ___ %} {# MAX 8 items #}
+                        {% for whisky in whiskies %} {# MAX 8 items #}
                         <li>
-                            <a class="whisky_box" href="whisky.php?id={{ whisky_id }}">
-                                <img src="{{ img_path }}" alt="{{ whisky_name }} Logo">
-                                <span class="score">{{ whisky_score }}</span>
-                                <div class="whisky_box_name">{{ whisky_name }}</div>
+                            <a class="whisky_box" href="whisky.php?id={{ whisky.id }}">
+                                <img src="src/ProjectWhisky/presentation/img/{{ whisky.imagePath }}" alt="{{ whisky.name }} Logo">
+                                <span class="score"></span>
+                                <div class="whisky_box_name">{{ whisky.name }}</div>
                             </a>
                         </li>
                         {% endfor %}
-                    -->
                     </ul>
                 </section>
             </div>
