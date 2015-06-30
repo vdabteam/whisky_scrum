@@ -18,16 +18,16 @@ class User
 
     public function __construct($id, $username, $password, $email, $firstname, $lastname, $admin, $blocked, $imagePath, $registrationDate)
     {
-        $this -> id = $id;
-        $this -> username = $username;
-        $this -> password = $password;
-        $this -> email = $email;
-        $this -> firstname = $firstname;
-        $this -> lastname = $lastname;
-        $this -> admin = $admin;
-        $this -> blocked = $blocked;
-        $this -> imagePath = $imagePath;
-        $this -> registrationDate = $registrationDate;
+        $this->id = $id;
+        $this->username = $username;
+        $this->password = $password;
+        $this->email = $email;
+        $this->firstname = $firstname;
+        $this->lastname = $lastname;
+        $this->admin = $admin;
+        $this->blocked = $blocked;
+        $this->imagePath = $imagePath;
+        $this->registrationDate = $registrationDate;
     }
 
     
@@ -35,109 +35,104 @@ class User
     
     public function getId()
     {
-        return $this -> id;
+        return $this->id;
     }
     
     public function getUsername()
     {
-        return $this -> username;
+        return $this->username;
     }
     
     public function getPassword()
     {
-        return $this -> password;
+        return $this->password;
     }
     
     public function getEmail()
     {
-        return $this -> email;
+        return $this->email;
     }
     
     public function getFirstname()
     {
-        return $this -> firstname;
+        return $this->firstname;
     }
     
     public function getLastname()
     {
-        return $this -> Lastname;
+        return $this->lastname;
     }
         
     public function getAdmin()
     {
-        return $this -> admin;
+        return $this->admin;
     }
         
     public function getBlocked()
     {
-        return $this -> blocked;
+        return $this->blocked;
     }
             
     public function getImagePath()
     {
-        return $this -> imagePath;
+        return $this->imagePath;
     }
             
     public function getRegistrationDate()
     {
-        return $this -> registrationDate;
+        return $this->registrationDate;
     }
-    
+       
     // TRANSFORMERS (Setters)
     
     public function setId($id)
     {
-        $this -> id = $id;
+        $this->id = $id;
     }
     
     public function setUsername($username)
     {
-        $this -> username = $username;
+        $this->username = $username;
     }
     
     public function setPassword($password)
     {
-        $this -> password = $password;
-    }
-    
-    public function setPassword($password)
-    {
-        $this -> password = $password;
+        $this->password = $password;
     }
     
     public function setEmail($email)
     {
-        $this -> email = $email;
+        $this->email = $email;
     }
     
     public function setFirstname($firstname)
     {
-        $this -> firstname = $firstname;
+        $this->firstname = $firstname;
     }
     
     public function setLastname($lastname)
     {
-        $this -> lastname = $lastname;
+        $this->lastname = $lastname;
     }
     
     public function setAdmin($admin)
     {
-        $this -> admin = $admin;
+        $this->admin = $admin;
     }
     
     public function setBlocked($blocked)
     {
-        $this -> blocked = $blocked;
+        $this->blocked = $blocked;
     }
     
     public function setImagePath($imagePath)
     {
-        $this -> imagePath = $imagePath;
+        $this->imagePath = $imagePath;
     }
     
     public function setRegistrationDate($registrationDate)
     {
-        $this -> registrationDate = $registrationDate;
+        $this->registrationDate = $registrationDate;
     }
         
 }
