@@ -41,8 +41,41 @@ class UserBusiness
      */
     public function createNewUser($username, $password, $email, $firstname, $lastname)
     {
+        $password = self::hashPassword($password);
         $this->userDAO = new UserDAO();
         $this->list = $this->userDAO->createUser($username, $password, $email, $firstname, $lastname);
+
+        return $this->list;
+    }
+
+    public function hashPassword($passwordToHash, $rounds = 10)
+    {
+        $crypt_options = array('cost' => $rounds);
+        $hash = password_hash($passwordToHash, PASSWORD_BCRYPT, $crypt_options);
+        return $hash;
+    }
+
+
+
+    /**
+     * Checking user by username
+     */
+    public function checkUserByUsername($username)
+    {
+        $this->userDAO = new UserDAO();
+        $this->list = $this->userDAO->lookForUserByUsername($username);
+
+        return $this->list;
+    }
+
+
+    /**
+     * Checking user by email
+     */
+    public function checkUserByEmail($email)
+    {
+        $this->userDAO = new UserDAO();
+        $this->list = $this->userDAO->lookForUserByEmail($email);
 
         return $this->list;
     }
