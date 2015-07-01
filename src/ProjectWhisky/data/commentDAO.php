@@ -2,6 +2,7 @@
 
 namespace src\ProjectWhisky\data;
 use src\ProjectWhisky\data\DBConnect;
+use src\ProjectWhisky\entities\Comment;
 use PDO;
 use Exception;
 
@@ -12,8 +13,7 @@ class CommentDAO
     private $handler;
     private $sql;
     private $query;
-
-    private $lijst;
+    private $list;
 
 
     /**
@@ -32,28 +32,30 @@ class CommentDAO
         $this->handler = $this->handler->startConnection();
     }
 
-    public function getAll()
+
+    public function getAllComments()
     {
         self::connectToDB(); /* Using DB connection */
-        $this->sql = "SELECT * FROM films";
+        $this->sql = "SELECT * FROM comments";
 
         try
         {
             $this->query = $this->handler->query($this->sql);
             $this->result = $this->query->fetchAll(PDO::FETCH_ASSOC);
-
+            
+             
+             /**
+             * Closing DB connection
+             */
             $this->query->closeCursor();
             $this->handler = null;
 
             foreach ($this->result as $row)
             {
-                $this->programmatie = new ProgrammatieDAO();
-                $this->programmatie = $this->programmatie->getProgrammatieTijdByFilmId($row['film_id']);
-
-                $this->lijst[] = new Films($row['film_id'], $row['film_naam'], $row['film_omschrijving'], $row['film_image'], $this->programmatie);
+                $this->list[] = new Comment($row['id'], $row['whisky_id'], $row['user_id'], $row['comment'], $row['time'], $row['date']);
             }
 
-            return $this->lijst;
+            return $this->list;
         }
         catch (Exception $e)
         {
@@ -62,16 +64,15 @@ class CommentDAO
         }
     }
 
-
-    public function getFilmById($filmId)
+    public function getCommentByWhisky($whiskyId)
     {
         self::connectToDB();
-        $this->sql = "SELECT * FROM films WHERE film_id = ?";
+        $this->sql = "SELECT * FROM comments WHERE whisky_id = :whiskyId";
 
         try
         {
             $this->query = $this->handler->prepare($this->sql);
-            $this->query->execute(array($filmId));
+            $this->query->execute(array('whiskyId'=> $whiskyId));
             $this->result = $this->query->fetchAll(PDO::FETCH_ASSOC);
 
             $this->query->closeCursor();
@@ -79,9 +80,9 @@ class CommentDAO
 
             foreach ($this->result as $row)
             {
-                $this->lijst[] = new Films($row['film_id'], $row['film_naam'], $row['film_omschrijving'], $row['film_image'], 0);
+                $this->list[] = new Comment($row['id'], $row['whisky_id'], $row['user_id'], $row['comment'], $row['time'], $row['date']);
             }
-            return $this->lijst;
+            return $this->list;
         }
         catch (Exception $e)
         {
