@@ -4,26 +4,10 @@
                 <div id="header_quote"><p>IceTea On The Rocks</p></div>
             </header>
             <div id="content_container">
-                <section class="whisky_view" id="top_whisky">
-                    <h2>Top Scoring Whiskies</h2>
-                    <ul>
-                        {% for whisky in whiskies %} {# MAX 4 items #}
-                        <li>
-                            <div class="progress-radial progress-93"> {# replace number with twig variable for score #}
-                                <div class="overlay">93</div> {# replace number with twig variable for score #}
-                            </div>
-                            <a class="whisky_box" href="whisky.php?id={{ whisky.id }}">
-                                <img src="src/ProjectWhisky/presentation/img/{{ whisky.imagePath }}" alt="{{ whisky.name }} Logo">
-                                <div class="whisky_box_name">{{ whisky.name }}</div>
-                            </a>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </section>
-                <section class="whisky_view" id="recent_whisky">
+                <section class="whisky_view" id="defined_whiskies">
                     <h2>Latest Reviewed Whiskies</h2>
                     <ul>
-                        {% for whisky in whiskies %} {# MAX 8 items #}
+                        {% for whisky in whiskies %} {# DISPLAY all whiskies unless search criteria is added items #}
                         <li>
                             <div class="progress-radial progress-93"> {# replace number with twig variable for score #}
                                 <div class="overlay">93</div> {# replace number with twig variable for score #}
