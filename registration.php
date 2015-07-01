@@ -2,7 +2,6 @@
 
 
 use src\ProjectWhisky\business\UserBusiness;
-use src\ProjectWhisky\business\AuthorizationBusiness;
 use src\ProjectWhisky\exceptions\WrongDataException;
 use src\ProjectWhisky\exceptions\EmptyDataException;
 use src\ProjectWhisky\exceptions\PasswordsDontMatchException;
@@ -123,7 +122,7 @@ if(isset($_POST['registrationBtn']))
     }
     catch (EmptyDataException $e)
     {
-        echo "E-mail and password fields can't be empty";
+        echo "Please fill in all fields to become a whiskyman!";
     }
     catch (WrongDataException $e)
     {

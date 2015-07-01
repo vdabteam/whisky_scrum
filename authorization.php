@@ -7,9 +7,11 @@ use src\ProjectWhisky\exceptions\WrongDataException;
 use src\ProjectWhisky\exceptions\EmptyDataException;
 use Doctrine\Common\ClassLoader;
 
+session_start();
 
 ?>
 
+<!--todo: remove this html part, use instead main.twig file-->
 
 <!doctype html>
 <html lang="en">
@@ -72,20 +74,24 @@ if(isset($_POST['loginBtn']))
         $authorization = new AuthorizationBusiness();
         $user = $authorization->authorize($email, $password);
 
-        echo "Authorized";
-        /**
-         *
-         *
-         * PUT VARIABLE IN SESSION HERE
-         *
-         *
-         *
+
+        /*
+         * Check if user is admin
          */
+        if($user->getAdmin() === true)
+        {
+            $_SESSION['user']['role'] = 2; // Store in session that user is an admin; 2 = admin
+        }
+        else
+        {
+            $_SESSION['user']['role'] = 1; // Store in session that user is NOT an admin; 1 = regular user
+        }
 
-        echo "<pre>";
-        print_r($user->getAdmin());
-        echo "</pre>";
+        $_SESSION['user']['blocked'] = $user->getBlocked(); //Check if user is blocked, and store this boolean parameter into session: blocked = 1
+        $_SESSION['user']['id'] = $user->getId(); //Store userIn into session
+        $_SESSION['user']['firstname'] = $user->getFirstname(); // Store user firstname into session
 
+        echo 'You\'re in';
 
 
 
@@ -102,7 +108,6 @@ if(isset($_POST['loginBtn']))
 }
 
 
-
-
-
-
+echo "<pre>";
+print_r($_SESSION);
+echo "</pre>";
