@@ -16,5 +16,5 @@ $whiskyBiz = new WhiskyBusiness();
 $whisky = $whiskyBiz->getWhisky($_GET["id"]);
 
 print("<pre>");
-print_r($whisky); 
+print_r($whisky);
 print("</pre>");
