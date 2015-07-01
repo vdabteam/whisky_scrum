@@ -22,6 +22,6 @@ $whisky = $whiskyBiz->getWhisky($_GET["id"]);
 
 $loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation"); 
 $twig = new Twig_Environment($loader); 
-$view = $twig->render("whisky_page.twig", array( "whisky" => $whisky[0]));
+$view = $twig->render("whisky_page.twig", array( "whisky" => $whisky));
 
 print($view); 
