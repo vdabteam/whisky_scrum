@@ -5,7 +5,9 @@
             </header>
             <div id="content_container">
                 <section class="whisky_view" id="defined_whiskies">
-                    <h2>Latest Reviewed Whiskies</h2>
+
+
+                    <h2>Search results</h2>
                     <ul>
                         {% for whisky in whiskies %} {# DISPLAY all whiskies unless search criteria is added items #}
                         <li>
@@ -14,7 +16,21 @@
                             </div>
                             <a class="whisky_box" href="whisky.php?id={{ whisky.id }}">
                                 <img src="src/ProjectWhisky/presentation/img/{{ whisky.imagePath }}" alt="{{ whisky.name }} Logo">
-                                <span class="score"></span>
+                                <div class="whisky_box_name">{{ whisky.name }}</div>
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+
+                    <h2>All Whiskies</h2>
+                    <ul>
+                        {% for whisky in whiskies %} {# DISPLAY all whiskies#}
+                        <li>
+                            <div class="progress-radial progress-93"> {# replace number with twig variable for score #}
+                                <div class="overlay">93</div> {# replace number with twig variable for score #}
+                            </div>
+                            <a class="whisky_box" href="whisky.php?id={{ whisky.id }}">
+                                <img src="src/ProjectWhisky/presentation/img/{{ whisky.imagePath }}" alt="{{ whisky.name }} Logo">
                                 <div class="whisky_box_name">{{ whisky.name }}</div>
                             </a>
                         </li>
