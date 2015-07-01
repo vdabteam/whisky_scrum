@@ -5,7 +5,13 @@ use src\ProjectWhisky\business\UserBusiness;
 use src\ProjectWhisky\business\AuthorizationBusiness;
 use src\ProjectWhisky\exceptions\WrongDataException;
 use src\ProjectWhisky\exceptions\EmptyDataException;
+use src\ProjectWhisky\exceptions\PasswordsDontMatchException;
+use src\ProjectWhisky\exceptions\WrongEmailFormException;
+use src\ProjectWhisky\exceptions\UsernameExistsException;
+use src\ProjectWhisky\exceptions\EmailExistsException;
+
 use Doctrine\Common\ClassLoader;
+
 
 
 ?>
@@ -68,35 +74,48 @@ if(isset($_POST['registrationBtn']))
         if (empty($firstname) || empty($lastname) || empty($email) || empty($username) || empty($password) || empty($rpassword)) throw new EmptyDataException();
 
 
-        $email = filter_var(trim($_POST['emailField']), FILTER_VALIDATE_EMAIL); // validate e-mail
-        $password = trim(htmlspecialchars($_POST['passField'])); // validate pass
+        $firstname = trim(htmlspecialchars($firstname)); // validate firstname todo: use regex to exclude forbidden chars
+        $lastname = trim(htmlspecialchars($lastname)); // validate lastname
+        $email = filter_var(trim($email), FILTER_VALIDATE_EMAIL); // validate e-mail
+        $username = trim(htmlspecialchars($username)); // validate username
+        $password = trim(htmlspecialchars($password)); // validate pass
+        $rpassword = trim(htmlspecialchars($rpassword)); // validate repeated pass
 
         /**
-         * Throw error if email and password contain wrong characters
+         * Check if e-mail pattern is correct
          */
-        if(empty($email) && empty($password)) throw new WrongDataException();
+        if(empty($email)) throw new WrongEmailFormException();
+
+        /**
+         * Check whether passwords are the same
+         */
+        if($password !== $rpassword) throw new PasswordsDontMatchException();
+
+
+        $user = new UserBusiness();
+        /**
+         * Look if user with entered e-mail already exists
+         */
+        if(!empty($user->checkUserByEmail($email))) throw new EmailExistsException();
+        /**
+         * Look if user with entered username already exists
+         */
+        if(!empty($user->checkUserByUsername($username))) throw new UsernameExistsException();
 
 
         /**
-         * Authorize user
-         * Throw error if email-password combination is wrong (Exception comes from AuthorizationBusiness)
+         * Create user
          */
-        $authorization = new AuthorizationBusiness();
-        $user = $authorization->authorize($email, $password);
+        $user->createNewUser($username,$password,$email,$firstname,$lastname);
 
-        echo "Authorized";
-        /**
-         *
-         *
-         * PUT VARIABLE IN SESSION HERE
-         *
-         *
-         *
-         */
+        echo "You're whiskyman now!";
 
-        echo "<pre>";
-        print_r($user->getAdmin());
-        echo "</pre>";
+
+
+
+
+
+
 
 
 
@@ -109,6 +128,22 @@ if(isset($_POST['registrationBtn']))
     catch (WrongDataException $e)
     {
         echo "Wrong e-mail and password combination.";
+    }
+    catch (PasswordsDontMatchException $e)
+    {
+        echo "Passwords must be the same";
+    }
+    catch(WrongEmailFormException $e)
+    {
+        echo "Wrong e-mail pattern";
+    }
+    catch(UsernameExistsException $e)
+    {
+        echo "Username already exists - choose another username.";
+    }
+    catch(EmailExistsException $e)
+    {
+        echo "User with this e-mail already exists - choose another e-mail.";
     }
 
 }

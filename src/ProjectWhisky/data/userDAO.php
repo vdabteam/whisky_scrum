@@ -81,6 +81,9 @@ class UserDAO
             $this->query->execute(array($userEmail));
             $this->result = $this->query->fetchAll(PDO::FETCH_ASSOC);
 
+            /**
+             * Closing DB connection
+             */
             $this->query->closeCursor();
             $this->handler = null;
 
@@ -125,6 +128,9 @@ class UserDAO
             $this->query = $this->handler->prepare($this->sql);
             $this->query->execute(array($username, $password, $email, $firstname, $lastname));
 
+            /**
+             * Closing DB connection
+             */
             $this->query->closeCursor();
             $this->handler = null;
 
@@ -138,6 +144,68 @@ class UserDAO
         }
     }
 
+
+    /**
+     * Only checking whether username already exists
+     */
+    public function lookForUserByUsername($username)
+    {
+        self::connectToDB(); /* Using DB connection */
+
+        $this->sql = "SELECT username FROM users WHERE username = ?";
+
+        try
+        {
+            $this->query = $this->handler->prepare($this->sql);
+            $this->query->execute(array($username));
+            $this->result = $this->query->fetchAll(PDO::FETCH_ASSOC);
+
+            /**
+             * Closing DB connection
+             */
+            $this->query->closeCursor();
+            $this->handler = null;
+
+            return $this->result;
+        }
+        catch (Exception $e)
+        {
+            echo "Error: query failure";
+            return false;
+        }
+    }
+
+
+
+    /**
+     * Only checking whether email already exists
+     */
+    public function lookForUserByEmail($email)
+    {
+        self::connectToDB(); /* Using DB connection */
+
+        $this->sql = "SELECT email FROM users WHERE email = ?";
+
+        try
+        {
+            $this->query = $this->handler->prepare($this->sql);
+            $this->query->execute(array($email));
+            $this->result = $this->query->fetchAll(PDO::FETCH_ASSOC);
+
+            /**
+             * Closing DB connection
+             */
+            $this->query->closeCursor();
+            $this->handler = null;
+
+            return $this->result;
+        }
+        catch (Exception $e)
+        {
+            echo "Error: query failure";
+            return false;
+        }
+    }
 
 
 }
