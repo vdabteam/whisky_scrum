@@ -100,7 +100,7 @@ h1{
     clear: both;
 }
 .clearfix:after { 
-    content: "."; 
+    content: ""; 
     visibility: hidden; 
     display: block; 
     height: 0; 
@@ -286,7 +286,17 @@ footer{
     }
 
     .whisky_image_container{
-        width: 25em;
+        width: 100%;
+        text-align: center;
+    }
+
+    #whisky_page #content_container{
+        padding: 0;
+        width: 100%;
+
+    }
+    .flex_parent{
+        display:flex;
     }
 
 }

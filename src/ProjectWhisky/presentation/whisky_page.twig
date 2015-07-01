@@ -8,13 +8,13 @@
                 <div id="header_quote"><p>IceTea On The Rocks</p></div>
             </header>
             <div id="whisky_page">
-                <aside id="whisky_sidebar">
-                    <div class="whisky_image_container center">
-                        <img src="src/ProjectWhisky/presentation/img/{{ whisky.imagePath }}" alt="{{ whisky.name }} Image">
-                    </div>
-                </aside>
-                <div id="content_container">
-                    <div class="rating_box">
+                <div id="content_container" class="clearfix flex_parent">
+                    <aside id="whisky_sidebar" class="left">
+                        <div class="whisky_image_container center">
+                            <img src="src/ProjectWhisky/presentation/img/{{ whisky.imagePath }}" alt="{{ whisky.name }} Image">
+                        </div>
+                    </aside>
+                    <div class="rating_box left">
                         <h2>{{ whisky.name }}</h2>
                         <!--bar-->
                         <div class="clearfix">
@@ -48,6 +48,7 @@
                         <div class="rating_base"></div>
                         <div class="rating" style="width: {{ whisky.ratingColor * 5 }}%;"></div>
                     </div>
+                    
                 </div>
-            </id>
+            </div>
         {% endblock %}
