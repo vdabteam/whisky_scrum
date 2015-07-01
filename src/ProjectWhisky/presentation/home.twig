@@ -13,8 +13,9 @@
                     <ul>
                         {% for whisky in whiskies|slice(0, 4)  %}
                         <li>
-                            <div class="progress-radial progress-93"> {# replace number with twig variable for score #}
-                                <div class="overlay">93</div> {# replace number with twig variable for score #}
+                        {% set ratingtotal = (whisky.ratingAroma + whisky.ratingColor + whisky.ratingTaste + whisky.ratingAftertaste) * 1.25 %}
+                            <div class="progress-radial progress-{{ratingtotal | round}}"> {# replace number with twig variable for score #}
+                                <div class="overlay">{{ ratingtotal | round }}</div> {# replace number with twig variable for score #}
                             </div>
                             <a class="whisky_box" href="whisky.php?id={{ whisky.id }}">
                                 <img src="src/ProjectWhisky/presentation/img/{{ whisky.imagePath }}" alt="{{ whisky.name }} Image">
