@@ -17,12 +17,9 @@ class DBConnect
     {
         try
         {
-            $this->handler = new PDO('mysql:
-            host=localhost;
-            dbname=whiskyclub;
-            charset=utf8',
-                'root',
-                '',
+            $this->handler = new PDO('mysql:host=172.22.14.155;dbname=whiskyclub;charset=utf8',
+                'whisky',
+                'whisky',
                 array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"));
 
             $this->handler->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -30,8 +27,8 @@ class DBConnect
         }
         catch (PDOException $e)
         {
-//            echo $e->getMessage();
-            echo "Problem with DB";
+            echo $e->getMessage();
+//            echo "Problem with DB";
             die();
         }
     }

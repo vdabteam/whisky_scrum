@@ -35,4 +35,16 @@ class UserBusiness
 
     }
 
+
+    /**
+     * Creating new user
+     */
+    public function createNewUser($username, $password, $email, $firstname, $lastname)
+    {
+        $this->userDAO = new UserDAO();
+        $this->list = $this->userDAO->createUser($username, $password, $email, $firstname, $lastname);
+
+        return $this->list;
+    }
+
 }
