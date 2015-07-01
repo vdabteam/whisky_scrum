@@ -21,6 +21,6 @@ $whiskyList = new WhiskyBusiness();
 
 $loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation"); 
 $twig = new Twig_Environment($loader); 
-$view = $twig->render("home.twig", array( "whiskies" => $whiskyList->getWhiskyList()));
+$view = $twig->render("home.twig", array( "whiskies" => $whiskyList->getWhiskyList(), "pageTitle" => "Home"));
                          
 print($view); 
