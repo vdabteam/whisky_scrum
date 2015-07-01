@@ -252,6 +252,43 @@ footer{
         background-image: url("../../presentation/interface/banners/case.jpg");
     }
 
+    .rating_box {
+        width: 25em;
+        padding: 1em 2em;
+        color: #fff;
+        background-color: #333;
+    }
+
+    .rating_base {
+        background: #171717;
+        width: 100%;
+        height: 10px;
+    }
+
+    .rating {
+        background: #4cc6fa;
+        width: 100%;
+        height: 10px;
+        position: relative;
+        top: -10px;
+        z-index: 0;
+    }
+
+    #whisky_page aside img{
+        max-height: 20em;
+        margin: 0 auto;
+    }
+
+    #whisky_sidebar{
+        background-color: white;
+        width: 25em;
+        padding: 2.5em;
+    }
+
+    .whisky_image_container{
+        width: 25em;
+    }
+
 }
 
 /* Portrait Tablet */
@@ -328,23 +365,6 @@ footer{
         display: inline-block;
     }
 
-    .score{
-        float: right;
-        background-color: rgba(0,0,0,0.3);
-        color: white;
-        display: block;
-        font-family: 'open_sansbold';
-        margin-right: 1em;
-        margin-top: 1em;
-        text-align: center;
-        vertical-align: middle;
-        height:6em;
-        width:6em;
-        line-height: 6em; /* Must be equal to "height" */
-        -moz-border-radius: 50%; 
-        -webkit-border-radius: 50%; 
-        border-radius: 50%;
-    }
 }
 
 /* Landscape smart phone */
