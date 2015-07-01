@@ -7,9 +7,16 @@
             <header id="header_banner" class="vert_half">
                 <div id="header_quote"><p>IceTea On The Rocks</p></div>
             </header>
-            <div id="content_container">
-                
-                {{ whisky.name }}
-                
-            </div>
+            <div id="whisky_page">
+                <aside class="left">
+                    <div class="center">
+                        <img src="src/ProjectWhisky/presentation/img/{{ whisky.imagePath }}" alt="{{ whisky.name }} Image">
+                    </div>
+                </aside>
+                <div id="content_container">
+
+                    {{ whisky.name }}
+                    
+                </div>
+            </id>
         {% endblock %}
