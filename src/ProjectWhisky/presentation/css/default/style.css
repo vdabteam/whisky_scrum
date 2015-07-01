@@ -246,6 +246,12 @@ footer{
         color: white;
     }
 
+    .vert_half{ /* shrink mainpage header */
+        height: 15em;
+        background-position: center -100px;
+        background-image: url("../../presentation/interface/banners/case.jpg");
+    }
+
 }
 
 /* Portrait Tablet */
