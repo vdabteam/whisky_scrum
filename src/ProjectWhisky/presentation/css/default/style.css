@@ -361,20 +361,25 @@ footer{
     }
 
     #review h3{
-        margin: 2.5em 1em 0em 1em;
+        margin: 1.5em 1em 0em 1em;
         padding: 0.5em 0;
         border-bottom: 0.1em solid black;
         font-family: 'open_sansbold';
     }
 
     #review p{
-        margin: 0.5em 1em 0em 1em;
-        padding:0 0.5em;
+        margin: 0em 1em 0em 1em;
+        padding:0.5em 0.5em 0;
         padding-bottom: 0.5em;
         border-bottom: 0.2em solid black;
+        background-color: white;
     }
     #comments{
         width: 100%;
+    }
+
+    #information{
+        margin-top: 1.5em;
     }
 
 }
