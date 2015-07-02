@@ -144,3 +144,18 @@
 }
 
 
+
+
+
+/******
+* TEMPORARY profile css
+*/
+
+#passwordBlock{
+    padding: 1rem 0;
+    display: none;
+}
+
+.closeChangePass{
+    display: none;
+}

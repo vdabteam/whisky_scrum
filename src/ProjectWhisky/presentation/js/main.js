@@ -25,6 +25,7 @@ jQuery(function(){
 
 
 
+
     /**
      * Handle authorization.
      */
@@ -64,6 +65,12 @@ jQuery(function(){
     }); // End Handle registration
 
 
+    /**
+     * Profile section
+     */
+    jQuery(".changePass").click(function(){
+        jQuery("#passwordBlock").fadeToggle(30);
+    });
 
 
 

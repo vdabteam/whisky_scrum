@@ -1,0 +1,45 @@
+    {% extends "default_template.twig" %}
+        {% block title %}
+            Home
+        {% endblock %}
+
+        {% block content %}
+
+            <header id="header_banner" class="vert_half">
+                <div id="header_quote"><p>Urine Connoisseur extraordinaire</p></div>
+            </header>
+            <div id="content_container">
+                <a href="http://www.w3schools.com/php/php_file_upload.asp">info about uploading images 1</a>
+                <br>
+                <a href="http://stackoverflow.com/questions/5138719/change-default-text-in-input-type-file">info about styling type="file"</a>
+                <br><br>
+                <form action="profile.php" method="post">
+                    <input id="imgUploader" type="file" name="userImage" >
+                    <br>
+                    <input type="text" value="" name="userFirstName" placeholder="Firstname"/>
+                    <br>
+                    <input type="text" value="" name="userLastName" placeholder="Lastname"/>
+                    <br>
+                    <input type="text" value="" name="userEmail" placeholder="E-mail"/>
+                    <br>
+                    <a class="changePass" href="#">Change password</a>
+                    <a class="closeChangePass" href="#">Change password</a>
+                    <div id="passwordBlock">
+                        <input type="text" value="" name="userOldPassword" placeholder="Old password"/>
+                        <br>
+                        <input type="text" value="" name="userNewPassword" placeholder="New password"/>
+                        <br>
+                        <input type="text" value="" name="userNewPasswordRepeat" placeholder="Repeat password"/>
+                        <br>
+                    </div>
+                    <br>
+                    <input type="submit" name="profileSaveBtn" value="Save"/>
+                </form>
+            </div>
+
+
+            <script>
+
+            </script>
+
+        {% endblock %}
