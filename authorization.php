@@ -93,10 +93,7 @@ if(isset($_POST['emailField']))
 }
 else
 {
-//    header('Location: index.php');
-    echo "<pre>";
-    print_r($_POST);
-    echo "</pre>";
+    header('Location: index.php');
 }
 
 ob_flush();

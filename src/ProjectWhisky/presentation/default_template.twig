@@ -49,10 +49,10 @@
                     <input type="text" class="register_email" name="username" placeholder="Username">
                     <input type="password" class="register_password" name="password" placeholder="Password">
                     <input type="password" class="register_password_rt" name="rpassword" placeholder="Repeat password">
-                    <input class="sbmt-btn" name="register_btn" type="submit" value="Register">
+                    <input class="sbmt-btn" name="registrationBtn" type="submit" value="Register">
                 </form>
-                <div class="error_reporting clearFix">
-                    <span class="clearFix">Verkeerde registratie</span>
+                <div class="error_reporting_registration">
+                    <span>Verkeerde registratie</span>
                 </div>
                 <div class="close-register">
                     <a class="show-login register_from_login" href="#">Log in</a>
@@ -61,7 +61,7 @@
             </div>
 
 
-
+            {#Login pop-up#}
             <div class="lightbox-panel-login">
                 <h3>Log in</h3>
                 <form name="loginfomr" id="login_form" action="authorization.php" method="post">
@@ -69,7 +69,7 @@
                     <input class="login_pass" name="passField" type="password" placeholder="Password">
                     <input class="sbmt-btn" name="loginBtn" type="submit" value="Log in">
                 </form>
-                <div class="error_reporting clearFix"></div>
+                <div class="error_reporting"></div>
 
                 <div class="close-login">
                     <a class="show-register register_from_login" href="#">Register</a>

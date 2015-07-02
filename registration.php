@@ -1,5 +1,6 @@
 <?php
 
+ob_start();
 
 use src\ProjectWhisky\business\UserBusiness;
 use src\ProjectWhisky\exceptions\WrongDataException;
@@ -13,43 +14,13 @@ use Doctrine\Common\ClassLoader;
 
 
 
-?>
 
-
-    <!doctype html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Authorization</title>
-    </head>
-    <body>
-    <form action="registration.php" method="post">
-        <input type="text" placeholder="Firstname" name="firstname"/>
-        <br>
-        <input type="text" placeholder="Lastname" name="lastname"/>
-        <br>
-        <input type="text" placeholder="E-mail" name="email"/>
-        <br>
-        <input type="text" placeholder="Username" name="username"/>
-        <br>
-        <input type="password" placeholder="Password" name="password"/>
-        <br>
-        <input type="password" placeholder="Repeat password" name="rpassword"/>
-        <br>
-        <input type="submit" value="Log in" name="registrationBtn"/>
-    </form>
-
-    </body>
-    </html>
-
-
-<?php
 
 
 /**
  * Check entered e-mail and password when "log in" button has been pressed
  */
-if(isset($_POST['registrationBtn']))
+if(isset($_POST['firstname']))
 {
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
@@ -107,11 +78,14 @@ if(isset($_POST['registrationBtn']))
          */
         $user->createNewUser($username,$password,$email,$firstname,$lastname);
 
-        echo "You're whiskyman now!";
+        echo "<span class='success'>Registration complete! You can log in now.</span>";
 
 
-
-
+?>
+        <script>
+            jQuery("#register_form").fadeOut(10);
+        </script>
+<?php
 
 
 
@@ -146,6 +120,12 @@ if(isset($_POST['registrationBtn']))
     }
 
 }
+else
+{
+    header("Location: index.php");
+}
+
+ob_flush();
 
 
 

@@ -188,12 +188,11 @@
 }
 
 
-.error_reporting{
+.error_reporting, .error_reporting_registration{
     visibility: hidden;
 
     color: #ff0000;
     box-sizing: border-box;
-
 }
 
 .success{
@@ -205,3 +204,10 @@
     /*float: left;*/
     margin-top: 1rem;
 }
+
+
+.loginOnComplete{
+    color: #ffffff;
+    text-decoration: none;
+}
+
