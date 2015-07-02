@@ -26,6 +26,7 @@ Class Whisky
     private $userId;
     private $distilleryName;
 
+
     // CONSTRUCTOR
     
     public function __construct($id, $name, $distilleryId, $price, $age, $strength, $barrelId, $imagePath, $hidden, $creationDate, $ratingAroma, $ratingColor, $ratingTaste, $ratingAftertaste, $textAroma, $textColor, $textTaste, $textAftertaste, $review, $userId, $distilleryName)
@@ -50,7 +51,7 @@ Class Whisky
      $this->textAftertaste = $textAftertaste;
      $this->review = $review;
      $this->userId = $userId;
-     $this->distilleryName = $distilleryName;   
+     $this->distilleryName = $distilleryName;
     }
 
     
@@ -159,6 +160,7 @@ Class Whisky
     {
         return $this->distilleryName;
     }
+
 //======================================
     // TRANSFORMERS robots in disguise (setters)
 //======================================
