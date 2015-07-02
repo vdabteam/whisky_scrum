@@ -1,5 +1,8 @@
 jQuery(function(){
 
+    /**
+     * Trigger pop-up windows
+     */
     jQuery("a.show-login").click(function(){
         jQuery(".lightbox-panel-register").fadeOut(300);
         jQuery(".lightbox-panel-recover").fadeOut(300);
@@ -12,12 +15,6 @@ jQuery(function(){
         jQuery(".lightbox-panel-register").fadeIn(300);
     });
 
-    jQuery("a.show-recover").click(function(){
-        jQuery(".lightbox-panel-register").fadeOut(300);
-        jQuery(".lightbox-panel-login").fadeOut(300);
-        jQuery(".lightbox-panel-recover").fadeIn(300);
-    });
-
     jQuery("a.close-panel-login").click(function(){
         jQuery(".lightbox-panel-login").fadeOut(300);
     });
@@ -25,11 +22,6 @@ jQuery(function(){
     jQuery("a.close-panel-register").click(function(){
         jQuery(".lightbox-panel-register").fadeOut(300);
     });
-
-    jQuery("a.close-panel-recover").click(function(){
-        jQuery(".lightbox-panel-recover").fadeOut(300);
-    });
-
 
 
 
@@ -50,8 +42,6 @@ jQuery(function(){
             }
         });
     }); // End Handle authorization
-
-
 
 
 
