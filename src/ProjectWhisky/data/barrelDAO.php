@@ -2,6 +2,7 @@
 
 namespace src\ProjectWhisky\data;
 use src\ProjectWhisky\data\DBConnect;
+use src\ProjectWhisky\entities\Barrel;
 use PDO;
 use Exception;
 
@@ -12,8 +13,7 @@ class BarrelDAO
     private $handler;
     private $sql;
     private $query;
-
-    private $lijst;
+    private $list;
 
 
     /**
@@ -32,28 +32,30 @@ class BarrelDAO
         $this->handler = $this->handler->startConnection();
     }
 
+
     public function getAll()
     {
         self::connectToDB(); /* Using DB connection */
-        $this->sql = "SELECT * FROM films";
+        $this->sql = "SELECT * FROM barrels";
 
         try
         {
             $this->query = $this->handler->query($this->sql);
             $this->result = $this->query->fetchAll(PDO::FETCH_ASSOC);
-
+            
+             
+             /**
+             * Closing DB connection
+             */
             $this->query->closeCursor();
             $this->handler = null;
 
             foreach ($this->result as $row)
             {
-                $this->programmatie = new ProgrammatieDAO();
-                $this->programmatie = $this->programmatie->getProgrammatieTijdByFilmId($row['film_id']);
-
-                $this->lijst[] = new Films($row['film_id'], $row['film_naam'], $row['film_omschrijving'], $row['film_image'], $this->programmatie);
+                $this->list[] = new Comment($row['id'], $row['type']);
             }
 
-            return $this->lijst;
+            return $this->list;
         }
         catch (Exception $e)
         {
@@ -62,16 +64,17 @@ class BarrelDAO
         }
     }
 
-
-    public function getFilmById($filmId)
+    public function getBarrelById($barrelId)
     {
         self::connectToDB();
-        $this->sql = "SELECT * FROM films WHERE film_id = ?";
+        $this->sql = "SELECT *
+        FROM barrels
+        WHERE id = :barrelId";
 
         try
         {
             $this->query = $this->handler->prepare($this->sql);
-            $this->query->execute(array($filmId));
+            $this->query->execute(array('barrelId'=> $barrelId));
             $this->result = $this->query->fetchAll(PDO::FETCH_ASSOC);
 
             $this->query->closeCursor();
@@ -79,9 +82,9 @@ class BarrelDAO
 
             foreach ($this->result as $row)
             {
-                $this->lijst[] = new Films($row['film_id'], $row['film_naam'], $row['film_omschrijving'], $row['film_image'], 0);
+               $this->list[] = new Barrel($row['id'], $row['type']);
             }
-            return $this->lijst;
+            return $this->list;
         }
         catch (Exception $e)
         {

@@ -2,6 +2,7 @@
 
 use src\ProjectWhisky\business\WhiskyBusiness;
 use src\ProjectWhisky\business\CommentBusiness;
+use src\ProjectWhisky\business\BarrelBusiness;
 use Doctrine\Common\ClassLoader;
 
 
@@ -20,6 +21,8 @@ $whiskyBiz = new WhiskyBusiness();
 $whisky = $whiskyBiz->getWhisky($_GET["id"]);
 
 $commentBiz = new CommentBusiness();
+
+//$barrelBusiness = new BarrelBusiness();
 
 $loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation"); 
 $twig = new Twig_Environment($loader); 
