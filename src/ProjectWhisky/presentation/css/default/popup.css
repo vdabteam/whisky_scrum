@@ -1,5 +1,12 @@
-/* Lightbox panel with some content */
-.lightbox-panel-login, .lightbox-panel-register, .lightbox-panel-recover{
+/* Lightbox pop-up windows for registration and authorization */
+
+
+
+
+/*
+* Styling pop-up window
+*/
+.lightbox-panel-login, .lightbox-panel-register{
     display:none;
     position:absolute;
     top:100px;
@@ -16,13 +23,16 @@
     min-width: 240px;
 }
 
-.lightbox-panel-login h3, .lightbox-panel-register h3 , .lightbox-panel-recover h3{
+.lightbox-panel-login h3, .lightbox-panel-register h3{
     font-family: Arial, Avenir next, sans-serif;
     font-size: 30px;
 
 }
 
-.close-login, .close-register, .close-recover{
+/*
+* Container below form, where "Close window" button and error or success messages are located
+*/
+.close-login, .close-register{
     position: relative;
     margin: 0 auto;
     margin-top: 10px;
@@ -30,7 +40,10 @@
 
 }
 
-.close-panel-login, .close-panel-register, .close-panel-recover{
+/*
+* Styling "Close Window" button on bottom of pop-up window
+*/
+.close-panel-login, .close-panel-register{
     text-decoration: none;
     color: #fff;
     text-align: center;
@@ -41,23 +54,15 @@
     margin-top: 20px;
 }
 
-.close-panel-login:hover, .close-panel-register:hover, .close-panel-recover:hover{
-    text-decoration: underline;
-}
-
-.forgot_pass{
-    text-decoration: none;
-    color: #fff;
-    font-family: Arial, Avenir next, sans-serif;
-    font-size: 14px;
-}
-
-.forgot_pass:hover{
+.close-panel-login:hover, .close-panel-register:hover{
     text-decoration: underline;
 }
 
 
-#login_form, #register_form, #recover_form{
+/*
+* Parameters of authorization and registration forms
+*/
+#login_form, #register_form{
     float: left;
     margin: 0 auto;
     position: relative;
@@ -65,8 +70,11 @@
     width: 100%;
 }
 
+/*
+* Parameters of all form input fields on pop-up window
+*/
 #login_form .login_pass, #login_form .login_login, #login_form .sbmt-btn, #register_form .register_name, #register_form .register_login,
-#register_form .register_email, #register_form .register_password, #register_form .register_password_rt, #register_form .sbmt-btn, #recover_form .sbmt-btn, #recover_form .recover_email{
+#register_form .register_email, #register_form .register_password, #register_form .register_password_rt, #register_form .sbmt-btn{
     margin-left: 15%;
     margin-right: 15%;
     margin-top: 5px;
@@ -78,21 +86,10 @@
     color: #000000;
 }
 
-.login_remember{
-    color: #fff;
-    font-family: Arial, Avenir next, sans-serif;
-    font-size: 18px;
-    margin-top: 20px;
-}
 
-.login_remember_text{
-    color: #fff;
-    font-family: Arial, Avenir next, sans-serif;
-    font-size: 18px;
-    margin-top: 22px;
-}
-
-
+/*
+* Submit button on registration and authorization windows
+*/
 .sbmt-btn{
     background-color: white;
     color:green;
@@ -107,61 +104,10 @@
     color: white;
 }
 
-.profile_links{
-    float: right;
-    position: relative;
-    margin-right: 50px;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-}
 
-.register, .login, .logout, .profile{
-    float: right;
-    position: relative;
-    text-decoration: none;
-    color: #fff;
-    font-family: Arial, Avenir next, sans-serif;
-    /*font-size: 16px;*/
-    margin-right: 1rem;
-    /*position: relative;*/
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-
-    border: 1px solid #fff;
-    padding: 0.3rem 0.7rem 0.3rem 0.7rem;
-    border-radius: 0.3rem;
-    font-size: 0.8rem;
-    width: 4rem;
-    text-align: center;
-}
-
-.profile_page, .profile_logout{
-    float: right;
-    position: relative;
-    text-decoration: none;
-    color: #fff;
-    font-family: Arial, Avenir next, sans-serif;
-    font-size: 16px;
-    margin-right: 50px;
-}
-
-.profile_logout{
-    margin-right: 0px !important;
-}
-
-.register{
-    /*margin-right: 10px;*/
-}
-
-.register:hover, .login:hover, .profile_page:hover, .profile_logout:hover, .logout:hover, .profile:hover{
-    background: #ffffff;
-    color: #4c4c4c;
-}
-
+/*
+* Styling the link below "Close window" button
+*/
 .register_from_login{
     margin-right: 10px;
     text-decoration: none;
@@ -174,27 +120,19 @@
     text-decoration: underline;
 }
 
-.profile_page{
-    float: left;
-    margin-right: 10px;
-    position: relative;
 
-}
-
-.profile_logout{
-    margin-right: 10px;
-    float: left;
-
-}
-
-
+/*
+* Color of error messages during the registration or authorization
+*/
 .error_reporting, .error_reporting_registration{
     visibility: hidden;
-
     color: #ff0000;
     box-sizing: border-box;
 }
 
+/*
+* Color of success message on the end of registration or authorization
+*/
 .success{
     color: #00c200;
 }
@@ -205,9 +143,4 @@
     margin-top: 1rem;
 }
 
-
-.loginOnComplete{
-    color: #ffffff;
-    text-decoration: none;
-}
 

@@ -77,28 +77,4 @@ jQuery(function(){
 
 
 
-
-
-
-
-    /**
-     * Verhandelen van registratie.
-     */
-    /*jQuery('#register_form').submit(function(e) {
-     e.preventDefault();
-     jQuery.ajax({
-     type:"POST",
-     async:false,
-     url:"registration.php",
-     data: jQuery("#register_form").serialize(),
-     success: function(response){
-     jQuery("#register_form").addClass('result');
-     jQuery(".result").html(response);
-
-     }
-     });
-     });*/ // End verhandelen van registratie
-
-
-
 }); //END FUNCTION
