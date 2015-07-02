@@ -370,20 +370,38 @@ footer{
         width: 100%;
     }
 
-    #review h3{
-        margin: 1.5em 1em 0em 1em;
-        padding: 0.5em 0;
-        border-bottom: 0.1em solid black;
+    #review h2{
+        margin: 2em 2em 2em 2em;
+    }
+
+    #description_header ~ .review_box h3{
+        text-align: right;
+        display: inline-block;
+        margin: 0.4em 1em 0em 1em;
+        width:8em;
         font-family: 'open_sansbold';
     }
 
-    #review p{
-        margin: 0em 1em 0em 1em;
-        padding:0.5em 0.5em 0;
+    #description_header ~ .review_box p{
+        display: block;
+        padding: 1.2em 1em 0;
         padding-bottom: 0.5em;
-        border-bottom: 0.2em solid black;
-        background-color: white;
+        border-left: 0.1em solid black;
+        margin-left: 12em;
+        margin-top: -2.6em;
     }
+    #review_header + .review_box p{
+        display: block;
+        margin: 0em 3em 0em 5em;
+        padding-bottom: 0.5em;
+        padding: 0.5em;
+        border-left: 0;
+    }
+
+    h2#review_header {
+        margin-bottom: 1em;
+    }
+
     #comments{
         width: 100%;
     }

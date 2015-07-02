@@ -59,16 +59,27 @@
                     </div>
                     <div id="contentbox">
                         <div id="review">
-                            <h3>Aroma</h3>
-                            <p>{{ whisky.textAroma }}</p>
-                            <h3>Taste</h3>
-                            <p>{{ whisky.textTaste }}</p>
-                            <h3>Aftertaste</h3>
-                            <p>{{ whisky.textAftertaste }}</p>
-                            <h3>Color</h3>
-                            <p>{{ whisky.textColor }}</p>
-                            <h3>In Depth Review</h3>
-                            <p>{{ whisky.review }}</p>
+                            <h2 id="description_header">Detailed description:</h2>
+                            <div class="review_box">
+                                <h3>Aroma</h3>
+                                <p>{{ whisky.textAroma }}</p>
+                            </div>
+                            <div class="review_box">
+                                <h3>Taste</h3>
+                                <p>{{ whisky.textTaste }}</p>
+                            </div>
+                            <div class="review_box">
+                                <h3>Aftertaste</h3>
+                                <p>{{ whisky.textAftertaste }}</p>
+                            </div>
+                            <div class="review_box">
+                                <h3>Color</h3>
+                                <p>{{ whisky.textColor }}</p>
+                            </div>
+                            <h2 id="review_header">Review:</h2>
+                            <div class="review_box">
+                                <p>{{ whisky.review }}</p>
+                            </div>
                         </div>
                         <div id="comments">
                         {% for comment in comments %}
