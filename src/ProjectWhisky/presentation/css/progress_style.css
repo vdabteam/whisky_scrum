@@ -10,6 +10,17 @@
     margin-top: -1em;
 }
 
+#whisky_total.progress-radial {
+    width: 10em;
+    height: 10em;
+    border-radius: 50%;
+    position: absolute;
+    margin-left: -5em;
+    margin-top: 8.8em;
+    z-index: 1;
+    border: 0.8em solid #333;
+}
+
 /* -------------------------------------
  * Optional centered circle w/text
  * ------------------------------------- */
@@ -25,6 +36,20 @@
     line-height: 2.4em;
     font-size: 16px;
     color: #FFBA39;
+}
+
+#whisky_total.progress-radial .overlay {
+  position: absolute;
+  width: 4.5em;
+  height: 4.5em;
+  background-color: rgba(0,0,0,0.75);
+  border-radius: 50%;
+  margin-left: 0.4em;
+  margin-top: 0.4em;
+  text-align: center;
+  line-height: 4.5em;
+  font-size: 1.6em;
+  color: #FFBA39;
 }
         
 /* -------------------------------------

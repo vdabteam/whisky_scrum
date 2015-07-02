@@ -272,21 +272,26 @@ footer{
         margin-bottom: 0.8em;
     }
 
+    .rating_box span.left{
+        margin-left: 4.5em;
+    }
+
     .rating_base {
         background: #171717;
-        width: 100%;
+        width: 91%;
         height: 0.5em;
+        margin-left: 4.5em;
     }
 
     .rating {
         background: #FFBA39;
-        box-shadow: 0px 0px 5px 3px rgba(255,186,57,0.5);
-        width: 100%;
+        width: 91%;
         height: 0.5em;
         position: relative;
         top: -0.5em;
         z-index: 0;
         margin-bottom: 0.5em;
+        margin-left: 4.5em;
     }
 
     #whisky_page aside img{
@@ -308,6 +313,7 @@ footer{
     #whisky_page #content_container{
         padding: 0;
         width: 100%;
+        background-color: white;
 
     }
     .flex_parent{
@@ -325,8 +331,8 @@ footer{
     #contentbox{
         -webkit-flex: 1;
         flex: 1;
-        position: absolute;
-        top: 35.2em;
+        margin-top: 20em;
+        background-color: #FFF7E7;
     }
 
     #review{

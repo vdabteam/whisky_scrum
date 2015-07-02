@@ -17,6 +17,10 @@
                             bla bla
                         </div>
                     </aside>
+                    {% set ratingtotal = (whisky.ratingAroma + whisky.ratingColor + whisky.ratingTaste + whisky.ratingAftertaste) * 1.25 %}
+                    <div id="whisky_total" class="progress-radial progress-{{ratingtotal | round}}"> 
+                        <div class="overlay">{{ ratingtotal | round }}</div>
+                    </div>
                     <div class="rating_box">
                         <h2>{{ whisky.name }}</h2>
                         <!--bar-->
