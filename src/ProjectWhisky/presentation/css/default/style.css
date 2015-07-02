@@ -353,10 +353,25 @@ footer{
         flex: 1;
         margin-top: 20em;
         background-color: #FFF7E7;
+        padding-top: 0.2em;
     }
 
     #review{
         width: 100%;
+    }
+
+    #review h3{
+        margin: 2.5em 1em 0em 1em;
+        padding: 0.5em 0;
+        border-bottom: 0.1em solid black;
+        font-family: 'open_sansbold';
+    }
+
+    #review p{
+        margin: 0.5em 1em 0em 1em;
+        padding:0 0.5em;
+        padding-bottom: 0.5em;
+        border-bottom: 0.2em solid black;
     }
     #comments{
         width: 100%;
