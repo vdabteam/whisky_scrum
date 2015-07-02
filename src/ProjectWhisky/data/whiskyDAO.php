@@ -68,7 +68,9 @@ class WhiskyDAO
     public function getWhiskyById($id)
     {
        self::connectToDB();
-        $this->sql = "SELECT * FROM whiskies WHERE id = :id";
+        $this->sql = "SELECT whiskies.id as whiskiesid, whiskies.name AS whiskiesname, distillery_id, price, age, strength, barrel_id, image_path, hidden, creation_date, rating_aroma, rating_color, rating_taste, rating_aftertaste, text_aroma, text_color, text_taste, text_aftertaste, review, user_id, distilleries.id, distilleries.name as distilleriesname 
+        FROM whiskies, distilleries 
+        WHERE whiskies.id = :id AND distillery_id = distilleries.id";
 
         try
         {
@@ -83,10 +85,10 @@ class WhiskyDAO
 
             foreach ($this->result as $row)
             {
-                $this->list = new Whisky($row['id'], $row['name'], $row['distillery_id'], $row['price'], $row['age'],
+                $this->list = new Whisky($row['whiskiesid'], $row['whiskiesname'], $row['distillery_id'], $row['price'], $row['age'],
                                             $row['strength'], $row['barrel_id'], $row['image_path'], $row['hidden'], $row['creation_date'],
                                             $row['rating_aroma'],$row['rating_color'],$row['rating_taste'],$row['rating_aftertaste'],
-                                            $row['text_aroma'],$row['text_color'],$row['text_taste'],$row['text_aftertaste'],$row['review'],$row['user_id']);
+                                            $row['text_aroma'],$row['text_color'],$row['text_taste'],$row['text_aftertaste'],$row['review'],$row['user_id'],$row['distilleriesname']);
             }
             return $this->list;
         }
