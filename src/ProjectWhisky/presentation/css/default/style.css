@@ -12,6 +12,14 @@
 /* @Font */
 
 @font-face {
+    font-family: 'trashhand';
+    src: url('../fonts/TrashHand.ttf');
+    src: url('../fonts/TrashHand.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
     font-family: 'open_sansbold';
     src: url('../fonts/opensans-bold-webfont.eot');
     src: url('../fonts/opensans-bold-webfont.eot?#iefix') format('embedded-opentype'),
@@ -190,6 +198,19 @@ footer{
         height: 30em;
         border-bottom: 3px solid #FFBA39;
         color: white;
+    }
+
+    header #header_quote {
+        font-family: "trashhand";
+        font-size: 2em;
+        padding:2.5em 2.5em;
+    }
+
+    header #header_quote p{
+        padding:0.5em 1em;
+        border: 0.2em solid transparent;
+        border-bottom-color:white;
+        display: inline-block;
     }
 
     #content_container{
