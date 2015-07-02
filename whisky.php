@@ -18,13 +18,12 @@ $whiskyBiz = new WhiskyBusiness();
 $whisky = $whiskyBiz->getWhisky($_GET["id"]);
 
 $commentBiz = new CommentBusiness();
-$comments = $commentBiz->showComments($_GET["id"]);
 
 
 
 
 $loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation"); 
 $twig = new Twig_Environment($loader); 
-$view = $twig->render("whisky_page.twig", array( "whisky" => $whisky));
+$view = $twig->render("whisky_page.twig", array( "whisky" => $whisky, "comments" => $commentBiz->showComments($_GET["id"])));
 
 print($view); 

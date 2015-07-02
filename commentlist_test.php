@@ -13,8 +13,7 @@ $classLoader->register();
 
 $commentBusiness = new CommentBusiness();
 
-$list = $commentBusiness->showAllComments();
+$list = $commentBusiness->showComments($_GET["whisky_id"]);
 print("<pre>");
 print_r($list);
 print("</pre>");
-print("fart");
