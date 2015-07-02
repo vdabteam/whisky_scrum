@@ -6,17 +6,17 @@ Class Distillery
 {
     private $id;
     private $name;
-    private $adress;
+    private $address;
     private $city;
     private $country;
     private $region;
     
     // CONSTRUCTOR
-    public function __construct($id, $name, $adress, $city, $country, $region)
+    public function __construct($id, $name, $address, $city, $country, $region)
     {
         $this->id = $id;
         $this->name = $name;
-        $this->adress = $adress;
+        $this->address = $address;
         $this->city = $city;
         $this->country = $country;
         $this->region = $region;
@@ -34,9 +34,9 @@ Class Distillery
         return $this->name;
     }
 
-    public function getAdress()
+    public function getaddress()
     {
-        return $this->adress;
+        return $this->address;
     }
 
     public function getCity()
@@ -66,9 +66,9 @@ Class Distillery
         $this->name = $name;
     }
 
-    public function setAdress($adress)
+    public function setaddress($address)
     {
-        $this->adress = $adress;
+        $this->address = $address;
     }
 
     public function setCity($city)

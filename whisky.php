@@ -1,6 +1,7 @@
 <?php
 
 use src\ProjectWhisky\business\WhiskyBusiness;
+use src\ProjectWhisky\business\CommentBusiness;
 use Doctrine\Common\ClassLoader;
 
 /**
@@ -14,8 +15,10 @@ require_once("lib/Twig/Autoloader.php");
 Twig_Autoloader::register(); 
 
 $whiskyBiz = new WhiskyBusiness();
-
 $whisky = $whiskyBiz->getWhisky($_GET["id"]);
+
+$commentBiz = new CommentBusiness();
+$comments = $commentBiz->showComments($_GET["id"]);
 
 
 

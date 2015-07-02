@@ -47,7 +47,7 @@ class DistilleryDAO
 
             foreach ($this->result as $row)
             {
-                $this->list[] = new Distillery($row['id'], $row['name'], $row['adress'], $row['city'], $row['country'], $row['region']);
+                $this->list[] = new Distillery($row['id'], $row['name'], $row['address'], $row['city'], $row['country'], $row['region']);
             }
 
             return $this->list;
@@ -76,7 +76,7 @@ class DistilleryDAO
 
             foreach ($this->result as $row)
             {
-               $this->list = new Distillery($row['id'], $row['name'], $row['adress'], $row['city'], $row['country'], $row['region']);
+               $this->list = new Distillery($row['id'], $row['name'], $row['address'], $row['city'], $row['country'], $row['region']);
             }
             return $this->list;
         }
