@@ -372,7 +372,8 @@ footer{
     }
 
     #review h2{
-        margin: 2em 2em 2em 2em;
+        margin: 1.5em 2em 1em 2em;
+        font-size: 2em;
     }
 
     #description_header ~ .review_box h3{
@@ -385,12 +386,12 @@ footer{
 
     #description_header ~ .review_box p{
         display: block;
-        padding: 1.5em 2.5em 0 1em;
+        padding: 1.6em 2.5em 0 1em;
         padding-bottom: 1.5em;
         border-left: 0.1em solid black;
         margin-left: 12em;
         text-align: justify;
-        margin-top: -2.6em;
+        margin-top: -3em;
     }
     #review_header + .review_box p{
         display: block;
@@ -402,7 +403,7 @@ footer{
     }
 
     h2#review_header {
-        margin-bottom: 1em;
+        margin-bottom: 0.5em;
     }
 
     #comments{
