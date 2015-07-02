@@ -14,19 +14,17 @@
                             <img src="src/ProjectWhisky/presentation/img/{{ whisky.imagePath }}" alt="{{ whisky.name }} Image">
                         </div>
                         <div id="information">
-                            {{whisky.distilleryName}}
-                            {{whisky.distilleryId}}
                             <div>
                                 <h3>Distillery:</h3>
-                                <p>{{ distillery.name }}</p>
+                                <p><a href="">{{ whisky.distilleryName }}</a></p>
                             </div>
                             <div>
-                                <h3>Ouderdom:</h3>
-                                <p>{{ distillery.age }}</p>
+                                <h3>Age:</h3>
+                                <p>{{ whisky.age }}</p>
                             </div>
                             <div>
                                 <h3>Alcohol Percentage:</h3>
-                                <p>{{ distillery.alcohol }}</p>
+                                <p>{{ whisky.strength }}</p>
                             </div>
                             <div>
                                 <h3>Barrel type:</h3>
