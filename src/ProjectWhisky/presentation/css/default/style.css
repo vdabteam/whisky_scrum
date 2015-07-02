@@ -268,6 +268,15 @@ footer{
         color: white;
     }
 
+    .whisky_box:hover{
+        -webkit-box-shadow: 0 1px 10px rgba(0,0,0,0.5);
+        -moz-box-shadow: 0 1px 10px rgba(0,0,0,0.5);
+        box-shadow: 0 1px 10px rgba(0,0,0,0.5);
+    }
+    .whisky_box:hover .whisky_box_name{
+        color: #FFBA39;
+    }
+
     header#header_banner.vert_half{ /* shrink mainpage header */
         height: 15em;
         background-position: center -100px;
@@ -371,8 +380,9 @@ footer{
         width: 100%;
     }
 
-    #review h2{
-        margin: 1.5em 2em 1em 2em;
+    #review h2, #comments h2{
+        margin-top: 1em;
+        padding: 0.5em 2em 1.5em 2em;
         font-size: 2em;
     }
 
@@ -386,8 +396,7 @@ footer{
 
     #description_header ~ .review_box p{
         display: block;
-        padding: 1.6em 2.5em 0 1em;
-        padding-bottom: 1.5em;
+        padding: 1.6em 2.5em 1.5em 1em;
         border-left: 0.1em solid black;
         margin-left: 12em;
         text-align: justify;
@@ -395,19 +404,14 @@ footer{
     }
     #review_header + .review_box p{
         display: block;
-        margin: 0em 3em 0em 5em;
-        padding-bottom: 0.5em;
-        padding: 0.5em;
+        padding: 1.6em 2.5em 1.5em 5.5em;
+        margin-left: 0;
         border-left: 0;
         text-align: justify;
     }
 
-    h2#review_header {
-        margin-bottom: 0.5em;
-    }
-
-    #comments{
-        width: 100%;
+    h2#review_header, h2#review_header + .review_box {
+        background-color: white;
     }
 
     #information{
@@ -431,6 +435,57 @@ footer{
     }
     #information a:hover{
         text-decoration: underline;
+    }
+
+    #comments{
+        width: 100%;
+    }
+
+    #comments h2{
+        padding-bottom: 1em;
+    }
+
+    .comment{
+        padding: 1.5em 0;
+        border-top: 1px dashed lightgray;
+    }
+
+    #comments .comment:nth-child(even){
+        background-color: #FFFBF4;
+    }
+
+    .comment_controls, .comment_controls a{
+        display: inline-block;
+        margin-right: 0.5em;
+        color: gray;
+    }
+    .comment_controls{
+        margin-left: 2em;
+    }
+    .comment_controls:hover a{
+        color: darkgray;
+    }
+    .comment_controls a:hover{
+        color: #FFBA39;
+    }
+
+    .comment_pic{
+        max-width: 10em;
+        max-height: 10em;
+        margin: 0.5em 2em 1em;
+    }
+    .comment_pic img{
+        width: 100%;
+        height: auto;
+    }
+
+    .user_comment p{
+        color: #777;
+    }
+
+    .comment_timestamp p{
+        margin-right: 2em;
+        color: gray;
     }
 }
 

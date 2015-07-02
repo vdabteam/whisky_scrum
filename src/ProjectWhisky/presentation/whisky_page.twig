@@ -105,17 +105,26 @@
                             </div>
                         </div>
                         <div id="comments">
-                        {% for comment in comments %}
-                        <br>
-                        
-                        {{comment.username}}
-                        <br>
-                        {{comment.comment}}
-                        <br>
-                        {{comment.commentTime}}
-                        {{comment.commentDate}}
-                        <br>
-                        {% endfor %}
+                            <h2 id="description_header">Comments:</h2>
+                            {% for comment in comments %}
+                                <div class="comment clearfix">
+                                    <div class="profile_pic comment_pic left">
+                                        <img alt="profile picture of {{ comment.username }}" src="src/ProjectWhisky/presentation/userimages/default.jpg{{ username.imagePath }}">
+                                    </div>
+                                    <div class="user_comment left">
+                                        <h3>{{comment.username}} says:</h3>
+                                        <p>{{comment.comment}}</p>
+                                    </div>
+                                    <div class="comment_timestamp clearfix">
+                                        <div class="comment_controls">
+                                            <a href="" alt="Edit comment"><div class="fa fa-pencil"> Edit</div></a>
+                                            <a href="" alt="Remove comment"><div class="fa fa-trash"> Remove</div></a>
+                                            <a href="" alt="Ban {{ comment.username }}"><div class="fa fa-ban"> Insta Ban</div></a>
+                                        </div>
+                                        <p class="right fa fa-comment"> Gepost op {{comment.commentDate}} om {{comment.commentTime}}</p>
+                                    </div>
+                                </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
