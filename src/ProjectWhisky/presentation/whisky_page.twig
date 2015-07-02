@@ -14,8 +14,35 @@
                             <img src="src/ProjectWhisky/presentation/img/{{ whisky.imagePath }}" alt="{{ whisky.name }} Image">
                         </div>
                         <div id="information">
+<<<<<<< HEAD
                             {{whisky.distilleryName}}
                             {{whisky.distilleryId}}
+=======
+                            <div>
+                                <h3>Distillery:</h3>
+                                <p>{{ distillery.name }}</p>
+                            </div>
+                            <div>
+                                <h3>Ouderdom:</h3>
+                                <p>{{ distillery.age }}</p>
+                            </div>
+                            <div>
+                                <h3>Alcohol Percentage:</h3>
+                                <p>{{ distillery.alcohol }}</p>
+                            </div>
+                            <div>
+                                <h3>Barrel type:</h3>
+                                <p>{{ barrel.type }}</p>
+                            </div>
+                            <div>
+                                <h3>Region:</h3>
+                                <p>{{ distillery.region }}</p>
+                            </div>
+                            <div>
+                                <h3>Estimated Price:</h3>
+                                <p>{{ whisky.price }}</p>
+                            </div>
+>>>>>>> origin/master
                         </div>
                     </aside>
                     {% set ratingtotal = (whisky.ratingAroma + whisky.ratingColor + whisky.ratingTaste + whisky.ratingAftertaste) * 0.125 %}
@@ -60,16 +87,27 @@
                     </div>
                     <div id="contentbox">
                         <div id="review">
-                            <h3>Aroma</h3>
-                            <p>{{ whisky.textAroma }}</p>
-                            <h3>Taste</h3>
-                            <p>{{ whisky.textTaste }}</p>
-                            <h3>Aftertaste</h3>
-                            <p>{{ whisky.textAftertaste }}</p>
-                            <h3>Color</h3>
-                            <p>{{ whisky.textColor }}</p>
-                            <h3>In Depth Review</h3>
-                            <p>{{ whisky.review }}</p>
+                            <h2 id="description_header">Detailed description:</h2>
+                            <div class="review_box">
+                                <h3>Aroma</h3>
+                                <p>{{ whisky.textAroma }}</p>
+                            </div>
+                            <div class="review_box">
+                                <h3>Taste</h3>
+                                <p>{{ whisky.textTaste }}</p>
+                            </div>
+                            <div class="review_box">
+                                <h3>Aftertaste</h3>
+                                <p>{{ whisky.textAftertaste }}</p>
+                            </div>
+                            <div class="review_box">
+                                <h3>Color</h3>
+                                <p>{{ whisky.textColor }}</p>
+                            </div>
+                            <h2 id="review_header">Review:</h2>
+                            <div class="review_box">
+                                <p>{{ whisky.review }}</p>
+                            </div>
                         </div>
                         <div id="comments">
                         {% for comment in comments %}
