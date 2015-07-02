@@ -1,0 +1,34 @@
+    {% extends "default_template.twig" %}
+        {% block title %}
+            {{ distillery.name }}
+        {% endblock %}
+
+        {% block content %}
+            <header id="header_banner" class="vert_half">
+                <div id="header_quote"><p>IceTea On The Rocks</p></div>
+            </header>
+            <div id="whisky_page">
+                <div id="content_container" class="clearfix flex_parent">
+                    <aside id="whisky_sidebar" class="left">
+                        
+                        <div class="information">
+                            <h3>{{ distillery.name}}</h3>
+                            <p>
+                            <p>{{ distillery.address}}</p>
+                            <p>{{ distillery.city }}</p>
+                            <p>{{ distillery.country}}</p>
+                            </p>
+                        </div>
+                    </aside>
+                    <div class="rating_box">
+                        <h2>{{ distillery.name }}</h2>
+                                                <iframe width='90%' height='100%' frameborder='0' scrolling='no'  marginheight='0' marginwidth='0'   src='https://maps.google.com/maps?&amp;q="+ {{ distillery.name}} +"+Distillery&amp;output=embed'></iframe>
+
+                    </div>
+                    <div id="contentbox">
+                    <div class="clearfix">    
+                                       
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
