@@ -415,12 +415,20 @@ footer{
     }
 
     #information > div{
-        margin:0em 2em 3em 2em;
+        margin:0em 2em 2em 2em;
     }
 
     #information div > p{
         margin-left: 1em;
+        margin-top: 0.5em;
         color: #AAA;
+    }
+
+    #information a{
+        color: #FFBA39;
+    }
+    #information a:hover{
+        text-decoration: underline;
     }
 
 }
