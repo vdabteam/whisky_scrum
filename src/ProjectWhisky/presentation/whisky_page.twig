@@ -14,10 +14,8 @@
                             <img src="src/ProjectWhisky/presentation/img/{{ whisky.imagePath }}" alt="{{ whisky.name }} Image">
                         </div>
                         <div id="information">
-<<<<<<< HEAD
                             {{whisky.distilleryName}}
                             {{whisky.distilleryId}}
-=======
                             <div>
                                 <h3>Distillery:</h3>
                                 <p>{{ distillery.name }}</p>
@@ -42,7 +40,6 @@
                                 <h3>Estimated Price:</h3>
                                 <p>{{ whisky.price }}</p>
                             </div>
->>>>>>> origin/master
                         </div>
                     </aside>
                     {% set ratingtotal = (whisky.ratingAroma + whisky.ratingColor + whisky.ratingTaste + whisky.ratingAftertaste) * 0.125 %}
