@@ -20,11 +20,11 @@
                             </div>
                             <div>
                                 <h3>Age:</h3>
-                                <p>{{ whisky.age }}</p>
+                                <p>{{ whisky.age }} Years</p>
                             </div>
                             <div>
                                 <h3>Alcohol Percentage:</h3>
-                                <p>{{ whisky.strength }}</p>
+                                <p>{{ whisky.strength }}%</p>
                             </div>
                             <div>
                                 <h3>Barrel type:</h3>
@@ -36,7 +36,7 @@
                             </div>
                             <div>
                                 <h3>Estimated Price:</h3>
-                                <p>{{ whisky.price }}</p>
+                                <p>&euro; {{ whisky.price | number_format(2) }}</p>
                             </div>
                         </div>
                     </aside>
