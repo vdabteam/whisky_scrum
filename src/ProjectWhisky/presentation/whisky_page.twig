@@ -17,9 +17,9 @@
                             bla bla
                         </div>
                     </aside>
-                    {% set ratingtotal = (whisky.ratingAroma + whisky.ratingColor + whisky.ratingTaste + whisky.ratingAftertaste) * 1.25 %}
-                    <div id="whisky_total" class="progress-radial progress-{{ratingtotal | round}}"> 
-                        <div class="overlay">{{ ratingtotal | round }}</div>
+                    {% set ratingtotal = (whisky.ratingAroma + whisky.ratingColor + whisky.ratingTaste + whisky.ratingAftertaste) * 0.125 %}
+                    <div id="whisky_total" class="progress-radial progress-{{ (ratingtotal * 10) | round }}"> 
+                        <div class="overlay">{{ ratingtotal }}</div>
                     </div>
                     <div class="rating_box">
                         <h2>{{ whisky.name }}</h2>
@@ -27,7 +27,7 @@
                             <!--bar-->
                             <div class="clearfix">
                                 <span class="left">Aroma</span>
-                                <span class="right">{{ whisky.ratingAroma * 5 }}</span>
+                                <span class="right">{{ whisky.ratingAroma * 0.5 }}</span>
                             </div>
                             <div class="rating_base"></div>
                             <div class="rating" style="width: {{ whisky.ratingAroma * 5 }}%;"></div>
@@ -35,7 +35,7 @@
                             <!--bar-->
                             <div class="clearfix">
                                 <span class="left">Taste</span>
-                                <span class="right">{{ whisky.ratingTaste * 5 }}</span>
+                                <span class="right">{{ whisky.ratingTaste * 0.5 }}</span>
                             </div>
                             <div class="rating_base"></div>
                             <div class="rating" style="width: {{ whisky.ratingTaste * 5 }}%;"></div>
@@ -43,7 +43,7 @@
                             <!--bar-->
                             <div class="clearfix">
                                 <span class="left">Aftertaste</span>
-                                <span class="right">{{ whisky.ratingAftertaste * 5 }}</span>
+                                <span class="right">{{ whisky.ratingAftertaste * 0.5 }}</span>
                             </div>
                             <div class="rating_base"></div>
                             <div class="rating" style="width: {{ whisky.ratingAftertaste * 5 }}%;"></div>
@@ -51,7 +51,7 @@
                             <!--bar-->
                             <div class="clearfix">
                                 <span class="left">Color</span>
-                                <span class="right">{{ whisky.ratingColor * 5 }}</span>
+                                <span class="right">{{ whisky.ratingColor * 0.5 }}</span>
                             </div>
                             <div class="rating_base"></div>
                             <div class="rating" style="width: {{ whisky.ratingColor * 5 }}%;"></div>
@@ -71,7 +71,12 @@
                             <p>{{ whisky.review }}</p>
                         </div>
                         <div id="comments">
-                            comments
+                        {% for comment in comments %}
+                        <br>
+                        {{comment.comment}}
+                        {{comment.commentTime}}
+                        {{comment.commentDate}}
+                        {% endfor %}
                         </div>
                     </div>
                 </div>
