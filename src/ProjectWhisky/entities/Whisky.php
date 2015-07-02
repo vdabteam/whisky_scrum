@@ -21,13 +21,13 @@ Class Whisky
     private $textAroma;
     private $textColor;
     private $textTaste;
-    private $textAfterstaste;
+    private $textAftertaste;
     private $review;
     private $userId;
 
     // CONSTRUCTOR
     
-    public function __construct($id, $name, $distilleryId, $price, $age, $strength, $barrelId, $imagePath, $hidden, $creationDate, $ratingAroma, $ratingColor, $ratingTaste, $ratingAftertaste, $textAroma, $textColor, $textTaste, $textAfterstaste, $review, $userId)
+    public function __construct($id, $name, $distilleryId, $price, $age, $strength, $barrelId, $imagePath, $hidden, $creationDate, $ratingAroma, $ratingColor, $ratingTaste, $ratingAftertaste, $textAroma, $textColor, $textTaste, $textAftertaste, $review, $userId)
     {
      $this->id = $id;
      $this->name = $name;
@@ -46,7 +46,7 @@ Class Whisky
      $this->textAroma = $textAroma;
      $this->textColor = $textColor;
      $this->textTaste = $textTaste;
-     $this->textAfterstaste = $textAfterstaste;
+     $this->textAftertaste = $textAftertaste;
      $this->review = $review;
      $this->userId = $userId;     
     }
@@ -139,9 +139,9 @@ Class Whisky
         return $this->textTaste;
     }
 
-    public function getTextAfterstaste()
+    public function getTextAftertaste()
     {
-        return $this->textAfterstaste;
+        return $this->textAftertaste;
     }
 
     public function getReview()
@@ -241,9 +241,9 @@ Class Whisky
         $this->textTaste = $textTaste;
     }
 
-    public function setTextAfterstaste($textAftertaste)
+    public function setTextAftertaste($textAftertaste)
     {
-        $this->textAfterstaste = $textAftertaste;
+        $this->textAftertaste = $textAftertaste;
     }
 
     public function setReview($review)
