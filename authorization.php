@@ -6,6 +6,7 @@ use src\ProjectWhisky\business\UserBusiness;
 use src\ProjectWhisky\business\AuthorizationBusiness;
 use src\ProjectWhisky\exceptions\WrongDataException;
 use src\ProjectWhisky\exceptions\EmptyDataException;
+use src\ProjectWhisky\exceptions\UserBlockedException;
 use Doctrine\Common\ClassLoader;
 
 session_start();
@@ -53,9 +54,15 @@ if(isset($_POST['emailField']))
 
 
         /*
+         * Check if user is blocked
+         */
+        if($user->getBlocked() == 1) throw new UserBlockedException();
+
+
+        /*
          * Check if user is admin
          */
-        if($user->getAdmin() === true)
+        if($user->getAdmin() == 1)
         {
             $_SESSION['user']['role'] = 2; // Store in session that user is an admin; 2 = admin
         }
@@ -64,7 +71,6 @@ if(isset($_POST['emailField']))
             $_SESSION['user']['role'] = 1; // Store in session that user is NOT an admin; 1 = regular user
         }
 
-        $_SESSION['user']['blocked'] = $user->getBlocked(); //Check if user is blocked, and store this boolean parameter into session: blocked = 1
         $_SESSION['user']['id'] = $user->getId(); //Store userIn into session
         $_SESSION['user']['firstname'] = $user->getFirstname(); // Store user firstname into session
 
@@ -88,6 +94,10 @@ if(isset($_POST['emailField']))
     catch (WrongDataException $e)
     {
         echo "<span class='error_message'>Wrong e-mail and password combination.</span>";
+    }
+    catch (UserBlockedException $e)
+    {
+        echo "<span class='error_message'>Your account has been blocked.</span>";
     }
 
 }
