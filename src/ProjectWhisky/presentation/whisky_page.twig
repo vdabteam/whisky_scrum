@@ -14,7 +14,30 @@
                             <img src="src/ProjectWhisky/presentation/img/{{ whisky.imagePath }}" alt="{{ whisky.name }} Image">
                         </div>
                         <div id="information">
-                            bla bla
+                            <div>
+                                <h3>Distillery:</h3>
+                                <p>{{ distillery.name }}</p>
+                            </div>
+                            <div>
+                                <h3>Ouderdom:</h3>
+                                <p>{{ distillery.age }}</p>
+                            </div>
+                            <div>
+                                <h3>Alcohol Percentage:</h3>
+                                <p>{{ distillery.alcohol }}</p>
+                            </div>
+                            <div>
+                                <h3>Barrel type:</h3>
+                                <p>{{ barrel.type }}</p>
+                            </div>
+                            <div>
+                                <h3>Region:</h3>
+                                <p>{{ distillery.region }}</p>
+                            </div>
+                            <div>
+                                <h3>Estimated Price:</h3>
+                                <p>{{ whisky.price }}</p>
+                            </div>
                         </div>
                     </aside>
                     {% set ratingtotal = (whisky.ratingAroma + whisky.ratingColor + whisky.ratingTaste + whisky.ratingAftertaste) * 0.125 %}
