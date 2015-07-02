@@ -12,6 +12,7 @@
 
         <link rel="stylesheet" href="src/ProjectWhisky/presentation/css/normalize.css">
         <link rel="stylesheet" href="src/ProjectWhisky/presentation/css/default/style.css">
+        <link rel="stylesheet" href="src/ProjectWhisky/presentation/css/default/popup.css">
         <link rel="stylesheet" href="src/ProjectWhisky/presentation/css/progress_style.css">
         <link rel="stylesheet" href="src/ProjectWhisky/presentation/css/iconfonts/css/font-awesome.min.css">
         <script src="src/ProjectWhisky/presentation/js/vendor/modernizr-2.8.3.min.js"></script>
@@ -30,13 +31,54 @@
                     <li class="navbutton fa fa-cogs left"><a href="cpanel_index.php">Control Panel</a></li>
                     <li class="navbutton fa fa-globe left"><a href="index.php">Website</a></li>
                     <li class="navbutton fa fa-user left"><a href="">Profile</a></li>
-                    <li class="navbutton fa fa-sign-in left"><a href="authorization.php">Login</a></li>
-                    <li class="navbutton fa fa-user-plus left"><a href="registration.php">Register</a></li>
+                    <li class="navbutton fa fa-sign-in left"><a class="show-login" href="#">Login</a></li>
+                    <li class="navbutton fa fa-user-plus left"><a class="show-register" href="#">Register</a></li>
                     <li class="navbutton fa fa-sign-out left"><a href="logout.php?logout=true">Logout</a></li>
                 </ul>
             </div>
         </nav>
         <div class="container containershadow">
+
+            {#Registratie pop-up#}
+            <div class="lightbox-panel-register">
+                <h3>Register</h3>
+                <form name="register_form" id="register_form" method="post" action="registration.php">
+                    <input type="text" class="register_name" name="firstname" placeholder="Firstname">
+                    <input type="text" class="register_name" name="lastname" placeholder="Lastname">
+                    <input type="text" class="register_email" name="email" placeholder="E-mail">
+                    <input type="text" class="register_email" name="username" placeholder="Username">
+                    <input type="password" class="register_password" name="password" placeholder="Password">
+                    <input type="password" class="register_password_rt" name="rpassword" placeholder="Repeat password">
+                    <input class="sbmt-btn" name="register_btn" type="submit" value="Register">
+                </form>
+                <div class="error_reporting clearFix">
+                    <span class="clearFix">Verkeerde registratie</span>
+                </div>
+                <div class="close-register">
+                    <a class="show-login register_from_login" href="#">Log in</a>
+                    <a class="close-panel-register" href="#">Close window</a>
+                </div>
+            </div>
+
+
+
+            <div class="lightbox-panel-login">
+                <h3>Log in</h3>
+                <form name="loginfomr" id="login_form" action="authorization.php" method="post">
+                    <input class="login_login" type="text" name="emailField" placeholder="Login">
+                    <input class="login_pass" name="passField" type="password" placeholder="Password">
+                    <input class="sbmt-btn" name="loginBtn" type="submit" value="Log in">
+                </form>
+                <div class="error_reporting clearFix"></div>
+
+                <div class="close-login">
+                    <a class="show-register register_from_login" href="#">Register</a>
+                    {#<a class="forgot_pass show-recover recover" href="#">Wachtwoord vergeten?</a>#}
+                    <a class="close-panel-login" href="#">Close window</a>
+
+                </div>
+            </div>
+
 
         {% block content %}{% endblock %}
         

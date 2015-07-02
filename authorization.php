@@ -1,5 +1,6 @@
 <?php
 
+ob_start();
 
 use src\ProjectWhisky\business\UserBusiness;
 use src\ProjectWhisky\business\AuthorizationBusiness;
@@ -9,36 +10,12 @@ use Doctrine\Common\ClassLoader;
 
 session_start();
 
-?>
-
-<!--todo: remove this html part, use instead main.twig file-->
-
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Authorization</title>
-</head>
-<body>
-<form action="authorization.php" method="post">
-    <input type="text" placeholder="E-mail" name="emailField"/>
-    <br>
-    <input type="password" placeholder="Password" name="passField"/>
-    <br>
-    <input type="submit" value="Log in" name="loginBtn"/>
-</form>
-
-</body>
-</html>
-
-
-<?php
 
 
 /**
  * Check entered e-mail and password when "log in" button has been pressed
  */
-if(isset($_POST['loginBtn']))
+if(isset($_POST['emailField']))
 {
     $email = $_POST['emailField'];
     $password = $_POST['passField'];
@@ -91,23 +68,35 @@ if(isset($_POST['loginBtn']))
         $_SESSION['user']['id'] = $user->getId(); //Store userIn into session
         $_SESSION['user']['firstname'] = $user->getFirstname(); // Store user firstname into session
 
-        echo 'You\'re in';
 
+        echo "<span class='success'>You're in</span>";
+?>
 
+        <script>
+            setTimeout(function(){
+                location.reload();
+            }, 2000);
+        </script>
+        
+<?php
 
     }
     catch (EmptyDataException $e)
     {
-        echo "E-mail and password fields can't be empty";
+        echo "<span class='error_message'>E-mail and password fields can't be empty</span>";
     }
     catch (WrongDataException $e)
     {
-        echo "Wrong e-mail and password combination.";
+        echo "<span class='error_message'>Wrong e-mail and password combination.</span>";
     }
 
 }
+else
+{
+//    header('Location: index.php');
+    echo "<pre>";
+    print_r($_POST);
+    echo "</pre>";
+}
 
-
-echo "<pre>";
-print_r($_SESSION);
-echo "</pre>";
+ob_flush();
