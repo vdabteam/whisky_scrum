@@ -13,8 +13,11 @@
                         <div class="whisky_image_container center">
                             <img src="src/ProjectWhisky/presentation/img/{{ whisky.imagePath }}" alt="{{ whisky.name }} Image">
                         </div>
+                        <div class="information">
+                            bla bla
+                        </div>
                     </aside>
-                    <div class="rating_box left">
+                    <div class="rating_box">
                         <h2>{{ whisky.name }}</h2>
                         <!--bar-->
                         <div class="clearfix">
@@ -48,7 +51,21 @@
                         <div class="rating_base"></div>
                         <div class="rating" style="width: {{ whisky.ratingColor * 5 }}%;"></div>
                     </div>
-                    
+                    <div id="contentbox">
+                        <div id="review">
+                            <h3>Aroma</h3>
+                            <p>{{ whisky.textAroma }}</p>
+                            <h3>Taste</h3>
+                            <p>{{ whisky.textTaste }}</p>
+                            <h3>Aftertaste</h3>
+                            <p>{{ whisky.textAftertaste }}</p>
+                            <h3>Color</h3>
+                            <p>{{ whisky.textColor }}</p>
+                        </div>
+                        <div id="comments">
+                            comments
+                        </div>
+                    </div>
                 </div>
             </div>
         {% endblock %}

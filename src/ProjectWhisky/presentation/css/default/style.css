@@ -253,12 +253,14 @@ footer{
     }
 
     .rating_box {
-        width: 25em;
         padding: 1em 2em;
         color: #fff;
         background-color: #333;
         -webkit-flex: 1;
         flex: 1;
+        position: absolute;
+        right: 0;
+        left: 25em;
     }
 
     .rating_box > h2{
@@ -267,23 +269,24 @@ footer{
         border-bottom: 0.15em solid #FFBA39;
         color: #FFBA39;
         text-shadow: 0px 1px 0px rgba(255,186,57,0.3);
-        margin-bottom: 2em;
+        margin-bottom: 0.8em;
     }
 
     .rating_base {
         background: #171717;
         width: 100%;
-        height: 10px;
+        height: 0.5em;
     }
 
     .rating {
         background: #FFBA39;
         box-shadow: 0px 0px 5px 3px rgba(255,186,57,0.5);
         width: 100%;
-        height: 10px;
+        height: 0.5em;
         position: relative;
-        top: -10px;
+        top: -0.5em;
         z-index: 0;
+        margin-bottom: 0.5em;
     }
 
     #whisky_page aside img{
@@ -308,7 +311,29 @@ footer{
 
     }
     .flex_parent{
-        display:flex;
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-wrap: wrap;
+        flex-wrap: wrap;
+    }
+
+    #contentbox{
+        -webkit-flex: 1;
+        flex: 1;
+        position: absolute;
+        top: 35.2em;
+    }
+
+    #review{
+        width: 100%;
+    }
+    #comments{
+        width: 100%;
     }
 
 }
