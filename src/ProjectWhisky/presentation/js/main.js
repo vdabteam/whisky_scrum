@@ -34,7 +34,7 @@ jQuery(function(){
 
 
     /**
-     * Verhandelen van inloggen.
+     * Handle authorization.
      */
     jQuery('#login_form').submit(function(e) {
         e.preventDefault();
@@ -49,7 +49,33 @@ jQuery(function(){
 
             }
         });
-    }); // End verhandelen van inloggen
+    }); // End Handle authorization
+
+
+
+
+
+    /**
+     * Handle registration.
+     */
+    jQuery('#register_form').submit(function(e) {
+        e.preventDefault();
+        jQuery.ajax({
+            type:"POST",
+            async:false,
+            url:"registration.php",
+            data: jQuery("#register_form").serialize(),
+            success: function(response){
+                jQuery(".error_reporting_registration").addClass('result_registration').css('visibility','visible');
+                jQuery(".result_registration").html(response);
+
+            }
+        });
+    }); // End Handle registration
+
+
+
+
 
 
 
