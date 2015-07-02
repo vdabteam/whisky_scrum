@@ -7,16 +7,18 @@ Class Comment
     private $id;
     private $whiskyId;
     private $userId;
+    private $username;
     private $comment;
     private $commentTime;
     private $commentDate;
 
     // CONSTRUCTOR
-    public function __construct($id, $whiskyId, $userId, $comment, $commentTime, $commentDate)
+    public function __construct($id, $whiskyId, $userId, $username, $comment, $commentTime, $commentDate)
     {
         $this->id = $id;
         $this->whiskyId = $whiskyId;
         $this->userId = $userId;
+        $this->username = $username;
         $this->comment = $comment;
         $this->commentTime = $commentTime;
         $this->commentDate = $commentDate;
@@ -37,6 +39,10 @@ Class Comment
     public function getUserId()
     {
         return $this->userId;
+    }
+    public function getUsername()
+    {
+        return $this->username;
     }
 
     public function getComment()
@@ -69,6 +75,10 @@ Class Comment
     public function setUserId($userId)
     {
         $this->userId = $userId;
+    }
+    public function setUsername($username)
+    {
+        $this->username=$username;
     }
 
     public function setComment($comment)

@@ -19,9 +19,6 @@ $whisky = $whiskyBiz->getWhisky($_GET["id"]);
 
 $commentBiz = new CommentBusiness();
 
-
-
-
 $loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation"); 
 $twig = new Twig_Environment($loader); 
 $view = $twig->render("whisky_page.twig", array( "whisky" => $whisky, "comments" => $commentBiz->showComments($_GET["id"])));
