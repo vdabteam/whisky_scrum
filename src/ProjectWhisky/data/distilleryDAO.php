@@ -2,6 +2,7 @@
 
 namespace src\ProjectWhisky\data;
 use src\ProjectWhisky\data\DBConnect;
+use src\ProjectWhisky\entities\Distillery;
 use PDO;
 use Exception;
 
@@ -12,8 +13,7 @@ class DistilleryDAO
     private $handler;
     private $sql;
     private $query;
-
-    private $lijst;
+    private $list;
 
 
     /**
@@ -35,7 +35,7 @@ class DistilleryDAO
     public function getAll()
     {
         self::connectToDB(); /* Using DB connection */
-        $this->sql = "SELECT * FROM films";
+        $this->sql = "SELECT * FROM distilleries";
 
         try
         {
@@ -47,13 +47,10 @@ class DistilleryDAO
 
             foreach ($this->result as $row)
             {
-                $this->programmatie = new ProgrammatieDAO();
-                $this->programmatie = $this->programmatie->getProgrammatieTijdByFilmId($row['film_id']);
-
-                $this->lijst[] = new Films($row['film_id'], $row['film_naam'], $row['film_omschrijving'], $row['film_image'], $this->programmatie);
+                $this->list[] = new Distillery($row['id'], $row['name'], $row['adress'], $row['city'], $row['country'], $row['region']);
             }
 
-            return $this->lijst;
+            return $this->list;
         }
         catch (Exception $e)
         {
@@ -63,15 +60,15 @@ class DistilleryDAO
     }
 
 
-    public function getFilmById($filmId)
+    public function getById($id)
     {
         self::connectToDB();
-        $this->sql = "SELECT * FROM films WHERE film_id = ?";
+        $this->sql = "SELECT * FROM distilleries WHERE id = :id";
 
         try
         {
             $this->query = $this->handler->prepare($this->sql);
-            $this->query->execute(array($filmId));
+            $this->query->execute(array('id'=> $id));
             $this->result = $this->query->fetchAll(PDO::FETCH_ASSOC);
 
             $this->query->closeCursor();
@@ -79,9 +76,9 @@ class DistilleryDAO
 
             foreach ($this->result as $row)
             {
-                $this->lijst[] = new Films($row['film_id'], $row['film_naam'], $row['film_omschrijving'], $row['film_image'], 0);
+               $this->list = new Distillery($row['id'], $row['name'], $row['adress'], $row['city'], $row['country'], $row['region']);
             }
-            return $this->lijst;
+            return $this->list;
         }
         catch (Exception $e)
         {
