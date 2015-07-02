@@ -24,10 +24,11 @@ Class Whisky
     private $textAftertaste;
     private $review;
     private $userId;
+    private $distilleryName;
 
     // CONSTRUCTOR
     
-    public function __construct($id, $name, $distilleryId, $price, $age, $strength, $barrelId, $imagePath, $hidden, $creationDate, $ratingAroma, $ratingColor, $ratingTaste, $ratingAftertaste, $textAroma, $textColor, $textTaste, $textAftertaste, $review, $userId)
+    public function __construct($id, $name, $distilleryId, $price, $age, $strength, $barrelId, $imagePath, $hidden, $creationDate, $ratingAroma, $ratingColor, $ratingTaste, $ratingAftertaste, $textAroma, $textColor, $textTaste, $textAftertaste, $review, $userId, $distilleryName)
     {
      $this->id = $id;
      $this->name = $name;
@@ -48,7 +49,8 @@ Class Whisky
      $this->textTaste = $textTaste;
      $this->textAftertaste = $textAftertaste;
      $this->review = $review;
-     $this->userId = $userId;     
+     $this->userId = $userId;
+     $this->distilleryName = $distilleryName;   
     }
 
     
@@ -153,6 +155,10 @@ Class Whisky
     {
         return $this->userId;
     }
+    public function getDistilleryName()
+    {
+        return $this->distilleryName;
+    }
 //======================================
     // TRANSFORMERS robots in disguise (setters)
 //======================================
@@ -255,6 +261,9 @@ Class Whisky
     {
         $this->userId = $userId;
     }
-    
+    public function setDistilleryName($distilleryName)
+    {
+        $this->distilleryName = $distilleryName;
+    }
 
 }

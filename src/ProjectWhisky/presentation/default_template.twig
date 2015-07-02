@@ -28,14 +28,27 @@
             <div class="navbar_icons clearfix">
                 <ul class="right">
                     <li class="navbutton fa fa-search left"><a href="">Search</a></li>
-                    <li class="navbutton fa fa-cogs left"><a href="cpanel_index.php">Control Panel</a></li>
-                    <li class="navbutton fa fa-globe left"><a href="index.php">Website</a></li>
-                    <li class="navbutton fa fa-user left"><a href="">Profile</a></li>
-                    <li class="navbutton fa fa-sign-in left"><a class="show-login" href="#">Login</a></li>
-                    <li class="navbutton fa fa-user-plus left"><a class="show-register" href="#">Register</a></li>
-                    <li class="navbutton fa fa-sign-out left"><a href="logout.php?logout=true">Logout</a></li>
+
+                    {#Show specific menu items to particular users#}
+                    {% if  user.role == 0  %}
+                        <li class="navbutton fa fa-sign-in left"><a class="show-login" href="#">Login</a></li>
+                        <li class="navbutton fa fa-user-plus left"><a class="show-register" href="#">Register</a></li>
+                    {% elseif  user.role == 1  %}
+                        <li class="navbutton fa fa-user left"><a href="">Profile</a></li>
+                        <li class="navbutton fa fa-sign-out left"><a href="logout.php?logout=true">Logout</a></li>
+                    {% elseif  user.role == 2  %}
+                        <li class="navbutton fa fa-cogs left"><a href="cpanel_index.php">Control Panel</a></li>
+                        {#<li class="navbutton fa fa-globe left"><a href="index.php">Website</a></li>#}
+                        <li class="navbutton fa fa-user left"><a href="">Profile</a></li>
+                        <li class="navbutton fa fa-sign-out left"><a href="logout.php?logout=true">Logout</a></li>
+                    {% endif %}
+
+
+
                 </ul>
             </div>
+
+
         </nav>
         <div class="container containershadow">
             {#Registration pop-up#}
