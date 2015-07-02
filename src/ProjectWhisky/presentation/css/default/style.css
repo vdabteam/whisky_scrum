@@ -384,10 +384,11 @@ footer{
 
     #description_header ~ .review_box p{
         display: block;
-        padding: 1.2em 1em 0;
+        padding: 1.2em 2.5em 0 1em;
         padding-bottom: 0.5em;
         border-left: 0.1em solid black;
         margin-left: 12em;
+        text-align: justify;
         margin-top: -2.6em;
     }
     #review_header + .review_box p{
@@ -396,6 +397,7 @@ footer{
         padding-bottom: 0.5em;
         padding: 0.5em;
         border-left: 0;
+        text-align: justify;
     }
 
     h2#review_header {
