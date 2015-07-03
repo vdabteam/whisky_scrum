@@ -4,30 +4,34 @@
         {% endblock %}
 
         {% block content %}
-            <header id="header_banner" class="vert_half">
-                <div id="header_quote"><p>IceTea On The Rocks</p></div>
+            <header id="header_banner" class="distillery_header">
+                <div id="header_quote"><p>Distillery Page</p></div>
             </header>
-            <div id="whisky_page">
+            <div id="distillery_page">
                 <div id="content_container" class="clearfix flex_parent">
                     <aside id="whisky_sidebar" class="left">
                         
-                        <div class="information">
-                            <h3>{{ distillery.name}}</h3>
-                            <p>
-                            <p>{{ distillery.address}}</p>
-                            <p>{{ distillery.city }}</p>
-                            <p>{{ distillery.country}}</p>
-                            </p>
+                        <div id="information">
+                            <div>
+                                <h3>Address</h3>
+                                <p>{{ distillery.address }}</p>
+                            </div>
+                            <div>
+                                <h3>City</h3>
+                                <p>{{ distillery.city }}</p>
+                            </div>
+                            <div>
+                                <h3>Country</h3>
+                                <p>{{ distillery.country }}</p>
+                            </div>
                         </div>
-                    </aside>
-                    <div class="rating_box">
-                        <h2>{{ distillery.name }}</h2>
-                                                <iframe width='90%' height='100%' frameborder='0' scrolling='no'  marginheight='0' marginwidth='0'   src='https://maps.google.com/maps?&amp;q="+ {{ distillery.name}} +"+Distillery&amp;output=embed'></iframe>
 
-                    </div>
+                    </aside>
                     <div id="contentbox">
-                    <div class="clearfix">    
-                                       
+
+                        <iframe width='100%' height='100%' frameborder='0' scrolling='no' src='https://maps.google.com/maps?&amp;q="+ {{ distillery.name}} +"+Distillery&amp;output=embed'></iframe>
+                        
+                        <h2>{{ distillery.name }}</h2>
                     </div>
                 </div>
             </div>
