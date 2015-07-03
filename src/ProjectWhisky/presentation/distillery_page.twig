@@ -30,8 +30,40 @@
                     <div id="contentbox">
 
                         <iframe width='100%' height='100%' frameborder='0' scrolling='no' src='https://maps.google.com/maps?&amp;q="+ {{ distillery.name}} +"+Distillery&amp;output=embed'></iframe>
-                        
-                        <h2>{{ distillery.name }}</h2>
+
+                        <h2 class="distillery_name">{{ distillery.name }}</h2>
+
+                        <table class="whisky_list" border="1">
+                            <tr>
+                                <th>Whisky Name</th>
+                                <th>Age</th>
+                                <th>Alcohol</th>
+                                <th>Barrel</th>
+                                <th>Price</th>
+                            </tr>
+                            <tr>
+                                <td><a href="whisky.php?id={{ whisky.id }}">Naam</a></td>
+                                <td>24</td>
+                                <td>100%</td>
+                                <td>Oak</td>
+                                <td>€ 123</td>
+                            </tr>
+                            <tr>
+                                <td><a href="whisky.php?id={{ whisky.id }}">Naam</a></td>
+                                <td>24</td>
+                                <td>100%</td>
+                                <td>Oak</td>
+                                <td>€ 123</td>
+                            </tr>
+                            <tr>
+                                <td><a href="whisky.php?id={{ whisky.id }}">Naam</a></td>
+                                <td>24</td>
+                                <td>100%</td>
+                                <td>Oak</td>
+                                <td>€ 123</td>
+                            </tr>
+                        </table>
+
                     </div>
                 </div>
             </div>

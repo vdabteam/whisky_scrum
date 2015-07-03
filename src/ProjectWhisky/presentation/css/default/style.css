@@ -201,7 +201,7 @@ footer{
         color: white;
     }
 
-    header #header_quote {
+    header #header_quote{
         font-family: "trashhand";
         font-size: 2em;
         padding:2.5em 2.5em;
@@ -388,7 +388,7 @@ footer{
         border-radius: 0em 0px 0px 0px;
     }
 
-    #distillery_page h3 , #distillery_page h2{
+    #distillery_page h3{
         text-align: left;
         display: inline-block;
         margin: 0.4em 0em 0em 0em;
@@ -396,17 +396,61 @@ footer{
         font-family: 'open_sansbold';        
     }
 
+    .distillery_name{
+        padding: 1em 1em 0.7em 1em;
+        margin: 1em;
+        font-size: 2em;
+        border-bottom: 0.15em solid black;
+        text-shadow: 0px 1px 0px rgba(255,186,57,0.3);
+        margin-bottom: 0.8em;
+        font-family: 'open_sansbold';
+    }
+
     #review{
         width: 100%;
     }
 
-    #review h2, #comments h2, #distillery_page h2{
+    #review h2, #comments h2{
         margin-top: 1em;
         padding: 0.5em 2em 1.5em 2em;
         font-size: 2em;
     }
     #distillery_page h2{
         margin-top: 0em;
+    }
+
+    #distillery_page .whisky_list{
+        margin:0 auto 2em;
+        width: 40em;
+        border: 1px solid black;
+    }
+
+    .whisky_list th{
+        color: #FFBA39;
+        background-color: black;
+        font-family: 'open_sansbold';
+        padding:0.5em;
+    }
+
+    .whisky_list td{
+        padding:0.2em 0.5em;
+    }
+
+    .whisky_list td a{
+        padding:0.2em 0.5em;
+        width: 100%;
+        display: block;
+        color: #FFBA39;
+    }
+
+    .whisky_list td a:hover{
+        text-decoration: underline;
+    }
+    .whisky_list tr:nth-child(even){
+        background-color: #FFFBF4;
+    }
+    .whisky_list tr:hover{
+        background-color: white;
     }
 
     #description_header ~ .review_box h3{
