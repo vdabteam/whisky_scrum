@@ -13,28 +13,30 @@
                 <br>
                 <a href="http://stackoverflow.com/questions/5138719/change-default-text-in-input-type-file">info about styling type="file"</a>
                 <br><br>
-                <form action="profile.php" method="post">
+                <form action="profile.php" method="post" enctype="multipart/form-data">
                     <input id="imgUploader" type="file" name="userImage" >
+                    Image path: {{ userData.image_path }}
                     <br>
-                    <input type="text" value="" name="userFirstName" placeholder="Firstname"/>
+                    <input type="text" value="{{ userData.firstname }}" name="userFirstName" placeholder="Firstname"/>
                     <br>
-                    <input type="text" value="" name="userLastName" placeholder="Lastname"/>
+                    <input type="text" value="{{ userData.lastname }}" name="userLastName" placeholder="Lastname"/>
                     <br>
-                    <input type="text" value="" name="userEmail" placeholder="E-mail"/>
+                    <input type="text" value="{{ userData.email }}" name="userEmail" placeholder="E-mail"/>
                     <br>
                     <a class="changePass" href="#">Change password</a>
-                    <a class="closeChangePass" href="#">Change password</a>
+                    <a class="dontChangePass" href="#">Don't change password</a>
                     <div id="passwordBlock">
-                        <input type="text" value="" name="userOldPassword" placeholder="Old password"/>
+                        <input class="passClass" type="password" value="" name="userOldPassword" placeholder="Old password" disabled/>
                         <br>
-                        <input type="text" value="" name="userNewPassword" placeholder="New password"/>
+                        <input class="passClass" type="password" value="" name="userNewPassword" placeholder="New password" disabled/>
                         <br>
-                        <input type="text" value="" name="userNewPasswordRepeat" placeholder="Repeat password"/>
+                        <input class="passClass" type="password" value="" name="userNewPasswordRepeat" placeholder="Repeat password" disabled/>
                         <br>
                     </div>
                     <br>
                     <input type="submit" name="profileSaveBtn" value="Save"/>
                 </form>
+                {{ files }}
             </div>
 
 

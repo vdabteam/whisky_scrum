@@ -2,11 +2,12 @@
 
 namespace src\ProjectWhisky\business;
 use src\ProjectWhisky\data\UserDAO;
+use src\ProjectWhisky\helpers\ValidationHelpers;
 use src\ProjectWhisky\exceptions\WrongDataException;
 
 
 
-class UserBusiness
+class UserBusiness extends ValidationHelpers
 {
     private $userDAO;
     private $list;
@@ -41,18 +42,11 @@ class UserBusiness
      */
     public function createNewUser($username, $password, $email, $firstname, $lastname)
     {
-        $password = self::hashPassword($password);
+        $password = self::hashPassword($password); // using ValidationHelpers class
         $this->userDAO = new UserDAO();
         $this->list = $this->userDAO->createUser($username, $password, $email, $firstname, $lastname);
 
         return $this->list;
-    }
-
-    public function hashPassword($passwordToHash, $rounds = 10)
-    {
-        $crypt_options = array('cost' => $rounds);
-        $hash = password_hash($passwordToHash, PASSWORD_BCRYPT, $crypt_options);
-        return $hash;
     }
 
 
@@ -79,5 +73,10 @@ class UserBusiness
 
         return $this->list;
     }
+
+
+
+
+
 
 }

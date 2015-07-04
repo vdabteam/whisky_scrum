@@ -154,8 +154,9 @@
 #passwordBlock{
     padding: 1rem 0;
     display: none;
+
 }
 
-.closeChangePass{
+.dontChangePass{
     display: none;
 }

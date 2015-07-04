@@ -65,12 +65,29 @@ jQuery(function(){
     }); // End Handle registration
 
 
+
+
     /**
-     * Profile section
+     * Password section
+     * Triggering 'change password' button
      */
+    // Triggering 'change password' button
     jQuery(".changePass").click(function(){
         jQuery("#passwordBlock").fadeToggle(30);
+        jQuery('.passClass').attr('disabled', function(i, v) { return !v; }); // toggles 'disabled' attribute in password input fields
+        jQuery('.dontChangePass').fadeToggle(10);
+        jQuery(this).fadeOut(10);
     });
+
+    // Triggering 'don't change password' button
+    jQuery(".dontChangePass").click(function(){
+        jQuery("#passwordBlock").fadeToggle(30);
+        jQuery('.passClass').attr('disabled', function(i, v) { return !v; }); // toggles 'disabled' attribute in password input fields
+        jQuery('.changePass').fadeToggle(10);
+        jQuery(this).fadeOut(10);
+    });
+
+
 
 
 
