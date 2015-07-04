@@ -44,57 +44,54 @@
                         <li class="navbutton fa fa-user left"><a href="profile.php">Profile</a></li>
                         <li class="navbutton fa fa-sign-out left"><a href="logout.php?logout=true">Logout</a></li>
                     {% endif %}
-
-
-
                 </ul>
             </div>
-
-
         </nav>
-        <div class="container containershadow">
-            {#Registration pop-up#}
-            <div class="lightbox-panel-register">
-                <h3>Register</h3>
-                <form name="register_form" id="register_form" method="post" action="registration.php">
-                    <input type="text" class="register_name" name="firstname" placeholder="Firstname">
-                    <input type="text" class="register_name" name="lastname" placeholder="Lastname">
-                    <input type="text" class="register_email" name="email" placeholder="E-mail">
-                    <input type="text" class="register_email" name="username" placeholder="Username">
-                    <input type="password" class="register_password" name="password" placeholder="Password">
-                    <input type="password" class="register_password_rt" name="rpassword" placeholder="Repeat password">
-                    <input class="sbmt-btn" name="registrationBtn" type="submit" value="Register">
-                </form>
-                <div class="error_reporting_registration">
-                    <span>Verkeerde registratie</span>
-                </div>
-                <div class="close-register">
-                    <a class="show-login register_from_login" href="#">Log in</a>
-                    <a class="close-panel-register" href="#">Close window</a>
-                </div>
-            </div>
-
-
-            {#Log in pop-up#}
-            <div class="lightbox-panel-login">
-                <h3>Log in</h3>
-                <form name="loginfomr" id="login_form" action="authorization.php" method="post">
-                    <input class="login_login" type="text" name="emailField" placeholder="Login">
-                    <input class="login_pass" name="passField" type="password" placeholder="Password">
-                    <input class="sbmt-btn" name="loginBtn" type="submit" value="Log in">
-                </form>
-                <div class="error_reporting"></div>
-
-                <div class="close-login">
-                    <a class="show-register register_from_login" href="#">Register</a>
-                    <a class="close-panel-login" href="#">Close window</a>
-
-                </div>
-            </div>
-
-
-        {% block content %}{% endblock %}
         
+        {#Registration pop-up#}
+        <div class="lightbox-panel-register">
+            <div class="modal">
+                <form name="register_form" id="register_form" method="post" action="registration.php">
+                <h3>Register</h3>
+                    <input type="text" name="firstname" placeholder="Firstname">
+                    <input type="text" name="lastname" placeholder="Lastname">
+                    <input class="email" type="text" name="email" placeholder="E-mail">
+                    <input type="text" name="username" placeholder="Username">
+                    <input type="password" name="password" placeholder="Password">
+                    <input type="password" name="rpassword" placeholder="Repeat password">
+                    <input name="registrationBtn" type="submit" value="Register">
+                    <div class="error_reporting">
+                        <span>Verkeerde registratie</span>
+                    </div>
+                    <div class="close-register">
+                        <a class="show-login" href="#">Log in</a>
+                        <a class="close-panel-register" href="#">Close window</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        {#Log in pop-up#}
+        <div class="lightbox-panel-login">
+            <div class="modal">
+            <form name="loginform" id="login_form" action="authorization.php" method="post">
+            <h3>Log in</h3>
+                <input type="text" name="emailField" placeholder="Login">
+                <input name="passField" type="password" placeholder="Password">
+                <input name="loginBtn" type="submit" value="LOG IN">
+                <div class="error_reporting">
+                    <span>Errors go here</span>
+                </div>
+                <div class="close-login">
+                    <a class="show-register" href="#">Register</a>
+                    <a class="close-panel-login" href="#">Close window</a>
+                </div>
+            </form>
+            </div>
+        </div>
+
+        <div class="container containershadow">
+            {% block content %}{% endblock %}
         </div>
 
         <footer class="bottom fullwidth">

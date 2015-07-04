@@ -23,9 +23,6 @@ jQuery(function(){
         jQuery(".lightbox-panel-register").fadeOut(300);
     });
 
-
-
-
     /**
      * Handle authorization.
      */
