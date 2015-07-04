@@ -126,19 +126,10 @@ input[type="submit"]:hover{
     text-decoration: underline;
 }
 
+/**
+* Password styling:
+**/
 
-
-
-
-
-
-
-
-
-<<<<<<< .merge_file_hc5IXj
-
-
-=======
 #passwordBlock{
     padding: 1rem 0;
     display: none;
@@ -148,4 +139,3 @@ input[type="submit"]:hover{
 .dontChangePass{
     display: none;
 }
->>>>>>> .merge_file_tAFZb9
