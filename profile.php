@@ -52,6 +52,8 @@ if (isset($_SESSION['user']['id']) && (is_int((int)$_SESSION['user']['id'])))
     $userData = $profile->getUserDataByUserId($userId); // sended to twig on the end
 
 
+
+     
     /**
      * Perform form workout
      */
