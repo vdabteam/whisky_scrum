@@ -67,6 +67,76 @@ class UserDAO
     }
 
 
+    /**
+     * Get user data by user id: firstname, lastname, e-mail, user image path
+     */
+    public function getSomeDataByUserId($userId)
+    {
+        self::connectToDB(); /* Using DB connection */
+
+        $this->sql = "SELECT firstname, lastname, email, image_path FROM users WHERE id = ?";
+
+        try
+        {
+            $this->query = $this->handler->prepare($this->sql);
+            $this->query->execute(array($userId));
+            $this->result = $this->query->fetchAll(PDO::FETCH_ASSOC);
+
+            /**
+             * Closing DB connection
+             */
+            $this->query->closeCursor();
+            $this->handler = null;
+
+            return $this->result[0];
+        }
+        catch (Exception $e)
+        {
+            echo "Error: query failure";
+            return false;
+        }
+    }
+
+
+
+    /**
+     * Update user data by user id: firstname, lastname, e-mail
+     */
+    public function updateSomeDataByUserId($userId, $firstname, $lastname, $email)
+    {
+        self::connectToDB(); /* Using DB connection */
+
+        $this->sql = "UPDATE users SET firstname = ?, lastname = ?, email = ? WHERE id = ?";
+
+        try
+        {
+            $this->query = $this->handler->prepare($this->sql);
+            $this->query->execute(array($firstname, $lastname, $email, $userId));
+
+            /**
+             * Closing DB connection
+             */
+            $this->query->closeCursor();
+            $this->handler = null;
+
+            return true;
+        }
+        catch (Exception $e)
+        {
+            echo "Error: query failure";
+            return false;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
 
 
     public function findUserByEmail($userEmail)
@@ -207,5 +277,61 @@ class UserDAO
         }
     }
 
+
+
+    public function getPasswordByUserId($userId)
+    {
+        self::connectToDB(); /* Using DB connection */
+
+        $this->sql = "SELECT password FROM users WHERE id = ?";
+
+        try
+        {
+            $this->query = $this->handler->prepare($this->sql);
+            $this->query->execute(array($userId));
+            $this->result = $this->query->fetchAll(PDO::FETCH_ASSOC);
+
+            /**
+             * Closing DB connection
+             */
+            $this->query->closeCursor();
+            $this->handler = null;
+
+            return $this->result[0]['password'];
+        }
+        catch (Exception $e)
+        {
+            echo "Error: query failure";
+            return false;
+        }
+    }
+
+
+
+    public function insertNewPasswordByUserId($userId, $newHashedPassword)
+    {
+        self::connectToDB(); /* Using DB connection */
+
+        $this->sql = "UPDATE users SET password = ? WHERE id = ?";
+
+        try
+        {
+            $this->query = $this->handler->prepare($this->sql);
+            $this->query->execute(array($newHashedPassword, $userId));
+
+            /**
+             * Closing DB connection
+             */
+            $this->query->closeCursor();
+            $this->handler = null;
+
+            return true;
+        }
+        catch (Exception $e)
+        {
+            echo "Error: query failure";
+            return false;
+        }
+    }
 
 }

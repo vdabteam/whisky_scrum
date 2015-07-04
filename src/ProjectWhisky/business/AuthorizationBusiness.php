@@ -2,14 +2,16 @@
 
 namespace src\ProjectWhisky\business;
 use src\ProjectWhisky\data\UserDAO;
+use src\ProjectWhisky\helpers\ValidationHelpers;
 use src\ProjectWhisky\exceptions\WrongDataException;
 
 
-class AuthorizationBusiness
+class AuthorizationBusiness extends ValidationHelpers
 {
     private $userDAO;
     private $list;
     private $email;
+    private $userId;
     private $password;
     private $passwordHash;
 
@@ -37,19 +39,11 @@ class AuthorizationBusiness
          * Get hashed password from DB and check if by user inserted password matches with hashed one.
          */
         $this->passwordHash = $this->list->getPassword();
-        self::checkPassword($this->passwordHash, $this->password);
+        self::checkPassword($this->passwordHash, $this->password);  // uses ValidationHelpers class
 
         return $this->list;
 
     }
 
-
-    /**
-     * Checking whether entered password is correct or not
-     */
-    private function checkPassword($passwordHash, $passwordEntered)
-    {
-        if(!password_verify($passwordEntered, $passwordHash)) throw new WrongDataException();
-    }
 
 }

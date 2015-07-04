@@ -135,5 +135,17 @@ input[type="submit"]:hover{
 
 
 
+<<<<<<< .merge_file_hc5IXj
 
 
+=======
+#passwordBlock{
+    padding: 1rem 0;
+    display: none;
+
+}
+
+.dontChangePass{
+    display: none;
+}
+>>>>>>> .merge_file_tAFZb9
