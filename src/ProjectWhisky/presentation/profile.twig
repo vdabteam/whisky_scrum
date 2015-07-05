@@ -10,35 +10,22 @@
             </header>
             <div id="content_container">
                 <a href="http://www.w3schools.com/php/php_file_upload.asp">info about uploading images 1</a>
-<<<<<<< HEAD
-                
+
+                <form action="profile.php" method="post">
+                    <input type="submit" name="removeProfileImageBtn" value="Remove image"/>
+                </form>
+
                 <form id="profile_edit_form" action="profile.php" method="post" enctype="multipart/form-data">
                     <div class="profile_image_displayer">
                         <img src="src/ProjectWhisky/presentation/userimages/{{ userData.image_path }}" alt="Profile Picfute of {{ userData.firstname }}"/>
                         <input class="fake" value="Change Profile Picture...">
                         <input id="imgUploader" type="file" name="userImage">
                     </div>
-=======
-                <br>
-                <a href="http://stackoverflow.com/questions/5138719/change-default-text-in-input-type-file">info about styling type="file"</a>
-                <br><br>
-                <img src="src/ProjectWhisky/presentation/userimages/{{ userData.image_path }}" alt="user image"/>
 
-                <form action="profile.php" method="post">
-                    <input type="submit" name="removeProfileImageBtn" value="Remove image"/>
-                </form>
-                <form action="profile.php" method="post" enctype="multipart/form-data">
-                    <br>
-                    <input id="imgUploader" type="file" name="userImage" >
-                    <br><br>
->>>>>>> 0c6b9c73f699958a60d676f39bf12589a4a497fe
                     <input type="text" value="{{ userData.firstname }}" name="userFirstName" placeholder="Firstname"/>
                     <input type="text" value="{{ userData.lastname }}" name="userLastName" placeholder="Lastname"/>
                     <input type="text" value="{{ userData.email }}" name="userEmail" placeholder="E-mail"/>
-<<<<<<< HEAD
-=======
-                    <br><br>
->>>>>>> 0c6b9c73f699958a60d676f39bf12589a4a497fe
+                    
                     <a class="changePass" href="#">Change password</a>
                     <a class="dontChangePass" href="#">Don't change password</a>
                     <div id="passwordBlock">
