@@ -1,8 +1,8 @@
 <?php
 ob_start();
 
-/*error_reporting(E_ALL);
-ini_set("display_errors", 1);*/
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
 /**
  * User profile controller
  */
@@ -29,6 +29,18 @@ require_once("rolestarter.php"); // gives to user role = 0 on first visit of the
 
 if (isset($_SESSION['user']['id']) && (is_int((int)$_SESSION['user']['id'])))
 {
+    /**
+     * Dialog variable which stores and shows errors or success messages
+     */
+    if (!isset($_SESSION['dialogBlock']))
+    {
+        $_SESSION['dialogBlock'] = "";
+    }
+
+
+
+
+
     $userId = $_SESSION['user']['id'];
 
     /**
@@ -53,7 +65,7 @@ if (isset($_SESSION['user']['id']) && (is_int((int)$_SESSION['user']['id'])))
 
 
 
-     
+
     /**
      * Perform form workout
      */
@@ -71,18 +83,20 @@ if (isset($_SESSION['user']['id']) && (is_int((int)$_SESSION['user']['id'])))
              */
             if ($profile->updateUserDataByUserId($userId, $firstname, $lastname, $email) !== true) throw new FuckedUpException();
 
-            echo "Profile updated";
+            $_SESSION['dialogBlock'] = "Profile updated";
+            $_SESSION['reload'] = 1;
 
-            header("Refresh: 1");
+//            header("Refresh: 0");
+            header('Location: profile.php?updated=1');
 
         }
         catch (EmptyDataException $e)
         {
-            echo "We need your firstname, lastname and e-mail";
+            $_SESSION['dialogBlock'] = "We need your firstname, lastname and e-mail";
         }
         catch (FuckedUpException $e)
         {
-            echo "Someting went wrong, restart your computer 3 times.";
+            $_SESSION['dialogBlock'] = "Someting went wrong, restart your computer 3 times.";
         }
 
     }
@@ -90,12 +104,19 @@ if (isset($_SESSION['user']['id']) && (is_int((int)$_SESSION['user']['id'])))
 
 
 
-
+    /*
+     * A defined function which renames image path
+     * Object $profile required to be given to this function
+     */
+    function updateImagePathInDB($userId, $newImagePath, $profile)
+    {
+       return $profile->updateUserImagePath($userId, $newImagePath);
+    }
 
 
 
     /**
-     * Upload files
+     * Upload image
      */
     if (isset($_FILES['userImage']))
     {
@@ -116,7 +137,10 @@ if (isset($_SESSION['user']['id']) && (is_int((int)$_SESSION['user']['id'])))
         $file_ext = explode('.', $file_name);
         $file_ext = strtolower(end($file_ext));
 
-        $allowed = array('png');
+        /**
+         * Define allowed file extensions
+         */
+        $allowed = array('png', 'jpg', 'jpeg', 'gif');
 
         if (in_array($file_ext, $allowed))
         {
@@ -131,13 +155,40 @@ if (isset($_SESSION['user']['id']) && (is_int((int)$_SESSION['user']['id'])))
 
                     if (move_uploaded_file($file_tmp, $file_destination))
                     {
-                        echo $file_destination;
+                        $newImagePath = $file_name_new;
+                        /**
+                         * Calling defined function and giving parameters. $profile is an object
+                         */
+                        updateImagePathInDB($userId, $newImagePath, $profile);
                     }
                 }
             }
         }
     }
 
+
+    /**
+     * Remove image path (images itself remain in userimages folder)
+     */
+    if (isset($_POST['removeProfileImageBtn']))
+    {
+        /**
+         * if user removes his picture, a default.jpg will be added to his profile
+         */
+        $newImagePath = "default.jpg";
+        /**
+         * Change image name in DB
+         */
+        if (updateImagePathInDB($userId, $newImagePath, $profile))
+        {
+            $_SESSION['dialogBlock'] = "Your profile image has been removed";
+        }
+        else
+        {
+            $_SESSION['dialogBlock'] = "Something went wrong";
+        }
+        header('Refresh: 0');
+    }
 
 
 
@@ -171,40 +222,55 @@ if (isset($_SESSION['user']['id']) && (is_int((int)$_SESSION['user']['id'])))
         }
         catch (WrongDataException $e)
         {
-            echo "Wrong password";
+            $_SESSION['dialogBlock'] = "Wrong old password";
         }
         catch (PasswordsDontMatchException $e)
         {
-            echo "New passwords don't match";
+            $_SESSION['dialogBlock'] = "New passwords don't match";
         }
         catch (FuckedUpException $e)
         {
-            echo "Someting went wrong, restart your computer 3 times.";
+            $_SESSION['dialogBlock'] = "Someting went wrong, restart your computer 3 times.";
         }
 
     }
 
 
-
-
-
-
-
+    /**
+     * Load Twig template
+     */
     $loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation");
     $twig = new Twig_Environment($loader);
-    $view = $twig->render("profile.twig", array("user" => $_SESSION['user'], "userData" => $userData));
+    $view = $twig->render("profile.twig", array("user" => $_SESSION['user'], "userData" => $userData, "dialogBlock" => $_SESSION['dialogBlock']));
 
     print($view);
 
 
-    echo "<pre>";
-    print_r($_SESSION['user']);
-    echo "</pre>";
+    /***
+     * todo: REMOVE ALL MESSAGES FROM SESSION AFTER PAGE RELOADING
+     */
+    if(isset($_SESSION['reload']) && ($_SESSION['reload'] == 1) && ($_GET['updated'] == 1))
+    {
+        $_SESSION['dialogBlock'] = "";
+        unset($_SESSION['reload']);
+    }
+    elseif(!isset($_SESSION['reload']) && (isset($_GET)))
+    {
+//        header('Location: profile.php');
+    }
+
+
 }
 else
 {
     header("Location: index.php");
 }
+
+
+
+
+
+
 
 
 ob_flush();

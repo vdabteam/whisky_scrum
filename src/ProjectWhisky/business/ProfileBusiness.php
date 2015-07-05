@@ -52,17 +52,27 @@ class ProfileBusiness extends ValidationHelpers
      */
     public function getUserDataByUserId($userId)
     {
-        $userDAO = new UserDAO();
-        return $userDAO->getSomeDataByUserId($userId);
+        $this->userDAO = new UserDAO();
+        return $this->userDAO->getSomeDataByUserId($userId);
     }
 
 
     public function updateUserDataByUserId($userId, $firstname, $lastname, $email)
     {
-        $userDAO = new UserDAO();
-        return $userDAO->updateSomeDataByUserId($userId, $firstname, $lastname, $email);
+        $this->userDAO = new UserDAO();
+        return $this->userDAO->updateSomeDataByUserId($userId, $firstname, $lastname, $email);
     }
 
+
+
+    /**
+     * Updateprofile image path in DB
+     */
+    public function updateUserImagePath($userId, $newImagePath)
+    {
+        $this->userDAO = new UserDAO();
+        return $this->userDAO->changeUserImagePath($userId, $newImagePath);
+    }
 
 
 }

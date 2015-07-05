@@ -70,6 +70,7 @@ jQuery(function(){
      */
     // Triggering 'change password' button
     jQuery(".changePass").click(function(){
+        event.preventDefault(); // prevents link to open page
         jQuery("#passwordBlock").fadeToggle(30);
         jQuery('.passClass').attr('disabled', function(i, v) { return !v; }); // toggles 'disabled' attribute in password input fields
         jQuery('.dontChangePass').fadeToggle(10);
@@ -78,6 +79,7 @@ jQuery(function(){
 
     // Triggering 'don't change password' button
     jQuery(".dontChangePass").click(function(){
+        event.preventDefault(); // prevents link to open page
         jQuery("#passwordBlock").fadeToggle(30);
         jQuery('.passClass').attr('disabled', function(i, v) { return !v; }); // toggles 'disabled' attribute in password input fields
         jQuery('.changePass').fadeToggle(10);
