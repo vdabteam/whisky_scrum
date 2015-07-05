@@ -129,6 +129,35 @@ class UserDAO
     }
 
 
+    /**
+     * Update user image path
+     */
+    public function changeUserImagePath($userId, $newUserImage)
+    {
+        self::connectToDB(); /* Using DB connection */
+
+        $this->sql = "UPDATE users SET image_path = ? WHERE id = ?";
+
+        try
+        {
+            $this->query = $this->handler->prepare($this->sql);
+            $this->query->execute(array($newUserImage, $userId));
+
+            /**
+             * Closing DB connection
+             */
+            $this->query->closeCursor();
+            $this->handler = null;
+
+            return true;
+        }
+        catch (Exception $e)
+        {
+            echo "Error: query failure";
+            return false;
+        }
+    }
+
 
 
 

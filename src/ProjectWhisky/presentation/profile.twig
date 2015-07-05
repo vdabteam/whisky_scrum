@@ -13,16 +13,21 @@
                 <br>
                 <a href="http://stackoverflow.com/questions/5138719/change-default-text-in-input-type-file">info about styling type="file"</a>
                 <br><br>
+                <img src="src/ProjectWhisky/presentation/userimages/{{ userData.image_path }}" alt="user image"/>
+
+                <form action="profile.php" method="post">
+                    <input type="submit" name="removeProfileImageBtn" value="Remove image"/>
+                </form>
                 <form action="profile.php" method="post" enctype="multipart/form-data">
-                    <input id="imgUploader" type="file" name="userImage" >
-                    Image path: {{ userData.image_path }}
                     <br>
+                    <input id="imgUploader" type="file" name="userImage" >
+                    <br><br>
                     <input type="text" value="{{ userData.firstname }}" name="userFirstName" placeholder="Firstname"/>
                     <br>
                     <input type="text" value="{{ userData.lastname }}" name="userLastName" placeholder="Lastname"/>
                     <br>
                     <input type="text" value="{{ userData.email }}" name="userEmail" placeholder="E-mail"/>
-                    <br>
+                    <br><br>
                     <a class="changePass" href="#">Change password</a>
                     <a class="dontChangePass" href="#">Don't change password</a>
                     <div id="passwordBlock">
@@ -36,7 +41,7 @@
                     <br>
                     <input type="submit" name="profileSaveBtn" value="Save"/>
                 </form>
-                {{ files }}
+                {{ dialogBlock }}
             </div>
 
 
