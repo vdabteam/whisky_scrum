@@ -65,7 +65,7 @@
     align-items: center;
 }
 
-.lightbox-panel-register form, .lightbox-panel-login form{
+#profile_edit_form form, .lightbox-panel-register form, .lightbox-panel-login form{
     margin: auto auto;
     width: 30em;
     color: black;
@@ -73,8 +73,9 @@
     padding: 4em;
 }
 
-.lightbox-panel-register input, .lightbox-panel-login input{
+#profile_edit_form input, .lightbox-panel-register input, .lightbox-panel-login input{
     display: list-item;
+    list-style: none;
     padding: 0.4em 0.8em 0.5em;
     background-color: #333;
     width: 100%;
@@ -98,14 +99,18 @@
     color: #7F5B1C;
 }
 
-input[type="submit"]{
+#profile_edit_form input[type="submit"],
+ .lightbox-panel-register input[type="submit"],
+ .lightbox-panel-login input[type="submit"]{
     padding: 0.4em 0.8em 0.5em;
     background: none;
     border: 0.3em solid black;
     color: black;
     font-family: 'open_sansbold';
 }
-input[type="submit"]:hover{
+#profile_edit_form input[type="submit"]:hover,
+ .lightbox-panel-register input[type="submit"]:hover,
+ .lightbox-panel-login input[type="submit"]:hover{
     background-color: #FFB739;
 }
 
@@ -113,18 +118,39 @@ input[type="submit"]:hover{
     font-size: 3em;
 }
 
-.close-login, .close-register{
+.close{
     position: relative;
     margin: 0 auto;
     margin-top: 1em;
     display: inline-block;
 }
-.close-login a, .close-register a{
+.close a{
     color: #CC952D;
 }
-.close-login a:hover, .close-register a:hover{
+.close a:hover{
     text-decoration: underline;
 }
+a.close-panel-login.fa{
+    font-size: 3em;
+    position: absolute;
+    top: -300px;
+    right: -255px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px rgba(127,91,28,1), 0px 2px 0px rgba(127,91,28,0.6), 0px 3px 0px rgba(127,91,28,0.3);
+}
+a.close-panel-register.fa{
+    font-size: 3em;
+    position: absolute;
+    top: -482px;
+    right: -271px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px rgba(127,91,28,1), 0px 2px 0px rgba(127,91,28,0.6), 0px 3px 0px rgba(127,91,28,0.3);
+}
+
+a.fa.fa-times-circle:hover{
+    text-shadow: 0px 0px 3px rgba(0,0,0,0.5);
+    padding-top: 3px;
+}  
 
 /**
 * Password styling:
@@ -133,7 +159,6 @@ input[type="submit"]:hover{
 #passwordBlock{
     padding: 1rem 0;
     display: none;
-
 }
 
 .dontChangePass{

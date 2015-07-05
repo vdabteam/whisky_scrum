@@ -10,19 +10,16 @@
             </header>
             <div id="content_container">
                 <a href="http://www.w3schools.com/php/php_file_upload.asp">info about uploading images 1</a>
-                <br>
-                <a href="http://stackoverflow.com/questions/5138719/change-default-text-in-input-type-file">info about styling type="file"</a>
-                <br><br>
-                <form action="profile.php" method="post" enctype="multipart/form-data">
-                    <input id="imgUploader" type="file" name="userImage" >
-                    Image path: {{ userData.image_path }}
-                    <br>
+                
+                <form id="profile_edit_form" action="profile.php" method="post" enctype="multipart/form-data">
+                    <div class="profile_image_displayer">
+                        <img src="src/ProjectWhisky/presentation/userimages/{{ userData.image_path }}" alt="Profile Picfute of {{ userData.firstname }}"/>
+                        <input class="fake" value="Change Profile Picture...">
+                        <input id="imgUploader" type="file" name="userImage">
+                    </div>
                     <input type="text" value="{{ userData.firstname }}" name="userFirstName" placeholder="Firstname"/>
-                    <br>
                     <input type="text" value="{{ userData.lastname }}" name="userLastName" placeholder="Lastname"/>
-                    <br>
                     <input type="text" value="{{ userData.email }}" name="userEmail" placeholder="E-mail"/>
-                    <br>
                     <a class="changePass" href="#">Change password</a>
                     <a class="dontChangePass" href="#">Don't change password</a>
                     <div id="passwordBlock">
