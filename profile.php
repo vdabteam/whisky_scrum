@@ -195,6 +195,7 @@ if (isset($_SESSION['user']['id']) && (is_int((int)$_SESSION['user']['id'])))
 
 
 
+
     /**
      * Perform password change only if user presses "Change password" button on profile page
      */
