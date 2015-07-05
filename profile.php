@@ -61,7 +61,7 @@ if (isset($_SESSION['user']['id']) && (is_int((int)$_SESSION['user']['id'])))
     /**
      * Get user data by user id: firstname, lastname, e-mail, user image
      */
-    $userData = $profile->getUserDataByUserId($userId); // sended to twig on the end
+    $userData = $profile->getUserDataByUserId($userId); // sended to twig on the  end
 
 
 
