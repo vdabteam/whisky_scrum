@@ -16,28 +16,33 @@
                 </form>
 
                 <form id="profile_edit_form" action="profile.php" method="post" enctype="multipart/form-data">
-                    <div class="profile_image_displayer">
-                        <img src="src/ProjectWhisky/presentation/userimages/{{ userData.image_path }}" alt="Profile Picfute of {{ userData.firstname }}"/>
-                        <input class="fake" value="Change Profile Picture...">
-                        <input id="imgUploader" type="file" name="userImage">
+                    <div class="flex_parent clearfix">
+                        <div class="profile_image_displayer left">
+                            <img src="src/ProjectWhisky/presentation/userimages/{{ userData.image_path }}" alt="Profile Picfute of {{ userData.firstname }}"/>
+                            <input class="fake" value="Change Profile Picture...">
+                            <input id="imgUploader" type="file" name="userImage">
+                        </div>
+
+                        <div class="profile_edit_info left">
+                            <input type="text" value="{{ userData.firstname }}" name="userFirstName" placeholder="Firstname"/>
+                            <input type="text" value="{{ userData.lastname }}" name="userLastName" placeholder="Lastname"/>
+                            <input type="text" value="{{ userData.email }}" name="userEmail" placeholder="E-mail"/>
+                        </div>
+                    </div>
+                    <BR>
+
+                    <div class="change_password_box">
+                        <a class="changePass" href="#">Change password</a>
+                        <a class="dontChangePass" href="#">Don't change password</a>
+                        <div id="passwordBlock">
+                            <input class="passClass" type="password" value="" name="userOldPassword" placeholder="Old password" disabled/>
+                            <input class="passClass" type="password" value="" name="userNewPassword" placeholder="New password" disabled/>
+                            <input class="passClass" type="password" value="" name="userNewPasswordRepeat" placeholder="Repeat password" disabled/>
+                        </div>
                     </div>
 
-                    <input type="text" value="{{ userData.firstname }}" name="userFirstName" placeholder="Firstname"/>
-                    <input type="text" value="{{ userData.lastname }}" name="userLastName" placeholder="Lastname"/>
-                    <input type="text" value="{{ userData.email }}" name="userEmail" placeholder="E-mail"/>
-                    
-                    <a class="changePass" href="#">Change password</a>
-                    <a class="dontChangePass" href="#">Don't change password</a>
-                    <div id="passwordBlock">
-                        <input class="passClass" type="password" value="" name="userOldPassword" placeholder="Old password" disabled/>
-                        <br>
-                        <input class="passClass" type="password" value="" name="userNewPassword" placeholder="New password" disabled/>
-                        <br>
-                        <input class="passClass" type="password" value="" name="userNewPasswordRepeat" placeholder="Repeat password" disabled/>
-                        <br>
-                    </div>
-                    <br>
-                    <input type="submit" name="profileSaveBtn" value="Save"/>
+                    <input type="submit" value="Save"/>
+
                 </form>
                 {{ dialogBlock }}
             </div>
