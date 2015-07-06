@@ -1,6 +1,6 @@
     {% extends "default_template.twig" %}
         {% block title %}
-            Home
+            Profile
         {% endblock %}
 
         {% block content %}
@@ -42,8 +42,8 @@
                     </div>
 
                     <div class="change_password_box">
-                        <a class="changePass" href="#">Change password</a>
-                        <a class="dontChangePass" href="#">Don't change password</a>
+                        <a class="dontChangePass btn btn-primary" href="#"><span class="fa fa-pencil"></span> <span>Stop Changing Password</span></a>
+                        <a class="changePass btn btn-primary" href="#"><span class="fa fa-pencil"></span> <span>Edit Password</span></a>
                         <div id="passwordBlock">
                             <h3>Edit Password:</h3>
                             <input class="passClass" type="password" value="" name="userOldPassword" placeholder="Old password" disabled/>

@@ -29,6 +29,9 @@
     padding: 1rem 0;
     display: none;
 }
+#passwordBlock h3{
+    margin-top: 1rem;
+}
 
 .closeChangePass{
     display: none;

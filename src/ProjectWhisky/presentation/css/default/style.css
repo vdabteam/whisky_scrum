@@ -285,6 +285,7 @@ footer{
 
     header#header_banner.profile_header{ /* shrink mainpage header */
         height: 15em;
+        display: none;
         background-position: left -195px;
         background-image: url("../../presentation/interface/banners/profile.jpg");
     }
@@ -576,9 +577,12 @@ footer{
     .change_password_box{
         -webkit-flex: 2;
         flex: 2;
-        margin-left: 25em;
-        position: relative;
-        top: -10em;
+        margin: -1em 0 1em 25em;
+        position: inherit;
+    }
+
+    .change_password_box a{
+        color: #FFBA39;
     }
 
     .profile_image_displayer input[type="file"]{
@@ -605,7 +609,7 @@ footer{
 /* FUCKIING KNOP */
     .fileUpload{
         position: relative;
-        top:-2.45em;
+        top: -2.3em;
         overflow: hidden;
         margin: 0 auto;
         cursor: pointer;
@@ -646,8 +650,6 @@ footer{
         -moz-user-select: none;
         -ms-user-select: none;
         user-select: none;
-        background-image: none;
-        border: 1px solid transparent;
     }
     .btn-primary{
         color: #FFBA39;
