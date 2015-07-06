@@ -42,17 +42,25 @@ if ((isset($_GET['id'])) && (is_int((int)$_GET['id'])))
     /**
      * Put comments data with user info into an array $participatedUsers
      */
-    foreach ($commentBiz->showComments($_GET["id"]) as $key => $comment)
+    if (!empty($commentBiz->showComments($_GET["id"])))
     {
-        $usersDataFromComments = $userBiz->getUserByComment($comment->getId());
-        $participatedUsers[$key]['commentId'] = $usersDataFromComments->getId();
-        $participatedUsers[$key]['username'] = $usersDataFromComments->getUsername();
-        $participatedUsers[$key]['imagePath'] = $usersDataFromComments->getImagePath();
-        $participatedUsers[$key]['comment'] = $comment->getComment();
-        $participatedUsers[$key]['commentTime'] = $comment->getCommentTime();
-        $participatedUsers[$key]['commentDate'] = $comment->getCommentDate();
+        foreach ($commentBiz->showComments($_GET["id"]) as $key => $comment)
+        {
+            $usersDataFromComments = $userBiz->getUserByComment($comment->getId());
+            $participatedUsers[$key]['commentId'] = $usersDataFromComments->getId();
+            $participatedUsers[$key]['username'] = $usersDataFromComments->getUsername();
+            $participatedUsers[$key]['imagePath'] = $usersDataFromComments->getImagePath();
+            $participatedUsers[$key]['comment'] = $comment->getComment();
+            $participatedUsers[$key]['commentTime'] = $comment->getCommentTime();
+            $participatedUsers[$key]['commentDate'] = $comment->getCommentDate();
 
+        }
     }
+    else
+    {
+        $participatedUsers = array();
+    }
+
 
 
     $loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation");
