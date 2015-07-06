@@ -21,14 +21,13 @@
                         <div class="profile_image_displayer left">
                             <h3>Profile Picture:</h3>
                             <img src="src/ProjectWhisky/presentation/userimages/{{ userData.image_path }}" alt="Profile Pictute of {{ userData.firstname }}"/>
-                            {#<input class="fake" value="{{ imageName }}">
-                            <input id="imgUploader" type="file" name="userImage">#}
 
-                            <input id="uploadFile" placeholder="Choose File" disabled="disabled" />
                             <div class="fileUpload btn btn-primary">
-                                <span>Upload</span>
+                                <span class="fa fa-pencil"></span> <span>Change  Picture</span>
                                 <input id="imgUploader" type="file" class="upload" name="userImage">
                             </div>
+
+                            <input id="uploadFile" placeholder="Choose File" disabled="disabled" />
 
                         </div>
 
@@ -53,7 +52,7 @@
                         </div>
                     </div>
 
-                    <input type="submit" value="Save"/>
+                    <input type="submit" value="SAVE CHANGES"/>
 
                 </form>
                 {{ dialogBlock }}
