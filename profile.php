@@ -161,6 +161,13 @@ if (isset($_SESSION['user']['id']) && (is_int((int)$_SESSION['user']['id'])))
                          * Calling defined function and giving parameters. $profile is an object
                          */
                         updateImagePathInDB($userId, $newImagePath, $profile);
+
+                        if($userData['image_path'] !== "default.jpg")
+                        {
+                            $toRemoveImage = "src/ProjectWhisky/presentation/userimages/" . $userData['image_path'];
+                            unlink($toRemoveImage);
+                        }
+
                     }
                 }
                 else
