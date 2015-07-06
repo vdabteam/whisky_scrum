@@ -544,6 +544,8 @@ footer{
         max-width: 10em;
         max-height: 10em;
         margin: 0.5em 2em 1em;
+        /*-webkit-flex:1;
+        flex:1;*/
     }
     .comment_pic img{
         width: 100%;
@@ -553,6 +555,11 @@ footer{
     .user_comment p{
         color: #777;
     }
+
+/*    .user_comment{        
+        -webkit-flex:3;
+        flex:3;
+    }*/
 
     .comment_timestamp p{
         margin-right: 2em;
