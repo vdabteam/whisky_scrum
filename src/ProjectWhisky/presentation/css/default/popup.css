@@ -3,7 +3,7 @@
 * Color of error messages during the registration or authorization
 */
 .error_reporting, .error_reporting_registration{
-    display: none;
+    visibility: hidden;
     color: #ff0000;
 }
 
@@ -133,7 +133,7 @@
 a.close-panel-login.fa{
     font-size: 3em;
     position: absolute;
-    top: -300px;
+    top: -318px;
     right: -255px;
     text-decoration: none;
     text-shadow: 0px 1px 0px rgba(127,91,28,1), 0px 2px 0px rgba(127,91,28,0.6), 0px 3px 0px rgba(127,91,28,0.3);
@@ -141,7 +141,7 @@ a.close-panel-login.fa{
 a.close-panel-register.fa{
     font-size: 3em;
     position: absolute;
-    top: -482px;
+    top: -500px;
     right: -271px;
     text-decoration: none;
     text-shadow: 0px 1px 0px rgba(127,91,28,1), 0px 2px 0px rgba(127,91,28,0.6), 0px 3px 0px rgba(127,91,28,0.3);
