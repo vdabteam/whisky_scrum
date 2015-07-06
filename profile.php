@@ -163,13 +163,21 @@ if (isset($_SESSION['user']['id']) && (is_int((int)$_SESSION['user']['id'])))
                         updateImagePathInDB($userId, $newImagePath, $profile);
                     }
                 }
+                else
+                {
+                    $_SESSION['dialogBlock'] = "Allowed file size is 2MB";
+                }
             }
+        }
+        else
+        {
+            $_SESSION['dialogBlock'] = "Only .png, .jpg, .jpeg and .gif files are allowed.";
         }
     }
 
 
     /**
-     * Remove image path (images itself remain in userimages folder)
+     * Remove image path (images itself remain in userimages folder)  unlink('test.html');
      */
     if (isset($_POST['removeProfileImageBtn']))
     {
@@ -182,6 +190,8 @@ if (isset($_SESSION['user']['id']) && (is_int((int)$_SESSION['user']['id'])))
          */
         if (updateImagePathInDB($userId, $newImagePath, $profile))
         {
+            $toRemoveImage = "src/ProjectWhisky/presentation/userimages/" . $userData['image_path'];
+            unlink($toRemoveImage);
             $_SESSION['dialogBlock'] = "Your profile image has been removed";
         }
         else
@@ -278,8 +288,6 @@ else
 {
     header("Location: index.php");
 }
-
-
 
 
 
