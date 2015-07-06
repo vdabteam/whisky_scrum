@@ -353,6 +353,9 @@ class UserDAO
             return false;
         }
     }
+
+
+
     public function getUserByComment($commentId)
     {
         self::connectToDB(); /* Using DB connection */
@@ -373,7 +376,7 @@ class UserDAO
             $this->query->closeCursor();
             $this->handler = null;
 
-            $this->list = new User($row['id'], $row['username'],0,0,0,0,0,0, $row['image_path'],0);
+            return $this->list = new User($this->result[0]['id'], $this->result[0]['username'],0,0,0,0,0,0, $this->result[0]['image_path'],0);
         }
         catch (Exception $e)
         {

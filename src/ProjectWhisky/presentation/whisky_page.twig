@@ -118,10 +118,10 @@
 							            </script>
 							            <input type="submit" value="Post message" name="sendMsgBtn"/>
        								 </form>
-                            {% for comment in comments %}
+                            {% for comment in participatedUsers %}
                                 <div class="comment clearfix">
                                     <div class="profile_pic comment_pic left">
-                                        <img alt="profile picture of {{ comment.username }}" src="src/ProjectWhisky/presentation/userimages/default.jpg{{ comment.imagePath }}">
+                                        <img alt="profile picture of {{ comment.username }}" src="src/ProjectWhisky/presentation/userimages/{{ comment.imagePath }}">
                                     </div>
                                     <div class="user_comment left">
                                         <h3>{{comment.username}} says:</h3>

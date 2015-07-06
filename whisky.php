@@ -1,6 +1,9 @@
 <?php
 ob_start();
 
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
+
 session_start();
 
 use src\ProjectWhisky\business\WhiskyBusiness;
@@ -30,18 +33,27 @@ if ((isset($_GET['id'])) && (is_int((int)$_GET['id'])))
     $barrel = $BarrelBiz ->showBarrel($_GET["id"]);
 
     $commentBiz = new CommentBusiness();
-    
     $userBiz = new UserBusiness();
-   //$user = $userBiz->getUserByComment($commentId);
-    
-    
-    
-    
+
+    /**
+     * Put comments data with user info into an array $participatedUsers
+     */
+    foreach ($commentBiz->showComments($_GET["id"]) as $key => $comment)
+    {
+        $usersDataFromComments = $userBiz->getUserByComment($comment->getId());
+        $participatedUsers[$key]['commentId'] = $usersDataFromComments->getId();
+        $participatedUsers[$key]['username'] = $usersDataFromComments->getUsername();
+        $participatedUsers[$key]['imagePath'] = $usersDataFromComments->getImagePath();
+        $participatedUsers[$key]['comment'] = $comment->getComment();
+        $participatedUsers[$key]['commentTime'] = $comment->getCommentTime();
+        $participatedUsers[$key]['commentDate'] = $comment->getCommentDate();
+
+    }
 
 
     $loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation");
     $twig = new Twig_Environment($loader);
-    $view = $twig->render("whisky_page.twig", array("user" => $_SESSION['user'], "whisky" => $whisky, "comments" => $commentBiz->showComments($_GET["id"]), "barrel" => $barrel['type']));
+    $view = $twig->render("whisky_page.twig", array("user" => $_SESSION['user'], "whisky" => $whisky, "barrel" => $barrel['type'], "participatedUsers" => $participatedUsers));
 
     print($view);
 
@@ -58,14 +70,7 @@ if (isset($_POST['sendMsgBtn'])) {
     echo "</pre>";
 }
 
-echo "<pre>";
 
-
-foreach ($commentBiz->showComments($_GET["id"]) as $key => $comment) {
-	print_r($comment->getId());
-}
-    
-    echo "</pre>";
 
 
 
