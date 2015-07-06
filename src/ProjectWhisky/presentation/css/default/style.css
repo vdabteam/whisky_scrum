@@ -604,7 +604,7 @@ footer{
     .change_password_box{
         -webkit-flex: 2;
         flex: 2;
-        margin: -1em 0 1em 25em;
+        margin: -1em 0 1em 35.5%;
         position: inherit;
     }
 
