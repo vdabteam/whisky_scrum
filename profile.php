@@ -188,7 +188,7 @@ if (isset($_SESSION['user']['id']) && (is_int((int)$_SESSION['user']['id'])))
         {
             $_SESSION['dialogBlock'] = "Something went wrong";
         }
-        header('Refresh: 0');
+        header('Location: profile.php?updated=1');
     }
 
 
