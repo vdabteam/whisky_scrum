@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 use src\ProjectWhisky\business\DistilleryBusiness;
 use src\ProjectWhisky\business\WhiskyBusiness;
 use Doctrine\Common\ClassLoader;
@@ -24,6 +27,6 @@ print("</pre>");
 */
 $loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation"); 
 $twig = new Twig_Environment($loader); 
-$view = $twig->render("distillery_page.twig", array( "distillery" => $distillery, "whiskies" => $whiskies));
+$view = $twig->render("distillery_page.twig", array("user" => $_SESSION['user'],  "distillery" => $distillery, "whiskies" => $whiskies));
 
 print($view); 
