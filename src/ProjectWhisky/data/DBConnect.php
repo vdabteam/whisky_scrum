@@ -9,7 +9,7 @@ use PDOException;
  * @package src\ProjectWhisky\data
  * Establishes the database connection
  */
-class DBConnect
+/*class DBConnect
 {
     private $handler;
 
@@ -32,7 +32,7 @@ class DBConnect
             die();
         }
     }
-}
+}*/
 
 
 
@@ -70,7 +70,7 @@ class DBConnect
 
 // VOOR THUISGEBRUIK - RUSLAN
 
-/*
+
 class DBConnect
 {
     private $handler;
@@ -95,5 +95,5 @@ class DBConnect
         }
     }
 }
-*/
+
 
