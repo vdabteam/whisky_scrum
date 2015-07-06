@@ -41,12 +41,24 @@
                                 <th>Barrel</th>
                                 <th>Price</th>
                             </tr>
+<!-- BEGIN WHISKIES LOOP -->                                                        
+                            {% for whisky in whiskies %}
+                                <tr>
+                                    <td><a href="whisky.php?id={{whisky.0}}">{{whisky.1}}</a></td>
+                                    <td>{{whisky.2}}</td>
+                                    <td>{{whisky.3}}</td>
+                                    <td>{{whisky.4}}</td>
+                                    <td>€{{whisky.5}}</td>
+                                </tr>
+                            {% endfor %}    
+                            
+                            <!--
                             <tr>
-                                <td><a href="whisky.php?id={{ whisky.id }}">Naam</a></td>
-                                <td>24</td>
-                                <td>100%</td>
-                                <td>Oak</td>
-                                <td>€ 123</td>
+                                <th>Whisky Name</th>
+                                <th>Age</th>
+                                <th>Alcohol</th>
+                                <th>Barrel</th>
+                                <th>Price</th>
                             </tr>
                             <tr>
                                 <td><a href="whisky.php?id={{ whisky.id }}">Naam</a></td>
@@ -62,6 +74,14 @@
                                 <td>Oak</td>
                                 <td>€ 123</td>
                             </tr>
+                            <tr>
+                                <td><a href="whisky.php?id={{ whisky.id }}">Naam</a></td>
+                                <td>24</td>
+                                <td>100%</td>
+                                <td>Oak</td>
+                                <td>€ 123</td>
+                            </tr>
+                            -->
                         </table>
 
                     </div>
