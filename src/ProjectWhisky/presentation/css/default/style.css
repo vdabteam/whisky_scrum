@@ -624,6 +624,7 @@ footer{
 
     #profile_edit_form input#uploadFile{
         margin-top: -1em;
+        display: none;
     }
 
     .btn{   
