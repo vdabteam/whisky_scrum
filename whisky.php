@@ -58,8 +58,9 @@ if ((isset($_GET['id'])) && (is_int((int)$_GET['id'])))
     $loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation");
     $twig = new Twig_Environment($loader);
 
+    $view = $twig->render("whisky_page.twig", array("user" => $_SESSION['user'], "whisky" => $whisky, "participatedUsers" => $participatedUsers,
+                             "barrel" => $barrel['type'], "region" => $distillery['region'], "distilleryName" => $distillery['distilleriesname']));
 
-    $view = $twig->render("whisky_page.twig", array("user" => $_SESSION['user'], "whisky" => $whisky, "participatedUsers" => $participatedUsers, "barrel" => $barrel['type'], "region" => $distillery['region']));
 
 
     print($view);
