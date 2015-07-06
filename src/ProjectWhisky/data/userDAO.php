@@ -159,15 +159,6 @@ class UserDAO
     }
 
 
-
-
-
-
-
-
-
-
-
     public function findUserByEmail($userEmail)
     {
         self::connectToDB(); /* Using DB connection */
@@ -362,5 +353,40 @@ class UserDAO
             return false;
         }
     }
+    public function getUserByComment($commentId)
+    {
+        self::connectToDB(); /* Using DB connection */
+
+        $this->sql = "SELECT  username, image_path, users.id, user_id
+                        FROM users, comments 
+                        WHERE users.id = user_id AND comments.id = ?";
+
+        try
+        {
+            $this->query = $this->handler->prepare($this->sql);
+            $this->query->execute(array($commentId));
+            $this->result = $this->query->fetchAll(PDO::FETCH_ASSOC);
+
+            /**
+             * Closing DB connection
+             */
+            $this->query->closeCursor();
+            $this->handler = null;
+
+            $this->list = new User($row['id'], $row['username'],0,0,0,0,0,0, $row['image_path'],0);
+        }
+        catch (Exception $e)
+        {
+            echo "Error: query failure";
+            return false;
+        }
+    }
+    
+    
+    
 
 }
+
+
+
+

@@ -6,6 +6,7 @@ session_start();
 use src\ProjectWhisky\business\WhiskyBusiness;
 use src\ProjectWhisky\business\CommentBusiness;
 use src\ProjectWhisky\business\BarrelBusiness;
+use src\ProjectWhisky\business\UserBusiness;
 use Doctrine\Common\ClassLoader;
 
 
@@ -29,6 +30,13 @@ if ((isset($_GET['id'])) && (is_int((int)$_GET['id'])))
     $barrel = $BarrelBiz ->showBarrel($_GET["id"]);
 
     $commentBiz = new CommentBusiness();
+    
+    $userBiz = new UserBusiness();
+   //$user = $userBiz->getUserByComment($commentId);
+    
+    
+    
+    
 
 
     $loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation");
@@ -49,6 +57,16 @@ if (isset($_POST['sendMsgBtn'])) {
     print_r($_POST);
     echo "</pre>";
 }
+
+echo "<pre>";
+
+
+foreach ($commentBiz->showComments($_GET["id"]) as $key => $comment) {
+	print_r($comment->getId());
+}
+    
+    echo "</pre>";
+
 
 
 ob_flush();
