@@ -86,4 +86,5 @@ local.properties
 # TeXlipse plugin
 .texlipse
 
-/src/ProjectWhisky/data/DBConnect.php
+src/ProjectWhisky/data/DBConnect.php
+src/ProjectWhisky/data/DBConnect.php
