@@ -83,7 +83,7 @@ if(isset($_POST['firstname']))
 
 ?>
         <script>
-            jQuery("#register_form").fadeOut(10);
+//            jQuery("#register_form").fadeOut(10);
         </script>
 <?php
 
