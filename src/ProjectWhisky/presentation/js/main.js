@@ -87,8 +87,6 @@ jQuery(function(){
     });
 
 
-
-
     document.getElementById("imgUploader").onchange = function () {
         document.getElementById("uploadFile").value = this.value.substring(12);
         document.getElementById("uploadFile").style.display = "block";
