@@ -569,10 +569,10 @@ footer{
         color: #777;
     }
 
-/*    .user_comment{        
-        -webkit-flex:3;
-        flex:3;
-    }*/
+    #comment_submit{
+        margin: 1em;
+        float: right;
+    }
 
     .comment_timestamp{
         width: 100%;
@@ -675,6 +675,7 @@ footer{
         -moz-user-select: none;
         -ms-user-select: none;
         user-select: none;
+        border: none;
     }
     .btn-primary{
         color: #FFBA39;

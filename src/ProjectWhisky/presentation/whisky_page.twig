@@ -116,7 +116,9 @@
 							                // instance, using default configuration.
 							                CKEDITOR.replace( 'editor1' );
 							            </script>
-							            <input type="submit" value="Post message" name="sendMsgBtn"/>
+                                        <div id="comment_submit">
+                                            <input type="submit" class="btn btn-primary" value="Post Comment" name="sendMsgBtn"/>
+                                        </div>
        								 </form>
 
                             {% for comment in participatedUsers %}
