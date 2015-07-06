@@ -24,14 +24,16 @@ if ((isset($_GET['id'])) && (is_int((int)$_GET['id'])))
 
     $whiskyBiz = new WhiskyBusiness();
     $whisky = $whiskyBiz->getWhisky($_GET["id"]);
+    
+    $BarrelBiz = new BarrelBusiness();
+    $barrel = $BarrelBiz ->showBarrel($_GET["id"]);
 
     $commentBiz = new CommentBusiness();
 
-//$barrelBusiness = new BarrelBusiness();
 
     $loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation");
     $twig = new Twig_Environment($loader);
-    $view = $twig->render("whisky_page.twig", array("user" => $_SESSION['user'], "whisky" => $whisky, "comments" => $commentBiz->showComments($_GET["id"])));
+    $view = $twig->render("whisky_page.twig", array("user" => $_SESSION['user'], "whisky" => $whisky, "comments" => $commentBiz->showComments($_GET["id"]), "barrel" => $barrel['type']));
 
     print($view);
 
@@ -42,6 +44,6 @@ else
 }
 
 
-
+print_r($barrel['type']);
 ob_flush();
 

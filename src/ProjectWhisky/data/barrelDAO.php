@@ -64,27 +64,23 @@ class BarrelDAO
         }
     }
 
-    public function getBarrelById($barrelId)
+    public function getBarrelByWhisky($whiskyId)
     {
         self::connectToDB();
-        $this->sql = "SELECT *
-        FROM barrels
-        WHERE id = :barrelId";
+        $this->sql = "SELECT type, whiskies.id, barrels.id
+        FROM barrels, whiskies
+        WHERE barrels.id = barrel_id and whiskies.id = :whiskyId"  ;
 
         try
         {
             $this->query = $this->handler->prepare($this->sql);
-            $this->query->execute(array('barrelId'=> $barrelId));
+            $this->query->execute(array('whiskyId'=> $whiskyId));
             $this->result = $this->query->fetchAll(PDO::FETCH_ASSOC);
 
             $this->query->closeCursor();
             $this->handler = null;
 
-            foreach ($this->result as $row)
-            {
-               $this->list[] = new Barrel($row['id'], $row['type']);
-            }
-            return $this->list;
+            return $this->result[0];
         }
         catch (Exception $e)
         {

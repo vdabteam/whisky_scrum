@@ -4,6 +4,7 @@
         {% endblock %}
 
         {% block content %}
+        
             <header id="header_banner" class="whisky_header">
                 <div id="header_quote"><p>IceTea On The Rocks</p></div>
             </header>
@@ -28,7 +29,7 @@
                             </div>
                             <div>
                                 <h3>Barrel type:</h3>
-                                <p>{{ barrel.type }}</p>
+                                <p>{{ barrel }}</p>
                             </div>
                             <div>
                                 <h3>Region:</h3>
@@ -109,7 +110,7 @@
                             {% for comment in comments %}
                                 <div class="comment clearfix">
                                     <div class="profile_pic comment_pic left">
-                                        <img alt="profile picture of {{ comment.username }}" src="src/ProjectWhisky/presentation/userimages/default.jpg{{ username.imagePath }}">
+                                        <img alt="profile picture of {{ comment.username }}" src="src/ProjectWhisky/presentation/userimages/default.jpg{{ comment.imagePath }}">
                                     </div>
                                     <div class="user_comment left">
                                         <h3>{{comment.username}} says:</h3>

@@ -15,10 +15,10 @@ class BarrelBusiness
     }
     
     
-    public function showBarrel($barrelId) 
+    public function showBarrel($whiskyId) 
     {
         $barrelDAO = new BarrelDAO();
-        $barrel = $barrelDAO->getBarrelById($barrelId);
+        $barrel = $barrelDAO->getBarrelByWhisky($whiskyId);
         return $barrel;
     }
 }
