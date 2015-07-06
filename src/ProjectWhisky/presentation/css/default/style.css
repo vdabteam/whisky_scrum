@@ -282,6 +282,12 @@ footer{
         background-position: center -100px;
         background-image: url("../../presentation/interface/banners/case.jpg");
     }
+
+    header#header_banner.profile_header{ /* shrink mainpage header */
+        height: 15em;
+        background-position: left -195px;
+        background-image: url("../../presentation/interface/banners/profile.jpg");
+    }
     header#header_banner.distillery_header{ /* shrink mainpage header */
         height: 15em;
         background-position: center -240px;
@@ -582,9 +588,6 @@ footer{
         position: relative;
         top: -3.3em;
         cursor: pointer;
-    }
-    .profile_image_displayer input.fake{
-        cursor: default;
     }
 
     .profile_image_displayer img{
