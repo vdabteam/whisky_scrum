@@ -614,7 +614,7 @@ footer{
         filter: alpha(opacity=0);
     }
 
-    #uploadBtn.upload{
+    #imgUploader.upload{
         margin: 0;
     }
     .btn{   
