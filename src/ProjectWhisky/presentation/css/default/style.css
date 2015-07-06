@@ -529,9 +529,6 @@ footer{
     .comment_controls{
         margin-left: 2em;
     }
-    .comment_controls:hover a{
-        color: darkgray;
-    }
     .comment_controls a:hover{
         color: #FFBA39;
     }
