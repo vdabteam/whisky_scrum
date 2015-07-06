@@ -576,6 +576,7 @@ footer{
 
     .comment_timestamp{
         width: 100%;
+        font-family: "open_sansregular"
     }
 
     .comment_timestamp p{
