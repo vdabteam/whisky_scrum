@@ -376,6 +376,18 @@ footer{
         flex-wrap: wrap;
     }
 
+    .user_comment{
+        -webkit-flex: 3;
+        flex: 3;
+        width: 100%;
+        min-width: 15em;
+        padding-right: 1.5em;
+    }
+    .comment_pic{
+        -webkit-flex:1;
+        flex:1;
+    }
+
     #contentbox{
         -webkit-flex: 1;
         flex: 1;
@@ -422,6 +434,7 @@ footer{
         padding: 0.5em 2em 1.5em 2em;
         font-size: 2em;
     }
+
     #distillery_page h2{
         margin-top: 0em;
     }
@@ -561,9 +574,15 @@ footer{
         flex:3;
     }*/
 
+    .comment_timestamp{
+        width: 100%;
+    }
+
     .comment_timestamp p{
         margin-right: 2em;
         color: gray;
+        margin-top: 0.2em;
+        float: right;
     }
 
     .profile_image_displayer{

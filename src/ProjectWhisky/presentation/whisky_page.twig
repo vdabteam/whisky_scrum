@@ -119,7 +119,7 @@
 							            <input type="submit" value="Post message" name="sendMsgBtn"/>
        								 </form>
                             {% for comment in comments %}
-                                <div class="comment clearfix">
+                                <div class="comment flex_parent clearfix">
                                     <div class="profile_pic comment_pic left">
                                         <img alt="profile picture of {{ comment.username }}" src="src/ProjectWhisky/presentation/userimages/default.jpg{{ comment.imagePath }}">
                                     </div>
