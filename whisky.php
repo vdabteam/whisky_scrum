@@ -44,5 +44,12 @@ else
 }
 
 
+if (isset($_POST['sendMsgBtn'])) {
+	echo "<pre>";
+    print_r($_POST);
+    echo "</pre>";
+}
+
+
 ob_flush();
 

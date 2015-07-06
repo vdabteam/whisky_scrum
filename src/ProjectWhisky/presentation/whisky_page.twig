@@ -107,6 +107,17 @@
                         </div>
                         <div id="comments">
                             <h2 id="description_header">Comments:</h2>
+                                    <form method="post" action="whisky.php?id={{ whisky.id }}" name="commentsForm">
+							            <textarea name="editor1" id="editor1" rows="10" cols="80">
+							            
+							            </textarea>
+							            <script>
+							                // Replace the <textarea id="editor1"> with a CKEditor
+							                // instance, using default configuration.
+							                CKEDITOR.replace( 'editor1' );
+							            </script>
+							            <input type="submit" value="Post message" name="sendMsgBtn"/>
+       								 </form>
                             {% for comment in comments %}
                                 <div class="comment clearfix">
                                     <div class="profile_pic comment_pic left">
