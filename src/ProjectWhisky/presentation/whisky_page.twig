@@ -118,10 +118,12 @@
 							            </script>
 							            <input type="submit" value="Post message" name="sendMsgBtn"/>
        								 </form>
-                            {% for comment in comments %}
+
+                            {% for comment in participatedUsers %}
                                 <div class="comment flex_parent clearfix">
+
                                     <div class="profile_pic comment_pic left">
-                                        <img alt="profile picture of {{ comment.username }}" src="src/ProjectWhisky/presentation/userimages/default.jpg{{ comment.imagePath }}">
+                                        <img alt="profile picture of {{ comment.username }}" src="src/ProjectWhisky/presentation/userimages/{{ comment.imagePath }}">
                                     </div>
                                     <div class="user_comment left">
                                         <h3>{{comment.username}} says:</h3>
@@ -129,12 +131,12 @@
                                     </div>
                                     <div class="comment_timestamp clearfix">
                                         <div class="comment_controls">
-                                            <a href="" alt="Edit comment"><div class="fa fa-pencil"> Edit</div></a>
-                                            <a href="" alt="Remove comment"><div class="fa fa-trash"> Remove</div></a>
-                                            <a href="" alt="Ban {{ comment.username }}"><div class="fa fa-ban"> Insta Ban</div></a>
-                                            <a href="" alt="Reply"><div class="fa fa-reply"> Reply</div></a>
+                                            <a href="" alt="Edit comment"><div class="fa fa-pencil"></div> Edit</a>
+                                            <a href="" alt="Remove comment"><div class="fa fa-trash"></div> Remove</a>
+                                            <a href="" alt="Ban {{ comment.username }}"><div class="fa fa-ban"></div> Insta Ban</a>
+                                            <a href="" alt="Reply"><div class="fa fa-reply"></div> Reply</a>
                                         </div>
-                                        <p class="right fa fa-comment"> Gepost op {{comment.commentDate}} om {{comment.commentTime}}</p>
+                                        <p class="right"><span class="fa fa-comment"></span> Gepost op {{comment.commentDate}} om {{comment.commentTime}}</p>
                                     </div>
                                 </div>
                             {% endfor %}
