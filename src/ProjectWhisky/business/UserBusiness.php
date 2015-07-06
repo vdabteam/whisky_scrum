@@ -73,6 +73,13 @@ class UserBusiness extends ValidationHelpers
 
         return $this->list;
     }
+    public function getUserByComment($commentId)
+    {
+        $this->userDAO = new UserDAO();
+        $this->list = $this->userDAO->getUserByComment($commentId);
+        
+        return $this->list;
+    }
 
 
 
