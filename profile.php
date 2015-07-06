@@ -3,6 +3,7 @@ ob_start();
 
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
+
 /**
  * User profile controller
  */
@@ -255,15 +256,21 @@ if (isset($_SESSION['user']['id']) && (is_int((int)$_SESSION['user']['id'])))
     /***
      * todo: REMOVE ALL MESSAGES FROM SESSION AFTER PAGE RELOADING
      */
-    if(isset($_SESSION['reload']) && ($_SESSION['reload'] == 1) && ($_GET['updated'] == 1))
+
+    if (isset($_GET['updated']) && (empty($_SESSION['dialogBlock'])))
+    {
+        header('Location: profile.php');
+    }
+
+
+    if(isset($_GET['updated']) && ($_GET['updated'] == 1))
     {
         $_SESSION['dialogBlock'] = "";
         unset($_SESSION['reload']);
     }
-    elseif(!isset($_SESSION['reload']) && (isset($_GET)))
-    {
-//        header('Location: profile.php');
-    }
+
+
+
 
 
 }
