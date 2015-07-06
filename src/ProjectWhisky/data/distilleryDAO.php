@@ -90,7 +90,7 @@ class DistilleryDAO
     public function getDistilleryByWhiskyId($whiskyId)
     {
         self::connectToDB();
-        $this->sql = "SELECT region, whiskies.id, distilleries.id
+        $this->sql = "SELECT region, distilleries.name as distilleriesname, whiskies.id, distilleries.id
                     FROM distilleries, whiskies
                     WHERE distilleries.id = distillery_id and whiskies.id = :whiskyId"  ;
 
