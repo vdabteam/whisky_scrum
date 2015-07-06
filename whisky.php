@@ -44,6 +44,5 @@ else
 }
 
 
-print_r($barrel['type']);
 ob_flush();
 
