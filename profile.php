@@ -237,12 +237,17 @@ if (isset($_SESSION['user']['id']) && (is_int((int)$_SESSION['user']['id'])))
     }
 
 
+    
+    if (!isset($file_name))
+    {
+        $file_name = "Change profile image";
+    }
     /**
      * Load Twig template
      */
     $loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation");
     $twig = new Twig_Environment($loader);
-    $view = $twig->render("profile.twig", array("user" => $_SESSION['user'], "userData" => $userData, "dialogBlock" => $_SESSION['dialogBlock']));
+    $view = $twig->render("profile.twig", array("user" => $_SESSION['user'], "userData" => $userData, "dialogBlock" => $_SESSION['dialogBlock'], 'imageName' => $file_name));
 
     print($view);
 

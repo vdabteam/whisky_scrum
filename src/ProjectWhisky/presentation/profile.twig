@@ -21,7 +21,7 @@
                         <div class="profile_image_displayer left">
                             <h3>Profile Picture:</h3>
                             <img src="src/ProjectWhisky/presentation/userimages/{{ userData.image_path }}" alt="Profile Pictute of {{ userData.firstname }}"/>
-                            <input class="fake" value="Change Profile Picture...">
+                            <input class="fake" value="{{ imageName }}">
                             <input id="imgUploader" type="file" name="userImage">
                         </div>
 
@@ -32,6 +32,13 @@
                             <input type="text" value="{{ userData.lastname }}" name="userLastName" placeholder="Lastname"/>
                             <h3>Edit E-mail:</h3>
                             <input type="text" value="{{ userData.email }}" name="userEmail" placeholder="E-mail"/>
+                        </div>
+
+
+                        <input id="uploadFile" placeholder="Choose File" disabled="disabled" />
+                        <div class="fileUpload btn btn-primary">
+                            <span>Upload</span>
+                            <input id="uploadBtn" type="file" class="upload" />
                         </div>
                     </div>
 
