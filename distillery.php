@@ -1,5 +1,6 @@
 <?php
 use src\ProjectWhisky\business\DistilleryBusiness;
+use src\ProjectWhisky\business\WhiskyBusiness;
 use Doctrine\Common\ClassLoader;
 
 /**
@@ -13,8 +14,9 @@ require_once("lib/Twig/Autoloader.php");
 Twig_Autoloader::register(); 
 
 $distilleryBiz = new DistilleryBusiness();
-
+$whiskyBiz = new WhiskyBusiness();
 $distillery = $distilleryBiz->getDistillery($_GET["id"]);
+$whiskies = $whiskyBiz->getWhiskyByDistillery($_GET["id"]);
 /*
 print("<pre>");
 print_r($distillery);
@@ -22,6 +24,6 @@ print("</pre>");
 */
 $loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation"); 
 $twig = new Twig_Environment($loader); 
-$view = $twig->render("distillery_page.twig", array( "distillery" => $distillery));
+$view = $twig->render("distillery_page.twig", array( "distillery" => $distillery, "whiskies" => $whiskies));
 
 print($view); 

@@ -99,7 +99,39 @@ class WhiskyDAO
             return false;
         } 
     }
+    // GetWhiskyByDistillery - T
+    public function getWhiskyByDistillery($distilleryId)
+    {
+       self::connectToDB();
+        $this->sql = "SELECT whiskies.id as whiskiesid, whiskies.name AS whiskiesname, age, strength, type, price
+        FROM distilleries inner join (whiskies inner join barrels on barrel_id = barrels.id) on distilleries.id = whiskies.distillery_id
+        WHERE distilleries.id = $distilleryId";
 
+        try
+        {
+            $this->query = $this->handler->prepare($this->sql);
+            $this->query->execute();
+            $this->result = $this->query->fetchAll(PDO::FETCH_ASSOC);
+
+            $this->query->closeCursor();
+            $this->handler = null;
+
+            
+
+            foreach ($this->result as $row)
+            {
+                $whisky = array($row['whiskiesid'], $row['whiskiesname'], $row['age'], $row['strength'], $row['type'], $row['price']);
+                $this->list[] = $whisky;
+                
+            }
+            return $this->list;
+        }
+        catch (Exception $e)
+        {
+            echo "Error: query failure";
+            return false;
+        }
+    }    
 /* ======== even in comment gezet tot het terug gebruikt word ========
     public function getFilmById($filmId)
     {
@@ -128,5 +160,6 @@ class WhiskyDAO
         }
     }
 */
+
 
 }

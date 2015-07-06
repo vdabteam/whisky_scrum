@@ -19,4 +19,11 @@ class WhiskyBusiness
         $whisky = $whiskyDAO->getWhiskyById($id);
         return $whisky;
     }
+    
+    public function getWhiskyByDistillery($distilleryId)
+    {
+        $whiskyDAO = new WhiskyDAO();
+        $whisky = $whiskyDAO->getWhiskyByDistillery($distilleryId);
+        return $whisky;
+    }        
 }
