@@ -595,8 +595,6 @@ footer{
     }
 
     .profile_image_displayer img{
-        width: auto;
-        height: 100%;
         max-height: 20em;
         max-width: 322px;
         margin: 1em auto 0em;
