@@ -10,13 +10,16 @@
             </header>
             <div id="content_container">
             
+            {% if userData.image_path != "default.jpg" %}
+
                 <form action="profile.php" method="post">
                     <div class="fileRemover btn btn-primary">
                         <span class="fa fa-times"></span> <span>Remove Picture</span>
                         <input type="submit" name="removeProfileImageBtn" id="imgRemover" class="remover" value="Remove Picture"/>
                     </div>
-                    
                 </form>
+
+            {% endif %}
 
                 <form id="profile_edit_form" action="profile.php" method="post" enctype="multipart/form-data">
 
