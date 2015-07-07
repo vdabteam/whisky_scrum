@@ -107,10 +107,11 @@
                         </div>
                         <div id="comments">
                             <h2 id="description_header">Comments:</h2>
+
+                            {#Editor#}
+                            {%  if user.role == 1 or user.role == 2 %}
                                     <form method="post" action="whisky.php?id={{ whisky.id }}" name="commentsForm">
-							            <textarea name="editor1" id="editor1" rows="10" cols="80">
-							            
-							            </textarea>
+							            <textarea name="editor1" id="editor1" rows="10" cols="80"></textarea>
 							            <script>
 							                // Replace the <textarea id="editor1"> with a CKEditor
 							                // instance, using default configuration.
@@ -120,6 +121,13 @@
                                             <input type="submit" class="btn btn-primary" value="Post Comment" name="sendMsgBtn"/>
                                         </div>
        								 </form>
+                            {% else %}
+                                <div class="editorReplacement">
+                                    Please, <a href="#" class="show-login">log in</a> or <a href="#" class="show-register">register</a> to leave a comment.
+                                </div>
+                            {% endif %}
+
+
 
                             {% for comment in participatedUsers %}
                                 <div class="comment flex_parent clearfix">
@@ -129,16 +137,21 @@
                                     </div>
                                     <div class="user_comment left">
                                         <h3>{{comment.username}} says:</h3>
-                                        <p>{{comment.comment}}</p>
+                                        <p>{{comment.comment|raw }}</p>
                                     </div>
+
                                     <div class="comment_timestamp clearfix">
-                                        <div class="comment_controls">
-                                            <a href="" alt="Edit comment"><div class="fa fa-pencil"></div> Edit</a>
-                                            <a href="" alt="Remove comment"><div class="fa fa-trash"></div> Remove</a>
-                                            <a href="" alt="Ban {{ comment.username }}"><div class="fa fa-ban"></div> Insta Ban</a>
-                                            <a href="" alt="Reply"><div class="fa fa-reply"></div> Reply</a>
-                                        </div>
-                                        <p class="right"><span class="fa fa-comment"></span> Gepost op {{comment.commentDate}} om {{comment.commentTime}}</p>
+                                        {% if user.role == 1 or user.role == 2 %}
+                                            <div class="comment_controls">
+                                                <a href="" alt="Edit comment"><div class="fa fa-pencil"></div> Edit</a>
+                                                <a href="" alt="Remove comment"><div class="fa fa-trash"></div> Remove</a>
+                                                {% if user.role == 2 %}
+                                                    <a href="" alt="Ban {{ comment.username }}"><div class="fa fa-ban"></div> Block user</a>
+                                                {% endif %}
+                                                <a href="" alt="Reply"><div class="fa fa-reply"></div> Reply</a>
+                                            </div>
+                                        {% endif %}
+                                        <p class="right"><span class="fa fa-comment"></span> Posted on {{comment.commentDate}} at {{comment.commentTime}}</p>
                                     </div>
                                 </div>
                             {% endfor %}

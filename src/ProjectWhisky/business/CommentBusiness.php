@@ -14,16 +14,25 @@ class CommentBusiness
         $commentList = $commentDAO->getAllComments();
         return $commentList;
     }
-    
-    
+
+
+    /**
+     * Show comments by whisky id
+     */
     public function showComments($whiskyId) 
     {
         $commentDAO = new CommentDAO();
         $commentList = $commentDAO->getCommentByWhisky($whiskyId);
         return $commentList;
     }
-    public function createComment($whiskyid)
-    {
 
+    /**
+     * Insert comment
+     */
+    public function createComment($whiskyid, $userId, $comment)
+    {
+        $commentDAO = new CommentDAO();
+        $commentList = $commentDAO->insertNewComment($whiskyid, $userId, $comment);
+        return $commentList;
     }
 }

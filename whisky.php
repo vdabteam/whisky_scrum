@@ -51,8 +51,12 @@ if ((isset($_GET['id'])) && (is_int((int)$_GET['id'])))
             $participatedUsers[$key]['username'] = $usersDataFromComments->getUsername();
             $participatedUsers[$key]['imagePath'] = $usersDataFromComments->getImagePath();
             $participatedUsers[$key]['comment'] = $comment->getComment();
-            $participatedUsers[$key]['commentTime'] = $comment->getCommentTime();
-            $participatedUsers[$key]['commentDate'] = $comment->getCommentDate();
+            // Formatting time
+            $participatedUsers[$key]['commentTime'] = new DateTime($comment->getCommentTime());
+            $participatedUsers[$key]['commentTime'] = $participatedUsers[$key]['commentTime']->format('H:i');
+            // Formatting date
+            $participatedUsers[$key]['commentDate'] = new DateTime($comment->getCommentDate());
+            $participatedUsers[$key]['commentDate'] = $participatedUsers[$key]['commentDate']->format('d/m/Y');
 
         }
     }
@@ -81,14 +85,13 @@ else
 
 
 if (isset($_POST['sendMsgBtn'])) {
-	echo "<pre>";
-    print_r($_POST);
-    echo "</pre>";
+	$commentBiz->createComment($_GET['id'], $_SESSION['user']['id'], $_POST['editor1']);
+    header("Refresh :0");
 }
 
-
-
+echo "<pre>";
+print_r($_SESSION);
+echo "</pre>";
 
 
 ob_flush();
-
