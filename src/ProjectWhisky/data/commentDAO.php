@@ -65,6 +65,9 @@ class CommentDAO
         }
     }
 
+    /**
+     * Get comment by whisky id
+     */
     public function getCommentByWhisky($whiskyId)
     {
         self::connectToDB();
@@ -94,5 +97,31 @@ class CommentDAO
         }
     }
 
+
+    /**
+     * Insert new comment into whisky page
+     */
+    public function insertNewComment($whiskyid, $userId, $comment)
+    {
+        self::connectToDB();
+
+        $this->sql = "INSERT INTO comments (whisky_id, user_id, comment, time, date) VALUES (?, ?, ?, NOW(), NOW())";
+
+        try
+        {
+            $this->query = $this->handler->prepare($this->sql);
+            $this->query->execute(array($whiskyid, $userId, $comment));
+
+            $this->query->closeCursor();
+            $this->handler = null;
+
+            return true;
+        }
+        catch (Exception $e)
+        {
+            echo "Error: query failure";
+            return false;
+        }
+    }
 
 }
