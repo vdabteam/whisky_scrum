@@ -35,4 +35,24 @@ class CommentBusiness
         $commentList = $commentDAO->insertNewComment($whiskyid, $userId, $comment);
         return $commentList;
     }
+
+    /**
+     * Delete comment
+     */
+    public function removeComment($commentId)
+    {
+        $commentDAO = new CommentDAO();
+        $commentList = $commentDAO->deleteComment($commentId);
+        return $commentList;
+    }
+
+    /**
+     * Controle if comment exists
+     */
+    public function controleCommentExistence($commentId)
+    {
+        $commentDAO = new CommentDAO();
+        $commentList = $commentDAO->checkCommentExistence($commentId);
+        return $commentList;
+    }
 }

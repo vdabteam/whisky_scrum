@@ -132,7 +132,43 @@ class WhiskyDAO
             echo "Error: query failure";
             return false;
         }
-    }    
+    }
+    
+    //public function getWhiskiesBySearch($whiskyRegion, $barrelId, $strengthMin, $strengthMax, $totalMin, $totalMax)
+    public function getWhiskiesBySearch($barrelId, $strengthMin, $strengthMax)
+     {
+       self::connectToDB();
+        $this->sql = "SELECT whiskies.id as whiskiesid, whiskies.name as whiskiesname, distillery_id, price, age, strength, barrel_id, image_path, hidden, creation_date, rating_aroma, rating_color, rating_taste, rating_aftertaste, text_aroma, text_color, text_taste, text_aftertaste, review, user_id
+                        FROM whiskies
+                        WHERE barrel_id = :barrelId AND strength > :strengthMin AND strength < :strengthMax
+                        ORDER BY whiskies.id";
+        try
+        {
+           $this->query = $this->handler->prepare($this->sql);
+            $this->query->execute(array('barrelId'=> $barrelId, 'strengthMin'=> $strengthMin, 'strengthMax' => $strengthMax));
+            $this->result = $this->query->fetchAll(PDO::FETCH_ASSOC);
+
+            $this->query->closeCursor();
+            $this->handler = null;
+
+            
+
+            foreach ($this->result as $row)
+            {
+                $this->list[] = new Whisky($row['whiskiesid'], $row['whiskiesname'], $row['distillery_id'], $row['price'], $row['age'],
+                                            $row['strength'], $row['barrel_id'], $row['image_path'], $row['hidden'], $row['creation_date'],
+                                            $row['rating_aroma'],$row['rating_color'],$row['rating_taste'],$row['rating_aftertaste'],
+                                            $row['text_aroma'],$row['text_color'],$row['text_taste'],$row['text_aftertaste'],$row['review'], 
+                                            $row['user_id']);
+            }
+            return $this->list;
+        }
+        catch (Exception $e)
+        {
+            echo "Error: query failure";
+            return false;
+        }
+    }
 /* ======== even in comment gezet tot het terug gebruikt word ========
     public function getFilmById($filmId)
     {

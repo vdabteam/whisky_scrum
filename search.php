@@ -7,15 +7,28 @@ ini_set("display_errors", 1);
 session_start();
 
 use src\ProjectWhisky\business\WhiskyBusiness;
+use src\ProjectWhisky\business\BarrelBusiness;
+use src\ProjectWhisky\business\DistilleryBusiness;
 use Doctrine\Common\ClassLoader;
 
 
+require_once('Doctrine/Common/ClassLoader.php');
+$classLoader = new ClassLoader("src");
+$classLoader->register();
+
+require_once("lib/Twig/Autoloader.php");
+Twig_Autoloader::register();
+    
+$whiskyBiz = new WhiskyBusiness();
+$whiskyList = $whiskyBiz->getWhiskyBySearch($_GET["barrel_id"], $_GET["strength_min"], $_GET["strength_max"]);
 
 
 $loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation");
 $twig = new Twig_Environment($loader);
 
-    $view = $twig->render("test.twig", array("user" => $_SESSION['user']));
+$view = $twig->render("whisky_search.twig", array("user" => $_SESSION['user'], "whiskies"=>$whiskyList));
+
+print($view);
 
 
 
