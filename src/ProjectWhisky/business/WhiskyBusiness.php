@@ -33,4 +33,18 @@ class WhiskyBusiness
         $whiskyList = $WhiskyDAO->getWhiskiesBySearch($barrelId, $strengthMin, $strengthMax);
         return $whiskyList;
     }
+    
+    public function addWhisky($name, $distillery, $price, $age, $strength, $barrel_id, $image_path, $hidden, $rating_aroma, $rating_color, $rating_taste, $rating_aftertaste, $text_aroma, $text_color, $text_taste, $text_aftertaste, $review, $user_id)
+    {        
+        $whiskyDAO = new WhiskyDAO();
+        $whisky = $whiskyDAO->addWhisky($name, $distillery, $price, $age, $strength, $barrel_id, $image_path, $hidden, $rating_aroma, $rating_color, $rating_taste, $rating_aftertaste, $text_aroma, $text_color, $text_taste, $text_aftertaste, $review, $user_id);
+        return $whisky;         
+    }
+    
+    public function editWhisky()
+    {
+        $whiskyDAO = new WhiskyDAO();
+        $whisky = $whiskyDAO->editWhisky($name, $distillery, $price, $age, $strength, $barrel_id, $image_path, $hidden, $rating_aroma, $rating_color, $rating_taste, $rating_aftertaste, $text_aroma, $text_color, $text_taste, $text_aftertaste, $review, $user_id);
+        return $whisky; 
+    }
 }

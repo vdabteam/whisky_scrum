@@ -169,6 +169,50 @@ class WhiskyDAO
             return false;
         }
     }
+    
+    public function addWhisky($name, $distillery, $price, $age, $strength, $barrel_id, $image_path, $hidden, $rating_aroma, $rating_color, $rating_taste, $rating_aftertaste, $text_aroma, $text_color, $text_taste, $text_aftertaste, $review, $user_id)
+    {
+           self::connectToDB();
+        $this->sql = "insert into whiskies (name, distillery_id, price, age, strength, barrel_id, image_path, hidden, creation_date, rating_aroma, rating_color, rating_taste, rating_aftertaste, text_aroma, text_color, text_taste, text_aftertaste, review, user_id)
+values ($name, $distillery, $price, $age, $strength, $barrel_id, $image_path, $hidden, CURDATE(), $rating_aroma, $rating_color, $rating_taste, $rating_aftertaste, $text_aroma, $text_color, $text_taste, $text_aftertaste, $review, $user_id)";
+
+        try
+        {
+            $this->query = $this->handler->prepare($this->sql);
+            $this->query->execute();
+            
+            $this->query->closeCursor();
+            $this->handler = null;
+            return true;            
+        }
+        catch (Exception $e)
+        {
+            echo "Error: query failure";
+            return false;
+        }
+    }
+    
+    public function editWhisky($name, $distillery_id, $price, $age, $strength, $barrel_id, $image_path, $hidden, $rating_aroma, $rating_color, $rating_taste, $rating_aftertaste, $text_aroma, $text_color, $text_taste, $text_aftertaste, $review, $whisky_id)
+    {
+           self::connectToDB();
+        $this->sql = "update whiskies set name=$name, distillery_id=$distillery_id, price=$price, age=$age, strength=$strength, barrel_id=$barrel_id, image_path=$image_path, hidden=$hidden, rating_aroma=$rating_aroma, rating_color=$rating_color, rating_taste=$rating_taste, rating_aftertaste=$rating_aftertaste, text_aroma=$text_aroma, text_color=$text_color, text_taste=$text_taste, text_aftertaste=$text_aftertaste, review=$review
+where id = $whisky_id";
+
+        try
+        {
+            $this->query = $this->handler->prepare($this->sql);
+            $this->query->execute();
+            
+            $this->query->closeCursor();
+            $this->handler = null;
+            return true;            
+        }
+        catch (Exception $e)
+        {
+            echo "Error: query failure";
+            return false;
+        }
+    }
 /* ======== even in comment gezet tot het terug gebruikt word ========
     public function getFilmById($filmId)
     {
