@@ -13,7 +13,7 @@ use src\ProjectWhisky\business\UserBusiness;
 use src\ProjectWhisky\business\DistilleryBusiness;
 use Doctrine\Common\ClassLoader;
 
-
+// TODO: validatie van ingevoerde gegevens uitvoeren in GET
 
 if ((isset($_GET['id'])) && (is_int((int)$_GET['id'])))
 {
