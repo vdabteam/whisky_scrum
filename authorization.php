@@ -73,6 +73,7 @@ if(isset($_POST['emailField']))
 
         $_SESSION['user']['id'] = $user->getId(); //Store userIn into session
         $_SESSION['user']['firstname'] = $user->getFirstname(); // Store user firstname into session
+        $_SESSION['user']['username'] = $user->getUsername();
 
 
         echo "<span class='success'>You're in</span>";
