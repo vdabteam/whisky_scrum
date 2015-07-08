@@ -18,7 +18,7 @@
         <link rel="stylesheet" href="src/ProjectWhisky/presentation/css/iconfonts/css/font-awesome.min.css">
         <script src="src/ProjectWhisky/presentation/js/vendor/modernizr-2.8.3.min.js"></script>
         <script src="lib/ckeditor/ckeditor.js"></script>
-        {#<script src="http://cdn.ckeditor.com/4.5.1/standard/ckeditor.js"></script>#}
+        {# <script src="http://cdn.ckeditor.com/4.5.1/standard/ckeditor.js"></script> #}
     </head>
     <body>
         <!--[if lt IE 8]>
@@ -29,10 +29,13 @@
         <nav id="navbar" class="fullwidth top">
             <!-- Full top navigator -->
             <div class="navbar_icons clearfix">
+                <ul class="left">
+                    <li id="logo"></li>
+                </ul>
                 <ul class="right">
                     <li class="navbutton fa fa-search left"><a href="search.php">Search</a></li>
 
-                    {#Show specific menu items to particular users#}
+                    {# Show specific menu items to particular users #}
                     {% if  user.role == 0  %}
                         <li class="navbutton fa fa-sign-in left"><a class="show-login" href="#">Login</a></li>
                         <li class="navbutton fa fa-user-plus left"><a class="show-register" href="#">Register</a></li>
@@ -52,7 +55,7 @@
             </div>
         </nav>
         
-        {#Registration pop-up#}
+        {# Registration pop-up #}
         <div class="lightbox-panel-register">
             <div class="modal">
                 <form name="register_form" id="register_form" method="post" action="registration.php">
@@ -75,7 +78,7 @@
             </div>
         </div>
 
-        {#Log in pop-up#}
+        {# Log in pop-up #}
         <div class="lightbox-panel-login">
             <div class="modal">
                 <form name="loginform" id="login_form" action="authorization.php" method="post">

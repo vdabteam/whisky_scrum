@@ -129,6 +129,16 @@ footer{
     border-bottom: 3px solid #CC952D;
 }
 
+#logo{
+    height: 16px;
+    display: inline-block;
+    margin-left: 1.8em;
+    margin-right: 0.4em;
+    color: white;
+    line-height: 1.2em;
+    font-family: 'open_sansbold';
+}
+
 /* Desktop */
 @media (min-width: 769px){
 
@@ -589,7 +599,6 @@ footer{
         text-decoration: underline;
     }
 
-
     #comment_submit{
         margin: 1em;
         float: right;
@@ -672,7 +681,13 @@ footer{
         position: relative;
         overflow: hidden;
         margin: 0 auto;
+        top: 2em;
     }
+    #profile_fileRemover_form{
+        position: absolute;
+        width: 30%;
+    }
+
     #profile_edit_form .fileUpload input.upload{
         position: absolute;
         top: 0;
@@ -685,6 +700,7 @@ footer{
         opacity: 0;
         filter: alpha(opacity=0);
     }
+
     .fileRemover input.remover{
         position: absolute;
         top: 0;
@@ -708,7 +724,7 @@ footer{
     }
 
     .btn{   
-        display: inline-block;
+        display: table;
         padding: 6px 12px;
         margin-bottom: 0;
         font-size: 14px;
