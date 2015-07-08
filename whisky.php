@@ -47,9 +47,10 @@ if ((isset($_GET['id'])) && (is_int((int)$_GET['id'])))
         foreach ($commentBiz->showComments($_GET["id"]) as $key => $comment)
         {
             $usersDataFromComments = $userBiz->getUserByComment($comment->getId());
-            $participatedUsers[$key]['commentId'] = $usersDataFromComments->getId();
+            $participatedUsers[$key]['userId'] = $usersDataFromComments->getId();
             $participatedUsers[$key]['username'] = $usersDataFromComments->getUsername();
             $participatedUsers[$key]['imagePath'] = $usersDataFromComments->getImagePath();
+            $participatedUsers[$key]['commentId'] = $comment->getId();
             $participatedUsers[$key]['comment'] = $comment->getComment();
             // Formatting time
             $participatedUsers[$key]['commentTime'] = new DateTime($comment->getCommentTime());
@@ -88,7 +89,6 @@ if (isset($_POST['sendMsgBtn'])) {
 	$commentBiz->createComment($_GET['id'], $_SESSION['user']['id'], $_POST['editor1']);
     header("Refresh :0");
 }
-
 
 
 ob_flush();
