@@ -67,14 +67,32 @@ if ((isset($_GET['id'])) && (is_int((int)$_GET['id'])))
     }
 
 
+    /*
+     * Insert new comment
+     */
+    if (isset($_POST['sendMsgBtn'])) {
+        $commentBiz->createComment($_GET['id'], $_SESSION['user']['id'], $_POST['editor1']);
+        header("Refresh :0");
+    }
 
+    if (isset($_POST['deleteCommentBtn']))
+    {
+        echo "<pre>";
+        print_r($_POST);
+        echo "</pre>";
+    }
+
+
+
+
+    /**
+     * Send to TWIG
+     */
     $loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation");
     $twig = new Twig_Environment($loader);
 
     $view = $twig->render("whisky_page.twig", array("user" => $_SESSION['user'], "whisky" => $whisky, "participatedUsers" => $participatedUsers,
                              "barrel" => $barrel['type'], "region" => $distillery['region'], "distilleryName" => $distillery['distilleriesname']));
-
-
 
     print($view);
 
@@ -85,10 +103,10 @@ else
 }
 
 
-if (isset($_POST['sendMsgBtn'])) {
-	$commentBiz->createComment($_GET['id'], $_SESSION['user']['id'], $_POST['editor1']);
-    header("Refresh :0");
-}
+
+
+
+
 
 
 ob_flush();

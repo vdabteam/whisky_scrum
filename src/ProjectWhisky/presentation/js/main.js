@@ -77,8 +77,8 @@ jQuery(function(){
         event.preventDefault(); // prevents link to open page
         jQuery("#passwordBlock").fadeToggle(300);
         jQuery('.passClass').attr('disabled', function(i, v) { return !v; }); // toggles 'disabled' attribute in password input fields
-        jQuery('.dontChangePass').fadeToggle(10);
-        jQuery(this).fadeOut(10);
+        jQuery('.dontChangePass').css('display', 'table');
+        jQuery(this).css('display', 'none');
     });
 
     // Triggering 'don't change password' button
@@ -86,8 +86,8 @@ jQuery(function(){
         event.preventDefault(); // prevents link to open page
         jQuery("#passwordBlock").fadeToggle(300);
         jQuery('.passClass').attr('disabled', function(i, v) { return !v; }); // toggles 'disabled' attribute in password input fields
-        jQuery('.changePass').fadeToggle(10);
-        jQuery(this).fadeOut(10);
+        jQuery('.changePass').css('display', 'table');
+        jQuery(this).css('display', 'none');
     });
 
 

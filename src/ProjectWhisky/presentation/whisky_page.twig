@@ -147,9 +147,10 @@
                                                     {#<a href="" alt="Edit comment"><div class="fa fa-pencil"></div> Edit</a>#}
                                                     {#<a href="" alt="Remove comment"><div class="fa fa-trash"></div> Remove</a>#}
 
-                                                    <form action="#">
+                                                    <form name="deleteCommentForm" action="#" method="post">
                                                         <div class="fa fa-trash"></div>
-                                                        <input type="submit" value="remove"/>
+                                                        <input type="hidden" name="commentId" value="{{ comment.commentId }}"/>
+                                                        <input type="submit" value="remove" name="deleteCommentBtn"/>
                                                     </form>
                                                   {#  {% if user.role == 2 %}
                                                         <a href="" alt="Ban {{ comment.username }}"><div class="fa fa-ban"></div> Block user</a>
