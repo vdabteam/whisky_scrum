@@ -25,5 +25,12 @@ class WhiskyBusiness
         $whiskyDAO = new WhiskyDAO();
         $whisky = $whiskyDAO->getWhiskyByDistillery($distilleryId);
         return $whisky;
-    }        
+    }
+    
+    public function getWhiskyBySearch($barrelId, $strengthMin, $strengthMax)   
+    {
+        $WhiskyDAO = new WhiskyDAO();
+        $whiskyList = $WhiskyDAO->getWhiskiesBySearch($barrelId, $strengthMin, $strengthMax);
+        return $whiskyList;
+    }
 }

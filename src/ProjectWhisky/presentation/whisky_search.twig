@@ -8,12 +8,12 @@
                     <h2>Search All Whiskies</h2>
                     <form action="search.php" method="post">
                         <label>
-                            Whisky Name:
-                            <input type="search" name="search_name" placeholder="Whisky Name">
+                            Region:
+                            <input type="search" name="search_name" placeholder="Region">
                         </label>
-                        <label>
-                            Disillery:
-                            <input type="search" name="search_name" placeholder="Distillery Name">
+                         <label>
+                            Barrel:
+                            <input type="search" name="search_name" placeholder="Barrel">
                         </label>
                         <label>
                             Alcohol Percentage:
@@ -23,8 +23,7 @@
                             Total Score:
                             <input type="range" name="search_score" min="0" max="100">
                         </label>
-
-                            <span class="fa fa-search"></span><input type="submit" value="Search">
+						<input type="submit" value="Search">
                     </form>
 
                     <h2>Search results</h2>
@@ -42,20 +41,7 @@
                         {% endfor %}
                     </ul>
 
-                    <h2>All Whiskies</h2>
-                    <ul>
-                        {% for whisky in whiskies %} {# DISPLAY all whiskies#}
-                        <li>
-                            <div class="progress-radial progress-93"> {# replace number with twig variable for score #}
-                                <div class="overlay">93</div> {# replace number with twig variable for score #}
-                            </div>
-                            <a class="whisky_box" href="whisky.php?id={{ whisky.id }}">
-                                <img src="src/ProjectWhisky/presentation/img/{{ whisky.imagePath }}" alt="{{ whisky.name }} Logo">
-                                <div class="whisky_box_name">{{ whisky.name }}</div>
-                            </a>
-                        </li>
-                        {% endfor %}
-                    </ul>
+                    
                 </section>
             </div>
         {% endblock %}

@@ -1,9 +1,10 @@
 {% extends "default_template.twig" %}
 {% block content %}
+{{user.firstname}}<br>
+test
+{% for whisky in whiskies %}
+{{ whisky.name }}
+{% endfor %}
 
-test
-{{ whisky.Name }}
-{{ whisky.getName }}
-test
 
 {% endblock %}
