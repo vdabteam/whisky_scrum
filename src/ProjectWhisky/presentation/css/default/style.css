@@ -565,9 +565,30 @@ footer{
         height: auto;
     }
 
-    .user_comment p{
+    .user_comment{
         color: #777;
+        font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
     }
+    .user_comment h3{
+        color: black;
+    }
+
+    .user_comment strong{
+        font-weight: bold;
+    }
+
+    .user_comment em{
+        font-style: italic;
+    }
+
+    .user_comment a{
+        color: black;
+    }
+
+    .user_comment a:hover{
+        text-decoration: underline;
+    }
+
 
     #comment_submit{
         margin: 1em;
@@ -576,7 +597,7 @@ footer{
 
     .comment_timestamp{
         width: 100%;
-        font-family: "open_sansregular"
+        font-family: "open_sansregular";
     }
 
     .comment_timestamp p{
