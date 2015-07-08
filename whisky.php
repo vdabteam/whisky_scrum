@@ -89,9 +89,6 @@ if (isset($_POST['sendMsgBtn'])) {
     header("Refresh :0");
 }
 
-echo "<pre>";
-print_r($_SESSION);
-echo "</pre>";
 
 
 ob_flush();
