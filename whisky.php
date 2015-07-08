@@ -75,11 +75,16 @@ if ((isset($_GET['id'])) && (is_int((int)$_GET['id'])))
         header("Refresh :0");
     }
 
+    /**
+     * Remove comment
+     */
     if (isset($_POST['deleteCommentBtn']))
     {
-        echo "<pre>";
-        print_r($_POST);
-        echo "</pre>";
+
+//        echo $commentBiz->removeComment($_POST['commentId']);
+        $commentBiz->controleCommentExistence($_POST['commentId']);
+
+
     }
 
 

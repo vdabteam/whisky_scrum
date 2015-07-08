@@ -124,4 +124,58 @@ class CommentDAO
         }
     }
 
+
+    /**
+     * Delete comment
+     */
+    public function deleteComment($commentId)
+    {
+        self::connectToDB();
+
+        $this->sql = "DELETE FROM comments WHERE id = ?";
+
+        try
+        {
+            $this->query = $this->handler->prepare($this->sql);
+            $this->query->execute(array($commentId));
+
+            $this->query->closeCursor();
+            $this->handler = null;
+
+            return true;
+        }
+        catch (Exception $e)
+        {
+            echo "Error: query failure";
+            return false;
+        }
+    }
+
+
+    /**
+     * Check if comment exists before deletion
+     */
+    public function checkCommentExistence($commentId)
+    {
+        self::connectToDB();
+        $this->sql = "SELECT id as commentId, user_id as userId FROM comments WHERE id = ?";
+
+        try
+        {
+            $this->query = $this->handler->prepare($this->sql);
+            $this->query->execute(array($commentId));
+            $this->result = $this->query->fetchAll(PDO::FETCH_ASSOC);
+
+            $this->query->closeCursor();
+            $this->handler = null;
+
+            return $this->result[0];
+        }
+        catch (Exception $e)
+        {
+            echo "Error: query failure";
+            return false;
+        }
+    }
+
 }

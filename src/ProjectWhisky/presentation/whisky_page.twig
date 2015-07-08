@@ -147,7 +147,7 @@
                                                     {#<a href="" alt="Edit comment"><div class="fa fa-pencil"></div> Edit</a>#}
                                                     {#<a href="" alt="Remove comment"><div class="fa fa-trash"></div> Remove</a>#}
 
-                                                    <form name="deleteCommentForm" action="#" method="post">
+                                                    <form name="deleteCommentForm" action="whisky.php?id={{ whisky.id }}" method="post">
                                                         <div class="fa fa-trash"></div>
                                                         <input type="hidden" name="commentId" value="{{ comment.commentId }}"/>
                                                         <input type="submit" value="remove" name="deleteCommentBtn"/>
