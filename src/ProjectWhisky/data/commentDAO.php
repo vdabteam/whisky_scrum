@@ -169,7 +169,7 @@ class CommentDAO
             $this->query->closeCursor();
             $this->handler = null;
 
-            return $this->result[0];
+            return $this->result;
         }
         catch (Exception $e)
         {

@@ -11,6 +11,7 @@ use src\ProjectWhisky\business\CommentBusiness;
 use src\ProjectWhisky\business\BarrelBusiness;
 use src\ProjectWhisky\business\UserBusiness;
 use src\ProjectWhisky\business\DistilleryBusiness;
+use src\ProjectWhisky\exceptions\CommentNotExistsException;
 use Doctrine\Common\ClassLoader;
 
 // TODO: validatie van ingevoerde gegevens uitvoeren in GET
@@ -80,9 +81,23 @@ if ((isset($_GET['id'])) && (is_int((int)$_GET['id'])))
      */
     if (isset($_POST['deleteCommentBtn']))
     {
-
+        try
+        {
+            $commentControl = $commentBiz->controleCommentExistence($_POST['commentId']);
+            echo "<pre>";
+            print_r($commentControl);
+            echo "</pre>";
+        }
+        catch(CommentNotExistsException $e)
+        {
+//            $_SESSION['whiskyDialog'] = "You have not enough permissions to do that";
+            echo "You have not enough permissions...";
+        }
 //        echo $commentBiz->removeComment($_POST['commentId']);
-        $commentBiz->controleCommentExistence($_POST['commentId']);
+
+
+
+
 
 
     }

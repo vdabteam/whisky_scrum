@@ -91,10 +91,16 @@ jQuery(function(){
     });
 
 
-    document.getElementById("imgUploader").onchange = function () {
-        document.getElementById("uploadFile").value = this.value.substring(12);
-        document.getElementById("uploadFile").style.display = "block";
-    };
+
+    var imageUploader = document.getElementById("imgUploader");
+    if(typeof(imageUploader) != "undefined" && imageUploader !== null) {
+        document.getElementById("imgUploader").onchange = function () {
+            document.getElementById("uploadFile").value = this.value.substring(12);
+            document.getElementById("uploadFile").style.display = "block";
+        };
+    }
+
+    
 
 
 }); //END FUNCTION
