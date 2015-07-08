@@ -143,12 +143,12 @@
                                     <div class="comment_timestamp clearfix">
                                         {% if user.role == 1 or user.role == 2 %}
                                             <div class="comment_controls">
-                                                <a href="" alt="Edit comment"><div class="fa fa-pencil"></div> Edit</a>
+                                                {#<a href="" alt="Edit comment"><div class="fa fa-pencil"></div> Edit</a>#}
                                                 <a href="" alt="Remove comment"><div class="fa fa-trash"></div> Remove</a>
-                                                {% if user.role == 2 %}
+                                              {#  {% if user.role == 2 %}
                                                     <a href="" alt="Ban {{ comment.username }}"><div class="fa fa-ban"></div> Block user</a>
-                                                {% endif %}
-                                                <a href="" alt="Reply"><div class="fa fa-reply"></div> Reply</a>
+                                                {% endif %}#}
+                                                {#<a href="" alt="Reply"><div class="fa fa-reply"></div> Reply</a>#}
                                             </div>
                                         {% endif %}
                                         <p class="right"><span class="fa fa-comment"></span> Posted on {{comment.commentDate}} at {{comment.commentTime}}</p>
