@@ -68,39 +68,53 @@ if ((isset($_GET['id'])) && (is_int((int)$_GET['id'])))
     }
 
 
-    /*
-     * Insert new comment
-     */
-    if (isset($_POST['sendMsgBtn'])) {
-        $commentBiz->createComment($_GET['id'], $_SESSION['user']['id'], $_POST['editor1']);
-        header("Refresh :0");
-    }
-
     /**
-     * Remove comment
+     * Check if user actually authorized
      */
-    if (isset($_POST['deleteCommentBtn']))
+    if ((isset($_SESSION['user']['role']) && (($_SESSION['user']['role'] === 1) || ($_SESSION['user']['role'] === 2))))
     {
-        try
-        {
-            $commentControl = $commentBiz->controleCommentExistence($_POST['commentId']);
-            echo "<pre>";
-            print_r($commentControl);
-            echo "</pre>";
+        /*
+         * Insert new comment
+         */
+        if (isset($_POST['sendMsgBtn'])) {
+            $commentBiz->createComment($_GET['id'], $_SESSION['user']['id'], $_POST['editor1']);
+            header("Refresh :0");
         }
-        catch(CommentNotExistsException $e)
+
+        /**
+         * Remove comment
+         */
+        if (isset($_POST['deleteCommentBtn']))
         {
+            try
+            {
+                $commentControl = $commentBiz->controleCommentExistence($_POST['commentId']);
+
+                if((empty($commentControl))) throw new CommentNotExistsException();
+
+                /**
+                 * Admins can remove all messages and Users can remove their messages only
+                 * If in session stored userId doesn't match with the userId dedicated to spcific commentId show an error
+                 */
+                if(($_SESSION['user']['role'] !== 2) && ($commentControl['userId'] !== $_SESSION['user']['id'])) throw new CommentNotExistsException();
+
+                echo "<pre>";
+                print_r($commentControl);
+                echo "</pre>";
+            }
+            catch(CommentNotExistsException $e)
+            {
 //            $_SESSION['whiskyDialog'] = "You have not enough permissions to do that";
-            echo "You have not enough permissions...";
-        }
+                echo "You have not enough permissions...";
+            }
 //        echo $commentBiz->removeComment($_POST['commentId']);
 
 
-
-
-
-
+        }
     }
+
+
+
 
 
 
@@ -125,7 +139,9 @@ else
 
 
 
-
+echo "<pre>";
+print_r($_SESSION['user']);
+echo "</pre>";
 
 
 

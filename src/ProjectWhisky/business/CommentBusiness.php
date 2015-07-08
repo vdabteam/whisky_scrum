@@ -47,12 +47,20 @@ class CommentBusiness
     }
 
     /**
-     * Controle if comment exists
+     * Control if comment exists
      */
     public function controleCommentExistence($commentId)
     {
         $commentDAO = new CommentDAO();
         $commentList = $commentDAO->checkCommentExistence($commentId);
-        return $commentList;
+        if (!empty($commentList))
+        {
+            return $commentList[0];
+        }
+        else
+        {
+            return $commentList;
+        }
+
     }
 }
