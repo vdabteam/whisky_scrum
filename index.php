@@ -33,7 +33,3 @@ $view = $twig->render("home.twig", array( "whiskies" => $whiskyList->getWhiskyLi
                          
 print($view); 
 
-
-echo "<pre>";
-print_r($_SESSION['user']);
-echo "</pre>";
