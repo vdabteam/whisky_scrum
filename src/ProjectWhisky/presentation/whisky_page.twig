@@ -144,18 +144,21 @@
                                         {% if user.role == 1 or user.role == 2 %}
                                             {% if user.id == comment.userId or user.role == 2 %}
                                                 <div class="comment_controls">
-                                                    {#<a href="" alt="Edit comment"><div class="fa fa-pencil"></div> Edit</a>#}
-                                                    {#<a href="" alt="Remove comment"><div class="fa fa-trash"></div> Remove</a>#}
+                                                    {# <a href="" alt="Edit comment"><div class="fa fa-pencil"></div> Edit</a> #}
 
                                                     <form name="deleteCommentForm" action="#" method="post">
-                                                        <div class="fa fa-trash"></div>
                                                         <input type="hidden" name="commentId" value="{{ comment.commentId }}"/>
-                                                        <input type="submit" value="remove" name="deleteCommentBtn"/>
+
+                                                        <div class="commentRemover btn btn-primary no_bg no_padding">
+                                                            <span class="fa fa-trash"></span> <span> Remove</span>
+                                                            <input type="submit"  id="commentRemover" class="remover" value="" name="deleteCommentBtn"/>
+                                                        </div>
                                                     </form>
+
                                                   {#  {% if user.role == 2 %}
                                                         <a href="" alt="Ban {{ comment.username }}"><div class="fa fa-ban"></div> Block user</a>
-                                                    {% endif %}#}
-                                                    {#<a href="" alt="Reply"><div class="fa fa-reply"></div> Reply</a>#}
+                                                    {% endif %} #}
+                                                    {# <a href="" alt="Reply"><div class="fa fa-reply"></div> Reply</a> #}
                                                 </div>
                                             {% endif %}
                                         {% endif %}
