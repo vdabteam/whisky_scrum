@@ -6,10 +6,10 @@
             <div id="content_container">
                 <section class="whisky_view" id="defined_whiskies">
                     <h2>Search All Whiskies</h2>
-                    <form action="search.php" method="post">
+                    <form action="search.php" method="get">
                         <label>
                             Region:
-                            <select name="">
+                            <select name="region">
 	                            {% for distillery in distilleries %}
 		  							<option value="{{ distillery.region }}">{{ distillery.region }}</option>
 		  						{% endfor %}
@@ -18,7 +18,7 @@
 
                          <label>
                             Barrel:
-                            <select name="">
+                            <select name="barrel_id">
 	                            {% for barrel in barrels %}
 		  							<option value="{{ barrel.id }}">{{ barrel.type }}</option>
 		  						{% endfor %}
