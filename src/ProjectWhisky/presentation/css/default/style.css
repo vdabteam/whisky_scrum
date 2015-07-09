@@ -118,7 +118,7 @@ h1{
     width: 100%;
 }
 
-.nav_icons{
+.navbutton{
     display: block;
 }
 
@@ -127,16 +127,6 @@ footer{
     background-color: black;
     color: white;
     border-bottom: 3px solid #CC952D;
-}
-
-#logo{
-    height: 16px;
-    display: inline-block;
-    margin-left: 1.8em;
-    margin-right: 0.4em;
-    color: white;
-    line-height: 1.2em;
-    font-family: 'open_sansbold';
 }
 
 .no_bg{
@@ -158,7 +148,7 @@ footer{
         border-bottom: 3px solid #FFBA39;
 
     }
-    .navbutton a{
+    .navbutton a, #logo a{
         height: 16px;
         display: inline-block;
         margin-right: 1.8em;
@@ -167,8 +157,19 @@ footer{
         line-height: 1.2em;
         font-family: 'open_sansbold';
     }
-    .navbutton a:hover{
+    .navbutton a:hover, #logo a:hover{
         color: #FFBA39;
+    }
+
+
+    #logo{
+        height: 16px;
+        padding-left: 17px;
+
+        background: url("../../logo/logo_white_big.png") left center;
+        background-size: 16px;
+        background-repeat: no-repeat;
+        font-family: 'open_sansbold';
     }
 
     .container{
