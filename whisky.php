@@ -12,11 +12,12 @@ use src\ProjectWhisky\business\BarrelBusiness;
 use src\ProjectWhisky\business\UserBusiness;
 use src\ProjectWhisky\business\DistilleryBusiness;
 use src\ProjectWhisky\exceptions\CommentNotExistsException;
+use src\ProjectWhisky\exceptions\FuckedUpException;
 use Doctrine\Common\ClassLoader;
 
 // TODO: validatie van ingevoerde gegevens uitvoeren in GET
 
-if ((isset($_GET['id'])) && (is_int((int)$_GET['id'])))
+if ((isset($_GET['id'])) && (is_int((int)$_GET['id'])) && (!empty($_GET['id'])))
 {
     /**
      * Connecting doctrine autoloader
@@ -76,9 +77,23 @@ if ((isset($_GET['id'])) && (is_int((int)$_GET['id'])))
         /*
          * Insert new comment
          */
-        if (isset($_POST['sendMsgBtn'])) {
-            $commentBiz->createComment($_GET['id'], $_SESSION['user']['id'], $_POST['editor1']);
-            header("Refresh :0");
+        if (isset($_POST['sendMsgBtn']))
+        {
+            if (strlen($_POST['editor1']) > 13)
+            {
+                $commentBiz->createComment($_GET['id'], $_SESSION['user']['id'], $_POST['editor1']);
+                $_SESSION['messageBlock'] = "Comment added";
+
+                $pathToWhisky = "whisky.php?id=" . $_GET['id'] . "#messageBlockId";
+                header("Location: $pathToWhisky");
+            }
+            else
+            {
+                $_SESSION['messageBlock'] = "You need to write more to place a comment";
+                $pathToWhisky = "whisky.php?id=" . $_GET['id'] . "#messageBlockId";
+                header("Location: $pathToWhisky");
+            }
+
         }
 
         /**
@@ -98,17 +113,27 @@ if ((isset($_GET['id'])) && (is_int((int)$_GET['id'])))
                  */
                 if(($_SESSION['user']['role'] !== 2) && ($commentControl['userId'] !== $_SESSION['user']['id'])) throw new CommentNotExistsException();
 
-                echo "<pre>";
-                print_r($commentControl);
-                echo "</pre>";
+                if(!$commentBiz->removeComment($_POST['commentId'])) throw new FuckedUpException();
+
+                $_SESSION['messageBlock'] = "Comment deleted";
+
+                $pathToWhisky = "whisky.php?id=" . $_GET['id'] . "#messageBlockId";
+                header("Location: $pathToWhisky");
+
             }
             catch(CommentNotExistsException $e)
             {
 //            $_SESSION['whiskyDialog'] = "You have not enough permissions to do that";
-                echo "You have not enough permissions...";
+                $_SESSION['messageBlock'] = "You have not enough permissions...";
+                $pathToWhisky = "whisky.php?id=" . $_GET['id'] . "#messageBlockId";
+                header("Location: $pathToWhisky");
             }
-//        echo $commentBiz->removeComment($_POST['commentId']);
-
+            catch(FuckedUpException $e)
+            {
+                $_SESSION['messageBlock'] = "Something is wrong";
+                $pathToWhisky = "whisky.php?id=" . $_GET['id'] . "#messageBlockId";
+                header("Location: $pathToWhisky");
+            }
 
         }
     }
@@ -125,7 +150,7 @@ if ((isset($_GET['id'])) && (is_int((int)$_GET['id'])))
     $loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation");
     $twig = new Twig_Environment($loader);
 
-    $view = $twig->render("whisky_page.twig", array("user" => $_SESSION['user'], "whisky" => $whisky, "participatedUsers" => $participatedUsers,
+    $view = $twig->render("whisky_page.twig", array("user" => $_SESSION['user'], "messageBlock" => $_SESSION['messageBlock'], "whisky" => $whisky, "participatedUsers" => $participatedUsers,
                              "barrel" => $barrel['type'], "region" => $distillery['region'], "distilleryName" => $distillery['distilleriesname']));
 
     print($view);
@@ -138,11 +163,8 @@ else
 
 
 
-
 echo "<pre>";
-print_r($_SESSION['user']);
+print_r($_GET);
 echo "</pre>";
-
-
 
 ob_flush();
