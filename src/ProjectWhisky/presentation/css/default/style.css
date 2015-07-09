@@ -140,28 +140,57 @@ footer{
     background-color: sandybrown !important;
     outline:0.2em solid sandybrown;
     border:0.2em solid #FFF;
-    color: white !important;
     /*<span class="fa fa-exclamation-circle"></span>*/
 }
 .red{
     background-color: salmon !important;
     outline:0.2em solid salmon;
     border:0.2em solid #FFF;
-    color: white !important;
     /*<span class="fa fa-times-circle"></span>*/
 }
 .green{
     background-color: limegreen !important;
     outline:0.2em solid limegreen;
     border:0.2em solid #FFF;
-    color: white !important;
     /*<span class="fa fa-check-circle"></span>*/
 }
 .blue{
     background-color: deepskyblue !important;
     outline:0.2em solid deepskyblue;
     border:0.2em solid #FFF;
-    color: white !important;
+    /*<span class="fa fa-info-circle"></span>*/
+}
+
+input.yellow{
+    background-color: sandybrown !important;
+    outline:0.2em solid #413001;
+    border:0.2em solid #FFF;
+    color: #413001 !important;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.3);
+    /*<span class="fa fa-exclamation-circle"></span>*/
+}
+input.red{
+    background-color: salmon !important;
+    outline:0.2em solid #400401;
+    border:0.2em solid #FFF;
+    color: #400401 !important;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.3);
+    /*<span class="fa fa-times-circle"></span>*/
+}
+input.green{
+    background-color: limegreen !important;
+    outline:0.2em solid #06441d;
+    border:0.2em solid #FFF;
+    color: #06441d !important;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.3);
+    /*<span class="fa fa-check-circle"></span>*/
+}
+input.blue{
+    background-color: deepskyblue !important;
+    outline:0.2em solid #013045;
+    border:0.2em solid #FFF;
+    color: #013045 !important;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.3);
     /*<span class="fa fa-info-circle"></span>*/
 }
 .no_border{
