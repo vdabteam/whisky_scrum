@@ -117,6 +117,21 @@
     background-color: #FFB739;
 }
 
+#profile_edit_form input[disabled],
+ .lightbox-panel-register input[disabled],
+ .lightbox-panel-login input[disabled]{
+    background-color: darkgray;
+    border: 0.3em solid gray;
+    color: white;
+    cursor: not-allowed;
+}
+#profile_edit_form input[disabled]:hover,
+ .lightbox-panel-register input[disabled]:hover,
+ .lightbox-panel-login input[disabled]:hover{
+    background-color: darkgray;
+    border: 0.3em solid gray;
+}
+
 .lightbox-panel-login h3, .lightbox-panel-register h3{
     font-size: 3em;
 }
