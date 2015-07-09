@@ -16,8 +16,11 @@
         <link rel="stylesheet" href="src/ProjectWhisky/presentation/css/default/popup.css">
         <link rel="stylesheet" href="src/ProjectWhisky/presentation/css/progress_style.css">
         <link rel="stylesheet" href="src/ProjectWhisky/presentation/css/iconfonts/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.css">
+        
         <script src="src/ProjectWhisky/presentation/js/vendor/modernizr-2.8.3.min.js"></script>
         <script src="lib/ckeditor/ckeditor.js"></script>
+        
         {# <script src="http://cdn.ckeditor.com/4.5.1/standard/ckeditor.js"></script> #}
     </head>
     <body>
@@ -47,7 +50,7 @@
                         <li class="navbutton fa fa-sign-out left"><a href="logout.php?logout=true">Logout</a></li>
                     {% elseif  user.role == 2  %}
                         <li class="navbutton fa fa-globe left"><a href="index.php">Website</a></li>
-                        <li class="navbutton fa fa-cogs left"><a href="cpanel_index.php">Control Panel</a></li>
+                        <li class="navbutton fa fa-cogs left"><a href="#cpanel_index.php">Control Panel</a></li>
                         <li class="navbutton fa fa-user left"><a href="profile.php">Profile</a></li>
                         <li class="navbutton fa fa-sign-out left"><a href="logout.php?logout=true">Logout</a></li>
                     {% endif %}
@@ -108,9 +111,12 @@
         
         <!-- Scripts below here -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
         <script>window.jQuery || document.write('<script src="src/ProjectWhisky/presentation/js/vendor/jquery-1.11.3.min.js"><\/script>')</script>
         <script src="src/ProjectWhisky/presentation/js/plugins.js"></script>
         <script src="src/ProjectWhisky/presentation/js/main.js"></script>
+        <script src="src/ProjectWhisky/presentation/js/search.js"></script>
+        
         
     </body>
 </html>
