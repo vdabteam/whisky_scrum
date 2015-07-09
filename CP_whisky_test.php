@@ -1,5 +1,5 @@
 <?php
-ob_start();
+ob_start(); 
 
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
@@ -9,7 +9,6 @@ session_start();
 use src\ProjectWhisky\business\WhiskyBusiness;
 use src\ProjectWhisky\business\BarrelBusiness;
 use src\ProjectWhisky\business\DistilleryBusiness;
-use src\ProjectWhisky\business\UserBusiness;
 use Doctrine\Common\ClassLoader;
 
 
@@ -20,18 +19,13 @@ $classLoader->register();
 require_once("lib/Twig/Autoloader.php");
 Twig_Autoloader::register();
 
-// Get Whisky ID
-$id = isset($_GET["id"])? $_GET["id"]: print("GEEN ID OPGEGEVEN!");
-// Get Whisky Data
-$whiskyBiz = new WhiskyBusiness();
-$whisky_data = $whiskyBiz->getWhisky($id);
-
-
+$whiskyBiz = new WhiskyBusiness;
+$whiskyList = $whiskyBiz->getWhisky(1);
 
 $loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation");
 $twig = new Twig_Environment($loader);
 
-$view = $twig->render("CP_whisky_edit_test.twig", array("whisky" => $whisky_data));
+$view = $twig->render("CP_whisky.twig", array("user" => $_SESSION['user'], "whiskies"=>$whiskyList));
 
 print($view);
 
@@ -39,4 +33,3 @@ print($view);
 
 
 ob_flush();
-
