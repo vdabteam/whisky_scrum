@@ -10,7 +10,7 @@
                         <label>
                             Region:
                             <select name="region">
-                           		<option value="">-- all regions --</option>
+                           		<option value="%">-- all regions --</option>
 	                            {% for distillery in distilleries %}
 		  							<option value="{{ distillery.region }}">{{ distillery.region }}</option>
 		  						{% endfor %}
@@ -20,7 +20,7 @@
                          <label>
                             Barrel:
                             <select name="barrel_id">
-                            	<option value="">-- any barrel --</option>
+                            	<option value="%">-- any barrel --</option>
 	                            {% for barrel in barrels %}
 		  							<option value="{{ barrel.id }}">{{ barrel.type }}</option>
 		  						{% endfor %}
