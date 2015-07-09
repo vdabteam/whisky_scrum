@@ -1,19 +1,28 @@
- <!doctype html>
+<!doctype html>
 <html class="no-js" lang="">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Project Whisky - Home</title>
+        <title>Project Whisky - {% block title %}{% endblock %}</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <link rel="icon" href="src/ProjectWhisky/presentation/logo/logo_black_favicon.png">
         <!-- Place favicon.ico in the root directory -->
 
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/admin/style.css">
-        <link rel="stylesheet" href="css/iconfonts/css/font-awesome.min.css">
-        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+        <link rel="stylesheet" href="src/ProjectWhisky/presentation/css/normalize.css">
+        <link rel="stylesheet" href="src/ProjectWhisky/presentation/css/default/style.css">
+        <link rel="stylesheet" href="src/ProjectWhisky/presentation/css/admin/style.css">
+        <link rel="stylesheet" href="src/ProjectWhisky/presentation/css/admin/popup.css">
+        <link rel="stylesheet" href="src/ProjectWhisky/presentation/css/progress_style.css">
+        <link rel="stylesheet" href="src/ProjectWhisky/presentation/css/iconfonts/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.css">
+        
+        <script src="src/ProjectWhisky/presentation/js/vendor/modernizr-2.8.3.min.js"></script>
+        <script src="lib/ckeditor/ckeditor.js"></script>
+        
+        {# <script src="http://cdn.ckeditor.com/4.5.1/standard/ckeditor.js"></script> #}
     </head>
     <body>
         <!--[if lt IE 8]>
@@ -24,28 +33,65 @@
         <nav id="navbar" class="fullwidth top">
             <!-- Full top navigator -->
             <div class="navbar_icons clearfix">
+                <ul class="left">
+                    <li id="logo" class="navbutton fa left"><a href="index.php">Home</a></li>
+                </ul>
                 <ul class="right">
-                    <li class="navbutton fa fa-search left"><a href="">Search</a></li>
-                    <li class="navbutton fa fa-cogs left"><a href="cpanel_index.html">Control Panel</a></li>
-                    <li class="navbutton fa fa-globe left"><a href="homepage.html">Website</a></li>
-                    <li class="navbutton fa fa-user left"><a href="">Profile</a></li>
-                    <li class="navbutton fa fa-sign-in left"><a href="">Login</a></li>
-                    <li class="navbutton fa fa-user-plus left"><a href="">Register</a></li>
-                    <li class="navbutton fa fa-sign-out left"><a href="">Logout</a></li>
+                    <li class="navbutton fa fa-search left"><a href="search.php">Search</a></li>
+
+                    {# Show specific menu items to particular users #}
+                    {% if  user.role == 0  %}
+                        <li class="navbutton fa fa-sign-in left"><a class="show-login" href="#">Login</a></li>
+                        <li class="navbutton fa fa-user-plus left"><a class="show-register" href="#">Register</a></li>
+                        <li class="navbutton fa fa-globe left"><a href="index.php">Website</a></li>
+
+                    {% elseif  user.role == 1  %}
+                        <li class="navbutton fa fa-globe left"><a href="index.php">Website</a></li>
+                        <li class="navbutton fa fa-user left"><a href="profile.php">Profile</a></li>
+                        <li class="navbutton fa fa-sign-out left"><a href="logout.php?logout=true">Logout</a></li>
+                    {% elseif  user.role == 2  %}
+                        <li class="navbutton fa fa-globe left"><a href="index.php">Website</a></li>
+                        <li class="navbutton fa fa-cogs left"><a href="#cpanel_index.php">Control Panel</a></li>
+                        <li class="navbutton fa fa-user left"><a href="profile.php">Profile</a></li>
+                        <li class="navbutton fa fa-sign-out left"><a href="logout.php?logout=true">Logout</a></li>
+                    {% endif %}
                 </ul>
             </div>
         </nav>
-        <div class="container containershadow">
+        <div class="container">
+            <aside id="sidebar" class="left">
+                <!-- Navigational Sidebar -->
+                <ul id="menu">
+                    <li>
+                        <a class="fa fa-users active" href="users.php">Users</a>
+                    </li>
+                    <li>
+                        <a class="fa fa-glass" href="whiskies.php">Whiskies</a>
+                    </li>
+                    <li>
+                        <a class="fa fa-truck" href="distilleries.php">Distilleries</a>
+                    </li>
+                    <li>
+                        <a class="fa fa-life-ring" href="barrels.php">Barrels</a>
+                    </li>
+                </ul>
+                <p class="copyrights right">whiskey.be &copy; 2015<br>Design by Roger Antonio Vandekerckhove.</p>
+            </aside>
+            <div id="content">
 
         {% block content %}{% endblock %}
-        
-        </div>
 
+            </div>
+        </div>
         
         <!-- Scripts below here -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')</script>
-        <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+        <script>window.jQuery || document.write('<script src="src/ProjectWhisky/presentation/js/vendor/jquery-1.11.3.min.js"><\/script>')</script>
+        <script src="src/ProjectWhisky/presentation/js/plugins.js"></script>
+        <script src="src/ProjectWhisky/presentation/js/main.js"></script>
+        <script src="src/ProjectWhisky/presentation/js/search.js"></script>
+
+
     </body>
 </html>
