@@ -140,24 +140,28 @@ footer{
     background-color: sandybrown !important;
     outline:0.2em solid sandybrown;
     border:0.2em solid #FFF;
+    color: white !important;
     /*<span class="fa fa-exclamation-circle"></span>*/
 }
 .red{
     background-color: salmon !important;
     outline:0.2em solid salmon;
     border:0.2em solid #FFF;
+    color: white !important;
     /*<span class="fa fa-times-circle"></span>*/
 }
 .green{
     background-color: limegreen !important;
     outline:0.2em solid limegreen;
     border:0.2em solid #FFF;
+    color: white !important;
     /*<span class="fa fa-check-circle"></span>*/
 }
 .blue{
     background-color: deepskyblue !important;
     outline:0.2em solid deepskyblue;
     border:0.2em solid #FFF;
+    color: white !important;
     /*<span class="fa fa-info-circle"></span>*/
 }
 .no_border{

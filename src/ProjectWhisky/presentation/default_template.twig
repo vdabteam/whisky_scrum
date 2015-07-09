@@ -63,10 +63,10 @@
             <div class="modal">
                 <form name="register_form" id="register_form" method="post" action="registration.php">
                 <h3>Register</h3>
-                    <input type="text" name="firstname" placeholder="Firstname" required>
-                    <input type="text" name="lastname" placeholder="Lastname" required>
-                    <input class="email" type="text" name="email" placeholder="E-mail" required>
-                    <input type="text" name="username" placeholder="Username" required>
+                    <input type="text" name="firstname" placeholder="Firstname" spellcheck="false" required>
+                    <input type="text" name="lastname" placeholder="Lastname" spellcheck="false" required>
+                    <input class="email" type="text" name="email" placeholder="E-mail" spellcheck="false" required>
+                    <input type="text" name="username" placeholder="Username" spellcheck="false" required>
                     <input type="password" name="password" placeholder="Password" required>
                     <input type="password" name="rpassword" placeholder="Repeat password" required>
                     <input name="registrationBtn" type="submit" value="REGISTER">
@@ -86,7 +86,7 @@
             <div class="modal">
                 <form name="loginform" id="login_form" action="authorization.php" method="post">
                 <h3>Log in</h3>
-                    <input class="email" value="BALBALA" type="text" name="emailField" placeholder="E-mail address" required>
+                    <input class="email" type="text" name="emailField" placeholder="E-mail address" spellcheck="false" required>
                     <input class="password" name="passField" type="password" placeholder="Password" required>
                     <input class="submitBtn" name="loginBtn" type="submit" value="LOG IN">
                     <div class="error_reporting">
@@ -96,7 +96,6 @@
                     <div class="close">
                         <a class="show-register" href="#">REGISTER</a> instead.
                         <a class="close-panel-login fa fa-times-circle" href="#"></a>
-                        <div class="bla">df</div>
                     </div>
                 </form>
             </div>
