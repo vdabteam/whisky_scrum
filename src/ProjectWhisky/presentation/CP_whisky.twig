@@ -7,7 +7,12 @@
             </header>
             <div id="content_container">
                 
-                {{ whisky.name  }}
+                {% for whisky in whiskies  %}
+                    {{ whisky.name }}&nbsp;<a href="CP_whisky_edit.php?id={{whisky.id}}">Edit</a><br>
+                {% endfor  %}
+                <br>
+                <a href="CP_whisky_add.php">Voeg een Whisky toe</a>
+                
                 
             </div>
 {% endblock %}    

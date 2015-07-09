@@ -1,0 +1,31 @@
+{% extends "default_template.twig" %}
+
+{% block content %}
+
+    <header id="header_banner" class="whisky_header">
+        <div id="header_quote"><p>Edit Whisky</p></div>
+    </header>
+        <div id="content_container">
+            {{  whisky.name }}-name<br>
+            {{ whisky.distillery_id }}-name id<br>
+            {{ whisky.price }}-price<br>
+            {{ whisky.age }}-age<br>
+            {{ whisky.strength }}-%<br>
+            {{ whisky.barrel_id }}-barrel<br>
+            {{ whisky.image_path }}-img<br>
+            {{ whisky.hidden }}-hidden<br>
+            {{ whisky.rating_aroma }}-aroma rating<br>
+            {{ whisky.rating_color }}-color rating<br>
+            {{ whisky.rating_taste }}-taste rating<br>
+            {{ whisky.rating_aftertaste }}-aftertaste rating<br>
+            {{ whisky.text_aroma }}-A<br>
+            {{ whisky.text_color }}-<br>
+            {{ whisky.text_taste }}<br>
+            {{ whisky.text_aftertaste }}<br>
+            {{ whisky.review }}<br>
+                
+
+
+
+        </div>
+{% endblock %}    
