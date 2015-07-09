@@ -141,7 +141,7 @@ jQuery(function(){
     {
         if(is.email(email))
         {
-            emailObject.removeClass('red').addClass('green');
+            emailObject.removeClass('red').addClass('green').addClass('no_border');
             //console.log(jQuery(emailObject).val());
         }
         else
