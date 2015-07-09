@@ -15,7 +15,10 @@ use src\ProjectWhisky\exceptions\CommentNotExistsException;
 use src\ProjectWhisky\exceptions\FuckedUpException;
 use Doctrine\Common\ClassLoader;
 
-// TODO: validatie van ingevoerde gegevens uitvoeren in GET
+
+require_once("rolestarter.php"); // gives to user role = 0 on first visit of the website: role = 0 - guest
+
+
 
 if ((isset($_GET['id'])) && (is_int((int)$_GET['id'])) && (!empty($_GET['id'])))
 {
@@ -84,13 +87,13 @@ if ((isset($_GET['id'])) && (is_int((int)$_GET['id'])) && (!empty($_GET['id'])))
                 $commentBiz->createComment($_GET['id'], $_SESSION['user']['id'], $_POST['editor1']);
                 $_SESSION['messageBlock'] = "Comment added";
 
-                $pathToWhisky = "whisky.php?id=" . $_GET['id'] . "#messageBlockId";
+                $pathToWhisky = "whisky.php?id=" . $_GET['id'] . "&action=1#message";
                 header("Location: $pathToWhisky");
             }
             else
             {
                 $_SESSION['messageBlock'] = "You need to write more to place a comment";
-                $pathToWhisky = "whisky.php?id=" . $_GET['id'] . "#messageBlockId";
+                $pathToWhisky = "whisky.php?id=" . $_GET['id'] . "&action=1#message";
                 header("Location: $pathToWhisky");
             }
 
@@ -117,7 +120,7 @@ if ((isset($_GET['id'])) && (is_int((int)$_GET['id'])) && (!empty($_GET['id'])))
 
                 $_SESSION['messageBlock'] = "Comment deleted";
 
-                $pathToWhisky = "whisky.php?id=" . $_GET['id'] . "#messageBlockId";
+                $pathToWhisky = "whisky.php?id=" . $_GET['id'] . "&action=1#message";
                 header("Location: $pathToWhisky");
 
             }
@@ -125,17 +128,24 @@ if ((isset($_GET['id'])) && (is_int((int)$_GET['id'])) && (!empty($_GET['id'])))
             {
 //            $_SESSION['whiskyDialog'] = "You have not enough permissions to do that";
                 $_SESSION['messageBlock'] = "You have not enough permissions...";
-                $pathToWhisky = "whisky.php?id=" . $_GET['id'] . "#messageBlockId";
+                $pathToWhisky = "whisky.php?id=" . $_GET['id'] . "&action=1#message";
                 header("Location: $pathToWhisky");
             }
             catch(FuckedUpException $e)
             {
                 $_SESSION['messageBlock'] = "Something is wrong";
-                $pathToWhisky = "whisky.php?id=" . $_GET['id'] . "#messageBlockId";
+                $pathToWhisky = "whisky.php?id=" . $_GET['id'] . "&action=1#message";
                 header("Location: $pathToWhisky");
             }
 
         }
+    }
+
+
+
+    if (!isset($_SESSION['messageBlock']))
+    {
+        $_SESSION['messageBlock'] = "";
     }
 
 
@@ -162,9 +172,25 @@ else
 }
 
 
+/**
+ * If "action" == 1 && message block is empty, show whisky page
+ */
+if ((isset($_GET['action'])) && ($_GET['action'] == 1) && (empty($_SESSION['messageBlock'])))
+{
+    $pathToWhisky = "whisky.php?id=" . $_GET['id'];
+    header("Location: $pathToWhisky");
+}
 
-echo "<pre>";
-print_r($_GET);
-echo "</pre>";
+/**
+ * Remove "messageBlock" contents if "action" == 1 and "messageBlock" isn't empty
+ */
+if ((isset($_GET['action'])) && ($_GET['action'] == 1) && (!empty($_SESSION['messageBlock'])))
+{
+    $_SESSION['messageBlock'] = "";
+}
+
+
+
+
 
 ob_flush();
