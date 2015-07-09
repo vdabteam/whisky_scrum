@@ -19,7 +19,7 @@ $classLoader->register();
 require_once("lib/Twig/Autoloader.php");
 Twig_Autoloader::register();
 
-if ((isset($_GET['id'])) && (isset($_GET['strength_min'])) && (isset($_GET['strength_max'])))
+if ((isset($_GET['strength_min'])) && (isset($_GET['strength_max'])) && (isset($_GET['score_max'])) && (isset($_GET['score_max'])) )
 {
 
     $whiskyBiz = new WhiskyBusiness();

@@ -91,7 +91,9 @@ jQuery(function(){
     });
 
 
-
+    /**
+     * Show selected image in 'uploadFile' block
+     */
     var imageUploader = document.getElementById("imgUploader");
     if(typeof(imageUploader) != "undefined" && imageUploader !== null) {
         document.getElementById("imgUploader").onchange = function () {
@@ -99,6 +101,56 @@ jQuery(function(){
             document.getElementById("uploadFile").style.display = "block";
         };
     }
+
+
+    /**
+     * USER INPUT DATA VALIDATION
+     */
+/*    document.addEventListener("keyup", show, true);
+
+    function show()
+    {
+        var x = document.getElementById("email");
+
+        x2 = x.value.trim();
+//                x = x.value;
+        var messageField = document.getElementsByClassName("email");
+        if(is.email(x2))
+        {
+            console.log(x.value);
+        }
+        else
+        {
+            console.log(x.value);
+        }
+    }*/
+
+
+
+
+
+
+    jQuery('.email').keyup(function(){
+        emailValue = jQuery(this).val().trim();
+
+        validateEmail(emailValue, jQuery(this));
+
+    });
+
+    function validateEmail(email, emailObject)
+    {
+        if(is.email(email))
+        {
+            emailObject.removeClass('red').addClass('green');
+            //console.log(jQuery(emailObject).val());
+        }
+        else
+        {
+            emailObject.removeClass('green').addClass('red');
+            //console.log(email + " is not an email");
+        }
+    }
+
 
 
 
