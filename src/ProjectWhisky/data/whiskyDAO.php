@@ -135,17 +135,18 @@ class WhiskyDAO
     }
     
     //public function getWhiskiesBySearch($whiskyRegion, $barrelId, $strengthMin, $strengthMax, $totalMin, $totalMax)
-    public function getWhiskiesBySearch($barrelId, $strengthMin, $strengthMax, $scoreMin, $scoreMax)
+    public function getWhiskiesBySearch($barrelId, $strengthMin, $strengthMax, $scoreMin, $scoreMax, $region)
      {
        self::connectToDB();
         $this->sql = "SELECT whiskies.id as whiskiesid, whiskies.name as whiskiesname, distillery_id, price, age, strength, barrel_id, image_path, hidden, creation_date, rating_aroma, rating_color, rating_taste, rating_aftertaste, text_aroma, text_color, text_taste, text_aftertaste, review, user_id
-                      FROM whiskies
-                      WHERE barrel_id = :barrelId AND strength > :strengthMin AND strength < :strengthMax AND ((rating_aroma + rating_color + rating_taste + rating_aftertaste) * 0.125) > :scoreMin AND ((rating_aroma + rating_color + rating_taste + rating_aftertaste) * 0.125) < :scoreMax
+                      FROM distilleries INNER JOIN whiskies ON distilleries.id = whiskies.distillery_id
+                      WHERE barrel_id = :barrelId AND strength > :strengthMin AND strength < :strengthMax AND ((rating_aroma + rating_color + rating_taste + rating_aftertaste) * 0.125) > :scoreMin AND ((rating_aroma + rating_color + rating_taste + rating_aftertaste) * 0.125) < :scoreMax 
+                      AND distilleries.region = :region
                       ORDER BY whiskies.id";
         try
         {
            $this->query = $this->handler->prepare($this->sql);
-            $this->query->execute(array('barrelId'=> $barrelId, 'strengthMin'=> $strengthMin, 'strengthMax' => $strengthMax, 'scoreMin' => $scoreMin, 'scoreMax' => $scoreMax));
+            $this->query->execute(array('barrelId'=> $barrelId, 'strengthMin'=> $strengthMin, 'strengthMax' => $strengthMax, 'scoreMin' => $scoreMin, 'scoreMax' => $scoreMax, 'region' => $region));
             $this->result = $this->query->fetchAll(PDO::FETCH_ASSOC);
 
             $this->query->closeCursor();

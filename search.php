@@ -23,7 +23,7 @@ if ((isset($_GET['id'])) && (isset($_GET['strength_min'])) && (isset($_GET['stre
 {
 
     $whiskyBiz = new WhiskyBusiness();
-    $whiskyList = $whiskyBiz->getWhiskyBySearch($_GET["barrel_id"], $_GET["strength_min"], $_GET["strength_max"]);
+    $whiskyList = $whiskyBiz->getWhiskyBySearch($_GET["barrel_id"], $_GET["strength_min"], $_GET["strength_max"], $_GET["score_min"], $_GET["score_max"], $_GET["region"]);
     
     $BarrelBiz = new BarrelBusiness();
     $barrelList = $BarrelBiz->showAllBarrels();
