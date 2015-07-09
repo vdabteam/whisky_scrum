@@ -110,6 +110,7 @@
     border: 0.3em solid black;
     color: black;
     font-family: 'open_sansbold';
+
 }
 #profile_edit_form input[type="submit"]:hover,
  .lightbox-panel-register input[type="submit"]:hover,

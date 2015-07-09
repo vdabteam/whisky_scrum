@@ -106,35 +106,13 @@ jQuery(function(){
     /**
      * USER INPUT DATA VALIDATION
      */
-/*    document.addEventListener("keyup", show, true);
+    validatedEmail = false;
+    validatedPassword = false;
 
-    function show()
-    {
-        var x = document.getElementById("email");
-
-        x2 = x.value.trim();
-//                x = x.value;
-        var messageField = document.getElementsByClassName("email");
-        if(is.email(x2))
-        {
-            console.log(x.value);
-        }
-        else
-        {
-            console.log(x.value);
-        }
-    }*/
-
-
-
-
-
-
-    jQuery('.email').keyup(function(){
-        emailValue = jQuery(this).val().trim();
-
-        validateEmail(emailValue, jQuery(this));
-
+    // E-mail validation
+    jQuery('.email').blur(function(){
+        var emailValue = jQuery(this).val().trim();
+        validatedEmail = validateEmail(emailValue, jQuery(this));
     });
 
     function validateEmail(email, emailObject)
@@ -142,15 +120,51 @@ jQuery(function(){
         if(is.email(email))
         {
             emailObject.removeClass('red').addClass('green');
-            //console.log(jQuery(emailObject).val());
+            return true;
         }
         else
         {
             emailObject.removeClass('green').addClass('red');
-            //console.log(email + " is not an email");
+            return false;
         }
     }
 
+
+    // Password validation
+    jQuery('.password').blur(function(){
+        var passwordValue = jQuery(this).val().trim();
+        validatedPassword = validatePassword(passwordValue, jQuery(this));
+    });
+
+    function validatePassword(password, passwordObject)
+    {
+        var passRegExp = password.match(/^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$/);
+
+        if(passRegExp == password)
+        {
+            passwordObject.removeClass('red').addClass('green');
+            return true;
+        }
+        else
+        {
+            passwordObject.removeClass('green').addClass('red');
+            return false;
+        }
+    }
+
+
+    jQuery('.password, .email').blur(function(){
+        console.log(validatedEmail);
+        console.log(validatedPassword);
+        if((validatedEmail == true) && (validatedPassword == true))
+        {
+            jQuery('.submitBtn').prop('disabled', false);
+        }
+        else
+        {
+            jQuery('.submitBtn').prop('disabled', true);
+        }
+    });
 
 
 
