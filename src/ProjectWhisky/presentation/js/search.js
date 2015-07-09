@@ -34,4 +34,5 @@ $("input.sliderValue").change(function() {
     $("#sliderscore").slider("values", $this.data("index"), $this.val());
 });
 
+
 }); //END FUNCTION
