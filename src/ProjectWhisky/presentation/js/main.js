@@ -141,13 +141,13 @@ jQuery(function(){
     {
         if(is.email(email))
         {
-            emailObject.addClass('.green');
-            console.log(jQuery(emailObject).val());
+            emailObject.removeClass('red').addClass('green');
+            //console.log(jQuery(emailObject).val());
         }
         else
         {
-            emailObject.addClass('.red');
-            console.log(email + " is not an email");
+            emailObject.removeClass('green').addClass('red');
+            //console.log(email + " is not an email");
         }
     }
 
