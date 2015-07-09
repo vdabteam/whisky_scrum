@@ -128,12 +128,12 @@
         <script src="src/ProjectWhisky/presentation/sliders/jQAllRangeSliders-min.js"></script>
         <script>
             //<!--
-              $("#score_range").editRangeSlider({step: 0.5, defaultValues:{min: 0, max: 10}, range: {min: 0, max: 10}, formatter:function(val){
+              $("#score_range").editRangeSlider({step: 0.5, defaultValues:{min: 0, max: 10}, bounds:{min: 0, max: 10}, formatter:function(val){
                                                         var decimal = val - Math.round(val);
                                                         return decimal == 0 ? val.toString() + ".0" : val.toString();
                                                     }
                                                 });
-              $("#alcohol_range").editRangeSlider({step: 1, defaultValues:{min: 1, max: 100}, range: {min: 1, max: 100}});
+              $("#alcohol_range").editRangeSlider({step: 1, defaultValues:{min: 1, max: 100}, bounds:{min: 10, max: 100}});
             //-->
         </script>
         
