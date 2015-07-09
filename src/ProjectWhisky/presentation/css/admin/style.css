@@ -224,6 +224,10 @@ aside#sidebar #menu li a.active:after {
 	border:0.2em solid #FFF;
     /*<span class="fa fa-info-circle"></span>*/
 }
+.no_border{
+  border: none;
+  outline: none;
+}
 
 #notifier span.fa{
     margin-right: 1em;

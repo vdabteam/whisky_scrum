@@ -11,7 +11,7 @@
                             Region:
                             <select name="">
 	                            {% for distillery in distilleries %}
-		  							<option value="{{distillery.region}}">{{distillery.region}}</option>
+		  							<option value="{{ distillery.region }}">{{ distillery.region }}</option>
 		  						{% endfor %}
 							</select>
                         </label>
@@ -19,7 +19,7 @@
                             Barrel:
                             <select name="">
 	                            {% for barrel in barrels %}
-		  							<option value="{{barrel.id}}">{{barrel.type}}</option>
+		  							<option value="{{ barrel.id }}">{{ barrel.type }}</option>
 		  						{% endfor %}
 							</select>
                         </label>
@@ -41,13 +41,14 @@
 
                     <h2>Search results</h2>
                     <ul>
-                        {% for whisky in whiskies %} {# DISPLAY all whiskies unless search criteria is added items #}
+                        {% for whisky in whiskies %}
                         <li>
-                            <div class="progress-radial progress-93"> {# replace number with twig variable for score #}
-                                <div class="overlay">93</div> {# replace number with twig variable for score #}
+                            {% set ratingtotal = (whisky.ratingAroma + whisky.ratingColor + whisky.ratingTaste + whisky.ratingAftertaste) * 0.125 %}
+                            <div class="progress-radial progress-{{ (ratingtotal * 10) | round }}"> 
+                                <div class="overlay">{{ ratingtotal | round(2) }}</div>
                             </div>
                             <a class="whisky_box" href="whisky.php?id={{ whisky.id }}">
-                                <img src="src/ProjectWhisky/presentation/img/{{ whisky.imagePath }}" alt="{{ whisky.name }} Logo">
+                                <img src="src/ProjectWhisky/presentation/img/{{ whisky.imagePath }}" alt="{{ whisky.name }} Image">
                                 <div class="whisky_box_name">{{ whisky.name }}</div>
                             </a>
                         </li>

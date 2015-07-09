@@ -35,8 +35,8 @@ if ((isset($_GET['id'])) && (isset($_GET['strength_min'])) && (isset($_GET['stre
     $loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation");
     $twig = new Twig_Environment($loader);
     
-    $view = $twig->render("whisky_search.twig", array("user" => $_SESSION['user'], "whiskies"=>$whiskyList,
-                            "barrels"=>$barrelList, "distilleries" =>$regionList ));
+    $view = $twig->render("whisky_search.twig", array("user" => $_SESSION['user'], "whiskies" => $whiskyList,
+                            "barrels" => $barrelList, "distilleries" => $regionList ));
     
     print($view);
 
@@ -56,8 +56,8 @@ else
     $loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation");
     $twig = new Twig_Environment($loader);
     
-    $view = $twig->render("whisky_search.twig", array("user" => $_SESSION['user'], "whiskies"=>$whiskyList,
-                            "barrels"=>$barrelList, "distilleries" =>$regionList ));
+    $view = $twig->render("whisky_search.twig", array("user" => $_SESSION['user'], "whiskies" => $whiskyList,
+                            "barrels" => $barrelList, "distilleries" => $regionList ));
     print($view);
 
 }
