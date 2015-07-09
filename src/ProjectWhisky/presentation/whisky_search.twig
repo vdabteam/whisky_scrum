@@ -9,20 +9,34 @@
                     <form action="search.php" method="post">
                         <label>
                             Region:
-                            <input type="search" name="search_name" placeholder="Region">
+                            <select name="formGender">
+	                            {# {% for region in regions %} #}
+		  							<option value="{{barrel.id}}">{{barrel.type}}</option>
+		  						{# {% endfor %} #}
+							</select>
                         </label>
                          <label>
                             Barrel:
-                            <input type="search" name="search_name" placeholder="Barrel">
+                            <select name="formGender">
+	                            {% for barrel in barrels %}
+		  							<option value="{{barrel.id}}">{{barrel.type}}</option>
+		  						{% endfor %}
+							</select>
                         </label>
-                        <label>
+                        <label id="labelstrength">
                             Alcohol Percentage:
-                            <input type="range" name="search_alcohol" min="1" max="100">
-                        </label>
-                        <label>
+                            <input type="text" class="sliderValue" name="strength_min" data-index="0" value="10" />
+							<input type="text" class="sliderValue" name="strength_max" data-index="1" value="90" />
+						</label>
+							<div id="sliderstrength"></div>
+
+                        <label id="labelscore">
                             Total Score:
-                            <input type="range" name="search_score" min="0" max="100">
-                        </label>
+                            <input type="text" class="sliderValue" name="score_min" data-index="2" value="0" />
+							<input type="text" class="sliderValue" name="score_max" data-index="3" value="10" />
+						</label>	
+							<div id="sliderscore"></div>
+                        
 						<input type="submit" value="Search">
                     </form>
 

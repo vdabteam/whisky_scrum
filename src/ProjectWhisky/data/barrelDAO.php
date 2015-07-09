@@ -52,7 +52,7 @@ class BarrelDAO
 
             foreach ($this->result as $row)
             {
-                $this->list[] = new Comment($row['id'], $row['type']);
+                $this->list[] = new Barrel($row['id'], $row['type']);
             }
 
             return $this->list;
