@@ -106,10 +106,11 @@
                             </div>
                         </div>
                         <div id="comments">
-                            <h2 id="description_header">Comments:</h2>
+                            <h2 id="messageBlockId" id="description_header">Comments:</h2>
 
                             {#Editor#}
                             {%  if user.role == 1 or user.role == 2 %}
+                                    <div class="messageBlock">{{ messageBlock }}</div>
                                     <form method="post" action="whisky.php?id={{ whisky.id }}" name="commentsForm">
 							            <textarea name="editor1" id="editor1" rows="10" cols="80"></textarea>
 							            <script>
@@ -136,8 +137,8 @@
                                         <img alt="profile picture of {{ comment.username }}" src="src/ProjectWhisky/presentation/userimages/{{ comment.imagePath }}">
                                     </div>
                                     <div class="user_comment left">
-                                        <h3>{{comment.username}} says:</h3>
-                                        <p>{{comment.comment|raw }}</p>
+                                        <h3>{{ comment.username }} says:</h3>
+                                        <p>{{ comment.comment|raw }}</p>
                                     </div>
 
                                     <div class="comment_timestamp clearfix">
