@@ -106,11 +106,11 @@ jQuery(function(){
     /**
      * USER INPUT DATA VALIDATION
      */
-    validatedEmail = false;
-    validatedPassword = false;
+/*    validatedEmail = false;
+    validatedPassword = false;*/
 
     // E-mail validation
-    jQuery('.email').blur(function(){
+/*    jQuery('.email').blur(function(){
         var emailValue = jQuery(this).val().trim();
         validatedEmail = validateEmail(emailValue, jQuery(this));
     });
@@ -127,11 +127,11 @@ jQuery(function(){
             emailObject.removeClass('green').addClass('red');
             return false;
         }
-    }
+    }*/
 
 
     // Password validation
-    jQuery('.password').blur(function(){
+/*    jQuery('.password').blur(function(){
         var passwordValue = jQuery(this).val().trim();
         validatedPassword = validatePassword(passwordValue, jQuery(this));
     });
@@ -164,7 +164,7 @@ jQuery(function(){
         {
             jQuery('.submitBtn').prop('disabled', true);
         }
-    });
+    });*/
 
 
 
