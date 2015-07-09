@@ -9,46 +9,46 @@
                     <form action="search.php" method="post">
                         <label>
                             Region:
-                            <select name="formGender">
-	                            {# {% for region in regions %} #}
-		  							<option value="{{barrel.id}}">{{barrel.type}}</option>
-		  						{# {% endfor %} #}
+                            <select name="">
+	                            {% for distillery in distilleries %}
+		  							<option value="{{ distillery.region }}">{{ distillery.region }}</option>
+		  						{% endfor %}
 							</select>
                         </label>
                          <label>
                             Barrel:
-                            <select name="formGender">
+                            <select name="">
 	                            {% for barrel in barrels %}
-		  							<option value="{{barrel.id}}">{{barrel.type}}</option>
+		  							<option value="{{ barrel.id }}">{{ barrel.type }}</option>
 		  						{% endfor %}
 							</select>
                         </label>
                         <label id="labelstrength">
                             Alcohol Percentage:
-                            <input type="text" class="sliderValue" name="strength_min" data-index="0" value="10" />
-							<input type="text" class="sliderValue" name="strength_max" data-index="1" value="90" />
 						</label>
-							<div id="sliderstrength"></div>
+							
 
                         <label id="labelscore">
-                            Total Score:
-                            <input type="text" class="sliderValue" name="score_min" data-index="2" value="0" />
-							<input type="text" class="sliderValue" name="score_max" data-index="3" value="10" />
-						</label>	
-							<div id="sliderscore"></div>
+
+						</label>
+						<div id="sliderscore"></div>
+                        
+                        <h1>Hello world</h1>
+                        <div id="editSlider"></div>
                         
 						<input type="submit" value="Search">
                     </form>
 
                     <h2>Search results</h2>
                     <ul>
-                        {% for whisky in whiskies %} {# DISPLAY all whiskies unless search criteria is added items #}
+                        {% for whisky in whiskies %}
                         <li>
-                            <div class="progress-radial progress-93"> {# replace number with twig variable for score #}
-                                <div class="overlay">93</div> {# replace number with twig variable for score #}
+                            {% set ratingtotal = (whisky.ratingAroma + whisky.ratingColor + whisky.ratingTaste + whisky.ratingAftertaste) * 0.125 %}
+                            <div class="progress-radial progress-{{ (ratingtotal * 10) | round }}"> 
+                                <div class="overlay">{{ ratingtotal | round(2) }}</div>
                             </div>
                             <a class="whisky_box" href="whisky.php?id={{ whisky.id }}">
-                                <img src="src/ProjectWhisky/presentation/img/{{ whisky.imagePath }}" alt="{{ whisky.name }} Logo">
+                                <img src="src/ProjectWhisky/presentation/img/{{ whisky.imagePath }}" alt="{{ whisky.name }} Image">
                                 <div class="whisky_box_name">{{ whisky.name }}</div>
                             </a>
                         </li>

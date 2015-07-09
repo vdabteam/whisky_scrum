@@ -129,6 +129,49 @@ footer{
     border-bottom: 3px solid #CC952D;
 }
 
+#notifier{
+    margin: 1em auto 1.5em;
+    width: 100%;
+    max-width: 960px;
+    padding: 2em 6em 2em 3em;
+    color: white;
+}
+.yellow{
+    background-color: sandybrown;
+    outline:0.2em solid sandybrown;
+    border:0.2em solid #FFF;
+    /*<span class="fa fa-exclamation-circle"></span>*/
+}
+.red{
+    background-color: salmon;
+    outline:0.2em solid salmon;
+    border:0.2em solid #FFF;
+    /*<span class="fa fa-times-circle"></span>*/
+}
+.green{
+    background-color: limegreen;
+    outline:0.2em solid limegreen;
+    border:0.2em solid #FFF;
+    /*<span class="fa fa-check-circle"></span>*/
+}
+.blue{
+    background-color: deepskyblue;
+    outline:0.2em solid deepskyblue;
+    border:0.2em solid #FFF;
+    /*<span class="fa fa-info-circle"></span>*/
+}
+.no_border{
+  border: none;
+  outline: none;
+}
+
+#notifier span.fa{
+    margin-right: 1em;
+    margin-top: -0.3em;
+    font-size: 3em;
+    float: left;
+}
+
 .no_bg{
     background: none !important;
     background-color: none !important;

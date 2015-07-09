@@ -27,10 +27,10 @@ class WhiskyBusiness
         return $whisky;
     }
     
-    public function getWhiskyBySearch($barrelId, $strengthMin, $strengthMax)   
+    public function getWhiskyBySearch($barrelId, $strengthMin, $strengthMax, $scoreMin, $scoreMax, $region)   
     {
         $WhiskyDAO = new WhiskyDAO();
-        $whiskyList = $WhiskyDAO->getWhiskiesBySearch($barrelId, $strengthMin, $strengthMax);
+        $whiskyList = $WhiskyDAO->getWhiskiesBySearch($barrelId, $strengthMin, $strengthMax, $scoreMin, $scoreMax, $region);
         return $whiskyList;
     }
     

@@ -23,16 +23,20 @@ if ((isset($_GET['id'])) && (isset($_GET['strength_min'])) && (isset($_GET['stre
 {
 
     $whiskyBiz = new WhiskyBusiness();
-    $whiskyList = $whiskyBiz->getWhiskyBySearch($_GET["barrel_id"], $_GET["strength_min"], $_GET["strength_max"]);
+    $whiskyList = $whiskyBiz->getWhiskyBySearch($_GET["barrel_id"], $_GET["strength_min"], $_GET["strength_max"], $_GET["score_min"], $_GET["score_max"], $_GET["region"]);
     
     $BarrelBiz = new BarrelBusiness();
     $barrelList = $BarrelBiz->showAllBarrels();
+    
+    $distilleryBiz = new DistilleryBusiness();
+    $regionList = $distilleryBiz->getRegionList();
     
     
     $loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation");
     $twig = new Twig_Environment($loader);
     
-    $view = $twig->render("whisky_search.twig", array("user" => $_SESSION['user'], "whiskies"=>$whiskyList, "barrels"=>$barrelList));
+    $view = $twig->render("whisky_search.twig", array("user" => $_SESSION['user'], "whiskies" => $whiskyList,
+                            "barrels" => $barrelList, "distilleries" => $regionList ));
     
     print($view);
 
@@ -46,17 +50,15 @@ else
     $BarrelBiz = new BarrelBusiness();
     $barrelList = $BarrelBiz->showAllBarrels();
     
+    $distilleryBiz = new DistilleryBusiness();
+    $regionList = $distilleryBiz->getRegionList();
+    
     $loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation");
     $twig = new Twig_Environment($loader);
     
-    $view = $twig->render("whisky_search.twig", array("user" => $_SESSION['user'], "whiskies"=>$whiskyList, "barrels"=>$barrelList));
-    
+    $view = $twig->render("whisky_search.twig", array("user" => $_SESSION['user'], "whiskies" => $whiskyList,
+                            "barrels" => $barrelList, "distilleries" => $regionList ));
     print($view);
-
-
-
-
-
 
 }
 
