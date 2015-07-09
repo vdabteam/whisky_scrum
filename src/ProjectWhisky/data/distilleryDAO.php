@@ -112,6 +112,35 @@ class DistilleryDAO
         }
     }
     
+    public function getRegions()
+    {
+        self::connectToDB(); /* Using DB connection */
+        $this->sql = "SELECT *
+        FROM distilleries 
+        GROUP BY region";
+
+        try
+        {
+            $this->query = $this->handler->query($this->sql);
+            $this->result = $this->query->fetchAll(PDO::FETCH_ASSOC);
+
+            $this->query->closeCursor();
+            $this->handler = null;
+
+            foreach ($this->result as $row)
+            {
+                $this->list[] = new Distillery($row['id'], $row['name'], $row['address'], $row['city'], $row['country'], $row['region']);
+            }
+
+            return $this->list;
+        }
+        catch (Exception $e)
+        {
+            echo "Error: query failure";
+            return false;
+        }
+    }
+    
     
 
 

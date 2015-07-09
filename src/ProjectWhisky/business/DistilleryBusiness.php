@@ -25,4 +25,10 @@ class DistilleryBusiness
         $distillery =$DistilleryDAO->getDistilleryByWhiskyId($whiskyId);
         return $distillery;
     }
+        public function getRegionList()
+    {
+        $DistilleryDAO = new DistilleryDAO();
+        $regionList =$DistilleryDAO->getRegions();
+        return $regionList;
+    }
 }
