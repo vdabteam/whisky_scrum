@@ -19,8 +19,8 @@ $classLoader->register();
 require_once("lib/Twig/Autoloader.php");
 Twig_Autoloader::register();
 
-//if ((isset($_GET['strength_min'])) && (isset($_GET['strength_max'])) && (isset($_GET['score_max'])) && (isset($_GET['score_max'])) )
-//{
+if ((isset($_GET['strength_rangeleft'])) && (isset($_GET['strength_rangeright'])) && (isset($_GET['score_rangeleft'])) && (isset($_GET['score_rangeright'])) )
+{
 
     $whiskyBiz = new WhiskyBusiness();
     $whiskyList = $whiskyBiz->getWhiskyBySearch($_GET["barrel_id"], $_GET["strength_rangeleft"], $_GET["strength_rangeright"], $_GET["score_rangeleft"], $_GET["score_rangeright"], $_GET["region"]);
@@ -40,8 +40,8 @@ Twig_Autoloader::register();
     
     print($view);
 
-//}
-/*else 
+}
+else 
 {
 
     $whiskyBiz = new WhiskyBusiness();
@@ -60,7 +60,7 @@ Twig_Autoloader::register();
                             "barrels" => $barrelList, "distilleries" => $regionList ));
     print($view);
 
-}*/
+}
 
 
 ob_flush();
