@@ -226,11 +226,6 @@ input.blue{
     flex-wrap: wrap;
 }
 
-.wrap{ 
-    -webkit-flex-wrap: wrap;
-    flex-wrap: wrap;
-}  
-
 /* Desktop */
 @media (min-width: 769px){
 
@@ -344,22 +339,22 @@ input.blue{
         margin: 2em auto 2em auto;
         -webkit-flex-wrap: wrap;
         flex-wrap: wrap;
-        -webkit-justify-content: left;
-        justify-content: left;
+        -webkit-justify-content: center;
+        justify-content: center;
     }
     .whisky_view ul li{
         margin: 0 auto 2em auto;
         width: 21.9%;
     }
     .whisky_view ul li:nth-child(4n+4){
-        margin-right: 0;
+        /*margin-right: 0;*/
         display: list-item;
     }
     .whisky_view ul li:nth-child(4n+1){
-        margin-left: 0;
+        /*margin-left: 0;*/
     }
     .whisky_view ul li:last-child{
-        margin-right: 0;
+        /*margin-right: 0;*/
         float: left;
     }
 
