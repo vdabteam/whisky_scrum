@@ -1,0 +1,18 @@
+{% extends "default_template.twig" %}
+
+{% block content %}
+
+            <header id="header_banner" class="distillery_header">
+                <div id="header_quote"><p>Manage Distilleries</p></div>
+            </header>
+            <div id="content_container">
+                
+                {% for distillery in distilleries  %}
+                    {{ distillery.name }}&nbsp;<a href="CP_distillery_edit.php?id={{distillery.id}}">Edit</a><br>
+                {% endfor  %}
+                <br>
+                <a href="CP_distillery_add.php">Add new distillery</a>
+                
+                
+            </div>
+{% endblock %}    
