@@ -104,7 +104,8 @@
 
 #profile_edit_form input[type="submit"],
  .lightbox-panel-register input[type="submit"],
- .lightbox-panel-login input[type="submit"]{
+ .lightbox-panel-login input[type="submit"],
+ #search_whisky_form input[type="submit"]{
     padding: 0.4em 0.8em 0.5em;
     background: none;
     border: 0.3em solid black;
@@ -114,7 +115,8 @@
 }
 #profile_edit_form input[type="submit"]:hover,
  .lightbox-panel-register input[type="submit"]:hover,
- .lightbox-panel-login input[type="submit"]:hover{
+ .lightbox-panel-login input[type="submit"]:hover,
+ #search_whisky_form input[type="submit"]:hover{
     background-color: #FFB739;
 }
 
