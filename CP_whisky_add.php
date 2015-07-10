@@ -20,7 +20,8 @@ require_once("lib/Twig/Autoloader.php");
 Twig_Autoloader::register();
 
 // if new added, verify input, execute query, send to CP_whisky.php
-if(1>2)
+
+if()
 {
   
     header("location: CP_whisky.php");

@@ -20,6 +20,10 @@ $classLoader->register();
 require_once("lib/Twig/Autoloader.php");
 Twig_Autoloader::register();
 
+// listen for whisky submit
+print(count($_GET));
+
+
 // Get Whisky ID
 $id = isset($_GET["id"])? $_GET["id"]: print("GEEN ID OPGEGEVEN!");
 // Get Whisky Data
