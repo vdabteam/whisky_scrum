@@ -23,7 +23,8 @@ if ((isset($_GET['strength_rangeleft'])) && (isset($_GET['strength_rangeright'])
 {
 
     $whiskyBiz = new WhiskyBusiness();
-    $whiskyList = $whiskyBiz->getWhiskyBySearch($_GET["barrel_id"], $_GET["strength_rangeleft"], $_GET["strength_rangeright"], $_GET["score_rangeleft"], $_GET["score_rangeright"], $_GET["region"]);
+    $whiskyList = $whiskyBiz->getWhiskyBySearch($_GET["barrel_id"], $_GET["strength_rangeleft"], $_GET["strength_rangeright"], $_GET["score_rangeleft"], $_GET["score_rangeright"], $_GET["region"],
+    $_GET["age_rangeleft"], $_GET["age_rangeright"]);
     
     $BarrelBiz = new BarrelBusiness();
     $barrelList = $BarrelBiz->showAllBarrels();
