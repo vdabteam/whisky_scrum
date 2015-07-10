@@ -19,7 +19,8 @@ $classLoader->register();
 require_once("lib/Twig/Autoloader.php");
 Twig_Autoloader::register();
 
-if ((isset($_GET['strength_rangeleft'])) && (isset($_GET['strength_rangeright'])) && (isset($_GET['score_rangeleft'])) && (isset($_GET['score_rangeright'])) )
+if ((isset($_GET['strength_rangeleft'])) && (isset($_GET['strength_rangeright'])) && (isset($_GET['score_rangeleft'])) && (isset($_GET['score_rangeright'])) 
+       && (isset($_GET['age_rangeright'])) && (isset($_GET['age_rangeright'])) && (isset($_GET['barrel_id'])) && (isset($_GET['region'])) )
 {
 
     $whiskyBiz = new WhiskyBusiness();
