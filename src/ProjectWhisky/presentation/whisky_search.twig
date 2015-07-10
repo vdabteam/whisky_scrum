@@ -57,22 +57,24 @@
                     </form>
 
                     <h2>Search results</h2>
-                    <ul>
-                        {% for whisky in whiskies %}
-                        <li>
-                            {% set ratingtotal = (whisky.ratingAroma + whisky.ratingColor + whisky.ratingTaste + whisky.ratingAftertaste) * 0.125 %}
-                            <div class="progress-radial progress-{{ (ratingtotal * 10) | round }}"> 
-                                <div class="overlay">{{ ratingtotal | round(2) }}</div>
-                            </div>
-                            <a class="whisky_box" href="whisky.php?id={{ whisky.id }}">
-                                <img src="src/ProjectWhisky/presentation/img/{{ whisky.imagePath }}" alt="{{ whisky.name }} Image">
-                                <div class="whisky_box_name">{{ whisky.name }}</div>
-                            </a>
-                        </li>
-                        {% endfor %}
-                    </ul>
+                    <div id="searchResultContent">
+                        <ul>
+                            {% for whisky in whiskies %}
+                            <li>
+                                {% set ratingtotal = (whisky.ratingAroma + whisky.ratingColor + whisky.ratingTaste + whisky.ratingAftertaste) * 0.125 %}
+                                <div class="progress-radial progress-{{ (ratingtotal * 10) | round }}">
+                                    <div class="overlay">{{ ratingtotal | round(2) }}</div>
+                                </div>
+                                <a class="whisky_box" href="whisky.php?id={{ whisky.id }}">
+                                    <img src="src/ProjectWhisky/presentation/img/{{ whisky.imagePath }}" alt="{{ whisky.name }} Image">
+                                    <div class="whisky_box_name">{{ whisky.name }}</div>
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
 
-                    
+                    </div>
                 </section>
             </div>
         {% endblock %}

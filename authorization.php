@@ -4,9 +4,12 @@ ob_start();
 
 use src\ProjectWhisky\business\UserBusiness;
 use src\ProjectWhisky\business\AuthorizationBusiness;
+use src\ProjectWhisky\helpers\ValidationHelpers;
 use src\ProjectWhisky\exceptions\WrongDataException;
 use src\ProjectWhisky\exceptions\EmptyDataException;
 use src\ProjectWhisky\exceptions\UserBlockedException;
+use src\ProjectWhisky\exceptions\WrongPasswordPatternException;
+use src\ProjectWhisky\exceptions\WrongEmailPatternException;
 use Doctrine\Common\ClassLoader;
 
 session_start();
@@ -35,9 +38,19 @@ if(isset($_POST['emailField']))
          */
         if (empty($email) || empty($password)) throw new EmptyDataException();
 
+        $validator = new ValidationHelpers(); // helper validation class
 
-        $email = filter_var(trim($_POST['emailField']), FILTER_VALIDATE_EMAIL); // validate e-mail
-        $password = trim(htmlspecialchars($_POST['passField'])); // validate pass
+        /**
+         * Email validation
+         */
+        $emailValidated = $validator->validateEmail($_POST['emailField']);
+        if(!$emailValidated) throw new WrongEmailPatternException();
+
+        /**
+         * Password validation
+         */
+        $passwordValidated = $validator->validatePassword($_POST['passField']);
+        if(!$passwordValidated) throw new WrongPasswordPatternException();
 
         /**
          * Throw error if email and password contain wrong characters
@@ -99,6 +112,14 @@ if(isset($_POST['emailField']))
     catch (UserBlockedException $e)
     {
         echo "<span class='error_message'>Your account has been blocked.</span>";
+    }
+    catch (WrongPasswordPatternException $e)
+    {
+        echo "<span class='error_message'>Password must contain min. 8 characters, min. 1 capital letter and min. 1 number.</span>";
+    }
+    catch (WrongEmailPatternException $e)
+    {
+        echo "<span class='error_message'>E-mail must have this pattern: mail@mail.com</span>";
     }
 
 }

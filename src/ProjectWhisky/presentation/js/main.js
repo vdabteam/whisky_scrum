@@ -135,21 +135,10 @@ jQuery(function(){
         validatedPassword = validatePassword(passwordOne, jQuery(this));
     });
 
+    // PasswordRepeat validation
     jQuery('.passwordRepeat').keyup(function(){
         passwordRepeat = jQuery(this).val().trim();
         validatedPasswordRepeat = validatePassword(passwordRepeat, jQuery(this));
-
-
-        /*if((passwordOne === passwordRepeat) && (validatedPasswordRepeat == true))
-        {
-            validatedPasswordRepeat = true;
-            jQuery(this).removeClass('red').addClass('green');
-        }
-        else
-        {
-            validatedPasswordRepeat = false;
-            jQuery(this).removeClass('green').addClass('red');
-        }*/
     });
 
     function validatePassword(password, passwordObject)
@@ -190,7 +179,7 @@ jQuery(function(){
     jQuery('.name').keyup(function(){
 
         var name = jQuery(this).val().trim();
-        var nameRegExp = name.match(/^([A-Za-z ,.'`-éèçàëêe]{2,30})$/gm);  // https://regex101.com
+        var nameRegExp = name.match(/^([A-Za-z '`-éèçàëê]{2,30})$/gm);  // https://regex101.com
 
         if(name == nameRegExp)
         {
@@ -222,19 +211,26 @@ jQuery(function(){
     });
 
 
+
+    // Enable registration button if all fields are filled with correct data
     jQuery('.name, .email, .username, .password, .passwordRepeat').keyup(function(){
 
-        if(passwordOne === passwordRepeat)
-        {
-            validatedPassword = true;
-            jQuery('.passwordRepeat').removeClass('red').addClass('green');
-        }
-        else
-        {
-            validatedPassword = false;
-            jQuery('.passwordRepeat').removeClass('green').addClass('red');
+        // Check if both passwords match
+        if ((typeof passwordOne !== "undefined" && passwordOne) && (typeof passwordRepeat !== "undefined" && passwordRepeat)) {
+            if(passwordOne === passwordRepeat)
+            {
+                validatedPassword = true;
+                jQuery('.passwordRepeat').removeClass('red').addClass('green');
+            }
+            else
+            {
+                validatedPassword = false;
+                jQuery('.passwordRepeat').removeClass('green').addClass('red');
+            }
         }
 
+
+        // Enable registration button if all fields are filled with correct data
         if((validatedName == true) && (validatedUsername == true) && (validatedEmail == true) && (validatedPassword == true) && (validatedPasswordRepeat == true))
         {
             jQuery('.registrationBtn').prop('disabled', false);

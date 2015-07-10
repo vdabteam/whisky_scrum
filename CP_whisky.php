@@ -1,17 +1,17 @@
 <?php
+session_start();
 ob_start(); 
 
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
-session_start();
 
 use src\ProjectWhisky\business\WhiskyBusiness;
 use src\ProjectWhisky\business\BarrelBusiness;
 use src\ProjectWhisky\business\DistilleryBusiness;
 use Doctrine\Common\ClassLoader;
 
-
+require_once("rolestarter.php");
 require_once('Doctrine/Common/ClassLoader.php');
 $classLoader = new ClassLoader("src");
 $classLoader->register();
