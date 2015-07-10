@@ -25,7 +25,7 @@ $whiskyBiz = new WhiskyBusiness;
 $loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation");
 $twig = new Twig_Environment($loader);
 
-$view = $twig->render("cpanel_template.twig" );
+$view = $twig->render("CP_template.twig" );
 
 print($view);
 
