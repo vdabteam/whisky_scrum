@@ -1,30 +1,20 @@
 
-/*
 
+/*
 $("#search_whisky_form").submit(function(event) {
 
-      //stop form from submitting normally
-      event.preventDefault();
+    event.preventDefault();
 
-      //get some values from elements on the page:
-      var $form = $( this ),
-          url = $form.attr( 'action' );
+    console.log( $( this ).serialize() );
+$.get('search.php?' + $( this ).serialize());
 
-      //Send the data using post
-      var posting = $.post( url, { barrel_id: $('#selBarrel').val(), region: $('#selRegion').val(),
-       strength_rangeleft: $('#strength_rangeleft').val(), strength_rangeright: $('#strength_rangeright').val(),
-       score_rangeleft: $('#score_rangeleft').val(), score_rangeright: $('#score_rangeright').val(),
-       age_rangeleft: $('#age_rangeleft').val(), age_rangeright: $('#age_rangeright').val(),
-      
-      } );
 
-      //Alerts the results
-      posting.done(function( data ) {
-        alert('success');
-      });
+
     });
-    
 */
+
+
+
 
 
 $(function(){
