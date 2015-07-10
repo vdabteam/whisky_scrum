@@ -135,18 +135,18 @@ class WhiskyDAO
     }
     
     //public function getWhiskiesBySearch($whiskyRegion, $barrelId, $strengthMin, $strengthMax, $totalMin, $totalMax)
-    public function getWhiskiesBySearch($barrelId, $strengthMin, $strengthMax, $scoreMin, $scoreMax, $region)
+    public function getWhiskiesBySearch($barrelId, $strengthMin, $strengthMax, $scoreMin, $scoreMax, $region, $ageMin, $ageMax)
      {
        self::connectToDB();
         $this->sql = "SELECT whiskies.id as whiskiesid, whiskies.name as whiskiesname, distillery_id, price, age, strength, barrel_id, image_path, hidden, creation_date, rating_aroma, rating_color, rating_taste, rating_aftertaste, text_aroma, text_color, text_taste, text_aftertaste, review, user_id
                       FROM distilleries INNER JOIN whiskies ON distilleries.id = whiskies.distillery_id
                       WHERE barrel_id like :barrelId AND strength > :strengthMin AND strength < :strengthMax AND ((rating_aroma + rating_color + rating_taste + rating_aftertaste) * 0.125) > :scoreMin AND ((rating_aroma + rating_color + rating_taste + rating_aftertaste) * 0.125) < :scoreMax 
-                      AND distilleries.region like :region
+                      AND distilleries.region like :region AND age > :ageMin AND age < :ageMax
                       ORDER BY whiskies.id";
         try
         {
            $this->query = $this->handler->prepare($this->sql);
-            $this->query->execute(array('barrelId'=> $barrelId, 'strengthMin'=> $strengthMin, 'strengthMax' => $strengthMax, 'scoreMin' => $scoreMin, 'scoreMax' => $scoreMax, 'region' => $region));
+            $this->query->execute(array('barrelId'=> $barrelId, 'strengthMin'=> $strengthMin, 'strengthMax' => $strengthMax, 'scoreMin' => $scoreMin, 'scoreMax' => $scoreMax, 'region' => $region, 'ageMin' => $ageMin, 'ageMax' => $ageMax));
             $this->result = $this->query->fetchAll(PDO::FETCH_ASSOC);
 
             $this->query->closeCursor();
