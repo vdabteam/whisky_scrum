@@ -43,12 +43,14 @@ if(isset($_POST['emailField']))
         /**
          * Email validation
          */
-        if(!$email = $validator->validateEmail($_POST['emailField'])) throw new WrongEmailPatternException();
+        $emailValidated = $validator->validateEmail($_POST['emailField']);
+        if(!$emailValidated) throw new WrongEmailPatternException();
 
         /**
          * Password validation
          */
-        if(!$password = $validator->validatePassword($_POST['passField'])) throw new WrongPasswordPatternException();
+        $passwordValidated = $validator->validatePassword($_POST['passField']);
+        if(!$passwordValidated) throw new WrongPasswordPatternException();
 
         /**
          * Throw error if email and password contain wrong characters
