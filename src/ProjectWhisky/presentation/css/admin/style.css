@@ -79,37 +79,177 @@ body{
 }
 
 h1{
-	font-family: 'open_sanslight';
+    font-family: 'open_sanslight';
 }
 .right{
-	float: right;
+    float: right;
 }
 .left{
-	float: left;
+    float: left;
 }
-.clearfix{
-	clear: both;
+.top{
+    top: 0;
+    margin-top: 0;
 }
-.clearfix:after { 
-	content: "."; 
-	visibility: hidden; 
-	display: block; 
-	height: 0; 
-	clear: both;
-}
-.fullwidth{
-	width: 100%;
+.bottom{
+    bottom: 0;
+    margin-bottom: 0;
 }
 .center{
-	margin-left: auto;
-	margin-right: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
+.clearfix{
+    clear: both;
+}
+.clearfix:after { 
+    content: ""; 
+    visibility: hidden; 
+    display: block; 
+    height: 0; 
+    clear: both;
+}
+.fullwidth{
+    width: 100%;
+}
+
+.navbutton{
+    display: block;
+}
+
+footer{
+    padding: 0.8em 0 1em 0;
+    background-color: black;
+    color: white;
+    border-bottom: 3px solid #CC952D;
+}
+
+#notifier{
+    margin: 1em auto 1.5em;
+    width: 100%;
+    max-width: 960px;
+    padding: 2em 6em 2em 3em;
+    color: white;
+}
+.yellow{
+    background-color: sandybrown !important;
+    outline:0.2em solid sandybrown;
+    border:0.2em solid #FFF;
+    /*<span class="fa fa-exclamation-circle"></span>*/
+}
+.red{
+    background-color: salmon !important;
+    outline:0.2em solid salmon;
+    border:0.2em solid #FFF;
+    /*<span class="fa fa-times-circle"></span>*/
+}
+.green{
+    background-color: limegreen !important;
+    outline:0.2em solid limegreen;
+    border:0.2em solid #FFF;
+    /*<span class="fa fa-check-circle"></span>*/
+}
+.blue{
+    background-color: deepskyblue !important;
+    outline:0.2em solid deepskyblue;
+    border:0.2em solid #FFF;
+    /*<span class="fa fa-info-circle"></span>*/
+}
+
+input.yellow{
+    background-color: sandybrown !important;
+    outline: none;
+    box-shadow: inset 0 0 0 0.2em #413001;
+    color: #413001 !important;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.3);
+    /*<span class="fa fa-exclamation-circle"></span>*/
+}
+input.red{
+    background-color: salmon !important;
+    outline: none;
+    box-shadow: inset 0 0 0 0.2em #400401;
+    color: #400401 !important;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.3);
+    /*<span class="fa fa-times-circle"></span>*/
+}
+input.green{
+    background-color: limegreen !important;
+    outline: none;
+    box-shadow: inset 0 0 0 0.2em #06441d;
+    color: #06441d !important;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.3);
+    /*<span class="fa fa-check-circle"></span>*/
+}
+input.blue{
+    background-color: deepskyblue !important;
+    outline: none;
+    box-shadow: inset 0 0 0 0.2em #013045;
+    color: #013045 !important;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.3);
+    /*<span class="fa fa-info-circle"></span>*/
+}
+.no_border{
+  border: none;
+  outline: none;
+}
+
+#notifier span.fa{
+    margin-right: 1em;
+    margin-top: -0.3em;
+    font-size: 3em;
+    float: left;
+}
+
+.no_bg{
+    background: none !important;
+    background-color: none !important;
+}
+
+.no_padding{
+    padding: 0 !important;
+}
+
+.flex_parent{
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
 #navbar{
-	padding: 0.8em 0 1em 0;
-	background-color: black;
-	color: white;
+    padding: 0.8em 0 1em 0;
+    background-color: black;
+    color: white;
     border-bottom: 3px solid #00E2FF;
 
+}
+
+.navbutton a, #logo a{
+    height: 16px;
+    display: inline-block;
+    margin-right: 1.8em;
+    margin-left: 0.4em;
+    color: white;
+    line-height: 1.2em;
+    font-family: 'open_sansbold';
+}
+
+.navbutton a:hover, #logo a:hover{
+    color: #00E2FF;
+}
+
+#logo{
+    height: 16px;
+    padding-left: 17px;
+    background: url("../../logo/logo_white_big.png") left center;
+    background-size: 16px;
+    background-repeat: no-repeat;
+    font-family: 'open_sansbold';
 }
 
 .nav_icons{
@@ -123,9 +263,6 @@ h1{
     color: white;
     line-height: 1.2em;
     font-family: 'open_sansbold';
-}
-.navbutton a:hover{
-    color: #00E2FF;
 }
 
 aside#sidebar{
@@ -200,30 +337,28 @@ aside#sidebar #menu li a.active:after {
 	padding: 2em 6em 2em 3em;
 	color: white;
 }
+/*
 .yellow{
 	background-color: sandybrown;
 	outline:0.2em solid sandybrown;
 	border:0.2em solid #FFF;
-    /*<span class="fa fa-exclamation-circle"></span>*/
 }
 .red{
 	background-color: salmon;
 	outline:0.2em solid salmon;
 	border:0.2em solid #FFF;
-    /*<span class="fa fa-times-circle"></span>*/
 }
 .green{
 	background-color: limegreen;
 	outline:0.2em solid limegreen;
 	border:0.2em solid #FFF;
-    /*<span class="fa fa-check-circle"></span>*/
 }
 .blue{
 	background-color: deepskyblue;
 	outline:0.2em solid deepskyblue;
 	border:0.2em solid #FFF;
-    /*<span class="fa fa-info-circle"></span>*/
-}
+}*/
+
 .no_border{
   border: none;
   outline: none;
