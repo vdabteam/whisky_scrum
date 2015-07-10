@@ -1,4 +1,9 @@
     {% extends "default_template.twig" %}
+        {% block title %}
+            Search Whiskies
+        {% endblock %}
+
+
         {% block content %}
             <header id="header_banner">
                 <div id="header_quote"><p>IceTea On The Rocks</p></div>
@@ -6,37 +11,46 @@
             <div id="content_container">
                 <section class="whisky_view" id="defined_whiskies">
                     <h2>Search All Whiskies</h2>
-                    <form action="search.php" method="get">
-                        <label>
-                            Region:
-                            <select name="region">
-                           		<option value="%">-- all regions --</option>
-	                            {% for distillery in distilleries %}
-		  							<option value="{{ distillery.region }}">{{ distillery.region }}</option>
-		  						{% endfor %}
-							</select>
-                        </label>
+                    <form id="search_whisky_form" action="search.php" method="get">
+                        <div class="flex_parent clearfix">
+                            <div class="sliders_block left">
+                                <label>
+                                    Region:
+                                    <select name="region">
+                                   		<option value="%">-- all regions --</option>
+        	                            {% for distillery in distilleries %}
+        		  							<option value="{{ distillery.region }}">{{ distillery.region }}</option>
+        		  						{% endfor %}
+        							</select>
+                                </label>
 
-                         <label>
-                            Barrel:
-                            <select name="barrel_id">
-                            	<option value="%">-- any barrel --</option>
-	                            {% for barrel in barrels %}
-		  							<option value="{{ barrel.id }}">{{ barrel.type }}</option>
-		  						{% endfor %}
-							</select>
-                        </label>
+                                 <label>
+                                    Barrel:
+                                    <select name="barrel_id">
+                                    	<option value="%">-- any barrel --</option>
+        	                            {% for barrel in barrels %}
+        		  							<option value="{{ barrel.id }}">{{ barrel.type }}</option>
+        		  						{% endfor %}
+        							</select>
+                                </label>
+                            </div>
+                            <div class="sliders_block left">
+                                <label>
+                                    <h4>Age:</h4>
+                                    <div id="age_range"></div>
+                                </label>
 
-                        <label>
-                            <h4>Alcohol Percentage:</h4>
-                            <div id="strength_range"></div>
-						</label>
+                                <label>
+                                    <h4>Alcohol Percentage:</h4>
+                                    <div id="strength_range"></div>
+        						</label>
 
-                        <label>
-                            <h4>Total Score:</h4>
-                            <div id="score_range"></div>
-						</label>
-                        
+                                <label>
+                                    <h4>Total Score:</h4>
+                                    <div id="score_range"></div>
+        						</label>
+                            </div>
+                        </div>
 						<input type="submit" value="Search">
 
                     </form>
