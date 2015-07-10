@@ -1,0 +1,18 @@
+{% extends "cpanel_template.twig" %}
+
+{% block content %}
+
+            <header id="header_banner" class="barrels_header">
+                <div id="header_quote"><p>Barrels</p></div>
+            </header>
+            <div id="content_container">
+                
+                {% for barrel in barrels  %}
+                    {{ barrel.type }}&nbsp;<a href="cp_barrel_edit.php?id={{barrel.id}}">Edit</a><br>
+                {% endfor  %}
+                <br>
+                <a href="cp_barrel_add.php">Add new barrel</a>
+                
+                
+            </div>
+{% endblock %} 

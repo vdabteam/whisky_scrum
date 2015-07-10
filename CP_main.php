@@ -26,7 +26,7 @@ $loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation");
 $twig = new Twig_Environment($loader);
 
 
-$view = $twig->render("cp_users.twig" );
+$view = $twig->render("cp_user.twig" );
 
 
 print($view);
