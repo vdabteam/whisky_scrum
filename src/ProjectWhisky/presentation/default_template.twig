@@ -63,13 +63,13 @@
             <div class="modal">
                 <form name="register_form" id="register_form" method="post" action="registration.php">
                 <h3>Register</h3>
-                    <input type="text" name="firstname" placeholder="Firstname" spellcheck="false" required>
-                    <input type="text" name="lastname" placeholder="Lastname" spellcheck="false" required>
+                    <input class="name" type="text" name="firstname" placeholder="Firstname" spellcheck="false" required>
+                    <input class="name" type="text" name="lastname" placeholder="Lastname" spellcheck="false" required>
                     <input class="email" type="text" name="email" placeholder="E-mail" spellcheck="false" required>
-                    <input type="text" name="username" placeholder="Username" spellcheck="false" required>
-                    <input type="password" name="password" placeholder="Password" required>
-                    <input type="password" name="rpassword" placeholder="Repeat password" required>
-                    <input name="registrationBtn" type="submit" value="REGISTER">
+                    <input class="username" type="text" name="username" placeholder="Username" spellcheck="false" required>
+                    <input class="password" type="password" name="password" placeholder="Password" required>
+                    <input class="passwordRepeat" type="password" name="rpassword" placeholder="Repeat password" required>
+                    <input class="registrationBtn" name="registrationBtn" type="submit" value="REGISTER" disabled>
                     <div class="error_reporting_registration">
                         <span>Verkeerde registratie</span>
                     </div>

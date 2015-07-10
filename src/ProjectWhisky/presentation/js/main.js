@@ -106,34 +106,50 @@ jQuery(function(){
     /**
      * USER INPUT DATA VALIDATION
      */
-/*    validatedEmail = false;
-    validatedPassword = false;*/
+    validatedEmail = false;
+    validatedPassword = false;
+    validatedPasswordRepeat = false;
+    validatedName = false;
+    validatedUsername = false;
 
     // E-mail validation
-/*    jQuery('.email').blur(function(){
-        var emailValue = jQuery(this).val().trim();
-        validatedEmail = validateEmail(emailValue, jQuery(this));
-    });
+    jQuery('.email').keyup(function(){
+        var email = jQuery(this).val().trim();
 
-    function validateEmail(email, emailObject)
-    {
         if(is.email(email))
         {
-            emailObject.removeClass('red').addClass('green');
-            return true;
+            jQuery(this).removeClass('red').addClass('green');
+            validatedEmail = true;
         }
         else
         {
-            emailObject.removeClass('green').addClass('red');
-            return false;
+            jQuery(this).removeClass('green').addClass('red');
+            validatedEmail = false;
         }
-    }*/
+    });
 
 
     // Password validation
-/*    jQuery('.password').blur(function(){
-        var passwordValue = jQuery(this).val().trim();
-        validatedPassword = validatePassword(passwordValue, jQuery(this));
+    jQuery('.password').keyup(function(){
+        passwordOne = jQuery(this).val().trim();
+        validatedPassword = validatePassword(passwordOne, jQuery(this));
+    });
+
+    jQuery('.passwordRepeat').keyup(function(){
+        passwordRepeat = jQuery(this).val().trim();
+        validatedPasswordRepeat = validatePassword(passwordRepeat, jQuery(this));
+
+
+        /*if((passwordOne === passwordRepeat) && (validatedPasswordRepeat == true))
+        {
+            validatedPasswordRepeat = true;
+            jQuery(this).removeClass('red').addClass('green');
+        }
+        else
+        {
+            validatedPasswordRepeat = false;
+            jQuery(this).removeClass('green').addClass('red');
+        }*/
     });
 
     function validatePassword(password, passwordObject)
@@ -153,9 +169,11 @@ jQuery(function(){
     }
 
 
-    jQuery('.password, .email').blur(function(){
-        console.log(validatedEmail);
-        console.log(validatedPassword);
+
+
+    // Enable button on log in window if all fields are filled correctly
+    jQuery('.password, .email').keyup(function(){
+
         if((validatedEmail == true) && (validatedPassword == true))
         {
             jQuery('.submitBtn').prop('disabled', false);
@@ -164,10 +182,68 @@ jQuery(function(){
         {
             jQuery('.submitBtn').prop('disabled', true);
         }
-    });*/
+    });
 
 
 
+    // Firstname, lastname validation
+    jQuery('.name').keyup(function(){
+
+        var name = jQuery(this).val().trim();
+        var nameRegExp = name.match(/^([A-Za-z ,.'`-éèçàëêe]{2,30})$/gm);  // https://regex101.com
+
+        if(name == nameRegExp)
+        {
+            jQuery(this).removeClass('red').addClass('green');
+            validatedName = true;
+        }
+        else
+        {
+            jQuery(this).removeClass('green').addClass('red');
+            validatedName = false;
+        }
+    });
+
+
+    // username validation - alphanumeric
+    jQuery('.username').keyup(function (){
+        var userName = jQuery(this).val().trim();
+
+        if(is.alphaNumeric(userName))
+        {
+            jQuery(this).removeClass('red').addClass('green');
+            validatedUsername = true;
+        }
+        else
+        {
+            jQuery(this).removeClass('green').addClass('red');
+            validatedUsername = false;
+        }
+    });
+
+
+    jQuery('.name, .email, .username, .password, .passwordRepeat').keyup(function(){
+
+        if(passwordOne === passwordRepeat)
+        {
+            validatedPassword = true;
+            jQuery('.passwordRepeat').removeClass('red').addClass('green');
+        }
+        else
+        {
+            validatedPassword = false;
+            jQuery('.passwordRepeat').removeClass('green').addClass('red');
+        }
+
+        if((validatedName == true) && (validatedUsername == true) && (validatedEmail == true) && (validatedPassword == true) && (validatedPasswordRepeat == true))
+        {
+            jQuery('.registrationBtn').prop('disabled', false);
+        }
+        else
+        {
+            jQuery('.registrationBtn').prop('disabled', true);
+        }
+    });
 
 }); //END FUNCTION
 
