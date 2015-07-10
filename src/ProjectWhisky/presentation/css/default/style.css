@@ -163,28 +163,32 @@ footer{
 
 input.yellow{
     background-color: sandybrown !important;
-    border:0.2em solid #FFF;
+    outline: none;
+    box-shadow: inset 0 0 0 0.2em #413001;
     color: #413001 !important;
     text-shadow: 0 1px 0 rgba(255,255,255,0.3);
     /*<span class="fa fa-exclamation-circle"></span>*/
 }
 input.red{
     background-color: salmon !important;
-    border:0.2em solid #FFF;
+    outline: none;
+    box-shadow: inset 0 0 0 0.2em #400401;
     color: #400401 !important;
     text-shadow: 0 1px 0 rgba(255,255,255,0.3);
     /*<span class="fa fa-times-circle"></span>*/
 }
 input.green{
     background-color: limegreen !important;
-    border:0.2em solid #FFF;
+    outline: none;
+    box-shadow: inset 0 0 0 0.2em #06441d;
     color: #06441d !important;
     text-shadow: 0 1px 0 rgba(255,255,255,0.3);
     /*<span class="fa fa-check-circle"></span>*/
 }
 input.blue{
     background-color: deepskyblue !important;
-    border:0.2em solid #FFF;
+    outline: none;
+    box-shadow: inset 0 0 0 0.2em #013045;
     color: #013045 !important;
     text-shadow: 0 1px 0 rgba(255,255,255,0.3);
     /*<span class="fa fa-info-circle"></span>*/
