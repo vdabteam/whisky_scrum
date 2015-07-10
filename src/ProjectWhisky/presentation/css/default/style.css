@@ -163,7 +163,6 @@ footer{
 
 input.yellow{
     background-color: sandybrown !important;
-    outline:0.2em solid #413001;
     border:0.2em solid #FFF;
     color: #413001 !important;
     text-shadow: 0 1px 0 rgba(255,255,255,0.3);
@@ -171,7 +170,6 @@ input.yellow{
 }
 input.red{
     background-color: salmon !important;
-    outline:0.2em solid #400401;
     border:0.2em solid #FFF;
     color: #400401 !important;
     text-shadow: 0 1px 0 rgba(255,255,255,0.3);
@@ -179,7 +177,6 @@ input.red{
 }
 input.green{
     background-color: limegreen !important;
-    outline:0.2em solid #06441d;
     border:0.2em solid #FFF;
     color: #06441d !important;
     text-shadow: 0 1px 0 rgba(255,255,255,0.3);
@@ -187,7 +184,6 @@ input.green{
 }
 input.blue{
     background-color: deepskyblue !important;
-    outline:0.2em solid #013045;
     border:0.2em solid #FFF;
     color: #013045 !important;
     text-shadow: 0 1px 0 rgba(255,255,255,0.3);
@@ -213,6 +209,23 @@ input.blue{
 .no_padding{
     padding: 0 !important;
 }
+
+.flex_parent{
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.wrap{ 
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+}  
 
 /* Desktop */
 @media (min-width: 769px){
@@ -327,8 +340,8 @@ input.blue{
         margin: 2em auto 2em auto;
         -webkit-flex-wrap: wrap;
         flex-wrap: wrap;
-        -webkit-justify-content: center;
-        justify-content: center;
+        -webkit-justify-content: left;
+        justify-content: left;
     }
     .whisky_view ul li{
         margin: 0 auto 2em auto;
@@ -340,6 +353,10 @@ input.blue{
     }
     .whisky_view ul li:nth-child(4n+1){
         margin-left: 0;
+    }
+    .whisky_view ul li:last-child{
+        margin-right: 0;
+        float: left;
     }
 
     .whisky_box{
@@ -459,17 +476,6 @@ input.blue{
         width: 100%;
         background-color: #333;
 
-    }
-    .flex_parent{
-        -ms-box-orient: horizontal;
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -moz-flex;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-flex-wrap: wrap;
-        flex-wrap: wrap;
     }
 
     .user_comment{
