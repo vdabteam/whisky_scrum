@@ -868,6 +868,20 @@ input.blue{
         flex: 1;
     }
 
+    .sliders_block h4{
+        width: 38%;
+        min-width: 9em;
+        float: left;
+        text-align: right;
+        padding-right: 1.5em;
+    }
+    
+    #search_whisky_form{
+        border-bottom: 1px dashed rgba(0,0,0,0.2);
+        padding-bottom: 1.5em;
+    }
+
+
 }
 
 /* Portrait Tablet */
