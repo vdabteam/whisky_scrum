@@ -226,39 +226,44 @@ input.blue{
     flex-wrap: wrap;
 }
 
+#navbar{
+    padding: 0.8em 0 1em 0;
+    background-color: black;
+    color: white;
+    border-bottom: 3px solid #FFBA39;
+
+}
+
+.navbutton a, #logo a{
+    height: 16px;
+    display: inline-block;
+    margin-right: 1.8em;
+    margin-left: 0.4em;
+    color: white;
+    line-height: 1.2em;
+    font-family: 'open_sansbold';
+}
+
+.navbutton a:hover, #logo a:hover{
+    color: #FFBA39;
+}
+
+#logo{
+    height: 16px;
+    padding-left: 17px;
+
+    background: url("../../logo/logo_white_big.png") left center;
+    background-size: 16px;
+    background-repeat: no-repeat;
+    font-family: 'open_sansbold';
+}
+
 /* Desktop */
 @media (min-width: 769px){
 
-    #navbar{
-        padding: 0.8em 0 1em 0;
-        background-color: black;
-        color: white;
-        border-bottom: 3px solid #FFBA39;
-
-    }
-    .navbutton a, #logo a{
-        height: 16px;
-        display: inline-block;
-        margin-right: 1.8em;
-        margin-left: 0.4em;
-        color: white;
-        line-height: 1.2em;
-        font-family: 'open_sansbold';
-    }
-    .navbutton a:hover, #logo a:hover{
-        color: #FFBA39;
-    }
 
 
-    #logo{
-        height: 16px;
-        padding-left: 17px;
 
-        background: url("../../logo/logo_white_big.png") left center;
-        background-size: 16px;
-        background-repeat: no-repeat;
-        font-family: 'open_sansbold';
-    }
 
     .container{
         width: 90%;
