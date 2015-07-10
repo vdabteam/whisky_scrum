@@ -3,12 +3,17 @@
 ob_start();
 
 use src\ProjectWhisky\business\UserBusiness;
+use src\ProjectWhisky\helpers\ValidationHelpers;
 use src\ProjectWhisky\exceptions\WrongDataException;
 use src\ProjectWhisky\exceptions\EmptyDataException;
 use src\ProjectWhisky\exceptions\PasswordsDontMatchException;
 use src\ProjectWhisky\exceptions\WrongEmailFormException;
 use src\ProjectWhisky\exceptions\UsernameExistsException;
 use src\ProjectWhisky\exceptions\EmailExistsException;
+use src\ProjectWhisky\exceptions\WrongPasswordPatternException;
+use src\ProjectWhisky\exceptions\WrongEmailPatternException;
+use src\ProjectWhisky\exceptions\WrongNamePatternException;
+use src\ProjectWhisky\exceptions\WrongUserNamePatternException;
 
 use Doctrine\Common\ClassLoader;
 
@@ -43,18 +48,22 @@ if(isset($_POST['firstname']))
          */
         if (empty($firstname) || empty($lastname) || empty($email) || empty($username) || empty($password) || empty($rpassword)) throw new EmptyDataException();
 
+        $validator = new ValidationHelpers();
 
-        $firstname = trim(htmlspecialchars($firstname)); // validate firstname todo: use regex to exclude forbidden chars
-        $lastname = trim(htmlspecialchars($lastname)); // validate lastname
-        $email = filter_var(trim($email), FILTER_VALIDATE_EMAIL); // validate e-mail
-        $username = trim(htmlspecialchars($username)); // validate username
-        $password = trim(htmlspecialchars($password)); // validate pass
-        $rpassword = trim(htmlspecialchars($rpassword)); // validate repeated pass
+        $firstnameValidated = $validator->validateName($firstname);
+        $lastnameValidated = $validator->validateName($lastname);
+        $emailValidated = $validator->validateEmail($email);
+        $usernameValidated = $validator->validateUsername($username);
+        $passwordValidated = $validator->validatePassword($password);
+        $rpasswordValidated = $validator->validatePassword($rpassword);
 
-        /**
-         * Check if e-mail pattern is correct
-         */
-        if(empty($email)) throw new WrongEmailFormException();
+
+        if(!$firstnameValidated) throw new WrongNamePatternException(); // validate firstname
+        if(!$lastnameValidated) throw new WrongNamePatternException(); // validate lastname
+        if(!$emailValidated) throw new WrongEmailPatternException(); // validate e-mail
+        if(!$usernameValidated) throw new WrongUserNamePatternException(); // validate username
+        if(!$passwordValidated) throw new WrongPasswordPatternException(); // validate pass
+        if(!$rpasswordValidated) throw new WrongPasswordPatternException(); // validate repeated pass
 
         /**
          * Check whether passwords are the same
@@ -117,6 +126,22 @@ if(isset($_POST['firstname']))
     catch(EmailExistsException $e)
     {
         echo "User with this e-mail already exists - choose another e-mail.";
+    }
+    catch(WrongNamePatternException $e)
+    {
+        echo "Wrong name pattern - use only alphabetic letters, or this symbols: '`-éèçàëêe and spaces";
+    }
+    catch(WrongEmailPatternException $e)
+    {
+        echo "E-mail must have this pattern: mail@mail.com";
+    }
+    catch(WrongUserNamePatternException $e)
+    {
+        echo "Username can contain alphanumeric symbols only";
+    }
+    catch(WrongPasswordPatternException $e)
+    {
+        echo "Password must contain min. 8 characters, min. 1 capital letter and min. 1 number.";
     }
 
 }
