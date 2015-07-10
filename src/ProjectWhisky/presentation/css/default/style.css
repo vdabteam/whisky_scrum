@@ -280,9 +280,9 @@ input.blue{
         bottom: 15px;
         left: 10px;
         width: 50%;
-        top: 80%;
-        max-width: 300px;
-        max-height: 25em;
+        top: 98%;
+        /* max-width: 300px; */
+        max-height: 3em;
         background: rgba(0,0,0,0.5);
         -webkit-box-shadow: 0 15px 10px rgba(0,0,0,0.5);
         -moz-box-shadow: 0 15px 10px rgba(0,0,0,0.5);
