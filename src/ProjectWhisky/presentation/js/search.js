@@ -25,7 +25,7 @@ jQuery(function(){
     /**
      * Ajax triggering when sliders are changed
      */
-    jQuery('.ui-rangeSlider-bar').mouseleave(function(e) {
+    jQuery('.ui-rangeSlider-bar, .ui-rangeSlider-handle').mouseup(function(e) {
         triggerResult(e);
     }); // End
 
