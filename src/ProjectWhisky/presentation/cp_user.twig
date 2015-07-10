@@ -1,0 +1,18 @@
+{% extends "cpanel_template.twig" %}
+
+{% block content %}
+
+            <header id="header_banner" class="users_header">
+                <div id="header_quote"><p>Users</p></div>
+            </header>
+            <div id="content_container">
+                
+                {% for user in users  %}
+                    {{ user.username }}&nbsp;<a href="CP_user_edit.php?id={{user.id}}">Edit</a><br>
+                {% endfor  %}
+                <br>
+                <a href="cp_user_add.php">Add new user</a>
+                
+                
+            </div>
+{% endblock %} 
