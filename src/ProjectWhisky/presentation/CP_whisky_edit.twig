@@ -8,6 +8,7 @@
         <div id="header_quote"><p>Edit Whisky</p></div>
     </header>
         <div id="content_container">
+            <p>{{ msg }}</p><br>
             
             <form action="CP_whisky_edit.php" method="get"><br>
                 <input type="hidden" name="id" value="{{ whisky.id }}">
@@ -40,10 +41,10 @@
 
                 <!-- Replace with file picker  -->
                 <label for="whisky_image">Image: </label>
-                <input type="text" value="{{ whisky.imagepath }}" id="whisky_image" name="whisky_page"><br>
+                <input type="text" value="{{ whisky.imagepath }}" id="whisky_image" name="whisky_image"><br>
 
                 <label for="hidden">Hidden: </label>
-                <input type="number"  min="0" max="1" value="{{ whisky.hidden }}" id="hidden" name="hidden"><br>
+                <input type="checkbox" name="hidden" id="hidden" value="1" {{ whisky.hidden ? "checked" : "" }}><br>
                 <label for="rating_aroma">Rating Aroma: </label>
                 <input type="number" min="0" max="20" value="{{ whisky.ratingaroma }}" id="rating_aroma" name="rating_aroma"><br>
                 <label for="rating_color">Rating Color: </label>

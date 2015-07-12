@@ -8,32 +8,34 @@
         <div id="header_quote"><p>Add Whisky</p></div>
     </header>
         <div id="content_container">
-            
+            <p>{{ msg }}</p><br><br>
             <form action="CP_whisky_add.php" method="get"><br>
             
                 <label for="whisky_name">Naam: </label>
-                <input type="text" id="whisky_name"><br>
+                <input type="text" id="whisky_name" name="whisky_name"><br>
                 
                 
                 <!-- Dropdown for distilleries -->
                 
                 <label for="distillery_id">Distillery: </label>
-                <select id="distillery_id">
+                <select id="distillery_id" name="distillery_id">
+                    <option value="0" selected disabled>Select distillery</option>
                     {% for distillery  in distilleries %}
                         <option value="{{ distillery.id }}">{{ distillery.name }}</option>
                     {% endfor  %}
                 </select><br> 
                                                
                 <label for="whisky_price">Price: </label>
-                <input type="number"  min="0" id="whisky_price"><br>
+                <input type="number"  min="0" id="whisky_price" name="whisky_price"><br>
                 <label for="whisky_age">Age: </label>
-                <input type="number"  min="0" id="whisky_age"><br>
+                <input type="number"  min="0" id="whisky_age" name="whisky_age"><br>
                 <label for="whisky_strength">Strength: </label>
-                <input type="number"  min="0" max="100" id="whisky_strength">%<br>
+                <input type="number"  min="0" max="100" id="whisky_strength" name="whisky_strength">%<br>
 
                 <!--barrel dropdown  -->
                 <label for="barrel">Barrel type: </label>
-                <select id="barrel">
+                <select id="barrel" name="barrel">
+                    <option value="0" disabled selected>Select a barrel</option>
                     {% for barrel  in barrels %}
                         <option value="{{ barrel.id }}">{{ barrel.type }}</option>
                     {% endfor  %}
@@ -41,28 +43,28 @@
 
                 <!-- Replace with file picker  -->
                 <label for="whisky_image">Image: </label>
-                <input type="text" value="default.jpg" id="whisky_image"><br>
-
+                <input type="text" value="default.jpg" id="whisky_image" name="whisky_image"><br>
+ 
                 <label for="hidden">Hidden: </label>
-                <input type="number"  min="0" max="1" value="" id="hidden"><br>
+                <input type="checkbox" name="hidden" id="hidden" value="1"><br>
                 <label for="rating_aroma">Rating Aroma: </label>
-                <input type="number" min="0" max="20" id="rating_aroma"><br>
+                <input type="number" min="0" max="20" id="rating_aroma" name="rating_aroma"><br>
                 <label for="rating_color">Rating Color: </label>
-                <input type="number" min="0" max="20" id="rating_color"><br>
+                <input type="number" min="0" max="20" id="rating_color" name="rating_color"><br>
                 <label for="rating_taste">Rating Taste: </label>
-                <input type="number" min="0" max="20" id="rating_taste"><br>
+                <input type="number" min="0" max="20" id="rating_taste" name="rating_taste"><br>
                 <label for="rating_aftertaste">Rating Aftertaste: </label>
-                <input type="number" min="0" max="20" id="rating_aftertaste"><br>
+                <input type="number" min="0" max="20" id="rating_aftertaste" name="rating_aftertaste"><br>
                 <label for="text_aroma">Text Aroma: </label><br>
-                <textarea id="text_aroma" rows="5" cols="40"></textarea><br>
+                <textarea id="text_aroma" name="text_aroma" rows="5" cols="40"></textarea><br>
                 <label for="text_color">Text Color: </label><br>
-                <textarea id="text_color" rows="5" cols="40"></textarea><br>
+                <textarea id="text_color" name="text_color" rows="5" cols="40"></textarea><br>
                 <label for="text_taste">Text Taste: </label><br>
-                <textarea id="text_taste" rows="5" cols="40"></textarea><br>
+                <textarea id="text_taste" name="text_taste" rows="5" cols="40"></textarea><br>
                 <label for="text_aftertaste">Text Aftertaste: </label><br>
-                <textarea id="text_aftertaste" rows="5" cols="40"></textarea><br>
+                <textarea id="text_aftertaste" name="text_aftertaste" rows="5" cols="40"></textarea><br>
                 <label for="text_review">Overall review: </label><br>
-                <textarea id="text_review" rows="5" cols="40"></textarea><br>
+                <textarea id="text_review" name="text_review" rows="5" cols="40"></textarea><br>
                 <input type="submit" value="wijzigen">
                 
             </form>
