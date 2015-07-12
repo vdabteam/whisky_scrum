@@ -237,7 +237,7 @@ jQuery(function(){
         }
         else
         {
-            jQuery('.registrationBtn').prop('disabled', true);
+            //jQuery('.registrationBtn').prop('disabled', true);
         }
     });
 

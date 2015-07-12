@@ -82,25 +82,18 @@ if ((isset($_GET['id'])) && (is_int((int)$_GET['id'])) && (!empty($_GET['id'])))
          */
         if (isset($_POST['sendMsgBtn']))
         {
-            if (strlen(trim(strip_tags($_POST['editor1']))) > 13)
+            if (strlen(trim(str_replace("&nbsp;","",strip_tags($_POST['editor1'])))) > 5)
             {
+                echo str_replace("&nbsp;","",strip_tags($_POST['editor1']));
+
                 $commentBiz->createComment($_GET['id'], $_SESSION['user']['id'], $_POST['editor1']);
                 $_SESSION['messageBlock'] = "Comment added";
 
                 $pathToWhisky = "whisky.php?id=" . $_GET['id'] . "&action=1#message";
-                if (empty(strlen(trim(strip_tags($_POST['editor1'])))))
-                {
-
-                }
-                else
-                {
-
-                    echo trim(htmlspecialchars_decode(strip_tags($_POST['editor1']), ENT_QUOTES), chr(0xC2).chr(0xA0));
-
-                }
 
 
-//                header("Location: $pathToWhisky");
+
+                header("Location: $pathToWhisky");
             }
             else
             {
