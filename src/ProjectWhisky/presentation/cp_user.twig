@@ -6,10 +6,34 @@
                 <div id="header_quote"><p>Users</p></div>
             </header>
             <div id="content_container">
-                
-                {% for user in users  %}
-                    {{ user.username }}&nbsp;<a href="CP_user_edit.php?id={{user.id}}">Edit</a><br>
+
+                <table class="cpanel_table">
+
+                    <tr>
+                        <th>Avatar</th>
+                        <th>Username</th>
+                        <th>Firstname</th>
+                        <th>Lastname</th>
+                        <th>Email</th>
+                        <th>Ban</th>
+                        <th>Role</th>
+                        <th>Full Edit</th>
+                    </tr>
+                {% for user in users %}
+                    <tr>
+                        <td><img alt="profile picture of {{ user.username }}" src="src/ProjectWhisky/presentation/userimages/{{ user.imagePath }}"></td>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.firstname }}</td>
+                        <td>{{ user.lastname }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.blocked }}</td>
+                        <td>{{ user.admin }}</td>
+                        <td><a href="CP_user_edit.php?id={{user.id}}">Edit</a></td>
+                    </tr>
                 {% endfor  %}
+
+                </table>
+                
                 <br>
                 <a href="cp_user_add.php">Add new user</a>
                 

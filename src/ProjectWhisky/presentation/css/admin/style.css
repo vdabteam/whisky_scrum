@@ -282,12 +282,16 @@ aside#sidebar #menu li a{
 	display: list-item;
 	width: 100%;
     position: relative;
+    font-family: 'open_sanslight';
+    text-shadow: 0 1px 0 rgba(0,0,0,1);
 }
-aside#sidebar #menu li a::first-letter{
+aside#sidebar #menu li span.fa{
     margin-right: 1em;
+    text-shadow: none;
 }
 aside#sidebar #menu li a:hover{
 	background-color: #00E2FF;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.6);
 }
 aside#sidebar #menu li a.active {
 	background-color: #7B7D7F;
@@ -489,6 +493,23 @@ input::-moz-focus-inner {
   border: 0;
 }
 
+.cpanel_table{
+    margin: 2em auto;
+}
+.cpanel_table tr td img{
+    max-height: 2em;
+    margin: 0 auto;
+}
+.cpanel_table tr td, .cpanel_table tr th{
+    padding: 0.2em 0.5em;
+    border: 1px solid black;
+}
+.cpanel_table tr th{
+    color: #00E2FF;
+    background-color: black;
+    font-family: 'open_sanslight';
+    padding:0.5em 1em;
+}
 
 /* ///// RESPONSIVENESS ///// */
 /* Desktop */
