@@ -27,8 +27,17 @@ if(isset($_POST["userUsername"]))
     $firstname = $_POST['userFirstName'];
     $lastname = $_POST['userLastName'];
     $admin = "0";
+    if(isset($_POST['userAdmin'])){
+        $admin = $_POST['userAdmin'];
+    }
     $blocked = "0";
+    if(isset($_POST['userBlocked'])){
+        $blocked = $_POST['userBlocked'];
+    }
+    
     //$imagePath = "default.jpg";
+    
+    header("location:cp_user.php");
     
     $userBiz = new UserBusiness();
     $userBiz->addCPUser($username, $password, $email, $firstname, $lastname, $admin, $blocked);

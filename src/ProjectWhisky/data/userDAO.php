@@ -165,15 +165,13 @@ class UserDAO
         self::connectToDB(); /* Using DB connection */
 
         $this->sql = "UPDATE users 
-                      SET username = :username, password = :password, email = :email, firstname = :firstname, lastname = :lastname,
-                        admin = :admin, blocked = :blocked
-                      WHERE id = :id";
+                      SET username = ?, password = ?, email = ?, firstname = ?, lastname = ?, admin = ?, blocked = ?, 
+                      WHERE id = ?";
 
         try
         {
             $this->query = $this->handler->prepare($this->sql);
-            $this->query->execute(array('id' => $id, 'username' => $username, 'password' => $password, 'email'=> $email, 'firstname'=> $firstname, 'lastname'=>$admin,
-                'blocked' => $blocked));
+            $this->query->execute(array($username, $password, $email, $firstname, $lastname, $admin, $blocked, $userId));
 
             /**
              * Closing DB connection
@@ -451,14 +449,16 @@ class UserDAO
         self::connectToDB(); /* Using DB connection */
 
         $this->sql = "INSERT INTO users (username, password, email, firstname, lastname, admin, blocked, registration_date)
-                        VALUES(:username, :password, :email, :firstname, :lastname, :admin, :blocked, NOW())";
+                      
+                        VALUES(?,?,?,?,?,?,?, NOW())";
 
         try
         {
             $this->query = $this->handler->prepare($this->sql);
-            $this->query->execute(array('username' => $username, 'password' => $password, 'email'=> $email, 'firstname'=> $firstname, 'lastname'=>$admin,
-                'blocked' => $blocked));
 
+            $this->query->execute(array($username, $password, $email, $firstname, $lastname, $admin, $blocked));
+            
+            
             /**
              * Closing DB connection
              */

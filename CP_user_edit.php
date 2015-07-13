@@ -33,23 +33,19 @@ if (isset($_POST['userUsername']))
     $email = $_POST['userEmail'];
     $firstname = $_POST['userFirstName'];
     $lastname = $_POST['userLastName'];
-    $admin = "1";
+    $admin = "0";
+    if(isset($_POST['userAdmin'])){
+        $admin = $_POST['userAdmin'];
+    }
     $blocked = "0";
-    $imagePath = "test.jpg";
+    if(isset($_POST['userBlocked'])){
+        $blocked = $_POST['userBlocked'];
+    }
     
+    //$imagePath = "default.jpg";
     
     $userBiz->updateUserById($userId, $username, $password, $email, $firstname, $lastname, $admin, $blocked);
-    
 }
-
-
-
-
-
-
-
-
-
 
 $loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation");
 $twig = new Twig_Environment($loader);
