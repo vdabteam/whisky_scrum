@@ -17,6 +17,8 @@
     	        <span class="fa fa-plus"></span> <span> Add Picture</span>
     	        <input id="imgUploader" type="file" class="upload" name="userImage">
             </div>
+            <h3>E-mail:</h3>
+            <input type="text" name="userEmail" placeholder="E-mail"/>
     		<h3>Username:</h3>
             <input type="text" name="userUsername" placeholder="Username"/>
             <h3>Password:</h3>
@@ -25,12 +27,11 @@
             <input type="text" name="userFirstName" placeholder="Firstname"/>
             <h3>Lastname:</h3>
             <input type="text" name="userLastName" placeholder="Lastname"/>
-            <h3>E-mail:</h3>
-            <input type="text" name="userEmail" placeholder="E-mail"/>
+
 
             <div class="">
-    	        Admin: <input type="checkbox" name="userAdmin">
-    	        Blocked: <input type="checkbox" name="userBlocked">
+    	        Admin: <input type="checkbox" value="1" name="userAdmin">
+    	        Blocked: <input type="checkbox" value="1" name="userBlocked">
     		</div>
     		<input type="submit" value="create user"/>
     	</form>
