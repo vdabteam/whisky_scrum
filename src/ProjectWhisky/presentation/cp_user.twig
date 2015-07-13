@@ -22,13 +22,13 @@
                 {% for user in users %}
                     <tr>
                         <td><img alt="profile picture of {{ user.username }}" src="src/ProjectWhisky/presentation/userimages/{{ user.imagePath }}"></td>
-                        <td>{{ user.username }}</td>
+                        <td><a href="profile.php?id={{ user.id }}" target="_blanc">{{ user.username }}</a></td>
                         <td>{{ user.firstname }}</td>
                         <td>{{ user.lastname }}</td>
                         <td>{{ user.email }}</td>
                         <td>{{ user.blocked }}</td>
                         <td>{{ user.admin }}</td>
-                        <td><a href="CP_user_edit.php?id={{user.id}}">Edit</a></td>
+                        <td><a href="CP_user_edit.php?id={{ user.id }}">Edit</a></td>
                     </tr>
                 {% endfor  %}
 
