@@ -81,7 +81,12 @@ class UserBusiness extends ValidationHelpers
         return $this->list;
     }
 
-
+    public function getUserbyId($userId)
+    {
+        $userDAO = new UserDAO();
+        $user = $userDAO->getUserById($userId);
+        return $user;
+    }
 
 
 
