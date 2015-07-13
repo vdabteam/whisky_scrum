@@ -1,18 +1,18 @@
 {% extends "cpanel_template.twig" %}
 {% set activetab = 'whiskies' %}
+{% block title %} cp whiskies  {% endblock %}
 {% block content %}
 
             <header id="header_banner" class="whisky_header">
-                <div id="header_quote"><p>Manage Whisky's</p></div>
+                <div id="header_quote"><p>Manage Whiskies</p></div>
             </header>
             <div id="content_container">
                 
                 {% for whisky in whiskies  %}
-                    {{ whisky.name }}&nbsp;<a href="CP_whisky_edit.php?id={{whisky.id}}">Edit</a><br>
+                    {{ whisky.name }}&nbsp;<a href="CP_whisky_edit.php?id={{whisky.id }}">Edit</a><br>
                 {% endfor  %}
                 <br>
                 <a href="CP_whisky_add.php">Voeg een Whisky toe</a>
-                
-                
+                     
             </div>
 {% endblock %}    
