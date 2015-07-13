@@ -19,9 +19,7 @@ $classLoader->register();
 require_once("lib/Twig/Autoloader.php");
 Twig_Autoloader::register();
 $msg = "";
-////////////////////////////////////////////////////
-/// VERIFY INPUT - WRITE TO DATABASE - REDIRECT ///
-//////////////////////////////////////////////////
+
 
 // Check GET variable
 if(!empty($_GET))
