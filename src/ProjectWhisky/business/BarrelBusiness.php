@@ -21,4 +21,25 @@ class BarrelBusiness
         $barrel = $barrelDAO->getBarrelByWhisky($whiskyId);
         return $barrel;
     }
+    
+    public function showBarrelById($id)
+    {
+        $barrelDAO = new BarrelDAO();
+        $barrel = $barrelDAO->getBarrelById($id);
+        return $barrel;
+    }
+            
+    public function addBarrel($type)
+    {
+        $barrelDAO = new BarrelDAO();
+        $barrel = $barrelDAO->addBarrel($type);
+        return $barrel;   
+    }
+    
+    public function editBarrel($id, $type)
+    {
+        $barrelDAO = new BarrelDAO();
+        $barrel = $barrelDAO->editBarrel($id, $type);
+        return $barrel;
+    }        
 }
