@@ -82,6 +82,7 @@ if ((isset($_GET['id'])) && (is_int((int)$_GET['id'])) && (!empty($_GET['id'])))
          */
         if (isset($_POST['sendMsgBtn']))
         {
+            // Message should contain > 5 chars
             if (strlen(trim(str_replace("&nbsp;","",strip_tags($_POST['editor1'])))) > 5)
             {
                 echo str_replace("&nbsp;","",strip_tags($_POST['editor1']));
@@ -90,8 +91,6 @@ if ((isset($_GET['id'])) && (is_int((int)$_GET['id'])) && (!empty($_GET['id'])))
                 $_SESSION['messageBlock'] = "Comment added";
 
                 $pathToWhisky = "whisky.php?id=" . $_GET['id'] . "&action=1#message";
-
-
 
                 header("Location: $pathToWhisky");
             }
