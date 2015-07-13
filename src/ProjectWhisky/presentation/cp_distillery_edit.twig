@@ -1,0 +1,25 @@
+{% extends "cpanel_template.twig" %}
+{% set activetab = 'distilleries' %}
+{% block title %} Edit Distillery  {% endblock %}
+{% block content %}
+
+            <header id="header_banner" class="barrels_header">
+                <div id="header_quote"><p>Edit Distillery</p></div>
+            </header>
+            <div id="content_container">
+                <form action="cp_distillery_edit.php?id={{ distillery.  }}" method="post">
+                   
+                    <label for="type">Name: </label>
+                    <input type="text" id="type" name="name" value="{{ distillery.name }}" /><br>
+                    <label for="">Address: </label>
+                    <input type="text" id="address" name="address" value="{{ distillery.address }}" /></br>
+                    <label for="">City: </label>
+                    <input type="text" id="city" name="city" value="{{ distillery.city }}" /></br>
+                    <label for="">Country: </label>
+                    <input type="text" id="country" name="country" value="{{ distillery.country }}" /></br>
+                    <label for="">Region: </label>
+                    <input type="text" id="region" name="region" value="{{ distillery.region }}" /></br>
+                    <input type="submit" value="Edit distillery">
+                </form>
+            </div>
+{% endblock %}

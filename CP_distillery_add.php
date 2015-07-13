@@ -34,8 +34,8 @@ if(!empty($name) && !empty($address) && !empty($city) && !empty($country) && !em
 {
     $distilleryBiz = new DistilleryBusiness();
     $addDistillery = $distilleryBiz->addDistillery($name, $address, $city, $country, $region);
-    return $addDistillery;
     header("location:cp_distillery.php");
+    
 }
 // render TWIG
 $loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation");
