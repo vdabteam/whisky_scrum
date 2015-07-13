@@ -446,7 +446,33 @@ class UserDAO
             return false;
         }
     }
-    
+    public function createCPUser($username, $password, $email, $firstname, $lastname, $admin, $blocked)
+    {
+        self::connectToDB(); /* Using DB connection */
+
+        $this->sql = "INSERT INTO users (username, password, email, firstname, lastname, admin, blocked, registration_date)
+                        VALUES(:username, :password, :email, :firstname, :lastname, :admin, :blocked, NOW())";
+
+        try
+        {
+            $this->query = $this->handler->prepare($this->sql);
+            $this->query->execute(array('username' => $username, 'password' => $password, 'email'=> $email, 'firstname'=> $firstname, 'lastname'=>$admin,
+                'blocked' => $blocked));
+
+            /**
+             * Closing DB connection
+             */
+            $this->query->closeCursor();
+            $this->handler = null;
+
+            return true;
+        }
+        catch (Exception $e)
+        {
+            echo "Error: query failure";
+            return false;
+        }
+    }
     
     
 
