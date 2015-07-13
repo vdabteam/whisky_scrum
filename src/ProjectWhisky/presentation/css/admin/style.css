@@ -126,7 +126,7 @@ footer{
 
 #notifier{
     margin: 1em auto 1.5em;
-    width: 100%;
+    width: 90%;
     max-width: 960px;
     padding: 2em 6em 2em 3em;
     color: white;
@@ -335,15 +335,7 @@ aside#sidebar #menu li a.active:after {
 	font-weight: bold;
 	box-shadow: 0 -1em 1.5em -1em rgba(0,0,0,0.3) inset;
 	border-bottom: 0.2em solid white;
-	text-shadow: 0 0.15em 0.1em rgba(0,0,0,0.3);
-}
-
-#notifier{
-	margin: 1em auto 1.5em;
-	width: 90%;
-	max-width: 960px;
-	padding: 2em 6em 2em 3em;
-	color: white;
+	/*text-shadow: 0 0.15em 0.1em rgba(0,0,0,0.3);*/
 }
 /*
 .yellow{
@@ -515,12 +507,19 @@ input::-moz-focus-inner {
     background-color: black;
     font-family: 'open_sanslight';
     padding:0.5em 1em;
+    letter-spacing: 0.1em;
 }
 .cpanel_table tr td:first-child,
 .cpanel_table tr td:nth-last-child(3),
 .cpanel_table tr td:nth-last-child(2),
 .cpanel_table tr td:nth-last-child(1){
     text-align: center;
+}
+.cpanel_table tr:nth-child(even){
+    background-color: white;
+}
+.cpanel_table tr:hover{
+    background-color: #EEE;
 }
 
 /* ///// RESPONSIVENESS ///// */
