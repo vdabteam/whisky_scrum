@@ -159,6 +159,36 @@ class UserDAO
             return false;
         }
     }
+    
+    public function updateUserbyId($userId, $username, $password, $email, $firstname, $lastname, $admin, $blocked)
+    {
+        self::connectToDB(); /* Using DB connection */
+
+        $this->sql = "UPDATE users 
+                      SET username = :username, password = :password, email = :email, firstname = :firstname, lastname = :lastname,
+                        admin = :admin, blocked = :blocked
+                      WHERE id = :id";
+
+        try
+        {
+            $this->query = $this->handler->prepare($this->sql);
+            $this->query->execute(array('id' => $id, 'username' => $username, 'password' => $password, 'email'=> $email, 'firstname'=> $firstname, 'lastname'=>$admin,
+                'blocked' => $blocked));
+
+            /**
+             * Closing DB connection
+             */
+            $this->query->closeCursor();
+            $this->handler = null;
+
+            return true;
+        }
+        catch (Exception $e)
+        {
+            echo "Error: query failure";
+            return false;
+        }
+    }
 
 
     /**
