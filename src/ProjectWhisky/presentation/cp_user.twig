@@ -8,6 +8,7 @@
             </header>
             <div id="content_container">
                 <div id="controller" class="shadow">
+                
                     <form class="cpanel_form"><h2>Search Users</h2>
 
                         <input type="text" name="search_username" id="search_username" placeholder="Username">
@@ -30,7 +31,9 @@
                             <th>Role</th>
                             <th>Full Edit</th>
                         </tr>
+
                     {% for user in users %}
+
                         <tr>
                             <td class="text_center"><img alt="profile picture of {{ user.username }}" src="src/ProjectWhisky/presentation/userimages/{{ user.imagePath }}"></td>
                             <td>{{ user.username }}</td>
@@ -52,6 +55,7 @@
 
                             <td class="text_center"><a href="CP_user_edit.php?id={{ user.id }}">Edit</a></td>
                         </tr>
+
                     {% endfor %}
 
                     </table>

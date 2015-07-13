@@ -236,6 +236,11 @@ input.blue{
     flex-wrap: wrap;
 }
 
+
+input[type="button"], input[type="button"]::-webkit-file-upload-button, input[type="file"]::-webkit-file-upload-button{
+    display: none !important; /* Removing the annoying AGENT USER STYLE that made "cursor:pointer;" fuck up!*/
+}
+
 #navbar{
     padding: 0.8em 0 1em 0;
     background-color: black;
@@ -397,6 +402,7 @@ aside#sidebar #menu li a.active:after {
        -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
             box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 }
+
 .shadow:before, .shadow:after{
     content:"";
     position:absolute;
@@ -411,6 +417,7 @@ aside#sidebar #menu li a.active:after {
     -moz-border-radius:100px / 10px;
     border-radius:100px / 10px;
 }
+
 .shadow:after{
     right:10px;
     left:auto;
@@ -562,6 +569,49 @@ input::-moz-focus-inner {
 }
 .btn-primary:hover{
     background-color: rgba(0,0,0,1);
+}
+input[type="file"]{
+    -moz-opacity: 0;
+    filter:alpha(opacity: 0);
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+}
+
+.fileUpload*, .fileRemover*, .commentRemover*{
+    cursor: pointer;
+}
+
+.fileUpload{
+    position: relative;
+    overflow: hidden;
+}
+
+#profile_edit_form .fileUpload input.upload{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 20px;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+
+#imgUploader.upload{
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#profile_edit_form input#uploadFile{
+    margin-top: -1em;
+    display: none;
 }
 
 /* ///// RESPONSIVENESS ///// */

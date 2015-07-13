@@ -757,8 +757,9 @@ input.blue{
     }
 
 /* FUCKIING KNOP */
-    input[type="button"]::-webkit-file-upload-button, buttoninput[type="file"]::-webkit-file-upload-{
-        display: none; /* Removing the annoying AGENT USER STYLE that made "cursor:pointer;" fuck up!*/
+    
+    input[type="button"], input[type="button"]::-webkit-file-upload-button, input[type="file"]::-webkit-file-upload-button{
+        display: none !important; /* Removing the annoying AGENT USER STYLE that made "cursor:pointer;" fuck up!*/
     }
 
     .fileUpload*, .fileRemover*, .commentRemover*{
