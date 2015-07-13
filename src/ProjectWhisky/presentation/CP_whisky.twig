@@ -7,12 +7,32 @@
                 <div id="header_quote"><p>Manage Whiskies</p></div>
             </header>
             <div id="content_container">
-                
+
+                <table class="cpanel_table">
+
+                    <tr>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Age</th>
+                        <th>Created</th>
+                        <th>Full Edit</th>
+                    </tr>
                 {% for whisky in whiskies  %}
-                    {{ whisky.name }}&nbsp;<a href="CP_whisky_edit.php?id={{whisky.id }}">Edit</a><br>
-                {% endfor  %}
+                    <tr>
+                        <td class="text_center"><img alt="picture of {{ whisky.name }}" src="src/ProjectWhisky/presentation/img/{{ whisky.imagePath }}"></td>
+                        <td>{{ whisky.name }}</td>
+                        <td class="text_right">&euro; {{ whisky.price }}</td>
+                        <td class="text_right">{{ whisky.age }}</td>
+                        <td class="text_center">{{ whisky.creationDate }}</td>
+                        <td class="text_center"><a href="CP_whisky_edit.php?id={{ whisky.id }}">Edit</a></td>
+                    </tr>
+                {% endfor %}
+
+                </table>
+                
                 <br>
-                <a href="CP_whisky_add.php">Voeg een Whisky toe</a>
+                <a href="CP_whisky_add.php" class="btn btn-primary"><i class="fa fa-plus"></i> Voeg een Whisky toe</a>
                      
             </div>
 {% endblock %}    

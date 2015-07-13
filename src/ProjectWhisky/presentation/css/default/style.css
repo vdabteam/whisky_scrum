@@ -261,10 +261,6 @@ input.blue{
 /* Desktop */
 @media (min-width: 769px){
 
-
-
-
-
     .container{
         width: 90%;
         max-width: 1080px;

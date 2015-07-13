@@ -7,7 +7,13 @@
                 <div id="header_quote"><p>Users</p></div>
             </header>
             <div id="content_container">
+                <form class="cpanel_form"><h2>Search Users</h2>
 
+                    <input type="text" name="search_username" id="search_username" placeholder="Username">
+                    <input type="text" name="search_email" id="search_email" placeholder="Email">
+                    <input class="btn btn-primary" type="submit" value="Search">
+
+                </form>
                 <table class="cpanel_table">
 
                     <tr>
@@ -22,7 +28,7 @@
                     </tr>
                 {% for user in users %}
                     <tr>
-                        <td><img alt="profile picture of {{ user.username }}" src="src/ProjectWhisky/presentation/userimages/{{ user.imagePath }}"></td>
+                        <td class="text_center"><img alt="profile picture of {{ user.username }}" src="src/ProjectWhisky/presentation/userimages/{{ user.imagePath }}"></td>
                         <td>{{ user.username }}</td>
                         <td>{{ user.firstname }}</td>
                         <td>{{ user.lastname }}</td>
@@ -35,12 +41,12 @@
                         {% endif %}</td>
 
                         {% if user.admin == 1 %}
-                            <td class="green no_border">Admin
+                            <td class="text_center green no_border">Admin
                         {% else %}
-                            <td class="">User
+                            <td class="text_center">User
                         {% endif %}</td>
 
-                        <td><a href="CP_user_edit.php?id={{ user.id }}">Edit</a></td>
+                        <td class="text_center"><a href="CP_user_edit.php?id={{ user.id }}">Edit</a></td>
                     </tr>
                 {% endfor  %}
 

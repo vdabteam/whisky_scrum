@@ -95,6 +95,14 @@ h1{
     bottom: 0;
     margin-bottom: 0;
 }
+
+.text_center{
+    text-align: center;
+}
+.text_right{
+    text-align: right;
+}
+
 .center{
     margin-left: auto;
     margin-right: auto;
@@ -498,7 +506,7 @@ input::-moz-focus-inner {
     margin: auto auto;
 }
 .cpanel_table tr td, .cpanel_table tr th{
-    padding: 0.2em;
+    padding: 0.2em 0.5em;
     border: 1px solid black;
     height: 2.3em;
 }
@@ -509,17 +517,51 @@ input::-moz-focus-inner {
     padding:0.5em 1em;
     letter-spacing: 0.1em;
 }
-.cpanel_table tr td:first-child,
-.cpanel_table tr td:nth-last-child(3),
-.cpanel_table tr td:nth-last-child(2),
-.cpanel_table tr td:nth-last-child(1){
-    text-align: center;
-}
 .cpanel_table tr:nth-child(even){
     background-color: white;
 }
 .cpanel_table tr:hover{
     background-color: #EEE;
+}
+
+.cpanel_form{
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+.cpanel_form h2{
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+}
+
+.cpanel_form input{
+    margin-right: 1em;
+    display: inline-block;
+}
+
+.btn{   
+    display: table;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: none;
+}
+.btn-primary{
+    color: #FFBA39;
+    background-color: rgba(0,0,0,0.5);
+}
+.btn-primary:hover{
+    background-color: rgba(0,0,0,1);
 }
 
 /* ///// RESPONSIVENESS ///// */
