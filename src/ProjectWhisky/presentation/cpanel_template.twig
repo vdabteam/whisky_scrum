@@ -24,6 +24,7 @@
         
         {# <script src="http://cdn.ckeditor.com/4.5.1/standard/ckeditor.js"></script> #}
     </head>
+    
     <body>
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -51,7 +52,7 @@
                         <li class="navbutton fa fa-sign-out left"><a href="logout.php?logout=true">Logout</a></li>
                     {% elseif  user.role == 2  %}
                         <li class="navbutton fa fa-globe left"><a href="index.php">Website</a></li>
-                        <li class="navbutton fa fa-cogs left"><a href="#cpanel_index.php">Control Panel</a></li>
+                        <li class="navbutton fa fa-cogs left"><a href="cp_user.php">Control Panel</a></li>
                         <li class="navbutton fa fa-user left"><a href="profile.php">Profile</a></li>
                         <li class="navbutton fa fa-sign-out left"><a href="logout.php?logout=true">Logout</a></li>
                     {% endif %}
