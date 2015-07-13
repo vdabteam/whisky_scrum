@@ -564,7 +564,7 @@ input::-moz-focus-inner {
     border: none;
 }
 .btn-primary{
-    color: #FFBA39;
+    color: white;
     background-color: rgba(0,0,0,0.5);
 }
 .btn-primary:hover{
@@ -588,8 +588,13 @@ input[type="file"]{
     position: relative;
     overflow: hidden;
 }
+.fileRemover{
+    position: relative;
+    overflow: hidden;
+    margin-bottom: -2.3em;
+}
 
-#profile_edit_form .fileUpload input.upload{
+#profile_edit_form .fileUpload input.upload, .fileRemover input.remover{
     position: absolute;
     top: 0;
     right: 0;
@@ -601,6 +606,7 @@ input[type="file"]{
     opacity: 0;
     filter: alpha(opacity=0);
 }
+
 
 
 #imgUploader.upload{
