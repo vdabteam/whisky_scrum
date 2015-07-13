@@ -141,7 +141,47 @@ class DistilleryDAO
         }
     }
     
+    public function addDistillery($name, $address, $city, $country, $region)
+    {
+        self::connectToDB();
+            $this->sql = "insert into distilleries(name, address, city, country, region) values('$name', '$address', '$city', '$country', '$region')" ;
+
+            try
+            {
+                $this->query = $this->handler->prepare($this->sql);
+                $this->query->execute();
+
+                $this->query->closeCursor();
+                $this->handler = null;
+                return true;
+            }
+            catch (Exception $e)
+            {
+                echo "Error: query failure";
+                return false;
+            }    
+    }
     
+    public function editDistillery($id, $name, $address, $city, $country, $region)
+    {
+        self::connectToDB();
+           $this->sql = "update distilleries set name='$name', address='$address', city='$city', country='$country', region='$region' where id = $id";
+
+           try
+           {
+               $this->query = $this->handler->prepare($this->sql);
+               $this->query->execute();
+
+               $this->query->closeCursor();
+               $this->handler = null;
+               return true;            
+           }
+           catch (Exception $e)
+           {
+               echo "Error: query failure";
+               return false;
+           }   
+       }        
 
 
 }
