@@ -200,6 +200,10 @@ input.blue{
     float: left;
 }
 
+#cp_container{
+    background-color: #C5C7CC;
+}
+
 .no_bg{
     background: none !important;
     background-color: none !important;
@@ -267,10 +271,7 @@ input.blue{
 
 aside#sidebar{
 	background-color: #C5C7CC;
-	height: 100vh;
 	min-width: 20em;
-    box-shadow: 0em 0em 1em rgba(0,0,0,0.1) inset;
-    border-right: 1px solid #FFF;
     margin-right: 3em;
 }
 aside#sidebar #menu li a{
@@ -323,11 +324,14 @@ aside#sidebar #menu li a.active:after {
 
 #content{
 	margin-left: 20em;
+    background-color: #f7f9ff;
+    border-left: 1px solid white;
 }
 #content header{
-	padding: 3em;
+	padding: 1.5em 2em;
 	background-color: white;
 	color: #7B7D7F;
+    font-size: 2em;
 	font-weight: bold;
 	box-shadow: 0 -1em 1.5em -1em rgba(0,0,0,0.3) inset;
 	border-bottom: 0.2em solid white;
@@ -498,17 +502,25 @@ input::-moz-focus-inner {
 }
 .cpanel_table tr td img{
     max-height: 2em;
-    margin: 0 auto;
+    max-width: 3em;
+    margin: auto auto;
 }
 .cpanel_table tr td, .cpanel_table tr th{
-    padding: 0.2em 0.5em;
+    padding: 0.2em;
     border: 1px solid black;
+    height: 2.3em;
 }
 .cpanel_table tr th{
     color: #00E2FF;
     background-color: black;
     font-family: 'open_sanslight';
     padding:0.5em 1em;
+}
+.cpanel_table tr td:first-child,
+.cpanel_table tr td:nth-last-child(3),
+.cpanel_table tr td:nth-last-child(2),
+.cpanel_table tr td:nth-last-child(1){
+    text-align: center;
 }
 
 /* ///// RESPONSIVENESS ///// */

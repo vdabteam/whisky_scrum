@@ -15,19 +15,30 @@
                         <th>Firstname</th>
                         <th>Lastname</th>
                         <th>Email</th>
-                        <th>Ban</th>
+                        <th>Brent</th>
                         <th>Role</th>
                         <th>Full Edit</th>
                     </tr>
                 {% for user in users %}
                     <tr>
                         <td><img alt="profile picture of {{ user.username }}" src="src/ProjectWhisky/presentation/userimages/{{ user.imagePath }}"></td>
-                        <td><a href="profile.php?id={{ user.id }}" target="_blanc">{{ user.username }}</a></td>
+                        <td>{{ user.username }}</td>
                         <td>{{ user.firstname }}</td>
                         <td>{{ user.lastname }}</td>
                         <td>{{ user.email }}</td>
-                        <td>{{ user.blocked }}</td>
-                        <td>{{ user.admin }}</td>
+
+                        {% if user.blocked == 1 %}
+                            <td class="red no_border">true
+                        {% else %}
+                            <td class="">false
+                        {% endif %}</td>
+
+                        {% if user.admin == 1 %}
+                            <td class="green no_border">Admin
+                        {% else %}
+                            <td class="">User
+                        {% endif %}</td>
+
                         <td><a href="CP_user_edit.php?id={{ user.id }}">Edit</a></td>
                     </tr>
                 {% endfor  %}
