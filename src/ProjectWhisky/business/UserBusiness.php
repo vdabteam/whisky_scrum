@@ -94,6 +94,11 @@ class UserBusiness extends ValidationHelpers
         $user = $userDAO->updateUserbyId($userId, $username, $password, $email, $firstname, $lastname, $admin, $blocked);
         return $user;
     }
+    public function addCPUser($username, $password, $email, $firstname, $lastname, $admin, $blocked)
+    {
+        $userDAO = new UserDAO();
+        $user = $userDAO -> createCPUser($username, $password, $email, $firstname, $lastname, $admin, $blocked);
+    }
 
 
 

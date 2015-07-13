@@ -21,7 +21,6 @@ Twig_Autoloader::register();
 if(isset($_POST["userUsername"]))
 {
     //form POST data
-    $userId = $_GET["id"];
     $username = $_POST['userUsername'];
     $password = $_POST['userPassword'];
     $email = $_POST['userEmail'];
@@ -29,11 +28,10 @@ if(isset($_POST["userUsername"]))
     $lastname = $_POST['userLastName'];
     $admin = "0";
     $blocked = "0";
-    $imagePath = "default.jpg";
+    //$imagePath = "default.jpg";
     
     $userBiz = new UserBusiness();
-    $userBiz->addBarrel($type);
-    header("location:cp_user.php");
+    $userBiz->addCPUser($username, $password, $email, $firstname, $lastname, $admin, $blocked);
 }    
 
 
