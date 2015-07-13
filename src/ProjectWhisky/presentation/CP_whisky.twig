@@ -7,6 +7,15 @@
                 <div id="header_quote"><p>Manage Whiskies</p></div>
             </header>
             <div id="content_container">
+                <form class="center cpanel_form"><h2>Search Users</h2>
+
+                    <input type="text" name="search_whiskyname" id="search_whiskyname" placeholder="Whisky Name">
+                    <input type="text" name="search_email" id="search_email" placeholder="Email">
+                    <input class="btn btn-primary" type="submit" value="Search">
+
+                </form>
+                
+                <a href="CP_whisky_add.php" class="center btn btn-primary"><i class="fa fa-plus"></i> Voeg een Whisky toe</a>
 
                 <table class="cpanel_table">
 
@@ -18,7 +27,7 @@
                         <th>Created</th>
                         <th>Full Edit</th>
                     </tr>
-                {% for whisky in whiskies  %}
+                {% for whisky in whiskies %}
                     <tr>
                         <td class="text_center"><img alt="picture of {{ whisky.name }}" src="src/ProjectWhisky/presentation/img/{{ whisky.imagePath }}"></td>
                         <td>{{ whisky.name }}</td>
@@ -30,9 +39,6 @@
                 {% endfor %}
 
                 </table>
-                
-                <br>
-                <a href="CP_whisky_add.php" class="btn btn-primary"><i class="fa fa-plus"></i> Voeg een Whisky toe</a>
                      
             </div>
 {% endblock %}    

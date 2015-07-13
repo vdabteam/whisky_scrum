@@ -4,7 +4,7 @@
 {% block content %}
 
             <header id="header_banner" class="users_header">
-                <div id="header_quote"><p>Users</p></div>
+                <div id="header_quote"><p>Manage Users</p></div>
             </header>
             <div id="content_container">
                 <form class="cpanel_form"><h2>Search Users</h2>
@@ -14,6 +14,9 @@
                     <input class="btn btn-primary" type="submit" value="Search">
 
                 </form>
+                
+                <a class="center btn btn-primary" href="cp_user_add.php"><i class="fa fa-plus"></i> Add new user</a>
+
                 <table class="cpanel_table">
 
                     <tr>
@@ -48,12 +51,9 @@
 
                         <td class="text_center"><a href="CP_user_edit.php?id={{ user.id }}">Edit</a></td>
                     </tr>
-                {% endfor  %}
+                {% endfor %}
 
                 </table>
-                
-                <br>
-                <a href="cp_user_add.php">Add new user</a>
                 
                 
             </div>
