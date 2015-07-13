@@ -131,6 +131,9 @@ footer{
     color: white;
     border-bottom: 3px solid #CC952D;
 }
+#content_container{
+    padding-bottom: 2em;
+}
 
 #notifier{
     margin: 1em auto 1.5em;
@@ -525,11 +528,9 @@ input::-moz-focus-inner {
 }
 
 .cpanel_form{
-    margin-top: 1em;
     margin-bottom: 1em;
 }
 .cpanel_form h2{
-    margin-top: 1em;
     margin-bottom: 0.5em;
 }
 
