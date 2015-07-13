@@ -7,54 +7,54 @@
                 <div id="header_quote"><p>Manage Users</p></div>
             </header>
             <div id="content_container">
-                <form class="cpanel_form"><h2>Search Users</h2>
+                <div id="controller" class="shadow">
+                    <form class="cpanel_form"><h2>Search Users</h2>
 
-                    <input type="text" name="search_username" id="search_username" placeholder="Username">
-                    <input type="text" name="search_email" id="search_email" placeholder="Email">
-                    <input class="btn btn-primary" type="submit" value="Search">
+                        <input type="text" name="search_username" id="search_username" placeholder="Username">
+                        <input type="text" name="search_email" id="search_email" placeholder="Email">
+                        <input class="btn btn-primary" type="submit" value="Search">
 
-                </form>
-                
-                <a class="center btn btn-primary" href="cp_user_add.php"><i class="fa fa-plus"></i> Add new user</a>
+                    </form>
+                    
+                    <a class="btn btn-primary" href="cp_user_add.php"><i class="fa fa-plus"></i> Add new user</a>
 
-                <table class="cpanel_table">
+                    <table class="cpanel_table">
 
-                    <tr>
-                        <th>Avatar</th>
-                        <th>Username</th>
-                        <th>Firstname</th>
-                        <th>Lastname</th>
-                        <th>Email</th>
-                        <th>Brent</th>
-                        <th>Role</th>
-                        <th>Full Edit</th>
-                    </tr>
-                {% for user in users %}
-                    <tr>
-                        <td class="text_center"><img alt="profile picture of {{ user.username }}" src="src/ProjectWhisky/presentation/userimages/{{ user.imagePath }}"></td>
-                        <td>{{ user.username }}</td>
-                        <td>{{ user.firstname }}</td>
-                        <td>{{ user.lastname }}</td>
-                        <td>{{ user.email }}</td>
+                        <tr>
+                            <th>Avatar</th>
+                            <th>Username</th>
+                            <th>Firstname</th>
+                            <th>Lastname</th>
+                            <th>Email</th>
+                            <th>Brent</th>
+                            <th>Role</th>
+                            <th>Full Edit</th>
+                        </tr>
+                    {% for user in users %}
+                        <tr>
+                            <td class="text_center"><img alt="profile picture of {{ user.username }}" src="src/ProjectWhisky/presentation/userimages/{{ user.imagePath }}"></td>
+                            <td>{{ user.username }}</td>
+                            <td>{{ user.firstname }}</td>
+                            <td>{{ user.lastname }}</td>
+                            <td>{{ user.email }}</td>
 
-                        {% if user.blocked == 1 %}
-                            <td class="red no_border">true
-                        {% else %}
-                            <td class="">false
-                        {% endif %}</td>
+                            {% if user.blocked == 1 %}
+                                <td class="text_center red no_border">true
+                            {% else %}
+                                <td class="text_center">false
+                            {% endif %}</td>
 
-                        {% if user.admin == 1 %}
-                            <td class="text_center green no_border">Admin
-                        {% else %}
-                            <td class="text_center">User
-                        {% endif %}</td>
+                            {% if user.admin == 1 %}
+                                <td class="text_center green no_border">Admin
+                            {% else %}
+                                <td class="text_center">User
+                            {% endif %}</td>
 
-                        <td class="text_center"><a href="CP_user_edit.php?id={{ user.id }}">Edit</a></td>
-                    </tr>
-                {% endfor %}
+                            <td class="text_center"><a href="CP_user_edit.php?id={{ user.id }}">Edit</a></td>
+                        </tr>
+                    {% endfor %}
 
-                </table>
-                
-                
+                    </table>
+                </div>
             </div>
 {% endblock %} 

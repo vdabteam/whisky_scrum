@@ -55,7 +55,7 @@ if(!empty($_GET))
     {
         $whiskyBiz = new WhiskyBusiness();
         $addWhisky = $whiskyBiz->addWhisky($name, $distillery, $price, $age, $strength, $barrel_id, $image_path, $hidden, $rating_aroma, $rating_color, $rating_taste, $rating_aftertaste, $text_aroma, $text_color, $text_taste, $text_aftertaste, $review, $user_id);
-        $msg = $addWhisky ? "Whisky add successful! Notice: whisky still hidden." : "";
+        $msg = $addWhisky ? "success_hidden" : "";
         header("refresh: 2; url=CP_whisky.php");
         //exit;
     }
@@ -63,7 +63,7 @@ if(!empty($_GET))
     {
         $whiskyBiz = new WhiskyBusiness();
         $addWhisky = $whiskyBiz->addWhisky($name, $distillery, $price, $age, $strength, $barrel_id, $image_path, $hidden, $rating_aroma, $rating_color, $rating_taste, $rating_aftertaste, $text_aroma, $text_color, $text_taste, $text_aftertaste, $review, $user_id);
-        $msg = $addWhisky ? "Whisky add successful!" : "";
+        $msg = $addWhisky ? "success" : "";
         header("refresh: 2; url=CP_whisky.php");
         //exit;    
     }
@@ -71,7 +71,7 @@ if(!empty($_GET))
     {
         $whiskyBiz = new WhiskyBusiness();
         $addWhisky = $whiskyBiz->addWhisky($name, $distillery, $price, $age, $strength, $barrel_id, $image_path, 1, $rating_aroma, $rating_color, $rating_taste, $rating_aftertaste, $text_aroma, $text_color, $text_taste, $text_aftertaste, $review, $user_id);
-        $msg = $addWhisky ? "Fields missing! Data saved, but stays hidden until complete." : "";
+        $msg = $addWhisky ? "missing" : "";
         header("refresh: 2; url=CP_whisky.php");
         //exit;
     }

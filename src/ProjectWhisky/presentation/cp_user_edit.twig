@@ -8,32 +8,33 @@
 </header>
 
 <div id="content_container">
+    <div id="controller" class="shadow">
 
-	<form action="" method="post">
-	
-		<h3>Profile Picture:</h3>
-		<img src="src/ProjectWhisky/presentation/userimages/{{ userdata.imagePath }}" alt="Profile Picture"/>
-		<div class="fileUpload btn btn-primary">
-	        <span class="fa fa-pencil"></span> <span> Change Picture</span>
-	        <input id="imgUploader" type="file" class="upload" name="userImage">
-        </div>
-		<h3>Username:</h3>
-        <input type="text" value="{{ userdata.username }}" name="userUsername" placeholder="Username"/>
-        <h3>Password:</h3>
-        <input type="password" value="" name="userPassword" placeholder="Password"/>
-		<h3>Firstname:</h3>
-        <input type="text" value="{{ userdata.firstname }}" name="userFirstName" placeholder="Firstname"/>
-        <h3>Lastname:</h3>
-        <input type="text" value="{{ userdata.lastname }}" name="userLastName" placeholder="Lastname"/>
-        <h3>E-mail:</h3>
-        <input type="text" value="{{ userdata.email }}" name="userEmail" placeholder="E-mail"/>
+    	<form action="" method="post">
+    	
+    		<h3>Profile Picture:</h3>
+    		<img src="src/ProjectWhisky/presentation/userimages/{{ userdata.imagePath }}" alt="Profile Picture"/>
+    		<div class="fileUpload btn btn-primary">
+    	        <span class="fa fa-pencil"></span> <span> Change Picture</span>
+    	        <input id="imgUploader" type="file" class="upload" name="userImage">
+            </div>
+    		<h3>Username:</h3>
+            <input type="text" value="{{ userdata.username }}" name="userUsername" placeholder="Username"/>
+            <h3>Password:</h3>
+            <input type="password" value="" name="userPassword" placeholder="Password"/>
+    		<h3>Firstname:</h3>
+            <input type="text" value="{{ userdata.firstname }}" name="userFirstName" placeholder="Firstname"/>
+            <h3>Lastname:</h3>
+            <input type="text" value="{{ userdata.lastname }}" name="userLastName" placeholder="Lastname"/>
+            <h3>E-mail:</h3>
+            <input type="text" value="{{ userdata.email }}" name="userEmail" placeholder="E-mail"/>
 
-        <div class="">
-	        Admin: <input type="checkbox" {{userdata.admin == 1 ? 'checked' : '' }} name="userAdmin">
-	        Blocked: <input type="checkbox" {{userdata.blocked == 1 ? 'checked' : '' }}  name="userBlocked">
-		</div>
-		<input type="submit" value="save changes"/>
-	</form>
-
+            <div class="">
+    	        Admin: <input type="checkbox" {{userdata.admin == 1 ? 'checked' : '' }} name="userAdmin">
+    	        Blocked: <input type="checkbox" {{userdata.blocked == 1 ? 'checked' : '' }}  name="userBlocked">
+    		</div>
+    		<input type="submit" value="save changes"/>
+    	</form>
+    </div>
 </div>
 {% endblock %} 

@@ -386,9 +386,8 @@ aside#sidebar #menu li a.active:after {
 	margin: 1em auto;
 	width: 90%;
 	max-width: 960px;
-	padding: 2em 6em 2em 3em;
+	padding: 2em 3em 2em 3em;
 	background-color: white;
-	color: #888;
 	border: 1px solid white;
 }
 
@@ -521,7 +520,7 @@ input::-moz-focus-inner {
     letter-spacing: 0.1em;
 }
 .cpanel_table tr:nth-child(even){
-    background-color: white;
+    background-color: #f9f9f9;
 }
 .cpanel_table tr:hover{
     background-color: #EEE;

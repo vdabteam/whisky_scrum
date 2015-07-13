@@ -60,7 +60,7 @@ if($isset == 18 || ($isset==17 && !$hidden)) // all fields filled in (hidden eit
     // overwrite things in DB, send back to CP_whisky?
     $whiskyBiz = new WhiskyBusiness();
     $editWhisky = $whiskyBiz->editWhisky($name, $distillery, $price, $age, $strength, $barrel_id, $image_path, $hidden, $rating_aroma, $rating_color, $rating_taste, $rating_aftertaste, $text_aroma, $text_color, $text_taste, $text_aftertaste, $review, $whisky_id);
-    $msg = $hidden ? "Changes saved, whisky hidden" : "Changes saved!";
+    $msg = $hidden ? "success_hidden" : "success";
      
             
 }
@@ -70,7 +70,7 @@ elseif(($isset < 17 && $isset >1) || $hidden) // always when <17 fields, or <18 
     $hidden = 1;
     $whiskyBiz = new WhiskyBusiness();
     $editWhisky = $whiskyBiz->editWhisky($name, $distillery, $price, $age, $strength, $barrel_id, $image_path, $hidden, $rating_aroma, $rating_color, $rating_taste, $rating_aftertaste, $text_aroma, $text_color, $text_taste, $text_aftertaste, $review, $whisky_id);
-    $msg = "Fields missing! Changes saved, but  whisky is hidden.";
+    $msg = "missing";
     
 }            
     
