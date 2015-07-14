@@ -22,7 +22,7 @@
 
         {% endif %}
 
-    	<form action="cp_user_edit.php" method="post">
+    	<form action="cp_user_edit.php?id={{ userdata.id }}" method="post">
     	
     		<img src="src/ProjectWhisky/presentation/userimages/{{ userdata.imagePath }}" alt="Profile Picture"/>
     		<h3>Username:</h3>

@@ -16,7 +16,7 @@ $classLoader->register();
 require_once("lib/Twig/Autoloader.php");
 Twig_Autoloader::register();
 
-$id = iset($_GET["id"]) ? $_GET["id"] : "";
+$id = isset($_GET["id"]) ? $_GET["id"] : "";
 
 // check for post
 if(count($_POST))

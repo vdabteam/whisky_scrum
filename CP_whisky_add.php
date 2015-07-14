@@ -169,20 +169,20 @@ if(isset($_POST['whiskySaveBtn'])) {
 
         if ($addWhisky == false) throw new FuckedUpException();
 
-        $_SESSION['whiskyMesage'] = "New whisky is added";
+        $_SESSION['whiskyMesage'] = "success";
 
     }
     catch (EmptyDataException $e)
     {
-        $_SESSION['whiskyMesage'] = "All fields must be filled in";
+        $_SESSION['whiskyMesage'] = "missing";
     }
     catch (NoImageException $e)
     {
-        $_SESSION['whiskyMesage'] = "You need to upload an image";
+        $_SESSION['whiskyMesage'] = "image_missing";
     }
     catch (FuckedUpException $e)
     {
-        $_SESSION['whiskyMesage'] = "Something is wrong with query";
+        $_SESSION['whiskyMesage'] = "error";
     }
 
 
@@ -200,7 +200,7 @@ $barrel_data = $barrelBiz->showAllBarrels();
 $loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation");
 $twig = new Twig_Environment($loader);
 
-$view = $twig->render("CP_whisky_add.twig", array("user" => $_SESSION['user'], "distilleries" => $distillery_data, "barrels" => $barrel_data, "msg" => $msg, "savedData" => $_SESSION['savedData'], "whiskyMessage" => $_SESSION['whiskyMesage']));
+$view = $twig->render("CP_whisky_add.twig", array("user" => $_SESSION['user'], "distilleries" => $distillery_data, "barrels" => $barrel_data, "msg" => $_SESSION['whiskyMesage'], "savedData" => $_SESSION['savedData'], "whiskyMessage" => $_SESSION['whiskyMesage']));
 
 print($view);
 

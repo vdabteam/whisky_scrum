@@ -7,33 +7,6 @@
         <div id="header_quote"><p>Edit Whisky</p></div>
     </header>
         <div id="content_container">
-<<<<<<< HEAD
-            <p>{{ msg }}</p><br>
-            
-            <form action="CP_whisky_edit.php" method="get"><br>
-                <input type="hidden" name="id" value="{{ whisky.id }}">
-
-                <img src="src/ProjectWhisky/presentation/img/{{ whisky.imagepath }}" alt="Whisky"><br>
-
-                <label for="whisky_name">Naam: </label>
-                <input type="text" value="{{  whisky.name }}" id="whisky_name" name="whisky_name"><br>
-                
-                <!-- Dropdown for distilleries -->
-                <label for="distillery_id">Distillery: </label>
-                <select id="distillery_id" name="distillery_id">
-                    {% for distillery  in distilleries %}
-                        
-                        <option value="{{ distillery.id }}" {{ distillery.id == whisky.distilleryid ? "selected" : "" }}>{{ distillery.name }}</option>
-                    {% endfor  %}
-                </select> 
-                <br>                               
-                <label for="whisky_price">Price: </label>
-               <input type="number"  min="0" value="{{ whisky.price }}" id="whisky_price" name="whisky_price"><br>
-                <label for="whisky_age">Age: </label>
-                <input type="number"  min="0" value="{{ whisky.age }}" id="whisky_age" name="whisky_age"><br>
-                <label for="whisky_strength">Strength: </label>
-                <input type="number"  min="0" max="100" value="{{ whisky.strength }}" id="whisky_strength" name="whisky_strength">%<br>
-=======
             {% if msg == "missing" %}
             <div id="notifier" class="yellow shadow">
                     <p><span class="fa fa-exclamation-circle"></span>
@@ -60,23 +33,22 @@
                     "This is info, insert correct message here!"</p>
             </div>
             {% endif %}
->>>>>>> origin/master
 
             <div id="controller" class="shadow">
                 <form action="CP_whisky_edit.php" method="get"><br>
                     <input type="hidden" name="id" value="{{ whisky.id }}">
                     <label for="whisky_name">Naam: </label>
                     <input type="text" value="{{  whisky.name }}" id="whisky_name" name="whisky_name"><br>
-                    
+
                     <!-- Dropdown for distilleries -->
                     <label for="distillery_id">Distillery: </label>
                     <select id="distillery_id" name="distillery_id">
                         {% for distillery  in distilleries %}
-                            
+
                             <option value="{{ distillery.id }}" {{ distillery.id == whisky.distilleryid ? "selected" : "" }}>{{ distillery.name }}</option>
                         {% endfor  %}
-                    </select> 
-                    <br>                               
+                    </select>
+                    <br>
                     <label for="whisky_price">Price: </label>
                    <input type="number"  min="0" value="{{ whisky.price }}" id="whisky_price" name="whisky_price"><br>
                     <label for="whisky_age">Age: </label>
@@ -84,33 +56,7 @@
                     <label for="whisky_strength">Strength: </label>
                     <input type="number"  min="0" max="100" value="{{ whisky.strength }}" id="whisky_strength" name="whisky_strength">%<br>
 
-<<<<<<< HEAD
 
-
-
-                <label for="rating_aroma">Rating Aroma: </label>
-                <input type="number" min="0" max="20" value="{{ whisky.ratingaroma }}" id="rating_aroma" name="rating_aroma"><br>
-                <label for="rating_color">Rating Color: </label>
-                <input type="number" min="0" max="20" value="{{ whisky.ratingcolor }}" id="rating_color" name="rating_color"><br>
-                <label for="rating_taste">Rating Taste: </label>
-                <input type="number" min="0" max="20" value="{{ whisky.ratingtaste }}" id="rating_taste" name="rating_taste"><br>
-                <label for="rating_aftertaste">Rating Aftertaste: </label>
-                <input type="number" min="0" max="20" value="{{ whisky.ratingaftertaste }}" id="rating_aftertaste" name="rating_aftertaste"><br>
-                <label for="text_aroma">Text Aroma: </label><br>
-                <textarea id="text_aroma" name="text_aroma" rows="5" cols="40">{{ whisky.textaroma }}</textarea><br>
-                <label for="text_color">Text Color: </label><br>
-                <textarea id="text_color" name="text_color" rows="5" cols="40">{{ whisky.textcolor }}</textarea><br>
-                <label for="text_taste">Text Taste: </label><br>
-                <textarea id="text_taste" name="text_taste" rows="5" cols="40">{{ whisky.texttaste }}</textarea><br>
-                <label for="text_aftertaste">Text Aftertaste: </label><br>
-                <textarea id="text_aftertaste" name="text_aftertaste" rows="5" cols="40">{{ whisky.textaftertaste }}</textarea><br>
-                <label for="text_review">Overall review: </label><br>
-                <textarea id="text_review" name="text_review" rows="5" cols="40">{{ whisky.review }}</textarea><br>
-                <input type="submit" value="wijzigen">
-                
-            </form>
-                
-=======
                     <!-- Replace barrel with dropdown as well  -->
                     <label for="barrel">Barrel type: </label>
                     <select id="barrel" name="barrel">
@@ -143,13 +89,13 @@
                     <textarea id="text_aftertaste" name="text_aftertaste" rows="5" cols="40">{{ whisky.textaftertaste }}</textarea><br>
                     <label for="text_review">Overall review: </label><br>
                     <textarea id="text_review" name="text_review" rows="5" cols="40">{{ whisky.review }}</textarea><br>
-                    <input type="submit" value="wijzigen">
-                    
+                    <input class="btn btn-primary" type="submit" value="wijzigen">
+
                 </form>
             </div>
->>>>>>> origin/master
+
 
 
 
         </div>
-{% endblock %}    
+{% endblock %}
