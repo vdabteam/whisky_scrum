@@ -608,6 +608,20 @@ input[type="file"]{
 }
 
 
+::-webkit-input-placeholder { /* WebKit browsers */
+    color: #aaa;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #aaa;
+    opacity: 1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #aaa;
+    opacity: 1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: #aaa;
+}
 
 #imgUploader.upload{
     margin: 0;

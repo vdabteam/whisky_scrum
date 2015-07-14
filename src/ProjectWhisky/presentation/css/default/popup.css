@@ -87,21 +87,6 @@
     color: #FFB739;
 }
 
-::-webkit-input-placeholder { /* WebKit browsers */
-    color: #7F5B1C;
-}
-:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color: #7F5B1C;
-    opacity: 1;
-}
-::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color: #7F5B1C;
-    opacity: 1;
-}
-:-ms-input-placeholder { /* Internet Explorer 10+ */
-    color: #7F5B1C;
-}
-
 #profile_edit_form input[type="submit"],
  .lightbox-panel-register input[type="submit"],
  .lightbox-panel-login input[type="submit"],

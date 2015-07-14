@@ -44,9 +44,10 @@
                     <div class="fileUpload btn btn-primary">
                         <span class="fa fa-plus"></span> <span> Upload Picture</span>
                         <input id="imgUploader" type="file" class="upload" name="whisky_image">
+                        <input class="btn btn-primary" id="uploadFile" placeholder="No File Selected" disabled="disabled">
                     </div>
-                    <input id="uploadFile" placeholder="No File Selected" disabled="disabled"><br>
-                {#<input id="imgUploaderWhisky" type="file" class="upload" name="whisky_image"><br>#}
+                    
+                
 
                 <label for="whisky_name">Name: </label>
                 <input type="text" id="whisky_name" name="whisky_name" value="{{ savedData.name }}"><br>

@@ -67,7 +67,16 @@
 
                     <!-- Replace with file picker  -->
                     <label for="whisky_image">Image: </label>
-                    <input type="text" value="{{ whisky.imagepath }}" id="whisky_image" name="whisky_image"><br>
+
+                    <img src="src/ProjectWhisky/presentation/img/{{ whisky.imagepath }}">
+
+                    <div class="fileUpload btn btn-primary">
+                        <span class="fa fa-pencil"></span> <span> Change Picture</span>
+                        <input id="imgUploader" type="file" class="upload" name="whisky_image">
+                        <input class="btn btn-primary" id="uploadFile" placeholder="{{ whisky.imagepath }}" disabled="disabled">
+                    </div>
+
+                            
 
                     <label for="hidden">Hidden: </label>
                     <input type="checkbox" name="hidden" id="hidden" value="1" {{ whisky.hidden ? "checked" : "" }}><br>
