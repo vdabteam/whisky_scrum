@@ -7,7 +7,20 @@
                 <div id="header_quote"><p>Edit Distillery</p></div>
             </header>
             <div id="content_container">
-                <form action="cp_distillery_edit.php?id={{ distillery.  }}" method="post">
+                
+                {% if msg == "missing" %}
+            <div id="notifier" class="yellow shadow">
+                <p><span class="fa fa-exclamation-circle"></span>
+                    All fields are required.</p>
+            </div>
+        {% elseif msg == "success" %}
+            <div id="notifier" class="green shadow">
+                <p><span class="fa fa-check-circle"></span>
+                    Distillery successfully saved.</p>
+            </div>
+            {% endif %}
+                
+                <form action="cp_distillery_edit.php?id={{ distillery.id  }}" method="post">
                    
                     <label for="type">Name: </label>
                     <input type="text" id="type" name="name" value="{{ distillery.name }}" /><br>
@@ -19,7 +32,7 @@
                     <input type="text" id="country" name="country" value="{{ distillery.country }}" /></br>
                     <label for="">Region: </label>
                     <input type="text" id="region" name="region" value="{{ distillery.region }}" /></br>
-                    <input type="submit" value="Edit distillery">
+                    <input name="distillerySaveBtn" class="btn btn-primary" type="submit" value="Save Changes">
                 </form>
             </div>
 {% endblock %}

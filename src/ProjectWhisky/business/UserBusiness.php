@@ -88,11 +88,15 @@ class UserBusiness extends ValidationHelpers
         return $user;
     }
     
-    public function updateUserById($userId, $username, $password, $email, $firstname, $lastname, $admin, $blocked)
+    public function updateUserById($userId, $username, $password, $email, $firstname, $lastname, $admin, $blocked, $userImagePath, $newPass)
     {
-        $password = self::hashPassword($password); // using ValidationHelpers class
+        if ($newPass == true)
+        {
+            $password = self::hashPassword($password); // using ValidationHelpers class
+        }
+
         $userDAO = new UserDAO();
-        $user = $userDAO->updateUserbyId($userId, $username, $password, $email, $firstname, $lastname, $admin, $blocked);
+        $user = $userDAO->updateUserbyId($userId, $username, $password, $email, $firstname, $lastname, $admin, $blocked, $userImagePath);
         return $user;
     }
     public function addCPUser($username, $password, $email, $firstname, $lastname, $admin, $blocked)
