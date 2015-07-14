@@ -1,11 +1,14 @@
 <?php
 session_start();
-ob_start(); 
+ob_start();
 
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
+use src\ProjectWhisky\business\WhiskyBusiness;
+use src\ProjectWhisky\business\BarrelBusiness;
 use src\ProjectWhisky\business\DistilleryBusiness;
+use src\ProjectWhisky\business\UserBusiness;
 use src\ProjectWhisky\exceptions\EmptyDataException;
 use src\ProjectWhisky\exceptions\NoImageException;
 use src\ProjectWhisky\exceptions\FuckedUpException;
@@ -21,12 +24,24 @@ $classLoader->register();
 require_once("lib/Twig/Autoloader.php");
 Twig_Autoloader::register();
 
+
 $distillery_id = isset($_GET["id"]) ? $_GET["id"] : "";
 
 // Get Distillery Data
 $distilleryBiz = new DistilleryBusiness();
 $distillery_data = $distilleryBiz->getDistillery($distillery_id);
 
+/**
+ * Initiate $_SESSION['savedData'] and $_SESSION['distilleryMessage']
+ */
+if (!isset($_SESSION['savedData']))
+{
+    $_SESSION['savedData'] = array();
+}
+if(!isset($_SESSION['distilleryMessage']))
+{
+    $_SESSION['distilleryMessage'] = array();
+}
 
 // check for post
 if(isset($_POST['distillerySaveBtn'])) {
@@ -88,6 +103,11 @@ print($view);
 /**
  * Handling messages removal and appearance
  */
+if(isset($_SESSION['distilleryMessage']))
+{
+   $_SESSION['distilleryMessage'] = "";  
+}    
+
 if (isset($_GET['updated']) && (empty($_SESSION['distilleryMessage'])))
 {
     $updatedPath = "CP_distillery_edit.php?id=" . $distillery_id;
@@ -98,7 +118,7 @@ if (isset($_GET['updated']) && (empty($_SESSION['distilleryMessage'])))
 if(isset($_GET['updated']) && ($_GET['updated'] == 1))
 {
     $_SESSION['savedData'] = "";
-    $_SESSION['distilleryMessage'] = "";
+   
 }
 
 
