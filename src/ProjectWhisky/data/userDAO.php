@@ -66,6 +66,38 @@ class UserDAO
         }
     }
 
+    public function getUserById($userId)
+    {
+       self::connectToDB();
+        $this->sql = "SELECT * 
+        FROM users
+        WHERE id = :id";
+
+        try
+        {
+            $this->query = $this->handler->prepare($this->sql);
+            $this->query->execute(array('id'=> $userId));
+            $this->result = $this->query->fetchAll(PDO::FETCH_ASSOC);
+
+            $this->query->closeCursor();
+            $this->handler = null;
+
+            
+
+            foreach ($this->result as $row)
+            {
+                $this->list = new User($row['id'], $row['username'], $row['password'], $row['email'], $row['firstname'], $row['lastname'], $row['admin'], $row['blocked'], $row['image_path'], $row['registration_date']);
+            }
+            return $this->list;
+        }
+        catch (Exception $e)
+        {
+            echo "Error: query failure";
+            return false;
+        } 
+    }
+
+
 
     /**
      * Get user data by user id: firstname, lastname, e-mail, user image path
@@ -112,6 +144,34 @@ class UserDAO
         {
             $this->query = $this->handler->prepare($this->sql);
             $this->query->execute(array($firstname, $lastname, $email, $userId));
+
+            /**
+             * Closing DB connection
+             */
+            $this->query->closeCursor();
+            $this->handler = null;
+
+            return true;
+        }
+        catch (Exception $e)
+        {
+            echo "Error: query failure";
+            return false;
+        }
+    }
+    
+    public function updateUserbyId($userId, $username, $password, $email, $firstname, $lastname, $admin, $blocked)
+    {
+        self::connectToDB(); /* Using DB connection */
+
+        $this->sql = "UPDATE users 
+                      SET username = ?, password = ?, email = ?, firstname = ?, lastname = ?, admin = ?, blocked = ?, 
+                      WHERE id = ?";
+
+        try
+        {
+            $this->query = $this->handler->prepare($this->sql);
+            $this->query->execute(array($username, $password, $email, $firstname, $lastname, $admin, $blocked, $userId));
 
             /**
              * Closing DB connection
@@ -384,7 +444,35 @@ class UserDAO
             return false;
         }
     }
-    
+    public function createCPUser($username, $password, $email, $firstname, $lastname, $admin, $blocked)
+    {
+        self::connectToDB(); /* Using DB connection */
+
+        $this->sql = "INSERT INTO users (username, password, email, firstname, lastname, admin, blocked, registration_date)
+                      
+                        VALUES(?,?,?,?,?,?,?, NOW())";
+
+        try
+        {
+            $this->query = $this->handler->prepare($this->sql);
+
+            $this->query->execute(array($username, $password, $email, $firstname, $lastname, $admin, $blocked));
+            
+            
+            /**
+             * Closing DB connection
+             */
+            $this->query->closeCursor();
+            $this->handler = null;
+
+            return true;
+        }
+        catch (Exception $e)
+        {
+            echo "Error: query failure";
+            return false;
+        }
+    }
     
     
 

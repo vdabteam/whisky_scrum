@@ -95,6 +95,14 @@ h1{
     bottom: 0;
     margin-bottom: 0;
 }
+
+.text_center{
+    text-align: center;
+}
+.text_right{
+    text-align: right;
+}
+
 .center{
     margin-left: auto;
     margin-right: auto;
@@ -123,10 +131,13 @@ footer{
     color: white;
     border-bottom: 3px solid #CC952D;
 }
+#content_container{
+    padding-bottom: 2em;
+}
 
 #notifier{
     margin: 1em auto 1.5em;
-    width: 100%;
+    width: 90%;
     max-width: 960px;
     padding: 2em 6em 2em 3em;
     color: white;
@@ -223,6 +234,11 @@ input.blue{
     display: flex;
     -webkit-flex-wrap: wrap;
     flex-wrap: wrap;
+}
+
+
+input[type="button"], input[type="button"]::-webkit-file-upload-button, input[type="file"]::-webkit-file-upload-button{
+    display: none !important; /* Removing the annoying AGENT USER STYLE that made "cursor:pointer;" fuck up!*/
 }
 
 #navbar{
@@ -335,15 +351,7 @@ aside#sidebar #menu li a.active:after {
 	font-weight: bold;
 	box-shadow: 0 -1em 1.5em -1em rgba(0,0,0,0.3) inset;
 	border-bottom: 0.2em solid white;
-	text-shadow: 0 0.15em 0.1em rgba(0,0,0,0.3);
-}
-
-#notifier{
-	margin: 1em auto 1.5em;
-	width: 90%;
-	max-width: 960px;
-	padding: 2em 6em 2em 3em;
-	color: white;
+	/*text-shadow: 0 0.15em 0.1em rgba(0,0,0,0.3);*/
 }
 /*
 .yellow{
@@ -383,9 +391,8 @@ aside#sidebar #menu li a.active:after {
 	margin: 1em auto;
 	width: 90%;
 	max-width: 960px;
-	padding: 2em 6em 2em 3em;
+	padding: 2em 3em 2em 3em;
 	background-color: white;
-	color: #888;
 	border: 1px solid white;
 }
 
@@ -395,6 +402,7 @@ aside#sidebar #menu li a.active:after {
        -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
             box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 }
+
 .shadow:before, .shadow:after{
     content:"";
     position:absolute;
@@ -409,6 +417,7 @@ aside#sidebar #menu li a.active:after {
     -moz-border-radius:100px / 10px;
     border-radius:100px / 10px;
 }
+
 .shadow:after{
     right:10px;
     left:auto;
@@ -506,7 +515,7 @@ input::-moz-focus-inner {
     margin: auto auto;
 }
 .cpanel_table tr td, .cpanel_table tr th{
-    padding: 0.2em;
+    padding: 0.2em 0.5em;
     border: 1px solid black;
     height: 2.3em;
 }
@@ -515,12 +524,100 @@ input::-moz-focus-inner {
     background-color: black;
     font-family: 'open_sanslight';
     padding:0.5em 1em;
+    letter-spacing: 0.1em;
 }
-.cpanel_table tr td:first-child,
-.cpanel_table tr td:nth-last-child(3),
-.cpanel_table tr td:nth-last-child(2),
-.cpanel_table tr td:nth-last-child(1){
+.cpanel_table tr:nth-child(even){
+    background-color: #f9f9f9;
+}
+.cpanel_table tr:hover{
+    background-color: #EEE;
+}
+
+.cpanel_form{
+    margin-bottom: 1em;
+}
+.cpanel_form h2{
+    margin-bottom: 0.5em;
+}
+
+.cpanel_form input{
+    margin-right: 1em;
+    display: inline-block;
+}
+
+.btn{   
+    display: table;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
     text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: none;
+}
+.btn-primary{
+    color: white;
+    background-color: rgba(0,0,0,0.5);
+}
+.btn-primary:hover{
+    background-color: rgba(0,0,0,1);
+}
+input[type="file"]{
+    -moz-opacity: 0;
+    filter:alpha(opacity: 0);
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+}
+
+.fileUpload*, .fileRemover*, .commentRemover*{
+    cursor: pointer;
+}
+
+.fileUpload{
+    position: relative;
+    overflow: hidden;
+}
+.fileRemover{
+    position: relative;
+    overflow: hidden;
+    margin-bottom: -2.3em;
+}
+
+#profile_edit_form .fileUpload input.upload, .fileRemover input.remover{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 20px;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+
+
+#imgUploader.upload{
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#profile_edit_form input#uploadFile{
+    margin-top: -1em;
+    display: none;
 }
 
 /* ///// RESPONSIVENESS ///// */

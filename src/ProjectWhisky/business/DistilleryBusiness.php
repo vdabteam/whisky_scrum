@@ -31,4 +31,18 @@ class DistilleryBusiness
         $regionList =$DistilleryDAO->getRegions();
         return $regionList;
     }
+    
+    public function addDistillery($name, $address, $city, $country, $region)
+    {
+        $distilleryDAO = new DistilleryDAO();
+        $addDistillery = $distilleryDAO->addDistillery($name, $address, $city, $country, $region);
+        return $addDistillery;
+    }
+    
+    public function editDistillery($id, $name, $address, $city, $country, $region)
+    {
+        $distilleryDAO = new DistilleryDAO();
+        $editDistillery = $distilleryDAO->editDistillery($id, $name, $address, $city, $country, $region);
+        return $editDistillery;
+    }        
 }

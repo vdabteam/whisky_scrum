@@ -24,6 +24,7 @@
         
         {# <script src="http://cdn.ckeditor.com/4.5.1/standard/ckeditor.js"></script> #}
     </head>
+    
     <body>
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -40,16 +41,16 @@
                     <li class="navbutton fa fa-search left"><a href="search.php">Search</a></li>
 
                     {# Show specific menu items to particular users #}
-                    {% if  user.role == 0  %}
+                    {% if user.role == 0 %}
                         <li class="navbutton fa fa-sign-in left"><a class="show-login" href="#">Login</a></li>
                         <li class="navbutton fa fa-user-plus left"><a class="show-register" href="#">Register</a></li>
                         <li class="navbutton fa fa-globe left"><a href="index.php">Website</a></li>
 
-                    {% elseif  user.role == 1  %}
+                    {% elseif user.role == 1 %}
                         <li class="navbutton fa fa-globe left"><a href="index.php">Website</a></li>
                         <li class="navbutton fa fa-user left"><a href="profile.php">Profile</a></li>
                         <li class="navbutton fa fa-sign-out left"><a href="logout.php?logout=true">Logout</a></li>
-                    {% elseif  user.role == 2  %}
+                    {% elseif user.role == 2 %}
                         <li class="navbutton fa fa-globe left"><a href="index.php">Website</a></li>
                         <li class="navbutton fa fa-cogs left"><a href="cp_user.php">Control Panel</a></li>
                         <li class="navbutton fa fa-user left"><a href="profile.php">Profile</a></li>
@@ -94,7 +95,6 @@
         <script>window.jQuery || document.write('<script src="src/ProjectWhisky/presentation/js/vendor/jquery-1.11.3.min.js"><\/script>')</script>
         <script src="src/ProjectWhisky/presentation/js/plugins.js"></script>
         <script src="src/ProjectWhisky/presentation/js/main.js"></script>
-        <script src="src/ProjectWhisky/presentation/js/search.js"></script>
 
 
     </body>

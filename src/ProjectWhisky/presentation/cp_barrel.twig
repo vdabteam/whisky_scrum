@@ -1,18 +1,24 @@
 {% extends "cpanel_template.twig" %}
 {% set activetab = 'barrels' %}
+{% block title %} cp barrels  {% endblock %}
 {% block content %}
 
             <header id="header_banner" class="barrels_header">
                 <div id="header_quote"><p>Barrels</p></div>
             </header>
             <div id="content_container">
-                
-                {% for barrel in barrels  %}
-                    {{ barrel.type }}&nbsp;<a href="cp_barrel_edit.php?id={{barrel.id}}">Edit</a><br>
-                {% endfor  %}
-                <br>
-                <a href="cp_barrel_add.php">Add new barrel</a>
-                
-                
+                <div id="controller" class="shadow">
+                    <form class="center cpanel_form"><h2>Search Barrels</h2>
+
+                        <input type="text" name="search_barreltype" id="search_barreltype" placeholder="Barrel type">
+                        <input class="btn btn-primary" type="submit" value="Search">
+
+                    </form>
+
+                    <a class="btn btn-primary" href="cp_barrel_add.php"><i class="fa fa-plus"></i> Add new barrel</a>
+                    {% for barrel in barrels %}
+                        {{ barrel.type }}&nbsp;<a href="cp_barrel_edit.php?id={{ barrel.id }}">Edit</a><br>
+                    {% endfor %}
+                </div>
             </div>
 {% endblock %} 

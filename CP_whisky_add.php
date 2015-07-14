@@ -25,8 +25,6 @@ $msg = "";
 
 
 
-
-
 /**
  * Initiate $_SESSION['savedData'] and $_SESSION['whiskyMesage']
  */
@@ -146,18 +144,6 @@ if(isset($_POST['whiskySaveBtn'])) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
         $hidden = 0;
 
         // Add whisky to DB
@@ -185,19 +171,20 @@ if(isset($_POST['whiskySaveBtn'])) {
 
         $_SESSION['whiskyMesage'] = "New whisky is added";
 
-echo "<pre>";
-print_r($addWhisky);
-echo "</pre>";
-
-
-
-    } catch (EmptyDataException $e) {
+    }
+    catch (EmptyDataException $e)
+    {
         $_SESSION['whiskyMesage'] = "All fields must be filled in";
-    } catch (NoImageException $e) {
+    }
+    catch (NoImageException $e)
+    {
         $_SESSION['whiskyMesage'] = "You need to upload an image";
-    } catch (FuckedUpException $e) {
+    }
+    catch (FuckedUpException $e)
+    {
         $_SESSION['whiskyMesage'] = "Something is wrong with query";
     }
+
 
 }
 

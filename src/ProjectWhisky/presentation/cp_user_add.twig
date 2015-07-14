@@ -1,0 +1,40 @@
+{% extends "cpanel_template.twig" %}
+{% set activetab = 'users' %}
+{% block title %} add user  {% endblock %}
+{% block content %}
+
+<header id="header_banner" class="users_header">
+	<div id="header_quote"><p>Add new user</p></div>
+</header>
+
+<div id="content_container">
+    <div id="controller" class="shadow">
+    	<form action="" method="post">
+    	
+    		<h3>Profile Picture:</h3>
+    		<img src="src/ProjectWhisky/presentation/userimages/default.jpg" alt="Profile Picture"/>
+    		<div class="fileUpload btn btn-primary">
+    	        <span class="fa fa-plus"></span> <span> Add Picture</span>
+    	        <input id="imgUploader" type="file" class="upload" name="userImage">
+            </div>
+            <h3>E-mail:</h3>
+            <input type="text" name="userEmail" placeholder="E-mail"/>
+    		<h3>Username:</h3>
+            <input type="text" name="userUsername" placeholder="Username"/>
+            <h3>Password:</h3>
+            <input type="password" name="userPassword" placeholder="Password"/>
+    		<h3>Firstname:</h3>
+            <input type="text" name="userFirstName" placeholder="Firstname"/>
+            <h3>Lastname:</h3>
+            <input type="text" name="userLastName" placeholder="Lastname"/>
+
+
+            <div class="">
+    	        Admin: <input type="checkbox" value="1" name="userAdmin">
+    	        Blocked: <input type="checkbox" value="1" name="userBlocked">
+    		</div>
+    		<input type="submit" value="create user"/>
+    	</form>
+        </div>
+</div>
+{% endblock %} 
