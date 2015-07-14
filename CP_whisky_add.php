@@ -15,6 +15,10 @@ use src\ProjectWhisky\exceptions\FuckedUpException;
 use Doctrine\Common\ClassLoader;
 
 require_once("rolestarter.php");
+require_once("adminRights.php"); // Redirects users ir guest from control panel to index.php if is not admin
+
+
+
 require_once('Doctrine/Common/ClassLoader.php');
 $classLoader = new ClassLoader("src");
 $classLoader->register();

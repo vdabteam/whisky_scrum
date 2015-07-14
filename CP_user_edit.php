@@ -10,6 +10,8 @@ use src\ProjectWhisky\business\ProfileBusiness;
 use Doctrine\Common\ClassLoader;
 
 require_once("rolestarter.php");
+require_once("adminRights.php"); // Redirects users ir guest from control panel to index.php if is not admin
+
 require_once('Doctrine/Common/ClassLoader.php');
 $classLoader = new ClassLoader("src");
 $classLoader->register();
@@ -43,7 +45,10 @@ if (isset($_POST['userUsername']))
     }
     
     //$imagePath = "default.jpg";
-    
+
+    echo "<pre>";
+    print_r($_POST);
+    echo "</pre>";
     $userBiz->updateUserById($userId, $username, $password, $email, $firstname, $lastname, $admin, $blocked);
 }
 

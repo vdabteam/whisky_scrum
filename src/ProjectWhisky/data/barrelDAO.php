@@ -118,12 +118,12 @@ class BarrelDAO
     public function addBarrel($type)
     {
     self::connectToDB();
-        $this->sql = "insert into barrels(type) values('$type')" ;
+        $this->sql = "insert into barrels(type) values(?)" ;
         
         try
         {
             $this->query = $this->handler->prepare($this->sql);
-            $this->query->execute();
+            $this->query->execute(array($type));
             
             $this->query->closeCursor();
             $this->handler = null;
@@ -138,15 +138,14 @@ class BarrelDAO
 
     public function editBarrel($id, $type)        
     {
-    self::connectToDB();
-        $this->sql = "update barrels set type='$type' where id=$id";
-        
+        self::connectToDB();
+        $this->sql = "UPDATE barrels SET type = ? where id = ?";
         
 
         try
         {
             $this->query = $this->handler->prepare($this->sql);
-            $this->query->execute();
+            $this->query->execute(array($type, $id));
             
             $this->query->closeCursor();
             $this->handler = null;
