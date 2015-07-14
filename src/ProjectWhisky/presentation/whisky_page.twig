@@ -118,10 +118,18 @@
 							                // instance, using default configuration.
 							                CKEDITOR.replace( 'editor1' );
 							            </script>
-                                        <div class="messageBlock">{{ messageBlock }}</div>
-                                        <div id="comment_submit">
-                                            <input type="submit" class="btn btn-primary" value="Post Comment" name="sendMsgBtn"/>
+                                        <div class="flex_parent">
+                                            <div class="flex_child flex5">
+                                                <div class="messageBlock {{ messageColor }}">{{ messageBlock }}</div>
+                                            </div>
+                                            <div class="flex_child right">
+                                                <div id="comment_submit">
+                                                    <input type="submit" class="btn btn-primary" value="Post Comment" name="sendMsgBtn"/>
+                                                </div>
+                                            </div>
                                         </div>
+                                        
+                                        
        								 </form>
                             {% else %}
                                 <div class="editorReplacement">

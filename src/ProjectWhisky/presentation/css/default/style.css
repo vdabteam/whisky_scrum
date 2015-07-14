@@ -639,6 +639,17 @@ input.blue{
         border-top: 1px dashed lightgray;
     }
 
+    .messageBlock{ 
+        margin: 1em;
+        padding: 1em 1.2em;
+        color: white;
+    }
+
+    .flex5{
+        -webkit-flex:5;
+        flex:5;
+    }
+
     #comments .comment:nth-child(even){
         background-color: #FFFBF4;
     }
@@ -666,7 +677,8 @@ input.blue{
         flex:1;*/
     }
     .comment_pic img{
-        width: 100%;
+        max-width: 100%;
+        max-height: 10em;
         height: auto;
     }
 

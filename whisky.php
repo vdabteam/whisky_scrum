@@ -89,6 +89,7 @@ if ((isset($_GET['id'])) && (is_int((int)$_GET['id'])) && (!empty($_GET['id'])))
 
                 $commentBiz->createComment($_GET['id'], $_SESSION['user']['id'], $_POST['editor1']);
                 $_SESSION['messageBlock'] = "Comment added";
+                $_SESSION['messageColor'] = "green";
 
                 $pathToWhisky = "whisky.php?id=" . $_GET['id'] . "&action=1#message";
 
@@ -97,6 +98,8 @@ if ((isset($_GET['id'])) && (is_int((int)$_GET['id'])) && (!empty($_GET['id'])))
             else
             {
                 $_SESSION['messageBlock'] = "You need to write more to place a comment";
+                $_SESSION['messageColor'] = "yellow";
+
                 $pathToWhisky = "whisky.php?id=" . $_GET['id'] . "&action=1#message";
                 header("Location: $pathToWhisky");
             }
@@ -123,6 +126,7 @@ if ((isset($_GET['id'])) && (is_int((int)$_GET['id'])) && (!empty($_GET['id'])))
                 if(!$commentBiz->removeComment($_POST['commentId'])) throw new FuckedUpException();
 
                 $_SESSION['messageBlock'] = "Comment deleted";
+                $_SESSION['messageColor'] = "green";
 
                 $pathToWhisky = "whisky.php?id=" . $_GET['id'] . "&action=1#message";
                 header("Location: $pathToWhisky");
@@ -132,12 +136,16 @@ if ((isset($_GET['id'])) && (is_int((int)$_GET['id'])) && (!empty($_GET['id'])))
             {
 //            $_SESSION['whiskyDialog'] = "You have not enough permissions to do that";
                 $_SESSION['messageBlock'] = "You have not enough permissions...";
+                $_SESSION['messageColor'] = "red";
+
                 $pathToWhisky = "whisky.php?id=" . $_GET['id'] . "&action=1#message";
                 header("Location: $pathToWhisky");
             }
             catch(FuckedUpException $e)
             {
                 $_SESSION['messageBlock'] = "Something is wrong";
+                $_SESSION['messageColor'] = "yellow";
+
                 $pathToWhisky = "whisky.php?id=" . $_GET['id'] . "&action=1#message";
                 header("Location: $pathToWhisky");
             }
@@ -150,6 +158,7 @@ if ((isset($_GET['id'])) && (is_int((int)$_GET['id'])) && (!empty($_GET['id'])))
     if (!isset($_SESSION['messageBlock']))
     {
         $_SESSION['messageBlock'] = "";
+        $_SESSION['messageColor'] = "";
     }
 
 
@@ -164,7 +173,7 @@ if ((isset($_GET['id'])) && (is_int((int)$_GET['id'])) && (!empty($_GET['id'])))
     $loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation");
     $twig = new Twig_Environment($loader);
 
-    $view = $twig->render("whisky_page.twig", array("user" => $_SESSION['user'], "messageBlock" => $_SESSION['messageBlock'], "whisky" => $whisky, "participatedUsers" => $participatedUsers,
+    $view = $twig->render("whisky_page.twig", array("user" => $_SESSION['user'], "messageBlock" => $_SESSION['messageBlock'], "messageColor" => $_SESSION['messageColor'], "whisky" => $whisky, "participatedUsers" => $participatedUsers,
                              "barrel" => $barrel['type'], "region" => $distillery['region'], "distilleryName" => $distillery['distilleriesname']));
 
     print($view);
@@ -191,6 +200,7 @@ if ((isset($_GET['action'])) && ($_GET['action'] == 1) && (empty($_SESSION['mess
 if ((isset($_GET['action'])) && ($_GET['action'] == 1) && (!empty($_SESSION['messageBlock'])))
 {
     $_SESSION['messageBlock'] = "";
+    $_SESSION['messageColor'] = "";
 }
 
 
