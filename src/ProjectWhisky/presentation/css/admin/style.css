@@ -236,6 +236,11 @@ input.blue{
     flex-wrap: wrap;
 }
 
+.flex_child{
+    -webkit-flex: 1;
+    flex: 1;
+}
+
 
 input[type="button"], input[type="button"]::-webkit-file-upload-button, input[type="file"]::-webkit-file-upload-button{
     display: none !important; /* Removing the annoying AGENT USER STYLE that made "cursor:pointer;" fuck up!*/
@@ -632,6 +637,10 @@ input[type="file"]{
 #profile_edit_form input#uploadFile{
     margin-top: -1em;
     display: none;
+}
+
+.cp_subform h3{
+    margin: 1em 0 0.5em ;
 }
 
 /* ///// RESPONSIVENESS ///// */

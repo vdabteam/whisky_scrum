@@ -35,48 +35,51 @@
             {% endif %}
 
             <div id="controller" class="shadow">
-                <form action="CP_whisky_edit.php" method="get"><br>
+                <form class="cp_subform" action="CP_whisky_edit.php" method="get">
                     <input type="hidden" name="id" value="{{ whisky.id }}">
-                    <label for="whisky_name">Naam: </label>
-                    <input type="text" value="{{  whisky.name }}" id="whisky_name" name="whisky_name"><br>
 
-                    <!-- Dropdown for distilleries -->
-                    <label for="distillery_id">Distillery: </label>
-                    <select id="distillery_id" name="distillery_id">
-                        {% for distillery  in distilleries %}
+                    <div class="flex_parent">
+                        <div class="flex_child">
+                            <h3>Naam:</h3>
+                            <input type="text" value="{{  whisky.name }}" id="whisky_name" name="whisky_name"><br>
 
-                            <option value="{{ distillery.id }}" {{ distillery.id == whisky.distilleryid ? "selected" : "" }}>{{ distillery.name }}</option>
-                        {% endfor  %}
-                    </select>
-                    <br>
-                    <label for="whisky_price">Price: </label>
-                   <input type="number"  min="0" value="{{ whisky.price }}" id="whisky_price" name="whisky_price"><br>
-                    <label for="whisky_age">Age: </label>
-                    <input type="number"  min="0" value="{{ whisky.age }}" id="whisky_age" name="whisky_age"><br>
-                    <label for="whisky_strength">Strength: </label>
-                    <input type="number"  min="0" max="100" value="{{ whisky.strength }}" id="whisky_strength" name="whisky_strength">%<br>
+                            <!-- Dropdown for distilleries -->
+                            <h3>Distillery:</h3>
+                            <select id="distillery_id" name="distillery_id">
+                                {% for distillery in distilleries %}
 
+                                    <option value="{{ distillery.id }}" {{ distillery.id == whisky.distilleryid ? "selected" : "" }}>{{ distillery.name }}</option>
 
-                    <!-- Replace barrel with dropdown as well  -->
-                    <label for="barrel">Barrel type: </label>
-                    <select id="barrel" name="barrel">
-                        {% for barrel  in barrels %}
-                            <option value="{{ barrel.id }}" {{ barrel.id == whisky.barrelid ? "selected" : "" }}>{{ barrel.type }}</option>
-                        {% endfor  %}
-                    </select><br>
+                                {% endfor %}
+                            </select>
 
-                    <!-- Replace with file picker  -->
-                    <label for="whisky_image">Image: </label>
+                            <h3>Price:</h3>
+                            <input type="number" min="0" value="{{ whisky.price }}" id="whisky_price" name="whisky_price"><br>
+                            <h3>Age:</h3>
+                            <input type="number" min="0" value="{{ whisky.age }}" id="whisky_age" name="whisky_age"><br>
+                            <h3>Strength:</h3>
+                            <input type="number" min="0" max="100" value="{{ whisky.strength }}" id="whisky_strength" name="whisky_strength"><span> &#37;</span>
 
-                    <img src="src/ProjectWhisky/presentation/img/{{ whisky.imagepath }}">
+                            <!-- Replace barrel with dropdown as well -->
+                            <h3>Barrel type:</h3>
+                            <select id="barrel" name="barrel">
+                                {% for barrel  in barrels %}
+                                    <option value="{{ barrel.id }}" {{ barrel.id == whisky.barrelid ? "selected" : "" }}>{{ barrel.type }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="flex_child text_center">
 
-                    <div class="fileUpload btn btn-primary">
-                        <span class="fa fa-pencil"></span> <span> Change Picture</span>
-                        <input id="imgUploader" type="file" class="upload" name="whisky_image">
-                        <input class="btn btn-primary" id="uploadFile" placeholder="{{ whisky.imagepath }}" disabled="disabled">
+                            <h3>Image:</h3>
+                            <img src="src/ProjectWhisky/presentation/img/{{ whisky.imagepath }}">
+                            <div class="fileUpload btn btn-primary center">
+                                <span class="fa fa-pencil"></span> <span> Change Picture</span>
+                                <input id="imgUploader" type="file" class="upload" name="whisky_image">
+                                <input class="btn btn-primary" id="uploadFile" placeholder="{{ whisky.imagepath }}" disabled="disabled">
+                            </div>
+
+                        </div>
                     </div>
-
-                            
 
                     <label for="hidden">Hidden: </label>
                     <input type="checkbox" name="hidden" id="hidden" value="1" {{ whisky.hidden ? "checked" : "" }}><br>
@@ -88,17 +91,19 @@
                     <input type="number" min="0" max="20" value="{{ whisky.ratingtaste }}" id="rating_taste" name="rating_taste"><br>
                     <label for="rating_aftertaste">Rating Aftertaste: </label>
                     <input type="number" min="0" max="20" value="{{ whisky.ratingaftertaste }}" id="rating_aftertaste" name="rating_aftertaste"><br>
-                    <label for="text_aroma">Text Aroma: </label><br>
+
+                    <h3>Text Aroma:</h3>
                     <textarea id="text_aroma" name="text_aroma" rows="5" cols="40">{{ whisky.textaroma }}</textarea><br>
-                    <label for="text_color">Text Color: </label><br>
+                    <h3>Text Color:</h3>
                     <textarea id="text_color" name="text_color" rows="5" cols="40">{{ whisky.textcolor }}</textarea><br>
-                    <label for="text_taste">Text Taste: </label><br>
+                    <h3>Text Taste:</h3>
                     <textarea id="text_taste" name="text_taste" rows="5" cols="40">{{ whisky.texttaste }}</textarea><br>
-                    <label for="text_aftertaste">Text Aftertaste: </label><br>
+                    <h3>Text Aftertaste:</h3>
                     <textarea id="text_aftertaste" name="text_aftertaste" rows="5" cols="40">{{ whisky.textaftertaste }}</textarea><br>
-                    <label for="text_review">Overall review: </label><br>
-                    <textarea id="text_review" name="text_review" rows="5" cols="40">{{ whisky.review }}</textarea><br>
-                    <input class="btn btn-primary" type="submit" value="wijzigen">
+                    <h3>Overall review:</h3>
+                    <textarea id="text_review" name="text_review" rows="5" cols="40">{{ whisky.review }}</textarea>
+
+                    <input class="btn btn-primary" type="submit" value="Save Changes">
 
                 </form>
             </div>
