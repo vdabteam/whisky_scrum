@@ -108,20 +108,32 @@
                 <input type="number" min="0" max="20" id="rating_aftertaste" name="rating_aftertaste" value="{{ savedData.rating_aftertaste }}"><br>
 
                 <label for="text_aroma">Text Aroma: </label><br>
-                <textarea id="text_aroma" name="text_aroma" rows="5" cols="40">{{ savedData.text_aroma }}</textarea><br>
+                <textarea id="text_aroma" name="text_aroma" rows="10" cols="80">{{ savedData.text_aroma }}</textarea>
 
                 <label for="text_color">Text Color: </label><br>
-                <textarea id="text_color" name="text_color" rows="5" cols="40">{{ savedData.text_color }}</textarea><br>
+                <textarea id="text_color" name="text_color" rows="10" cols="80">{{ savedData.text_color }}</textarea>
 
                 <label for="text_taste">Text Taste: </label><br>
-                <textarea id="text_taste" name="text_taste" rows="5" cols="40">{{ savedData.text_taste }}</textarea><br>
+                <textarea id="text_taste" name="text_taste" rows="10" cols="80">{{ savedData.text_taste }}</textarea>
+
 
                 <label for="text_aftertaste">Text Aftertaste: </label><br>
-                <textarea id="text_aftertaste" name="text_aftertaste" rows="5" cols="40">{{ savedData.text_aftertaste }}</textarea><br>
+                <textarea id="text_aftertaste" name="text_aftertaste" rows="10" cols="80">{{ savedData.text_aftertaste }}</textarea>
 
                 <label for="text_review">Overall review: </label><br>
-                <textarea id="text_review" name="text_review" rows="5" cols="40">{{ savedData.review }}</textarea><br>
-                <input type="submit" value="Save" name="whiskySaveBtn">
+                <textarea id="text_review" name="text_review" rows="10" cols="80">{{ savedData.review }}</textarea>
+
+                {#Load all editors#}
+                <script>
+                    CKEDITOR.replace( 'text_aroma' );
+                    CKEDITOR.replace( 'text_color' );
+                    CKEDITOR.replace( 'text_taste' );
+                    CKEDITOR.replace( 'text_aftertaste' );
+                    CKEDITOR.replace( 'text_review' );
+                </script>
+
+
+                <input class="btn btn-primary" type="submit" value="Save" name="whiskySaveBtn">
 
             </form>
             </div>
