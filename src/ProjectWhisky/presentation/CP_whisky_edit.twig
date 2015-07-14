@@ -1,0 +1,124 @@
+{% extends "cpanel_template.twig" %}
+{% set activetab = 'whiskies' %}
+{% block title %} Edit whisky  {% endblock %}
+{% block content %}
+
+    <header id="header_banner" class="whisky_header">
+        <div id="header_quote"><p>Edit Whisky</p></div>
+    </header>
+    <div id="content_container">
+
+        {% if msg == "missing" %}
+            <div id="notifier" class="yellow shadow">
+                <p><span class="fa fa-exclamation-circle"></span>
+                    All fields are required.</p>
+            </div>
+        {% elseif msg == "success" %}
+            <div id="notifier" class="green shadow">
+                <p><span class="fa fa-check-circle"></span>
+                    Whisky successfully added.</p>
+            </div>
+        {% elseif msg == "image_missing" %}
+            <div id="notifier" class="red shadow">
+                <p><span class="fa fa-times-circle"></span>
+                    You need to upload image.</p>
+            </div>
+        {% elseif msg == "error" %}
+            <div id="notifier" class="red shadow">
+                <p><span class="fa fa-times-circle"></span>
+                    An error occured.</p>
+            </div>
+        {% elseif msg == "info" %}
+            <div id="notifier" class="blue shadow">
+                <p><span class="fa fa-info-circle"></span>
+                    "This is info, insert correct message here!"</p>
+            </div>
+        {% endif %}
+
+
+        <div id="controller" class="shadow">
+            <form id="whiskyAddition" action="CP_whisky_add.php" method="post" enctype="multipart/form-data"><br>
+                <h3>Product Picture:</h3>
+                <img src="src/ProjectWhisky/presentation/img/{{ whisky.imagepath }}" alt="Whisky Picture of {{ whisky.imagepath }}"/>
+
+                <div class="fileUpload btn btn-primary">
+                    <span class="fa fa-plus"></span>
+                    <span> Change Picture</span>
+                    <input id="imgUploader" type="file" class="upload" name="whisky_image">
+                </div>
+                <input id="uploadFile" placeholder="No File Selected" disabled="disabled"><br>
+
+                <label for="whisky_name">Name: </label>
+                <input type="text" id="whisky_name" name="whisky_name" value="{{  whisky.name }}"><br>
+
+                <label for="distillery_id">Distillery: </label>
+                <select id="distillery_id" name="distillery_id">
+                    {% for distillery  in distilleries %}
+                        <option value="{{ distillery.id }}" {{ distillery.id == whisky.distilleryid ? "selected" : "" }}>{{ distillery.name }}</option>
+                    {% endfor  %}
+                </select><br>
+
+                <label for="whisky_price">Price: </label>
+                <input type="number"  min="0" id="whisky_price" name="whisky_price" value="{{ whisky.price }}"><br>
+
+                <label for="whisky_age">Age: </label>
+                <input type="number"  min="0" id="whisky_age" name="whisky_age" value="{{ whisky.age }}"><br>
+
+                <label for="whisky_strength">Strength: </label>
+                <input type="number"  min="0" max="100" id="whisky_strength" name="whisky_strength" value="{{ whisky.strength }}">%<br>
+
+                <label for="barrel">Barrel type: </label>
+                <select id="barrel" name="barrel">
+                    {% for barrel  in barrels %}
+                        <option value="{{ barrel.id }}" {{ barrel.id == whisky.barrelid ? "selected" : "" }}>{{ barrel.type }}</option>
+                    {% endfor  %}
+                </select><br>
+
+                <label for="rating_aroma">Rating Aroma: </label>
+                <input type="number" min="0" max="20" id="rating_aroma" name="rating_aroma" value="{{ whisky.ratingaroma }}"><br>
+
+                <label for="rating_color">Rating Color: </label>
+                <input type="number" min="0" max="20" id="rating_color" name="rating_color" value="{{ whisky.ratingcolor }}"><br>
+
+                <label for="rating_taste">Rating Taste: </label>
+                <input type="number" min="0" max="20" id="rating_taste" name="rating_taste" value="{{ whisky.ratingtaste }}"><br>
+
+                <label for="rating_aftertaste">Rating Aftertaste: </label>
+                <input type="number" min="0" max="20" id="rating_aftertaste" name="rating_aftertaste" value="{{ whisky.ratingaftertaste }}"><br>
+
+                <label for="text_aroma">Text Aroma: </label><br>
+                <textarea id="text_aroma" name="text_aroma" rows="10" cols="80">{{ whisky.textaroma }}</textarea>
+
+                <label for="text_color">Text Color: </label><br>
+                <textarea id="text_color" name="text_color" rows="10" cols="80">{{ whisky.textcolor }}</textarea>
+
+                <label for="text_taste">Text Taste: </label><br>
+                <textarea id="text_taste" name="text_taste" rows="10" cols="80">{{ whisky.texttaste }}</textarea>
+
+
+                <label for="text_aftertaste">Text Aftertaste: </label><br>
+                <textarea id="text_aftertaste" name="text_aftertaste" rows="10" cols="80">{{ whisky.textaftertaste }}</textarea>
+
+                <label for="text_review">Overall review: </label><br>
+                <textarea id="text_review" name="text_review" rows="10" cols="80">{{ whisky.review }}</textarea>
+
+                {#Load all editors#}
+                <script>
+                    CKEDITOR.replace( 'text_aroma' );
+                    CKEDITOR.replace( 'text_color' );
+                    CKEDITOR.replace( 'text_taste' );
+                    CKEDITOR.replace( 'text_aftertaste' );
+                    CKEDITOR.replace( 'text_review' );
+                </script>
+
+
+                <input class="btn btn-primary" type="submit" value="Update whisky" name="whiskySaveBtn">
+
+            </form>
+        </div>
+
+
+
+
+    </div>
+{% endblock %}    
