@@ -643,6 +643,11 @@ input[type="file"]{
     margin: 1em 0 0.5em ;
 }
 
+.cp_subform img{
+    max-height: 20em;
+    max-width: 12em;
+}
+
 /* ///// RESPONSIVENESS ///// */
 /* Desktop */
 @media (min-width: 769px){

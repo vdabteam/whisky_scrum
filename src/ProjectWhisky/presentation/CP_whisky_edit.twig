@@ -1,6 +1,6 @@
 {% extends "cpanel_template.twig" %}
 {% set activetab = 'whiskies' %}
-{% block title %} Edit whisky  {% endblock %}
+{% block title %} Edit Whisky {% endblock %}
 {% block content %}
 
     <header id="header_banner" class="whisky_header">
@@ -41,9 +41,8 @@
                     <div class="flex_parent">
                         <div class="flex_child">
                             <h3>Naam:</h3>
-                            <input type="text" value="{{  whisky.name }}" id="whisky_name" name="whisky_name"><br>
+                            <input type="text" value="{{ whisky.name }}" id="whisky_name" name="whisky_name">
 
-                            <!-- Dropdown for distilleries -->
                             <h3>Distillery:</h3>
                             <select id="distillery_id" name="distillery_id">
                                 {% for distillery in distilleries %}
@@ -54,13 +53,14 @@
                             </select>
 
                             <h3>Price:</h3>
-                            <input type="number" min="0" value="{{ whisky.price }}" id="whisky_price" name="whisky_price"><br>
+                            <input type="number" min="0" value="{{ whisky.price }}" id="whisky_price" name="whisky_price"> <span> &euro;</span>
+
                             <h3>Age:</h3>
-                            <input type="number" min="0" value="{{ whisky.age }}" id="whisky_age" name="whisky_age"><br>
+                            <input type="number" min="0" value="{{ whisky.age }}" id="whisky_age" name="whisky_age"><span> Years</span>
+
                             <h3>Strength:</h3>
                             <input type="number" min="0" max="100" value="{{ whisky.strength }}" id="whisky_strength" name="whisky_strength"><span> &#37;</span>
 
-                            <!-- Replace barrel with dropdown as well -->
                             <h3>Barrel type:</h3>
                             <select id="barrel" name="barrel">
                                 {% for barrel  in barrels %}
@@ -71,7 +71,7 @@
                         <div class="flex_child text_center">
 
                             <h3>Image:</h3>
-                            <img src="src/ProjectWhisky/presentation/img/{{ whisky.imagepath }}">
+                            <img src="src/ProjectWhisky/presentation/img/{{ whisky.imagepath }}" alt="image of {{ whisky.name }}"/>
                             <div class="fileUpload btn btn-primary center">
                                 <span class="fa fa-pencil"></span> <span> Change Picture</span>
                                 <input id="imgUploader" type="file" class="upload" name="whisky_image">
@@ -80,29 +80,35 @@
 
                         </div>
                     </div>
+                    <div class="flex_parent">
+                        <div class="flex_child">
+                            <h3>Rating Aroma:</h3>
+                            <input type="number" min="0" max="20" id="rating_aroma" name="rating_aroma" value="{{ whisky.ratingaroma }}"> / 20
+                        </div>
+                        <div class="flex_child">
+                            <h3>Rating Color:</h3>
+                            <input type="number" min="0" max="20" id="rating_color" name="rating_color" value="{{ whisky.ratingcolor }}"> / 20
+                        </div>
+                        <div class="flex_child">
+                            <h3>Rating Taste:</h3>
+                            <input type="number" min="0" max="20" id="rating_taste" name="rating_taste" value="{{ whisky.ratingtaste }}"> / 20
+                        </div>
+                        <div class="flex_child">
+                            <h3>Rating Aftertaste:</h3>
+                            <input type="number" min="0" max="20" id="rating_aftertaste" name="rating_aftertaste" value="{{ whisky.ratingaftertaste }}"> / 20
+                        </div>
+                    </div>
 
-                    <label for="rating_aroma">Rating Aroma: </label>
-                    <input type="number" min="0" max="20" id="rating_aroma" name="rating_aroma" value="{{ whisky.ratingaroma }}">
-
-                    <label for="rating_color">Rating Color: </label>
-                    <input type="number" min="0" max="20" id="rating_color" name="rating_color" value="{{ whisky.ratingcolor }}">
-
-                    <label for="rating_taste">Rating Taste: </label>
-                    <input type="number" min="0" max="20" id="rating_taste" name="rating_taste" value="{{ whisky.ratingtaste }}">
-
-                    <label for="rating_aftertaste">Rating Aftertaste: </label>
-                    <input type="number" min="0" max="20" id="rating_aftertaste" name="rating_aftertaste" value="{{ whisky.ratingaftertaste }}">
-
-                    <h3>Text Aroma:</h3>
+                    <h3>Review Aroma:</h3>
                     <textarea id="text_aroma" name="text_aroma" rows="5" cols="40">{{ whisky.textaroma }}</textarea>
 
-                    <h3>Text Color:</h3>
+                    <h3>Review Color:</h3>
                     <textarea id="text_color" name="text_color" rows="5" cols="40">{{ whisky.textcolor }}</textarea>
 
-                    <h3>Text Taste:</h3>
+                    <h3>Review Taste:</h3>
                     <textarea id="text_taste" name="text_taste" rows="5" cols="40">{{ whisky.texttaste }}</textarea>
 
-                    <h3>Text Aftertaste:</h3>
+                    <h3>Review Aftertaste:</h3>
                     <textarea id="text_aftertaste" name="text_aftertaste" rows="5" cols="40">{{ whisky.textaftertaste }}</textarea>
 
                     <h3>Overall review:</h3>
@@ -116,7 +122,7 @@
                         CKEDITOR.replace( 'text_taste' );
                         CKEDITOR.replace( 'text_aftertaste' );
                         CKEDITOR.replace( 'text_review' );
-                    </script>
+                    </script><br>
 
                     <input class="btn btn-primary" type="submit" value="Save Changes">
 
