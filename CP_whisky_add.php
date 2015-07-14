@@ -140,7 +140,7 @@ if(isset($_POST['whiskySaveBtn'])) {
             }
         }
 
-        
+
         $hidden = 0;
 
         // Add whisky to DB

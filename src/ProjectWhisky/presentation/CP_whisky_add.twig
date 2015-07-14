@@ -11,7 +11,7 @@
             {% if msg == "missing" %}
                 <div id="notifier" class="yellow shadow">
                     <p><span class="fa fa-exclamation-circle"></span>
-                        Fields missing! Changes saved, but whisky is hidden.</p>
+                        All fields are required.</p>
                 </div>
             {% elseif msg == "success" %}
                 <div id="notifier" class="green shadow">
@@ -38,7 +38,7 @@
 
             <div id="controller" class="shadow">
                 <form id="whiskyAddition" action="CP_whisky_add.php" method="post" enctype="multipart/form-data"><br>
-                    <h3>Profile Picture:</h3>
+                    <h3>Product Picture:</h3>
                     {#<img src="src/ProjectWhisky/presentation/userimages/{{ userData.image_path }}" alt="Profile Picture of {{ userData.firstname }}"/>#}
 
                     <div class="fileUpload btn btn-primary">

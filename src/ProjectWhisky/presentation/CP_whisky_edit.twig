@@ -1,42 +1,42 @@
 {% extends "cpanel_template.twig" %}
 {% set activetab = 'whiskies' %}
-{% block title %} edit whisky  {% endblock %}
+{% block title %} Edit whisky  {% endblock %}
 {% block content %}
 
     <header id="header_banner" class="whisky_header">
         <div id="header_quote"><p>Edit Whisky</p></div>
     </header>
-        <div id="content_container">
-            {% if msg == "missing" %}
+    <div id="content_container">
+
+        {% if msg == "missing" %}
             <div id="notifier" class="yellow shadow">
-                    <p><span class="fa fa-exclamation-circle"></span>
-                    Fields missing! Changes saved, but whisky is hidden.</p>
+                <p><span class="fa fa-exclamation-circle"></span>
+                    All fields are required.</p>
             </div>
-            {% elseif msg == "success" %}
+        {% elseif msg == "success" %}
             <div id="notifier" class="green shadow">
-                    <p><span class="fa fa-check-circle"></span>
-                    Changes successfully saved.</p>
+                <p><span class="fa fa-check-circle"></span>
+                    Whisky successfully added.</p>
             </div>
-            {% elseif msg == "success_hidden" %}
-            <div id="notifier" class="green shadow">
-                    <p><span class="fa fa-check-circle"></span>
-                    Changes successfully saved, whisky was hidden.</p>
-            </div>
-            {% elseif msg == "error" %}
+        {% elseif msg == "image_missing" %}
             <div id="notifier" class="red shadow">
-                    <p><span class="fa fa-times-circle"></span>
+                <p><span class="fa fa-times-circle"></span>
+                    You need to upload image.</p>
+            </div>
+        {% elseif msg == "error" %}
+            <div id="notifier" class="red shadow">
+                <p><span class="fa fa-times-circle"></span>
                     An error occured.</p>
             </div>
-            {% elseif msg == "info" %}
+        {% elseif msg == "info" %}
             <div id="notifier" class="blue shadow">
-                    <p><span class="fa fa-info-circle"></span>
+                <p><span class="fa fa-info-circle"></span>
                     "This is info, insert correct message here!"</p>
             </div>
-            {% endif %}
+        {% endif %}
 
             <div id="controller" class="shadow">
-                <form class="cp_subform" action="CP_whisky_edit.php" method="get">
-                    <input type="hidden" name="id" value="{{ whisky.id }}">
+                <form id="whiskyAddition" class="cp_subform" action="CP_whisky_edit.php" method="get">
 
                     <div class="flex_parent">
                         <div class="flex_child">
@@ -81,27 +81,42 @@
                         </div>
                     </div>
 
-                    <label for="hidden">Hidden: </label>
-                    <input type="checkbox" name="hidden" id="hidden" value="1" {{ whisky.hidden ? "checked" : "" }}><br>
                     <label for="rating_aroma">Rating Aroma: </label>
-                    <input type="number" min="0" max="20" value="{{ whisky.ratingaroma }}" id="rating_aroma" name="rating_aroma"><br>
+                    <input type="number" min="0" max="20" id="rating_aroma" name="rating_aroma" value="{{ whisky.ratingaroma }}">
+
                     <label for="rating_color">Rating Color: </label>
-                    <input type="number" min="0" max="20" value="{{ whisky.ratingcolor }}" id="rating_color" name="rating_color"><br>
+                    <input type="number" min="0" max="20" id="rating_color" name="rating_color" value="{{ whisky.ratingcolor }}">
+
                     <label for="rating_taste">Rating Taste: </label>
-                    <input type="number" min="0" max="20" value="{{ whisky.ratingtaste }}" id="rating_taste" name="rating_taste"><br>
+                    <input type="number" min="0" max="20" id="rating_taste" name="rating_taste" value="{{ whisky.ratingtaste }}">
+
                     <label for="rating_aftertaste">Rating Aftertaste: </label>
-                    <input type="number" min="0" max="20" value="{{ whisky.ratingaftertaste }}" id="rating_aftertaste" name="rating_aftertaste"><br>
+                    <input type="number" min="0" max="20" id="rating_aftertaste" name="rating_aftertaste" value="{{ whisky.ratingaftertaste }}">
 
                     <h3>Text Aroma:</h3>
-                    <textarea id="text_aroma" name="text_aroma" rows="5" cols="40">{{ whisky.textaroma }}</textarea><br>
+                    <textarea id="text_aroma" name="text_aroma" rows="5" cols="40">{{ whisky.textaroma }}</textarea>
+
                     <h3>Text Color:</h3>
-                    <textarea id="text_color" name="text_color" rows="5" cols="40">{{ whisky.textcolor }}</textarea><br>
+                    <textarea id="text_color" name="text_color" rows="5" cols="40">{{ whisky.textcolor }}</textarea>
+
                     <h3>Text Taste:</h3>
-                    <textarea id="text_taste" name="text_taste" rows="5" cols="40">{{ whisky.texttaste }}</textarea><br>
+                    <textarea id="text_taste" name="text_taste" rows="5" cols="40">{{ whisky.texttaste }}</textarea>
+
                     <h3>Text Aftertaste:</h3>
-                    <textarea id="text_aftertaste" name="text_aftertaste" rows="5" cols="40">{{ whisky.textaftertaste }}</textarea><br>
+                    <textarea id="text_aftertaste" name="text_aftertaste" rows="5" cols="40">{{ whisky.textaftertaste }}</textarea>
+
                     <h3>Overall review:</h3>
                     <textarea id="text_review" name="text_review" rows="5" cols="40">{{ whisky.review }}</textarea>
+
+
+                    {#Load all editors#}
+                    <script>
+                        CKEDITOR.replace( 'text_aroma' );
+                        CKEDITOR.replace( 'text_color' );
+                        CKEDITOR.replace( 'text_taste' );
+                        CKEDITOR.replace( 'text_aftertaste' );
+                        CKEDITOR.replace( 'text_review' );
+                    </script>
 
                     <input class="btn btn-primary" type="submit" value="Save Changes">
 
@@ -111,5 +126,6 @@
 
 
 
-        </div>
-{% endblock %}
+
+    </div>
+{% endblock %}    

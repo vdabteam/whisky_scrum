@@ -43,7 +43,7 @@
                     </aside>
                     {% set ratingtotal = (whisky.ratingAroma + whisky.ratingColor + whisky.ratingTaste + whisky.ratingAftertaste) * 0.125 %}
                     <div id="whisky_total" class="progress-radial progress-{{ (ratingtotal * 10) | round }}"> 
-                        <div class="overlay">{{ ratingtotal }}</div>
+                        <div class="overlay">{{ ratingtotal }}/10</div>
                     </div>
                     <div class="rating_box">
                         <h2>{{ whisky.name }}</h2>
@@ -51,7 +51,7 @@
                             <!--bar-->
                             <div class="clearfix">
                                 <span class="left">Aroma</span>
-                                <span class="right">{{ whisky.ratingAroma * 0.5 }}</span>
+                                <span class="right">{{ whisky.ratingAroma * 0.5 }}/10</span>
                             </div>
                             <div class="rating_base"></div>
                             <div class="rating" style="width: {{ whisky.ratingAroma * 5 }}%;"></div>
@@ -59,7 +59,7 @@
                             <!--bar-->
                             <div class="clearfix">
                                 <span class="left">Taste</span>
-                                <span class="right">{{ whisky.ratingTaste * 0.5 }}</span>
+                                <span class="right">{{ whisky.ratingTaste * 0.5 }}/10</span>
                             </div>
                             <div class="rating_base"></div>
                             <div class="rating" style="width: {{ whisky.ratingTaste * 5 }}%;"></div>
@@ -67,7 +67,7 @@
                             <!--bar-->
                             <div class="clearfix">
                                 <span class="left">Aftertaste</span>
-                                <span class="right">{{ whisky.ratingAftertaste * 0.5 }}</span>
+                                <span class="right">{{ whisky.ratingAftertaste * 0.5 }}/10</span>
                             </div>
                             <div class="rating_base"></div>
                             <div class="rating" style="width: {{ whisky.ratingAftertaste * 5 }}%;"></div>
@@ -75,7 +75,7 @@
                             <!--bar-->
                             <div class="clearfix">
                                 <span class="left">Color</span>
-                                <span class="right">{{ whisky.ratingColor * 0.5 }}</span>
+                                <span class="right">{{ whisky.ratingColor * 0.5 }}/10</span>
                             </div>
                             <div class="rating_base"></div>
                             <div class="rating" style="width: {{ whisky.ratingColor * 5 }}%;"></div>
@@ -86,23 +86,23 @@
                             <h2 id="description_header">Detailed description:</h2>
                             <div class="review_box">
                                 <h3>Aroma</h3>
-                                <p>{{ whisky.textAroma }}</p>
+                                <p>{{ whisky.textAroma|raw }}</p>
                             </div>
                             <div class="review_box">
                                 <h3>Taste</h3>
-                                <p>{{ whisky.textTaste }}</p>
+                                <p>{{ whisky.textTaste|raw }}</p>
                             </div>
                             <div class="review_box">
                                 <h3>Aftertaste</h3>
-                                <p>{{ whisky.textAftertaste }}</p>
+                                <p>{{ whisky.textAftertaste|raw }}</p>
                             </div>
                             <div class="review_box">
                                 <h3>Color</h3>
-                                <p>{{ whisky.textColor }}</p>
+                                <p>{{ whisky.textColor|raw }}</p>
                             </div>
                             <h2 id="review_header">Review:</h2>
                             <div class="review_box">
-                                <p>{{ whisky.review }}</p>
+                                <p>{{ whisky.review|raw }}</p>
                             </div>
                         </div>
                         <div id="comments">
