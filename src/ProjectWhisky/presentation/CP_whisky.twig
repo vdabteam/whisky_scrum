@@ -10,11 +10,15 @@
                 <div id="controller" class="shadow">
                     <form class="center cpanel_form" action="cp_whisky.php" method="get"><h2>Search Whiskies</h2>
 
-                        <input type="text" name="whiskyname" id="search_whiskyname" placeholder="Whisky Name">
+                        <input type="text" name="whiskyname" value="{{searchInput is defined ? searchInput : ""}}" id="search_whiskyname" placeholder="Whisky Name">
                         <input class="btn btn-primary" type="submit" value="Search">
 
                     </form>
                     
+                    {% if searchInput is defined %}
+                    	<a href="CP_whisky.php" class="btn btn-primary">Show all</a>
+					{% endif %}
+
                     <a href="CP_whisky_add.php" class="btn btn-primary"><i class="fa fa-plus"></i> Add Whisky</a>
 
                     <table class="cpanel_table">
