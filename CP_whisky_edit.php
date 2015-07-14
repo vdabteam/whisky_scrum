@@ -202,7 +202,7 @@ $barrel_data = $barrelBiz->showAllBarrels();
 $loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation");
 $twig = new Twig_Environment($loader);
 
-$view = $twig->render("CP_whisky_edit.twig", array("user" => $_SESSION['user'], "whisky" => $whisky_data, "distilleries" => $distillery_data, "barrels" => $barrel_data, "msg" => $_SESSION['whiskyMesage'], "savedData" => $_SESSION['savedData']));
+$view = $twig->render("CP_whisky_edit.twig", array("user" => $_SESSION['user'], "msg" => $_SESSION['whiskyMesage'], "whisky" => $whisky_data, "distilleries" => $distillery_data, "barrels" => $barrel_data, "msg" => $_SESSION['whiskyMesage'], "savedData" => $_SESSION['savedData']));
 
 print($view);
 
