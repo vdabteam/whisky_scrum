@@ -60,6 +60,7 @@
 	padding: 0;
 }
 html {
+    height: 100%;
 	font-size: 62.5%;
 }
 
@@ -73,6 +74,7 @@ a{
 /* Commence Styling Rules */
 
 body{
+    height: 100%;
 	font-size: 1.4em;
 	font-family: 'open_sansregular';
 	background: #F7F9FF;
@@ -294,6 +296,7 @@ aside#sidebar{
 	background-color: darkgray;
 	min-width: 20em;
     margin-right: 3em;
+    min-height: 100%;
 }
 aside#sidebar #menu li a{
 	padding:2em 1.5em;

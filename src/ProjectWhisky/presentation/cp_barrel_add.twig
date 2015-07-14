@@ -7,11 +7,15 @@
                 <div id="header_quote"><p>Add Barrel</p></div>
             </header>
             <div id="content_container">
-                <form action="cp_barrel_add.php" method="post">
-                   
-                    <label for="type">Barrel: </label>
-                    <input type="text" id="type" name="type" />
-                    <input type="submit" value="Add barrel">
-                </form>
+                <div id="controller" class="shadow">
+                    <form class="cp_subform" action="cp_barrel_add.php" method="post">
+                       
+                        <h3>Barrel: </h3>
+                        <input type="text" id="type" name="type">
+                        <br>
+                        <br>
+                        <input class="btn btn-primary" type="submit" value="Add barrel">
+                    </form>
+                </div>
             </div>
 {% endblock %}

@@ -7,11 +7,14 @@
                 <div id="header_quote"><p>Edit Barrel</p></div>
             </header>
             <div id="content_container">
-                <form action="cp_barrel_edit.php?id={{ barrel.id }}" method="post">
+                <div id="controller" class="shadow">
+                    <form class="cp_subform" action="cp_barrel_edit.php?id={{ barrel.id }}" method="post">
                    
-                    <label for="type">Barrel: </label>
-                    <input type="text" value="{{ barrel.type }}" id="type" name="type" />
-                    <input type="submit" value="Save changes">
-                </form>
+                        <h3>Barrel:</h3>
+                        <input type="text" value="{{ barrel.type }}" id="type" name="type"><br><br>
+
+                        <input class="btn btn-primary" type="submit" value="Save changes">
+                    </form>
+                </div>
             </div>
 {% endblock %} 
