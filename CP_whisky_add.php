@@ -9,6 +9,9 @@ use src\ProjectWhisky\business\WhiskyBusiness;
 use src\ProjectWhisky\business\BarrelBusiness;
 use src\ProjectWhisky\business\DistilleryBusiness;
 use src\ProjectWhisky\business\UserBusiness;
+use src\ProjectWhisky\exceptions\EmptyDataException;
+use src\ProjectWhisky\exceptions\NoImageException;
+use src\ProjectWhisky\exceptions\FuckedUpException;
 use Doctrine\Common\ClassLoader;
 
 require_once("rolestarter.php");
@@ -21,66 +24,188 @@ Twig_Autoloader::register();
 $msg = "";
 
 
-// Check GET variable
-if(!empty($_GET))
-{    // count nonempty items
-    $isset = 0;
-    for($i=0; $i<count($_GET); $i++)
-    {
-       $isset+=!empty($_GET[array_keys($_GET)[$i]]);
+
+
+
+/**
+ * Initiate $_SESSION['savedData'] and $_SESSION['whiskyMesage']
+ */
+if (!isset($_SESSION['savedData']))
+{
+    $_SESSION['savedData'] = array();
+    $_SESSION['whiskyMesage'] = array();
+}
+
+
+/**
+ * Save new whisky
+ */
+if(isset($_POST['whiskySaveBtn'])) {
+    try {
+        $_SESSION['savedData']['name'] = !empty($_POST["whisky_name"]) ? $_POST["whisky_name"] : "";
+        $_SESSION['savedData']['distillery'] = !empty($_POST["distillery_id"]) ? $_POST["distillery_id"] : "";
+        $_SESSION['savedData']['image'] = !empty($_FILES["whisky_image"]["name"]) ? $_FILES["whisky_image"] : "default.jpg";
+        $_SESSION['savedData']['price'] = !empty($_POST["whisky_price"]) ? $_POST["whisky_price"] : "";
+        $_SESSION['savedData']['age'] = !empty($_POST["whisky_age"]) ? $_POST["whisky_age"] : "";
+        $_SESSION['savedData']['strength'] = !empty($_POST["whisky_strength"]) ? $_POST["whisky_strength"] : "";
+        $_SESSION['savedData']['barrel_id'] = !empty($_POST["barrel"]) ? $_POST["barrel"] : "";
+        $_SESSION['savedData']['rating_aroma'] = !empty($_POST["rating_aroma"]) ? $_POST["rating_aroma"] : "";
+        $_SESSION['savedData']['rating_color'] = !empty($_POST["rating_color"]) ? $_POST["rating_color"] : "";
+        $_SESSION['savedData']['rating_taste'] = !empty($_POST["rating_taste"]) ? $_POST["rating_taste"] : "";
+        $_SESSION['savedData']['rating_aftertaste'] = !empty($_POST["rating_aftertaste"]) ? $_POST["rating_aftertaste"] : "";
+        $_SESSION['savedData']['text_aroma'] = !empty($_POST["text_aroma"]) ? $_POST["text_aroma"] : "";
+        $_SESSION['savedData']['text_color'] = !empty($_POST["text_color"]) ? $_POST["text_color"] : "";
+        $_SESSION['savedData']['text_taste'] = !empty($_POST["text_taste"]) ? $_POST["text_taste"] : "";
+        $_SESSION['savedData']['text_aftertaste'] = !empty($_POST["text_aftertaste"]) ? $_POST["text_aftertaste"] : "";
+        $_SESSION['savedData']['review'] = !empty($_POST["text_review"]) ? $_POST["text_review"] : "";
+        $_SESSION['savedData']['user_id'] = $_SESSION["user"]["id"];
+
+        /**
+         * If one of all fields is empty, throw an error
+         */
+        foreach ($_POST as $postLine)
+        {
+            if (empty($postLine)) throw new EmptyDataException();
+        }
+
+        /**
+         * If no image was selected, throw an error
+         */
+        if (empty($_FILES['whisky_image']['name'])) throw new NoImageException();
+
+
+        $newImagePath = "";
+
+        /**
+         * Upload image
+         */
+        if (isset($_FILES['whisky_image']))
+        {
+            $file = $_FILES['whisky_image'];
+
+            /**
+             * File properties
+             */
+            $file_name = $file['name'];
+            $file_tmp = $file['tmp_name'];
+            $file_size = $file['size'];
+            $file_error = $file['error'];
+
+            /**
+             * Work out the file extension
+             * If move_uploaded_file gives permission error, 'cd' to 'userimages' folder and give it wright permissions: 'chmod 0777 userimages' (both machines)
+             */
+            $file_ext = explode('.', $file_name);
+            $file_ext = strtolower(end($file_ext));
+
+            /**
+             * Define allowed file extensions
+             */
+            $allowed = array('png', 'jpg', 'jpeg', 'gif');
+
+            if (in_array($file_ext, $allowed))
+            {
+                if ($file_error === 0)
+                {
+                    if ($file_size <= 2097152)
+                    {
+                        $file_name_new = uniqid('', true) . '.' . $file_ext; // uniqid - creates unique id based on current timestamp in microseconds
+
+
+                        $file_destination = 'src/ProjectWhisky/presentation/img/' . $file_name_new;
+
+                        if (move_uploaded_file($file_tmp, $file_destination))
+                        {
+                            $newImagePath = $file_name_new;
+                            /**
+                             * Calling defined function and giving parameters. $profile is an object
+                             */
+//                            updateImagePathInDB($userId, $newImagePath, $profile);
+
+                            /*if($userData['image_path'] !== "default.jpg")
+                            {
+                                $toRemoveImage = "src/ProjectWhisky/presentation/img/" . $userData['image_path'];
+                                unlink($toRemoveImage);
+                            }*/
+
+                        }
+                    }
+                    else
+                    {
+                        $_SESSION['whiskyMesage'] = "Allowed file size is 2MB";
+                    }
+                }
+            }
+            else
+            {
+                $_SESSION['whiskyMesage'] = "Only .png, .jpg, .jpeg and .gif files are allowed.";
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        $hidden = 0;
+
+        // Add whisky to DB
+        $whiskyBiz = new WhiskyBusiness();
+        $addWhisky = $whiskyBiz->addWhisky($_SESSION['savedData']['name'],
+                        $_SESSION['savedData']['distillery'],
+                        $_SESSION['savedData']['price'],
+                        $_SESSION['savedData']['age'],
+                        $_SESSION['savedData']['strength'],
+                        $_SESSION['savedData']['barrel_id'],
+                        $newImagePath,
+                        $hidden,
+                        $_SESSION['savedData']['rating_aroma'],
+                        $_SESSION['savedData']['rating_color'],
+                        $_SESSION['savedData']['rating_taste'],
+                        $_SESSION['savedData']['rating_aftertaste'],
+                        $_SESSION['savedData']['text_aroma'],
+                        $_SESSION['savedData']['text_color'],
+                        $_SESSION['savedData']['text_taste'],
+                        $_SESSION['savedData']['text_aftertaste'],
+                        $_SESSION['savedData']['review'],
+                        $_SESSION['savedData']['user_id']);
+
+        if ($addWhisky == false) throw new FuckedUpException();
+
+        $_SESSION['whiskyMesage'] = "New whisky is added";
+
+echo "<pre>";
+print_r($addWhisky);
+echo "</pre>";
+
+
+
+    } catch (EmptyDataException $e) {
+        $_SESSION['whiskyMesage'] = "All fields must be filled in";
+    } catch (NoImageException $e) {
+        $_SESSION['whiskyMesage'] = "You need to upload an image";
+    } catch (FuckedUpException $e) {
+        $_SESSION['whiskyMesage'] = "Something is wrong with query";
     }
 
-    // Create variables, fill in for nonempty fields
-            $name=!empty($_GET["whisky_name"]) ? $_GET["whisky_name"] : 0;
-            $distillery=!empty($_GET["distillery_id"]) ? $_GET["distillery_id"] : 0;
-            $price=!empty($_GET["whisky_price"]) ? $_GET["whisky_price"] : 0;
-            $age=!empty($_GET["whisky_age"]) ? $_GET["whisky_age"] : 0;
-            $strength=!empty($_GET["whisky_strength"]) ? $_GET["whisky_strength"] : 0;
-            $barrel_id=!empty($_GET["barrel"]) ? $_GET["barrel"] : 0;
-            $image_path=!empty($_GET["whisky_image"]) ? $_GET["whisky_image"] : 0;
-            $hidden=!empty($_GET["hidden"]) ? $_GET["hidden"] : 0;
-            $rating_aroma=!empty($_GET["rating_aroma"]) ? $_GET["rating_aroma"] : 0;
-            $rating_color=!empty($_GET["rating_color"]) ? $_GET["rating_color"] : 0;
-            $rating_taste=!empty($_GET["rating_taste"]) ? $_GET["rating_taste"] : 0;
-            $rating_aftertaste=!empty($_GET["rating_aftertaste"]) ? $_GET["rating_aftertaste"] : 0;
-            $text_aroma=!empty($_GET["text_aroma"]) ? $_GET["text_aroma"] : 0;
-            $text_color=!empty($_GET["text_color"]) ? $_GET["text_color"] : 0;
-            $text_taste=!empty($_GET["text_taste"]) ? $_GET["text_taste"] : 0;
-            $text_aftertaste=!empty($_GET["text_aftertaste"]) ? $_GET["text_aftertaste"] : 0;
-            $review=!empty($_GET["text_review"]) ? $_GET["text_review"] : 0;
-            $user_id=$_SESSION["user"]["id"];
+}
 
-    // decide action by number of nonempty fields
-    if($isset===17) // everything, including "hidden" checkbox checked
-    {
-        $whiskyBiz = new WhiskyBusiness();
-        $addWhisky = $whiskyBiz->addWhisky($name, $distillery, $price, $age, $strength, $barrel_id, $image_path, $hidden, $rating_aroma, $rating_color, $rating_taste, $rating_aftertaste, $text_aroma, $text_color, $text_taste, $text_aftertaste, $review, $user_id);
-        $msg = $addWhisky ? "Whisky add successful! Notice: whisky still hidden." : "";
-        header("refresh: 2; url=CP_whisky.php");
-        //exit;
-    }
-    elseif ($isset===16 && !isset($_GET["hidden"]))
-    {
-        $whiskyBiz = new WhiskyBusiness();
-        $addWhisky = $whiskyBiz->addWhisky($name, $distillery, $price, $age, $strength, $barrel_id, $image_path, $hidden, $rating_aroma, $rating_color, $rating_taste, $rating_aftertaste, $text_aroma, $text_color, $text_taste, $text_aftertaste, $review, $user_id);
-        $msg = $addWhisky ? "Whisky add successful!" : "";
-        header("refresh: 2; url=CP_whisky.php");
-        //exit;    
-    }
-    else // less than 16 -> always hidden
-    {
-        $whiskyBiz = new WhiskyBusiness();
-        $addWhisky = $whiskyBiz->addWhisky($name, $distillery, $price, $age, $strength, $barrel_id, $image_path, 1, $rating_aroma, $rating_color, $rating_taste, $rating_aftertaste, $text_aroma, $text_color, $text_taste, $text_aftertaste, $review, $user_id);
-        $msg = $addWhisky ? "Fields missing! Data saved, but stays hidden until complete." : "";
-        header("refresh: 2; url=CP_whisky.php");
-        //exit;
-    }
-}        
-//////////////////////////////////////////////////////////////////
-// Prepare to render TWIG
-// Get Distillery Data
+
+// Get distillery data
 $distilleryBiz = new DistilleryBusiness();
 $distillery_data = $distilleryBiz->getDistilleryList();
+
 // Get Barrel Data
 $barrelBiz = new BarrelBusiness();
 $barrel_data = $barrelBiz->showAllBarrels();
@@ -88,8 +213,15 @@ $barrel_data = $barrelBiz->showAllBarrels();
 $loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation");
 $twig = new Twig_Environment($loader);
 
-$view = $twig->render("CP_whisky_add.twig", array("user" => $_SESSION['user'], "distilleries"=>$distillery_data, "barrels"=>$barrel_data, "msg"=>$msg ));
+$view = $twig->render("CP_whisky_add.twig", array("user" => $_SESSION['user'], "distilleries" => $distillery_data, "barrels" => $barrel_data, "msg" => $msg, "savedData" => $_SESSION['savedData'], "whiskyMessage" => $_SESSION['whiskyMesage']));
 
 print($view);
+
+
+
+
+echo "<pre>";
+print_r($_SESSION);
+echo "</pre>";
 
 ob_flush();

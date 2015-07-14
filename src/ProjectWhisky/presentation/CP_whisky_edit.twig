@@ -12,6 +12,9 @@
             
             <form action="CP_whisky_edit.php" method="get"><br>
                 <input type="hidden" name="id" value="{{ whisky.id }}">
+
+                <img src="src/ProjectWhisky/presentation/img/{{ whisky.imagepath }}" alt="Whisky"><br>
+
                 <label for="whisky_name">Naam: </label>
                 <input type="text" value="{{  whisky.name }}" id="whisky_name" name="whisky_name"><br>
                 
@@ -39,12 +42,9 @@
                     {% endfor  %}
                 </select><br>
 
-                <!-- Replace with file picker  -->
-                <label for="whisky_image">Image: </label>
-                <input type="text" value="{{ whisky.imagepath }}" id="whisky_image" name="whisky_image"><br>
 
-                <label for="hidden">Hidden: </label>
-                <input type="checkbox" name="hidden" id="hidden" value="1" {{ whisky.hidden ? "checked" : "" }}><br>
+
+
                 <label for="rating_aroma">Rating Aroma: </label>
                 <input type="number" min="0" max="20" value="{{ whisky.ratingaroma }}" id="rating_aroma" name="rating_aroma"><br>
                 <label for="rating_color">Rating Color: </label>

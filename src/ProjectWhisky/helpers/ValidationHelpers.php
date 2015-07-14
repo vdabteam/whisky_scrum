@@ -82,4 +82,11 @@ class ValidationHelpers
         return preg_match("/^([a-zA-Z0-9]{4,15})$/", $this->userName);
     }
 
+
+
+    /**
+     * Validate integers
+     */
+
+
 }

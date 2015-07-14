@@ -173,18 +173,18 @@ class WhiskyDAO
     
     public function addWhisky($name, $distillery, $price, $age, $strength, $barrel_id, $image_path, $hidden, $rating_aroma, $rating_color, $rating_taste, $rating_aftertaste, $text_aroma, $text_color, $text_taste, $text_aftertaste, $review, $user_id)
     {
-           self::connectToDB();
-        $this->sql = "insert into whiskies (name, distillery_id, price, age, strength, barrel_id, image_path, hidden, creation_date, rating_aroma, rating_color, rating_taste, rating_aftertaste, text_aroma, text_color, text_taste, text_aftertaste, review, user_id)
-values ('$name', $distillery, $price, $age, $strength, $barrel_id, '$image_path', $hidden, CURDATE(), $rating_aroma, $rating_color, $rating_taste, $rating_aftertaste, '$text_aroma', '$text_color', '$text_taste', '$text_aftertaste', '$review', $user_id)";
-       
+       self::connectToDB();
+        $this->sql = "INSERT INTO whiskies (name, distillery_id, price, age, strength, barrel_id, image_path, hidden, creation_date, rating_aroma, rating_color, rating_taste, rating_aftertaste, text_aroma, text_color, text_taste, text_aftertaste, review, user_id)
+                      VALUES (?, ?, ?, ?, ?, ?, ?, ?, CURDATE(), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
         try
         {
             $this->query = $this->handler->prepare($this->sql);
-            $this->query->execute();
-            
+            $this->query->execute(array($name, $distillery, $price, $age, $strength, $barrel_id, $image_path, $hidden, $rating_aroma, $rating_color, $rating_taste, $rating_aftertaste, $text_aroma, $text_color, $text_taste, $text_aftertaste, $review, $user_id));
+
             $this->query->closeCursor();
             $this->handler = null;
-            return true;            
+            return true;
         }
         catch (Exception $e)
         {

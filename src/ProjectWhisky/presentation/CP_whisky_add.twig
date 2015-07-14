@@ -9,66 +9,90 @@
     </header>
         <div id="content_container">
             <p>{{ msg }}</p><br><br>
-            <form action="CP_whisky_add.php" method="get"><br>
-            
-                <label for="whisky_name">Naam: </label>
-                <input type="text" id="whisky_name" name="whisky_name"><br>
-                
-                
-                <!-- Dropdown for distilleries -->
-                
+            <form id="whiskyAddition" action="CP_whisky_add.php" method="post" enctype="multipart/form-data"><br>
+
+                <input id="imgUploaderWhisky" type="file" class="upload" name="whisky_image" value="sdfg.jpg"><br>
+
+                <label for="whisky_name">Name: </label>
+                <input type="text" id="whisky_name" name="whisky_name" value="{{ savedData.name }}"><br>
+
                 <label for="distillery_id">Distillery: </label>
                 <select id="distillery_id" name="distillery_id">
-                    <option value="0" selected disabled>Select distillery</option>
-                    {% for distillery  in distilleries %}
-                        <option value="{{ distillery.id }}">{{ distillery.name }}</option>
-                    {% endfor  %}
-                </select><br> 
-                                               
-                <label for="whisky_price">Price: </label>
-                <input type="number"  min="0" id="whisky_price" name="whisky_price"><br>
-                <label for="whisky_age">Age: </label>
-                <input type="number"  min="0" id="whisky_age" name="whisky_age"><br>
-                <label for="whisky_strength">Strength: </label>
-                <input type="number"  min="0" max="100" id="whisky_strength" name="whisky_strength">%<br>
+                    {% if savedData.distillery == 0 %}
+                        <option value="0" selected >Select distillery</option>
+                    {% else %}
+                        <option value="0" >Select distillery</option>
+                    {% endif %}
 
-                <!--barrel dropdown  -->
-                <label for="barrel">Barrel type: </label>
-                <select id="barrel" name="barrel">
-                    <option value="0" disabled selected>Select a barrel</option>
-                    {% for barrel  in barrels %}
-                        <option value="{{ barrel.id }}">{{ barrel.type }}</option>
+                    {% for distillery  in distilleries %}
+                        {% if savedData.distillery == distillery.id %}
+                            <option selected value="{{ savedData.distillery }}">{{ distillery.name }}</option>
+                        {% else %}
+                            <option value="{{ distillery.id }}">{{ distillery.name }}</option>
+                        {% endif %}
+
+
+
                     {% endfor  %}
                 </select><br>
 
-                <!-- Replace with file picker  -->
-                <label for="whisky_image">Image: </label>
-                <input type="text" value="default.jpg" id="whisky_image" name="whisky_image"><br>
- 
-                <label for="hidden">Hidden: </label>
-                <input type="checkbox" name="hidden" id="hidden" value="1"><br>
+                <label for="whisky_price">Price: </label>
+                <input type="number"  min="0" id="whisky_price" name="whisky_price" value="{{ savedData.price }}"><br>
+
+                <label for="whisky_age">Age: </label>
+                <input type="number"  min="0" id="whisky_age" name="whisky_age" value="{{ savedData.age }}"><br>
+
+                <label for="whisky_strength">Strength: </label>
+                <input type="number"  min="0" max="100" id="whisky_strength" name="whisky_strength" value="{{ savedData.strength }}">%<br>
+
+                <label for="barrel">Barrel type: </label>
+                <select id="barrel" name="barrel">
+                    {% if savedData.barrel_id == 0 %}
+                        <option value="0" selected >Select a barrel</option>
+                    {% else %}
+                        <option value="0">Select a barrel</option>
+                    {% endif %}
+
+                    {% for barrel  in barrels %}
+                        {% if savedData.barrel_id == barrel.id %}
+                            <option selected value="{{ barrel.id }}">{{ barrel.type }}</option>
+                        {% else %}
+                            <option value="{{ barrel.id }}">{{ barrel.type }}</option>
+                        {% endif %}
+
+                    {% endfor  %}
+                </select><br>
+
                 <label for="rating_aroma">Rating Aroma: </label>
-                <input type="number" min="0" max="20" id="rating_aroma" name="rating_aroma"><br>
+                <input type="number" min="0" max="20" id="rating_aroma" name="rating_aroma" value="{{ savedData.rating_aroma }}"><br>
+
                 <label for="rating_color">Rating Color: </label>
-                <input type="number" min="0" max="20" id="rating_color" name="rating_color"><br>
+                <input type="number" min="0" max="20" id="rating_color" name="rating_color" value="{{ savedData.rating_color }}"><br>
+
                 <label for="rating_taste">Rating Taste: </label>
-                <input type="number" min="0" max="20" id="rating_taste" name="rating_taste"><br>
+                <input type="number" min="0" max="20" id="rating_taste" name="rating_taste" value="{{ savedData.rating_taste }}"><br>
+
                 <label for="rating_aftertaste">Rating Aftertaste: </label>
-                <input type="number" min="0" max="20" id="rating_aftertaste" name="rating_aftertaste"><br>
+                <input type="number" min="0" max="20" id="rating_aftertaste" name="rating_aftertaste" value="{{ savedData.rating_aftertaste }}"><br>
+
                 <label for="text_aroma">Text Aroma: </label><br>
-                <textarea id="text_aroma" name="text_aroma" rows="5" cols="40"></textarea><br>
+                <textarea id="text_aroma" name="text_aroma" rows="5" cols="40">{{ savedData.text_aroma }}</textarea><br>
+
                 <label for="text_color">Text Color: </label><br>
-                <textarea id="text_color" name="text_color" rows="5" cols="40"></textarea><br>
+                <textarea id="text_color" name="text_color" rows="5" cols="40">{{ savedData.text_color }}</textarea><br>
+
                 <label for="text_taste">Text Taste: </label><br>
-                <textarea id="text_taste" name="text_taste" rows="5" cols="40"></textarea><br>
+                <textarea id="text_taste" name="text_taste" rows="5" cols="40">{{ savedData.text_taste }}</textarea><br>
+
                 <label for="text_aftertaste">Text Aftertaste: </label><br>
-                <textarea id="text_aftertaste" name="text_aftertaste" rows="5" cols="40"></textarea><br>
+                <textarea id="text_aftertaste" name="text_aftertaste" rows="5" cols="40">{{ savedData.text_aftertaste }}</textarea><br>
+
                 <label for="text_review">Overall review: </label><br>
-                <textarea id="text_review" name="text_review" rows="5" cols="40"></textarea><br>
-                <input type="submit" value="wijzigen">
-                
+                <textarea id="text_review" name="text_review" rows="5" cols="40">{{ savedData.review }}</textarea><br>
+                <input type="submit" value="Save" name="whiskySaveBtn">
+
             </form>
-                
+
 
 
 
