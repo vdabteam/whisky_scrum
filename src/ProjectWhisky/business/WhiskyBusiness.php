@@ -47,4 +47,10 @@ class WhiskyBusiness
         $whisky = $whiskyDAO->editWhisky($name, $distillery, $price, $age, $strength, $barrel_id, $image_path, $hidden, $rating_aroma, $rating_color, $rating_taste, $rating_aftertaste, $text_aroma, $text_color, $text_taste, $text_aftertaste, $review, $whisky_id);
         return $whisky; 
     }
+	public function getWhiskiesByName($whiskyname)
+	{
+		$whiskyDAO = new WhiskyDAO();
+		$whiskyList = $whiskyDAO->getWhiskiesByName($whiskyname);
+		return $whiskyList;
+	}
 }

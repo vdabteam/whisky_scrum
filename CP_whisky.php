@@ -20,12 +20,23 @@ require_once("lib/Twig/Autoloader.php");
 Twig_Autoloader::register();
 
 $whiskyBiz = new WhiskyBusiness;
-//$whiskyList = $whiskyBiz->getWhisky();
+
+if (isset($_GET['whiskyname']))
+{
+	$whiskyList = $whiskyBiz->getWhiskiesByName($_GET['whiskyname']);
+}
+else 
+{
+	
+	$whiskyList = $whiskyBiz->getWhiskyList();
+}
+
 
 $loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation");
 $twig = new Twig_Environment($loader);
 
-$view = $twig->render("CP_whisky.twig", array("user" => $_SESSION['user'], "whiskies"=>$whiskyBiz->getWhiskyList()));
+$view = $twig->render("CP_whisky.twig", array("user" => $_SESSION['user'], "whiskies"=>$whiskyList));
+
 
 print($view);
 

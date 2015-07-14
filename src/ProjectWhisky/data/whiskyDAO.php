@@ -133,6 +133,40 @@ class WhiskyDAO
             return false;
         }
     }
+     public function getWhiskiesByName($whiskyname)
+    {
+       self::connectToDB();
+        $this->sql = "SELECT *
+        FROM whiskies
+        WHERE whiskies.name like ?";
+
+        try
+        {
+            $this->query = $this->handler->prepare($this->sql);
+			
+            $this->query->execute(array('%' . $whiskyname . '%'));
+            $this->result = $this->query->fetchAll(PDO::FETCH_ASSOC);
+            $this->query->closeCursor();
+            $this->handler = null;
+
+            
+
+            foreach ($this->result as $row)
+            {
+                $this->list[] = new Whisky($row['id'], $row['name'], $row['distillery_id'], $row['price'], $row['age'],
+                                            $row['strength'], $row['barrel_id'], $row['image_path'], $row['hidden'], $row['creation_date'],
+                                            $row['rating_aroma'],$row['rating_color'],$row['rating_taste'],$row['rating_aftertaste'],
+                                            $row['text_aroma'],$row['text_color'],$row['text_taste'],$row['text_aftertaste'],$row['review'],
+                                            $row['user_id']);
+            }
+            return $this->list;
+        }
+        catch (Exception $e)
+        {
+            echo "Error: query failure";
+            return false;
+        }
+    }
     
     //public function getWhiskiesBySearch($whiskyRegion, $barrelId, $strengthMin, $strengthMax, $totalMin, $totalMax)
     public function getWhiskiesBySearch($barrelId, $strengthMin, $strengthMax, $scoreMin, $scoreMax, $region, $ageMin, $ageMax)
