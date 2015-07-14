@@ -101,6 +101,26 @@ class UserBusiness extends ValidationHelpers
         $userDAO = new UserDAO();
         $user = $userDAO -> createCPUser($username, $password, $email, $firstname, $lastname, $admin, $blocked);
     }
+	
+	//search for users with a certain string in their username
+	public function getUsersByUsername($username)
+	{
+		$userDAO = new UserDAO();
+		$userlist = $userDAO -> getUsersByUsername($username);
+		
+		return $userlist;
+	}
+	//search for users with a certain string in their email
+	public function getUsersByEmail($email)
+	{
+		$userDAO = new UserDAO();
+		$userlist = $userDAO -> getUsersByEmail($email);
+		
+		return $userlist;
+	}
+	
+	
+	
 
 
 

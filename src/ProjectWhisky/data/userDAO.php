@@ -473,6 +473,66 @@ class UserDAO
             return false;
         }
     }
+	//search for users with a certain string in their username
+	public function getUsersByUsername($username)
+	{
+		self::connectToDB(); /* Using DB connection */
+
+        $this->sql = "SELECT * 
+        			FROM users
+        			WHERE users.username = ?";
+
+        try
+        {
+            $this->query = $this->handler->prepare($this->sql);
+			
+            $this->query->execute(array('%' . $username . '%'));
+            $this->result = $this->query->fetchAll(PDO::FETCH_ASSOC);
+            $this->query->closeCursor();
+            $this->handler = null;
+
+            foreach ($this->result as $row)
+            {
+                $this->list[] = new User($row['id'], $row['username'], $row['password'], $row['email'], $row['firstname'], $row['lastname'], $row['admin'], $row['blocked'], $row['image_path'], $row['registration_date']);
+            }
+            return $this->list;
+        }
+        catch (Exception $e)
+        {
+            echo "Error: query failure";
+            return false;
+        }
+	}
+	//search for users with a certain string in their email
+	public function getUsersByEmail($email)
+	{
+		self::connectToDB(); /* Using DB connection */
+
+        $this->sql = "SELECT * 
+        			FROM users
+        			WHERE users.email = ?";
+
+        try
+        {
+            $this->query = $this->handler->prepare($this->sql);
+			
+            $this->query->execute(array('%' . $email . '%'));
+            $this->result = $this->query->fetchAll(PDO::FETCH_ASSOC);
+            $this->query->closeCursor();
+            $this->handler = null;
+
+            foreach ($this->result as $row)
+            {
+                $this->list[] = new User($row['id'], $row['username'], $row['password'], $row['email'], $row['firstname'], $row['lastname'], $row['admin'], $row['blocked'], $row['image_path'], $row['registration_date']);
+            }
+            return $this->list;
+        }
+        catch (Exception $e)
+        {
+            echo "Error: query failure";
+            return false;
+        }
+	}
     
     
 
