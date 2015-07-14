@@ -36,7 +36,7 @@
         {% endif %}
 
             <div id="controller" class="shadow">
-                <form id="whiskyAddition" class="cp_subform" action="CP_whisky_edit.php?id={{ whisky.id }}" method="post">
+                <form id="whiskyAddition" class="cp_subform" action="CP_whisky_edit.php?id={{ whisky.id }}" method="post" enctype="multipart/form-data">
 
                     <div class="flex_parent">
                         <div class="flex_child">
@@ -124,7 +124,7 @@
                         CKEDITOR.replace( 'text_review' );
                     </script><br>
 
-                    <input class="btn btn-primary" type="submit" value="Save Changes">
+                    <input name="whiskySaveBtn" class="btn btn-primary" type="submit" value="Save Changes">
 
                 </form>
             </div>

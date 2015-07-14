@@ -25,6 +25,17 @@ Twig_Autoloader::register();
 $whisky_id = $_GET["id"];
 
 
+// Get Whisky Data
+$whiskyBiz = new WhiskyBusiness();
+$whisky_data = $whiskyBiz->getWhisky($whisky_id);
+// Get Distillery Data
+$distilleryBiz = new DistilleryBusiness();
+$distillery_data = $distilleryBiz->getDistilleryList();
+// Get Barrel Data
+$barrelBiz = new BarrelBusiness();
+$barrel_data = $barrelBiz->showAllBarrels();
+
+
 
 /**
  * Initiate $_SESSION['savedData'] and $_SESSION['whiskyMesage']
@@ -40,10 +51,11 @@ if (!isset($_SESSION['savedData']))
  * Save new whisky
  */
 if(isset($_POST['whiskySaveBtn'])) {
+
     try {
         $_SESSION['savedData']['name'] = !empty($_POST["whisky_name"]) ? $_POST["whisky_name"] : "";
         $_SESSION['savedData']['distillery'] = !empty($_POST["distillery_id"]) ? $_POST["distillery_id"] : "";
-        $_SESSION['savedData']['image'] = !empty($_FILES["whisky_image"]["name"]) ? $_FILES["whisky_image"] : "default.jpg";
+        $_SESSION['savedData']['image'] = !empty($_FILES["whisky_image"]["name"]) ? $_FILES["whisky_image"] : $whisky_data->getImagePath();
         $_SESSION['savedData']['price'] = !empty($_POST["whisky_price"]) ? $_POST["whisky_price"] : "";
         $_SESSION['savedData']['age'] = !empty($_POST["whisky_age"]) ? $_POST["whisky_age"] : "";
         $_SESSION['savedData']['strength'] = !empty($_POST["whisky_strength"]) ? $_POST["whisky_strength"] : "";
@@ -57,7 +69,7 @@ if(isset($_POST['whiskySaveBtn'])) {
         $_SESSION['savedData']['text_taste'] = !empty($_POST["text_taste"]) ? $_POST["text_taste"] : "";
         $_SESSION['savedData']['text_aftertaste'] = !empty($_POST["text_aftertaste"]) ? $_POST["text_aftertaste"] : "";
         $_SESSION['savedData']['review'] = !empty($_POST["text_review"]) ? $_POST["text_review"] : "";
-        $_SESSION['savedData']['user_id'] = $_SESSION["user"]["id"];
+        $_SESSION['savedData']['whisky_id'] = $whisky_data->getId();
 
         /**
          * If one of all fields is empty, throw an error
@@ -70,7 +82,7 @@ if(isset($_POST['whiskySaveBtn'])) {
         /**
          * If no image was selected, throw an error
          */
-        if (empty($_FILES['whisky_image']['name'])) throw new NoImageException();
+//        if (empty($_FILES['whisky_image']['name'])) throw new NoImageException();
 
 
         $newImagePath = "";
@@ -115,7 +127,7 @@ if(isset($_POST['whiskySaveBtn'])) {
 
                         if (move_uploaded_file($file_tmp, $file_destination))
                         {
-                            $newImagePath = $file_name_new;
+                            $_SESSION['savedData']['image'] = $file_name_new;
                             /**
                              * Calling defined function and giving parameters. $profile is an object
                              */
@@ -144,15 +156,14 @@ if(isset($_POST['whiskySaveBtn'])) {
 
         $hidden = 0;
 
-        // Add whisky to DB
-        $whiskyBiz = new WhiskyBusiness();
-        $addWhisky = $whiskyBiz->addWhisky($_SESSION['savedData']['name'],
+        // Update whisky
+        $editWhisky = $whiskyBiz->editWhisky($_SESSION['savedData']['name'],
             $_SESSION['savedData']['distillery'],
             $_SESSION['savedData']['price'],
             $_SESSION['savedData']['age'],
             $_SESSION['savedData']['strength'],
             $_SESSION['savedData']['barrel_id'],
-            $newImagePath,
+            $_SESSION['savedData']['image'],
             $hidden,
             $_SESSION['savedData']['rating_aroma'],
             $_SESSION['savedData']['rating_color'],
@@ -163,13 +174,14 @@ if(isset($_POST['whiskySaveBtn'])) {
             $_SESSION['savedData']['text_taste'],
             $_SESSION['savedData']['text_aftertaste'],
             $_SESSION['savedData']['review'],
-            $_SESSION['savedData']['user_id']);
+            $_SESSION['savedData']['whisky_id']);
 
-        if ($addWhisky == false) throw new FuckedUpException();
+        if ($editWhisky == false) throw new FuckedUpException();
 
         $_SESSION['whiskyMesage'] = "success";
 
-        header("Location: CP_whisky_add.php?updated=1");
+        $updatedPath = "CP_whisky_edit.php?id=" . $whisky_id . "&updated=1";
+        header("Location: $updatedPath");
 
     }
     catch (EmptyDataException $e)
@@ -189,15 +201,6 @@ if(isset($_POST['whiskySaveBtn'])) {
 }
 
 
-// Get Whisky Data
-$whiskyBiz = new WhiskyBusiness();
-$whisky_data = $whiskyBiz->getWhisky($whisky_id);
-// Get Distillery Data
-$distilleryBiz = new DistilleryBusiness();
-$distillery_data = $distilleryBiz->getDistilleryList();
-// Get Barrel Data
-$barrelBiz = new BarrelBusiness();
-$barrel_data = $barrelBiz->showAllBarrels();
 
 $loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation");
 $twig = new Twig_Environment($loader);
@@ -211,13 +214,13 @@ print($view);
 
 
 
-
 /**
  * Handling messages removal and appearance
  */
 if (isset($_GET['updated']) && (empty($_SESSION['whiskyMesage'])))
 {
-    header('Location: CP_whisky_add.php');
+    $updatedPath = "CP_whisky_edit.php?id=" . $whisky_id;
+    header("Location: $updatedPath");
 }
 
 
