@@ -140,10 +140,7 @@ if(isset($_POST['whiskySaveBtn'])) {
             }
         }
 
-
-
-
-
+        
         $hidden = 0;
 
         // Add whisky to DB
@@ -170,6 +167,8 @@ if(isset($_POST['whiskySaveBtn'])) {
         if ($addWhisky == false) throw new FuckedUpException();
 
         $_SESSION['whiskyMesage'] = "success";
+
+        header("Location: CP_whisky_add.php?updated=1");
 
     }
     catch (EmptyDataException $e)
@@ -200,15 +199,33 @@ $barrel_data = $barrelBiz->showAllBarrels();
 $loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation");
 $twig = new Twig_Environment($loader);
 
-$view = $twig->render("CP_whisky_add.twig", array("user" => $_SESSION['user'], "distilleries" => $distillery_data, "barrels" => $barrel_data, "msg" => $_SESSION['whiskyMesage'], "savedData" => $_SESSION['savedData'], "whiskyMessage" => $_SESSION['whiskyMesage']));
+$view = $twig->render("CP_whisky_add.twig", array("user" => $_SESSION['user'], "distilleries" => $distillery_data, "barrels" => $barrel_data, "msg" => $_SESSION['whiskyMesage'], "savedData" => $_SESSION['savedData']));
 
 print($view);
 
 
 
 
-echo "<pre>";
-print_r($_SESSION);
-echo "</pre>";
+
+
+
+/**
+ * Handling messages removal and appearance
+ */
+if (isset($_GET['updated']) && (empty($_SESSION['whiskyMesage'])))
+{
+    header('Location: CP_whisky_add.php');
+}
+
+
+if(isset($_GET['updated']) && ($_GET['updated'] == 1))
+{
+    $_SESSION['savedData'] = "";
+    $_SESSION['whiskyMesage'] = "";
+}
+
+
+
+
 
 ob_flush();

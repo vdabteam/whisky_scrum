@@ -270,10 +270,9 @@ if (isset($_SESSION['user']['id']) && (is_int((int)$_SESSION['user']['id'])))
     print($view);
 
 
-    /***
-     * todo: REMOVE ALL MESSAGES FROM SESSION AFTER PAGE RELOADING
+    /**
+     * Handling messages removal and appearance
      */
-
     if (isset($_GET['updated']) && (empty($_SESSION['dialogBlock'])))
     {
         header('Location: profile.php');
