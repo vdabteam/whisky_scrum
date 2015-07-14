@@ -160,18 +160,18 @@ class UserDAO
         }
     }
     
-    public function updateUserbyId($userId, $username, $password, $email, $firstname, $lastname, $admin, $blocked)
+    public function updateUserbyId($userId, $username, $password, $email, $firstname, $lastname, $admin, $blocked, $userImagePath)
     {
         self::connectToDB(); /* Using DB connection */
 
         $this->sql = "UPDATE users 
-                      SET username = ?, password = ?, email = ?, firstname = ?, lastname = ?, admin = ?, blocked = ?, 
+                      SET username = ?, password = ?, email = ?, firstname = ?, lastname = ?, admin = ?, blocked = ?, image_path = ?
                       WHERE id = ?";
 
         try
         {
             $this->query = $this->handler->prepare($this->sql);
-            $this->query->execute(array($username, $password, $email, $firstname, $lastname, $admin, $blocked, $userId));
+            $this->query->execute(array($username, $password, $email, $firstname, $lastname, $admin, $blocked, $userImagePath, $userId));
 
             /**
              * Closing DB connection
