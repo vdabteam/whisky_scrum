@@ -22,7 +22,7 @@
 
         {% endif %}
 
-    	<form action="cp_user_edit.php?id={{ userdata.id }}" method="post">
+    	<form class="cp_subform" action="cp_user_edit.php?id={{ userdata.id }}" method="post">
     	
     		<img src="src/ProjectWhisky/presentation/userimages/{{ userdata.imagePath }}" alt="Profile Picture"/>
     		<h3>Username:</h3>
@@ -37,9 +37,9 @@
             <input type="text" value="{{ userdata.email }}" name="userEmail" placeholder="E-mail"/>
 
             <div class="">
-    	        Admin: <input type="checkbox" {{userdata.admin == 1 ? 'checked' : '' }} name="userAdmin">
-    	        Blocked: <input type="checkbox" {{userdata.blocked == 1 ? 'checked' : '' }}  name="userBlocked">
-    		</div>
+    	        <h3>Admin: <input type="checkbox" {{ userdata.admin == 1 ? 'checked' : '' }} name="userAdmin"></h3>
+    	        <h3>Blocked: <input type="checkbox" {{ userdata.blocked == 1 ? 'checked' : '' }}  name="userBlocked"></h3>
+    		</div><br>
     		<input class="btn btn-primary" type="submit" value="Save Changes"/>
     	</form>
         
