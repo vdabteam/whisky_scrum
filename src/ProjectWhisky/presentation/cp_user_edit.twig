@@ -16,7 +16,7 @@
     {% elseif msg == "success" %}
         <div id="notifier" class="green shadow">
             <p><span class="fa fa-check-circle"></span>
-                Whisky successfully updated.</p>
+                User successfully updated.</p>
         </div>
     {% elseif msg == "wrong_image" %}
         <div id="notifier" class="red shadow">
@@ -37,6 +37,26 @@
         <div id="notifier" class="red shadow">
             <p><span class="fa fa-times-circle"></span>
                 User with this e-mail already exists.</p>
+        </div>
+    {% elseif msg == "wrong_email_pattern" %}
+        <div id="notifier" class="red shadow">
+            <p><span class="fa fa-times-circle"></span>
+                E-mail should look like this: mail@mail.com</p>
+        </div>
+    {% elseif msg == "wrong_name_pattern" %}
+        <div id="notifier" class="red shadow">
+            <p><span class="fa fa-times-circle"></span>
+                Firstname and lastname can contain alphabetic letters, or this symbols only: '`-éèçàëêe and spaces</p>
+        </div>
+    {% elseif msg == "wrong_password_pattern" %}
+        <div id="notifier" class="red shadow">
+            <p><span class="fa fa-times-circle"></span>
+                Password must contain min. 8 characters, min. 1 capital letter and min. 1 number. </p>
+        </div>
+    {% elseif msg == "wrong_username_pattern" %}
+        <div id="notifier" class="red shadow">
+            <p><span class="fa fa-times-circle"></span>
+                Username can contain alphanumeric symbols only</p>
         </div>
     {% elseif msg == "error" %}
         <div id="notifier" class="red shadow">
