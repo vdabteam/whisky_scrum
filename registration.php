@@ -137,7 +137,7 @@ if(isset($_POST['firstname']))
     }
     catch(WrongUserNamePatternException $e)
     {
-        echo "Username can contain alphanumeric symbols only";
+        echo "Username can contain alphanumeric symbols only, and should contain from 4 to 15 characters";
     }
     catch(WrongPasswordPatternException $e)
     {
