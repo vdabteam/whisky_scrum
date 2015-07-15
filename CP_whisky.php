@@ -25,14 +25,15 @@ Twig_Autoloader::register();
 
 $whiskyBiz = new WhiskyBusiness;
 
-if (isset($_GET['whiskyname']))
+if (isset($_GET['whiskyname']) && (!empty($_GET['whiskyname'])))
 {
-	$whiskyList = $whiskyBiz->getWhiskiesByName($_GET['whiskyname']);
+    $whiskynameTrim = trim($_GET['whiskyname']);
+	$whiskyList = $whiskyBiz->getWhiskiesByName($whiskynameTrim);
 	
 	$loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation");
 	$twig = new Twig_Environment($loader);
 
-	$view = $twig->render("CP_whisky.twig", array("user" => $_SESSION['user'], "whiskies"=>$whiskyList, "searchInput"=>$_GET['whiskyname']));
+	$view = $twig->render("CP_whisky.twig", array("user" => $_SESSION['user'], "whiskies"=>$whiskyList, "searchInput"=>$whiskynameTrim));
 	
 }
 else 
@@ -46,10 +47,6 @@ else
 
 	$view = $twig->render("CP_whisky.twig", array("user" => $_SESSION['user'], "whiskies"=>$whiskyList));
 }
-
-
-
-
 
 print($view);
 

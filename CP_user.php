@@ -19,6 +19,15 @@ require_once("lib/Twig/Autoloader.php");
 Twig_Autoloader::register();
 
 $userBiz = new UserBusiness;
+
+if (isset($_GET['search_username']))
+{
+    
+}
+
+
+
+
 $userlist = $userBiz->getAllUsers();
 
 $loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation");
