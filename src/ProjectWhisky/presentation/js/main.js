@@ -3,32 +3,32 @@ jQuery(function(){
     /**
      * Trigger pop-up windows
      */
-    jQuery("a.show-login").click(function(){
-        //event.preventDefault();
+    jQuery("a.show-login").click(function(event){
+        event.preventDefault();
         jQuery(".lightbox-panel-register").fadeOut(300);
         jQuery(".lightbox-panel-recover").fadeOut(300);
         jQuery(".lightbox-panel-login").fadeIn(300);
-        return false; // instead of event.preventDefault() because preventDefault doesn't work in Firefox properly
+        //return false; // instead of event.preventDefault() because preventDefault doesn't work in Firefox properly
     });
 
-    jQuery("a.show-register").click(function(){
-        //event.preventDefault();
+    jQuery("a.show-register").click(function(event){
+        event.preventDefault();
         jQuery(".lightbox-panel-login").fadeOut(300);
         jQuery(".lightbox-panel-recover").fadeOut(300);
         jQuery(".lightbox-panel-register").fadeIn(300);
-        return false;
+        //return false;
     });
 
-    jQuery("a.close-panel-login").click(function(){
-        //event.preventDefault();
+    jQuery("a.close-panel-login").click(function(event){
+        event.preventDefault();
         jQuery(".lightbox-panel-login").fadeOut(300);
-        return false;
+        //return false;
     });
 
-    jQuery("a.close-panel-register").click(function(){
-        //event.preventDefault();
+    jQuery("a.close-panel-register").click(function(event){
+        event.preventDefault();
         jQuery(".lightbox-panel-register").fadeOut(300);
-        return false;
+        //return false;
     });
 
     /**
