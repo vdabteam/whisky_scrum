@@ -88,7 +88,7 @@ if (isset($_SESSION['user']['id']) && (is_int((int)$_SESSION['user']['id'])))
             $_SESSION['reload'] = 1;
 
 //            header("Refresh: 0");
-//            header('Location: profile.php?updated=1');
+            header('Location: profile.php?updated=1');
 
         }
         catch (EmptyDataException $e)

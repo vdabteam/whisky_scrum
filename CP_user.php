@@ -25,7 +25,7 @@ if (isset($_GET['search_username']) && (!empty($_GET['search_username'])))
     
     $usernameTrim = trim($_GET['search_username']);
     
-    $userlist = $userBiz -> getUsersByUsername($usernameTrim);
+    $userlist = $userBiz->getUsersByUsername($usernameTrim);
     
     $loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation");
     $twig = new Twig_Environment($loader);
