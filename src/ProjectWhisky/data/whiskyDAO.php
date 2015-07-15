@@ -106,12 +106,12 @@ class WhiskyDAO
        self::connectToDB();
         $this->sql = "SELECT whiskies.id as whiskiesid, whiskies.name AS whiskiesname, age, strength, type, price
         FROM distilleries inner join (whiskies inner join barrels on barrel_id = barrels.id) on distilleries.id = whiskies.distillery_id
-        WHERE distilleries.id = $distilleryId";
+        WHERE distilleries.id = ?";
 
         try
         {
             $this->query = $this->handler->prepare($this->sql);
-            $this->query->execute();
+            $this->query->execute(array($distilleryId));
             $this->result = $this->query->fetchAll(PDO::FETCH_ASSOC);
 
             $this->query->closeCursor();
@@ -230,13 +230,13 @@ class WhiskyDAO
     public function editWhisky($name, $distillery_id, $price, $age, $strength, $barrel_id, $image_path, $hidden, $rating_aroma, $rating_color, $rating_taste, $rating_aftertaste, $text_aroma, $text_color, $text_taste, $text_aftertaste, $review, $whisky_id)
     {
            self::connectToDB();
-        $this->sql = "update whiskies set name='$name', distillery_id=$distillery_id, price=$price, age=$age, strength=$strength, barrel_id=$barrel_id, image_path='$image_path', hidden=$hidden, rating_aroma=$rating_aroma, rating_color=$rating_color, rating_taste=$rating_taste, rating_aftertaste=$rating_aftertaste, text_aroma='$text_aroma', text_color='$text_color', text_taste='$text_taste', text_aftertaste='$text_aftertaste', review='$review'
-where id = $whisky_id";
+        $this->sql = "UPDATE whiskies set name= ?, distillery_id= ?, price= ?, age= ?, strength= ?, barrel_id= ?, image_path= ?, hidden= ?, rating_aroma= ?, rating_color= ?, rating_taste= ?, rating_aftertaste= ?, text_aroma= ?, text_color= ?, text_taste= ?, text_aftertaste= ?, review= ?
+                      WHERE id = $whisky_id";
 
         try
         {
             $this->query = $this->handler->prepare($this->sql);
-            $this->query->execute();
+            $this->query->execute(array($name, $distillery_id, $price, $age, $strength, $barrel_id, $image_path, $hidden, $rating_aroma, $rating_color, $rating_taste, $rating_aftertaste, $text_aroma, $text_color, $text_taste, $text_aftertaste, $review));
             
             $this->query->closeCursor();
             $this->handler = null;
