@@ -45,10 +45,27 @@ else
 	$loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation");
 	$twig = new Twig_Environment($loader);
 
-	$view = $twig->render("CP_whisky.twig", array("user" => $_SESSION['user'], "whiskies"=>$whiskyList));
+	$view = $twig->render("CP_whisky.twig", array("user" => $_SESSION['user'], "whiskies"=>$whiskyList, "msg" => $_SESSION['whiskyMessage']));
 }
 
 print($view);
+
+
+/**
+ * Handling messages removal and appearance
+ */
+if (isset($_GET['updated']) && (empty($_SESSION['whiskyMessage'])))
+{
+	header("Location: CP_whisky.php");
+}
+
+
+if(isset($_GET['updated']) && ($_GET['updated'] == 1))
+{
+	$_SESSION['savedData'] = "";
+	$_SESSION['whiskyMessage'] = "";
+}
+
 
 
 ob_flush();
