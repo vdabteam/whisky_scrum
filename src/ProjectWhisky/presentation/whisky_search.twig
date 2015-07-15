@@ -15,25 +15,22 @@
                     <form id="search_whisky_form" action="search.php" method="get">
                         <div class="flex_parent clearfix">
                             <div class="sliders_block left">
-                                <label>
-                                    Region:
+                                <h3>Region:</h3>
                                     <select id="selRegion" name="region">
                                    		<option value="%">-- all regions --</option>
         	                            {% for distillery in distilleries %}
         		  							<option value="{{ distillery.region }}">{{ distillery.region }}</option>
         		  						{% endfor %}
         							</select>
-                                </label>
-
-                                 <label>
-                                    Barrel:
+                            
+                                 <h3>Barrel:</h3>
                                     <select id="selBarrel" name="barrel_id">
                                     	<option value="%">-- any barrel --</option>
         	                            {% for barrel in barrels %}
         		  							<option value="{{ barrel.id }}">{{ barrel.type }}</option>
         		  						{% endfor %}
         							</select>
-                                </label>
+                                
                             </div>
                             <div class="sliders_block left">
                                 <label>

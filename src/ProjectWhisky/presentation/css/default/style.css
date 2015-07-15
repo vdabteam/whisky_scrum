@@ -883,6 +883,9 @@ input.blue{
         -webkit-flex: 1;
         flex: 1;
     }
+    .sliders_block h3{
+        margin: 1em 0 0.4em;
+    }
 
     .sliders_block h4{
         width: 38%;
