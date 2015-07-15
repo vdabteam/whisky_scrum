@@ -147,6 +147,11 @@ if(isset($_POST['whiskySaveBtn'])) {
 
         $hidden = 0;
 
+        $_SESSION['savedData']['rating_aroma'] = $_SESSION['savedData']['rating_aroma'] * 2;
+        $_SESSION['savedData']['rating_color'] = $_SESSION['savedData']['rating_color'] * 2;
+        $_SESSION['savedData']['rating_taste'] = $_SESSION['savedData']['rating_taste'] * 2; 
+        $_SESSION['savedData']['rating_aftertaste'] = $_SESSION['savedData']['rating_aftertaste'] * 2;
+
         // Add whisky to DB
         $whiskyBiz = new WhiskyBusiness();
         $addWhisky = $whiskyBiz->addWhisky($_SESSION['savedData']['name'],
