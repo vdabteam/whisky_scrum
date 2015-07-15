@@ -12,6 +12,13 @@
 /* @Font */
 
 @font-face {
+    font-family: 'goudy';
+    src: url('../fonts/goudy_bookletter_1911.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
     font-family: 'trashhand';
     src: url('../fonts/TrashHand.ttf');
     src: url('../fonts/TrashHand.ttf') format('truetype');
@@ -314,9 +321,9 @@ input.blue{
     }
 
     header#header_banner{
-        background-image: url("../../presentation/interface/banners/header.jpg");
+        background-image: url("../../presentation/interface/banners/cinemagraph1.gif");
         background-repeat: no-repeat;
-        background-position: center center;
+        background-position: center -4em;
         background-size: cover;
         height: 30em;
         border-bottom: 3px solid #FFBA39;
@@ -324,7 +331,7 @@ input.blue{
     }
 
     header #header_quote{
-        font-family: "trashhand";
+        font-family: 'goudy';
         font-size: 2em;
         padding: 1em 0.5em;
     }
@@ -410,6 +417,12 @@ input.blue{
         height: 15em;
         background-position: center -100px;
         background-image: url("../../presentation/interface/banners/case.jpg");
+    }
+
+    header#header_banner.search_header{ /* shrink mainpage header */
+        height: 15em;
+        background-position: center -160px;
+        background-image: url("../../presentation/interface/banners/header.jpg");
     }
 
     header#header_banner.profile_header{ /* shrink mainpage header */
