@@ -20,8 +20,14 @@ require_once('Doctrine/Common/ClassLoader.php');
 $classLoader = new ClassLoader("src");
 $classLoader->register();
 
+
 require_once("lib/Twig/Autoloader.php");
 Twig_Autoloader::register();
+
+if (!isset($_SESSION['whiskyMessage']))
+{
+    $_SESSION['whiskyMessage'] = "";
+}
 
 $whiskyBiz = new WhiskyBusiness;
 
