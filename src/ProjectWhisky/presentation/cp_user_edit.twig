@@ -8,6 +8,48 @@
 </header>
 
 <div id="content_container">
+    {% if msg == "missing" %}
+        <div id="notifier" class="yellow shadow">
+            <p><span class="fa fa-exclamation-circle"></span>
+                Username, firstname, lastname and e-mail are required.</p>
+        </div>
+    {% elseif msg == "success" %}
+        <div id="notifier" class="green shadow">
+            <p><span class="fa fa-check-circle"></span>
+                Whisky successfully updated.</p>
+        </div>
+    {% elseif msg == "wrong_image" %}
+        <div id="notifier" class="red shadow">
+            <p><span class="fa fa-times-circle"></span>
+                Only .png, .jpg, .jpeg and .gif files are allowed.</p>
+        </div>
+    {% elseif msg == "wrong_image_size" %}
+        <div id="notifier" class="red shadow">
+            <p><span class="fa fa-times-circle"></span>
+                Allowed file size is 2MB</p>
+        </div>
+    {% elseif msg == "username_exists" %}
+        <div id="notifier" class="red shadow">
+            <p><span class="fa fa-times-circle"></span>
+                This username already exists.</p>
+        </div>
+    {% elseif msg == "email_exists" %}
+        <div id="notifier" class="red shadow">
+            <p><span class="fa fa-times-circle"></span>
+                User with this e-mail already exists.</p>
+        </div>
+    {% elseif msg == "error" %}
+        <div id="notifier" class="red shadow">
+            <p><span class="fa fa-times-circle"></span>
+                Something is wrong</p>
+        </div>
+    {% elseif msg == "info" %}
+        <div id="notifier" class="blue shadow">
+            <p><span class="fa fa-info-circle"></span>
+                "This is info, insert correct message here!"</p>
+        </div>
+    {% endif %}
+
     <div id="controller" class="shadow">
 
     	<form class="cp_subform" action="cp_user_edit.php?id={{ userdata.id }}" method="post" enctype="multipart/form-data">

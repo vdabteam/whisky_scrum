@@ -12,7 +12,7 @@
                 <section class="whisky_view" id="recent_whisky">
                     <h2>Latest Reviewed Whiskies</h2>
                     <ul>
-                        {% for whisky in whiskies|slice(0, 4)  %}
+                        {% for whisky in whiskies|reverse|slice(0, 4)  %}
                         <li>
                         	{% set ratingtotal = (whisky.ratingAroma + whisky.ratingColor + whisky.ratingTaste + whisky.ratingAftertaste) * 0.125 %}
                             <div class="progress-radial progress-{{ (ratingtotal * 10) | round }}"> 

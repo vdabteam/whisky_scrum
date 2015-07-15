@@ -9,6 +9,7 @@ use src\ProjectWhisky\business\UserBusiness;
 use src\ProjectWhisky\business\ProfileBusiness;
 use src\ProjectWhisky\exceptions\ImageException;
 use src\ProjectWhisky\exceptions\UserExistsException;
+use src\ProjectWhisky\exceptions\EmptyDataException;
 use Doctrine\Common\ClassLoader;
 
 require_once("rolestarter.php");
@@ -61,6 +62,13 @@ if (isset($_POST['userUsername']))
         $firstname = $_POST['userFirstName'];
         $lastname = $_POST['userLastName'];
 
+
+        if(empty($username) || empty($email) || empty($firstname) || empty($lastname))
+        {
+            throw new EmptyDataException("missing");
+        }
+
+
         $admin = false;
         if(isset($_POST['userAdmin'])){
             $admin = true;
@@ -81,7 +89,7 @@ if (isset($_POST['userUsername']))
             /**
              * Look if user with entered username already exists
              */
-            if(!empty($userBiz->checkUserByUsername($username))) throw new UserExistsException("This username already exists.");
+            if(!empty($userBiz->checkUserByUsername($username))) throw new UserExistsException("username_exists");
         }
 
         if($userdata->getEmail() != $email)
@@ -89,7 +97,7 @@ if (isset($_POST['userUsername']))
             /**
              * Look if user with entered e-mail already exists
              */
-            if(!empty($userBiz->checkUserByEmail($email))) throw new UserExistsException("User with this e-mail already exists.");
+            if(!empty($userBiz->checkUserByEmail($email))) throw new UserExistsException("email_exists");
         }
 
 
@@ -148,13 +156,13 @@ if (isset($_POST['userUsername']))
                     else
                     {
 //                        $_SESSION['userDialogBlock'] = "Allowed file size is 2MB";
-                        throw new ImageException('Allowed file size is 2MB');
+                        throw new ImageException('wrong_image_size');
                     }
                 }
             }
             else
             {
-                throw new ImageException('Only .png, .jpg, .jpeg and .gif files are allowed.');
+                throw new ImageException('wrong_image');
             }
         }
 
@@ -162,14 +170,12 @@ if (isset($_POST['userUsername']))
 
         if ($updatedUserProfile)
         {
-            $_SESSION['userDialogBlock'] = "User profile has been updated";
+            $_SESSION['userDialogBlock'] = "success";
         }
         else
         {
-            $_SESSION['userDialogBlock'] = "Something is wrong";
+            $_SESSION['userDialogBlock'] = "error";
         }
-            $path = "cp_user_edit.php?id=" . $userId . "&updated=1";
-            header("Location: $path");
     }
     catch(ImageException $e)
     {
@@ -179,6 +185,14 @@ if (isset($_POST['userUsername']))
     {
         $_SESSION['userDialogBlock'] = $e->getMessage();
     }
+    catch(EmptyDataException $e)
+    {
+        $_SESSION['userDialogBlock'] = $e->getMessage();
+    }
+
+
+    $path = "cp_user_edit.php?id=" . $userId . "&updated=1";
+    header("Location: $path");
 }
 
 
@@ -204,10 +218,13 @@ if (isset($_GET['updated']) && (empty($_SESSION['userDialogBlock'])))
 }
 
 
+
 if(isset($_GET['updated']) && ($_GET['updated'] == 1))
 {
     $_SESSION['userDialogBlock'] = "";
 }
+
+
 
 
 ob_flush();

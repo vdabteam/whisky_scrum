@@ -103,7 +103,7 @@ class UserBusiness extends ValidationHelpers
     {
         $password = self::hashPassword($password); // using ValidationHelpers class
         $userDAO = new UserDAO();
-        $user = $userDAO -> createCPUser($username, $password, $email, $firstname, $lastname, $admin, $blocked, $imagePath);
+        return $userDAO -> createCPUser($username, $password, $email, $firstname, $lastname, $admin, $blocked, $imagePath);
     }
 	
 	//search for users with a certain string in their username
