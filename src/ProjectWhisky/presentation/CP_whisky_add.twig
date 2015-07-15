@@ -37,7 +37,11 @@
 
 
             <div id="controller" class="shadow">
-                <form id="whiskyAddition" class="cp_subform" action="CP_whisky_add.php" method="post" enctype="multipart/form-data">
+                <form id="whiskyAddition" class="cp_subform" action="CP_whisky_add.php" method="post" enctype="multipart/form-data"
+                oninput="aroma_amount.value=rating_aroma.value,
+                        color_amount.value=rating_color.value,
+                        taste_amount.value=rating_taste.value,
+                        aftertaste_amount.value=rating_aftertaste.value">
 
                     <div class="flex_parent">
                         <div class="flex_child">
@@ -98,16 +102,20 @@
                         </div>
                         <div class="flex_child">
                             <h3>Rating Aroma:</h3>
-                            <input type="number" min="0" max="20" id="rating_aroma" name="rating_aroma" value="{{ savedData.rating_aroma }}"> / 20
+                            <input name="rating_aroma" id="rating_aroma" class="" type="range" min="0" max="10" step="0.5">
+                            <output name="aroma_amount" for="rating_aroma">0</output>
 
                             <h3>Rating Color:</h3>
-                            <input type="number" min="0" max="20" id="rating_color" name="rating_color" value="{{ savedData.rating_color }}"> / 20
+                            <input name="rating_color" id="rating_color" class="" type="range" min="0" max="10" step="0.5">
+                            <output name="color_amount" for="rating_color">0</output>
 
                             <h3>Rating Taste:</h3>
-                            <input type="number" min="0" max="20" id="rating_taste" name="rating_taste" value="{{ savedData.rating_taste }}"> / 20
+                            <input name="rating_taste" id="rating_taste" class="" type="range" min="0" max="10" step="0.5">
+                            <output name="taste_amount" for="rating_taste">0</output>
 
                             <h3>Rating Aftertaste:</h3>
-                            <input type="number" min="0" max="20" id="rating_aftertaste" name="rating_aftertaste" value="{{ savedData.rating_aftertaste }}"> / 20
+                            <input name="rating_aftertaste" id="rating_aftertaste" class="" type="range" min="0" max="10" step="0.5">
+                            <output name="aftertaste_amount" for="rating_aftertaste">0</output>
                         </div>
                     </div>
                     <br><br>
