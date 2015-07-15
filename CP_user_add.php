@@ -9,6 +9,7 @@ use src\ProjectWhisky\business\UserBusiness;
 use src\ProjectWhisky\business\ProfileBusiness;
 use src\ProjectWhisky\exceptions\ImageException;
 use src\ProjectWhisky\exceptions\UserExistsException;
+use src\ProjectWhisky\exceptions\EmptyDataException;
 use Doctrine\Common\ClassLoader;
 
 require_once("rolestarter.php");
@@ -46,25 +47,32 @@ if(isset($_POST["userUsername"]))
         }
 
 
+
+        if(empty($username) || empty($password) || empty($email) || empty($firstname) || empty($lastname))
+        {
+            throw new EmptyDataException("missing");
+        }
+
+
         /**
          * Look if user with entered username already exists
          */
-        if(!empty($userBiz->checkUserByUsername($username))) throw new UserExistsException("This username already exists.");
+        if(!empty($userBiz->checkUserByUsername($username))) throw new UserExistsException("username_exists");
 
 
         /**
          * Look if user with entered e-mail already exists
          */
-        if(!empty($userBiz->checkUserByEmail($email))) throw new UserExistsException("User with this e-mail already exists.");
+        if(!empty($userBiz->checkUserByEmail($email))) throw new UserExistsException("email_exists");
 
 
         $userImage = "default.jpg";
 
 
-        if (isset($_FILES['user_image']) && (!empty($_FILES['user_image']['name'])))
+        if (isset($_FILES['userImage']) && (!empty($_FILES['userImage']['name'])))
         {
 
-            $file = $_FILES['user_image'];
+            $file = $_FILES['userImage'];
 
             /**
              * File properties
@@ -105,18 +113,26 @@ if(isset($_POST["userUsername"]))
                     else
                     {
 //                        $_SESSION['userDialogBlock'] = "Allowed file size is 2MB";
-                        throw new ImageException('Allowed file size is 2MB');
+                        throw new ImageException('wrong_image_size');
                     }
                 }
             }
             else
             {
-                throw new ImageException('Only .png, .jpg, .jpeg and .gif files are allowed.');
+                throw new ImageException('wrong_image');
             }
         }
 
 
-        $userBiz->addCPUser($username, $password, $email, $firstname, $lastname, $admin, $blocked, $userImage);
+        $newUser = $userBiz->addCPUser($username, $password, $email, $firstname, $lastname, $admin, $blocked, $userImage);
+        if ($newUser == true)
+        {
+            $_SESSION['userDialogBlock'] = "success";
+        }
+        else
+        {
+            $_SESSION['userDialogBlock'] = "error";
+        }
     }
     catch(ImageException $e)
     {
@@ -126,8 +142,12 @@ if(isset($_POST["userUsername"]))
     {
         $_SESSION['userDialogBlock'] = $e->getMessage();
     }
+    catch(EmptyDataException $e)
+    {
+        $_SESSION['userDialogBlock'] = $e->getMessage();
+    }
 
-
+    header("Location: cp_user_add.php?updated=1");
 }    
 
 
@@ -135,8 +155,25 @@ if(isset($_POST["userUsername"]))
 $loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation");
 $twig = new Twig_Environment($loader);
 
-$view = $twig->render("CP_user_add.twig", array("user" => $_SESSION['user']));
+$view = $twig->render("CP_user_add.twig", array("user" => $_SESSION['user'], "msg" => $_SESSION['userDialogBlock']));
 
 print($view);
+
+
+/**
+ * Handling messages removal and appearance
+ */
+if (isset($_GET['updated']) && (empty($_SESSION['userDialogBlock'])))
+{
+    header("Location: cp_user_add.php");
+}
+
+
+
+if(isset($_GET['updated']) && ($_GET['updated'] == 1))
+{
+    $_SESSION['userDialogBlock'] = "";
+}
+
 
 ob_flush();
