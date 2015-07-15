@@ -57,19 +57,29 @@
                 <div class="flex_child">
 
                     <h3>E-mail:</h3>
-                    <input type="text" name="userEmail" placeholder="E-mail"/>
+                    <input type="text" name="userEmail" placeholder="E-mail" value="{{ savedData.email }}"/>
                     <h3>Username:</h3>
-                    <input type="text" name="userUsername" placeholder="Username"/>
+                    <input type="text" name="userUsername" placeholder="Username" value="{{ savedData.username }}"/>
                     <h3>Password:</h3>
-                    <input type="text" name="userPassword" placeholder="Password"/>
+                    <input type="text" name="userPassword" placeholder="Password" value="{{ savedData.password }}"/>
                     <h3>Firstname:</h3>
-                    <input type="text" name="userFirstName" placeholder="Firstname"/>
+                    <input type="text" name="userFirstName" placeholder="Firstname" value="{{ savedData.firstname }}"/>
                     <h3>Lastname:</h3>
-                    <input type="text" name="userLastName" placeholder="Lastname"/>
+                    <input type="text" name="userLastName" placeholder="Lastname" value="{{ savedData.lastname }}"/>
 
                     <div class="">
-                        <h3>Admin: <input type="checkbox" value="1" name="userAdmin"></h3>
-                        <h3>Blocked: <input type="checkbox" value="1" name="userBlocked"></h3>
+                        {% if savedData.admin == true %}
+                            <h3>Admin: <input type="checkbox" name="userAdmin" checked></h3>
+                        {% else %}
+                            <h3>Admin: <input type="checkbox" name="userAdmin" ></h3>
+                        {% endif %}
+
+                        {% if savedData.blocked == true %}
+                            <h3>Blocked: <input type="checkbox" name="userBlocked" checked></h3>
+                        {% else %}
+                            <h3>Blocked: <input type="checkbox" name="userBlocked" ></h3>
+                        {% endif %}
+
                     </div>
                 </div>
                 <div class="flex_child text_center">
