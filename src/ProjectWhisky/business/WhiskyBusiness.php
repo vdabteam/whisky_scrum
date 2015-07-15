@@ -53,4 +53,15 @@ class WhiskyBusiness
 		$whiskyList = $whiskyDAO->getWhiskiesByName($whiskyname);
 		return $whiskyList;
 	}
+
+
+    /**
+     * Delete whisky from DB
+     */
+    public function deleteWhisky($whiskyId)
+    {
+        $whiskyDAO = new WhiskyDAO();
+        $whisky = $whiskyDAO->deleteWhiskyById($whiskyId);
+        return $whisky;
+    }
 }

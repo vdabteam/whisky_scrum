@@ -248,6 +248,35 @@ where id = $whisky_id";
             return false;
         }
     }
+
+
+
+
+    /**
+     * Delete whisky from DB by ID
+     */
+    public function deleteWhiskyById($whiskyId)
+    {
+        self::connectToDB();
+        $this->sql = "DELETE FROM whiskies WHERE id = ?";
+
+        try
+        {
+            $this->query = $this->handler->prepare($this->sql);
+            $this->query->execute(array($whiskyId));
+
+            $this->query->closeCursor();
+            $this->handler = null;
+            return true;
+        }
+        catch (Exception $e)
+        {
+            echo "Error: query failure";
+            return false;
+        }
+    }
+
+
 /* ======== even in comment gezet tot het terug gebruikt word ========
     public function getFilmById($filmId)
     {

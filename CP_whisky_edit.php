@@ -73,6 +73,19 @@ if(isset($_POST['whiskySaveBtn'])) {
         $_SESSION['savedData']['review'] = !empty($_POST["text_review"]) ? $_POST["text_review"] : "";
         $_SESSION['savedData']['whisky_id'] = $whisky_data->getId();
 
+
+        /**
+         * Delete whisky from DB
+         */
+        if(isset($_POST['deleteWhisky']) == true)
+        {
+            if(($whiskyBiz->deleteWhisky($whisky_id)) == false) throw new FuckedUpException();
+            $_SESSION['whiskyMessage'] = "success_deleted";
+            header("Location: cp_whisky.php?updated=1");
+            exit();
+        }
+
+
         /**
          * If one of all fields is empty, throw an error
          */
@@ -185,9 +198,6 @@ if(isset($_POST['whiskySaveBtn'])) {
 
         $_SESSION['whiskyMessage'] = "success";
 
-        $updatedPath = "CP_whisky_edit.php?id=" . $whisky_id . "&updated=1";
-        header("Location: $updatedPath");
-
     }
     catch (EmptyDataException $e)
     {
@@ -202,7 +212,8 @@ if(isset($_POST['whiskySaveBtn'])) {
         $_SESSION['whiskyMessage'] = "error";
     }
 
-
+    $updatedPath = "CP_whisky_edit.php?id=" . $whisky_id . "&updated=1";
+    header("Location: $updatedPath");
 }
 
 
