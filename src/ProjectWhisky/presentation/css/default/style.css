@@ -326,14 +326,17 @@ input.blue{
     header #header_quote{
         font-family: "trashhand";
         font-size: 2em;
-        padding:2.5em 2.5em;
+        padding: 1em 0.5em;
     }
 
     header #header_quote p{
-        padding:0.5em 1em;
-        border: 0.2em solid transparent;
-        border-bottom-color:white;
+        padding: 0.5em 1em;
         display: inline-block;
+        -webkit-transform: rotate(-4deg);
+        -moz-transform: rotate(-4deg);
+        -o-transform: rotate(-4deg);
+        -ms-transform: rotate(-4deg);
+        transform: rotate(-4deg);
     }
 
     #content_container{
