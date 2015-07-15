@@ -36,7 +36,7 @@ if (isset($_GET['whiskyname']) && (!empty($_GET['whiskyname'])))
 	$view = $twig->render("CP_whisky.twig", array("user" => $_SESSION['user'], "whiskies"=>$whiskyList, "searchInput"=>$whiskynameTrim));
 	
 }
-else 
+else
 {
 	
 	$whiskyList = $whiskyBiz->getWhiskyList();

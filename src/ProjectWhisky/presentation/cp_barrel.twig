@@ -15,7 +15,7 @@
 
                     </form>#}
 
-                    <a class="btn btn-primary" href="cp_barrel_add.php"><i class="fa fa-plus"></i> Add new barrel</a>
+                    <a class="btn btn-primary" href="cp_barrel_add.php"><i class="fa fa-plus"></i> Add a Barrel</a>
 
                     <table class="cpanel_table">
 
@@ -26,7 +26,7 @@
                         {% for barrel in barrels %}
                             <tr>
                                     <td>{{ barrel.type }}</td>
-                                    <td><a href="cp_barrel_edit.php?id={{ barrel.id }}">Edit</a></td>
+                                    <td class="text_center"><a href="cp_barrel_edit.php?id={{ barrel.id }}">Edit</a></td>
                             </tr>
                         {% endfor %}
                     </div>
