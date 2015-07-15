@@ -294,7 +294,7 @@ input[type="button"], input[type="button"]::-webkit-file-upload-button, input[ty
 
 aside#sidebar{
     background-color: darkgray;
-    min-width: 20em;
+    min-width: 16em;
     margin-right: 3em;
     min-height: 100%;
     position: absolute;
@@ -348,7 +348,7 @@ aside#sidebar #menu li a.active:after {
 }
 
 #content{
-	margin-left: 20em;
+  margin-left: 16em;
   background-color: #f7f9ff;
   border-left: 1px solid white;
 }
