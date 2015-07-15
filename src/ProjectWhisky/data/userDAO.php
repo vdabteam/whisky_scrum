@@ -444,19 +444,19 @@ class UserDAO
             return false;
         }
     }
-    public function createCPUser($username, $password, $email, $firstname, $lastname, $admin, $blocked)
+    public function createCPUser($username, $password, $email, $firstname, $lastname, $admin, $blocked, $userImage)
     {
         self::connectToDB(); /* Using DB connection */
 
-        $this->sql = "INSERT INTO users (username, password, email, firstname, lastname, admin, blocked, registration_date)
+        $this->sql = "INSERT INTO users (username, password, email, firstname, lastname, admin, blocked, registration_date, image_path)
                       
-                        VALUES(?,?,?,?,?,?,?, NOW())";
+                        VALUES(?,?,?,?,?,?,?, NOW(), ?)";
 
         try
         {
             $this->query = $this->handler->prepare($this->sql);
 
-            $this->query->execute(array($username, $password, $email, $firstname, $lastname, $admin, $blocked));
+            $this->query->execute(array($username, $password, $email, $firstname, $lastname, $admin, $blocked, $userImage));
             
             
             /**

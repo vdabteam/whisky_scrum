@@ -99,11 +99,11 @@ class UserBusiness extends ValidationHelpers
         $user = $userDAO->updateUserbyId($userId, $username, $password, $email, $firstname, $lastname, $admin, $blocked, $userImagePath);
         return $user;
     }
-    public function addCPUser($username, $password, $email, $firstname, $lastname, $admin, $blocked)
+    public function addCPUser($username, $password, $email, $firstname, $lastname, $admin, $blocked, $imagePath)
     {
         $password = self::hashPassword($password); // using ValidationHelpers class
         $userDAO = new UserDAO();
-        $user = $userDAO -> createCPUser($username, $password, $email, $firstname, $lastname, $admin, $blocked);
+        $user = $userDAO -> createCPUser($username, $password, $email, $firstname, $lastname, $admin, $blocked, $imagePath);
     }
 	
 	//search for users with a certain string in their username

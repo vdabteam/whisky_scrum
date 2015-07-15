@@ -173,7 +173,6 @@ if (isset($_POST['userUsername']))
     }
     catch(ImageException $e)
     {
-//        $_SESSION['userDialogBlock'] = "Only .png, .jpg, .jpeg and .gif files are allowed.";
         $_SESSION['userDialogBlock'] = $e->getMessage();
     }
     catch(UserExistsException $e)
