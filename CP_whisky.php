@@ -50,9 +50,5 @@ else
 
 print($view);
 
-echo "<pre>";
-print_r($_SESSION);
-echo "</pre>";
-
 
 ob_flush();

@@ -175,6 +175,7 @@ if (isset($_GET['updated']) && (empty($_SESSION['userDialogBlock'])))
 if(isset($_GET['updated']) && ($_GET['updated'] == 1))
 {
     $_SESSION['userDialogBlock'] = "";
+    $_SESSION['savedData'] = "";
 }
 
 
