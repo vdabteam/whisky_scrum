@@ -88,7 +88,7 @@ if (isset($_SESSION['user']['id']) && (is_int((int)$_SESSION['user']['id'])))
             $_SESSION['reload'] = 1;
 
 //            header("Refresh: 0");
-            header('Location: profile.php?updated=1');
+//            header('Location: profile.php?updated=1');
 
         }
         catch (EmptyDataException $e)
@@ -119,7 +119,7 @@ if (isset($_SESSION['user']['id']) && (is_int((int)$_SESSION['user']['id'])))
     /**
      * Upload image
      */
-    if (isset($_FILES['userImage']))
+    if (isset($_FILES['userImage']) && !empty($_FILES['userImage']['name']))
     {
         $file = $_FILES['userImage'];
 
