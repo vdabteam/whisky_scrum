@@ -10,40 +10,42 @@
 <div id="content_container">
     <div id="controller" class="shadow">
 
-
-
     	<form class="cp_subform" action="cp_user_edit.php?id={{ userdata.id }}" method="post" enctype="multipart/form-data">
+            <div class="flex_parent">
+                <div class="flex_child">
+                    <h3>Username:</h3>
+                    <input type="text" value="{{ userdata.username }}" name="userUsername" placeholder="Username"/>
 
-            <h3>User Image:</h3>
-            <img src="src/ProjectWhisky/presentation/userimages/{{ userdata.imagePath }}" alt="image of {{ userdata.username }}"/>
-            <div class="fileUpload btn btn-primary center">
-                <span class="fa fa-pencil"></span> <span> Change Picture</span>
-                <input id="imgUploader" type="file" class="upload" name="user_image">
-                <input class="btn btn-primary" id="uploadFile" placeholder="{{ userdata.imagePath }}" disabled="disabled">
+                    <h3>Password:</h3>
+                    <input type="text" value="" name="userPassword" placeholder="Password"/>
+
+                    <h3>Firstname:</h3>
+                    <input type="text" value="{{ userdata.firstname }}" name="userFirstName" placeholder="Firstname"/>
+
+                    <h3>Lastname:</h3>
+                    <input type="text" value="{{ userdata.lastname }}" name="userLastName" placeholder="Lastname"/>
+
+                    <h3>E-mail:</h3>
+                    <input type="text" value="{{ userdata.email }}" name="userEmail" placeholder="E-mail"/>
+
+                    <div class="">
+                        <h3>Admin: <input type="checkbox" {{ userdata.admin == 1 ? 'checked' : '' }} name="userAdmin"></h3>
+                        <h3>Blocked: <input type="checkbox" {{ userdata.blocked == 1 ? 'checked' : '' }}  name="userBlocked"></h3>
+                    </div>
+                </div>
+                <div class="flex_child text_center">
+                    <h3>User Image:</h3>
+                    <img src="src/ProjectWhisky/presentation/userimages/{{ userdata.imagePath }}" alt="image of {{ userdata.username }}"/>
+                    <div class="fileUpload btn btn-primary center">
+                        <span class="fa fa-pencil"></span> <span> Change Picture</span>
+                        <input id="imgUploader" type="file" class="upload" name="user_image">
+                        <input class="btn btn-primary" id="uploadFile" placeholder="{{ userdata.imagePath }}" disabled="disabled">
+                    </div>
+                </div>
             </div>
-
-    		<h3>Username:</h3>
-            <input type="text" value="{{ userdata.username }}" name="userUsername" placeholder="Username"/>
-
-            <h3>Password:</h3>
-            <input type="text" value="" name="userPassword" placeholder="Password"/>
-
-            <h3>Firstname:</h3>
-            <input type="text" value="{{ userdata.firstname }}" name="userFirstName" placeholder="Firstname"/>
-
-            <h3>Lastname:</h3>
-            <input type="text" value="{{ userdata.lastname }}" name="userLastName" placeholder="Lastname"/>
-
-            <h3>E-mail:</h3>
-            <input type="text" value="{{ userdata.email }}" name="userEmail" placeholder="E-mail"/>
-
-            <div class="">
-    	        <h3>Admin: <input type="checkbox" {{ userdata.admin == 1 ? 'checked' : '' }} name="userAdmin"></h3>
-    	        <h3>Blocked: <input type="checkbox" {{ userdata.blocked == 1 ? 'checked' : '' }}  name="userBlocked"></h3>
-    		</div><br>
+            <br>
     		<input class="btn btn-primary" type="submit" value="Save Changes"/>
     	</form>
-        {{ msg }}
     </div>
 </div>
 {% endblock %} 

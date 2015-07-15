@@ -123,6 +123,7 @@ h1{
 }
 
 footer{
+    display: block;
     padding: 0.8em 0 1em 0;
     background-color: black;
     color: white;
@@ -431,7 +432,8 @@ input.blue{
 
     .rating_box #bars{
         margin-left: 4.5em;
-        width: 91%;
+        margin-right: 0.5em;
+        width: auto;
     }
 
     .rating_base {

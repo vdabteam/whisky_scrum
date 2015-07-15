@@ -293,10 +293,11 @@ input[type="button"], input[type="button"]::-webkit-file-upload-button, input[ty
 }
 
 aside#sidebar{
-	background-color: darkgray;
-	min-width: 20em;
+    background-color: darkgray;
+    min-width: 20em;
     margin-right: 3em;
     min-height: 100%;
+    position: absolute;
 }
 aside#sidebar #menu li a{
 	padding:2em 1.5em;
@@ -306,24 +307,24 @@ aside#sidebar #menu li a{
 	text-decoration: none;
 	display: list-item;
 	width: 100%;
-    position: relative;
-    font-family: 'open_sanslight';
-    text-shadow: 0 1px 0 rgba(0,0,0,1);
+  position: relative;
+  font-family: 'open_sanslight';
+  text-shadow: 0 1px 0 rgba(0,0,0,1);
 }
 aside#sidebar #menu li span.fa{
-    margin-right: 1em;
-    text-shadow: none;
+  margin-right: 1em;
+  text-shadow: none;
 }
 aside#sidebar #menu li a:hover{
 	background-color: #00E2FF;
-    text-shadow: 0 -1px 0 rgba(0,0,0,0.6);
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.6);
 }
 aside#sidebar #menu li a.active {
 	background-color: #7B7D7F;
 }
 aside#sidebar #menu li a.active:after {
-    left: 100%;
-    top: 50%;
+  left: 100%;
+  top: 50%;
 	border:solid transparent;
 	content: " ";
 	height: 0;
@@ -334,9 +335,9 @@ aside#sidebar #menu li a.active:after {
 	border-width: 1em;
 	margin-top: -1em;
 	margin-left: -1.9em;
-    -ms-transform: rotate(180deg); /* IE 9 */
-    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
-    transform: rotate(180deg);
+  -ms-transform: rotate(180deg); /* IE 9 */
+  -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+  transform: rotate(180deg);
 }
 .copyrights{
 	text-align: right;
@@ -348,14 +349,14 @@ aside#sidebar #menu li a.active:after {
 
 #content{
 	margin-left: 20em;
-    background-color: #f7f9ff;
-    border-left: 1px solid white;
+  background-color: #f7f9ff;
+  border-left: 1px solid white;
 }
 #content header{
 	padding: 1.5em 2em;
 	background-color: white;
 	color: #7B7D7F;
-    font-size: 2em;
+  font-size: 2em;
 	font-weight: bold;
 	box-shadow: 0 -1em 1.5em -1em rgba(0,0,0,0.3) inset;
 	border-bottom: 0.2em solid white;
@@ -389,10 +390,10 @@ aside#sidebar #menu li a.active:after {
 }
 
 #notifier span.fa{
-    margin-right: 1em;
-    margin-top: -0.3em;
-    font-size: 3em;
-    float: left;
+  margin-right: 1em;
+  margin-top: -0.3em;
+  font-size: 3em;
+  float: left;
 }
 
 #controller{

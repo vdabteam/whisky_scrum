@@ -40,12 +40,12 @@ $barrel_data = $barrelBiz->showAllBarrels();
 
 
 /**
- * Initiate $_SESSION['savedData'] and $_SESSION['whiskyMesage']
+ * Initiate $_SESSION['savedData'] and $_SESSION['whiskyMessage']
  */
 if (!isset($_SESSION['savedData']))
 {
     $_SESSION['savedData'] = array();
-    $_SESSION['whiskyMesage'] = array();
+    $_SESSION['whiskyMessage'] = array();
 }
 
 
@@ -145,13 +145,13 @@ if(isset($_POST['whiskySaveBtn'])) {
                     }
                     else
                     {
-                        $_SESSION['whiskyMesage'] = "Allowed file size is 2MB";
+                        $_SESSION['whiskyMessage'] = "Allowed file size is 2MB";
                     }
                 }
             }
             else
             {
-                $_SESSION['whiskyMesage'] = "Only .png, .jpg, .jpeg and .gif files are allowed.";
+                $_SESSION['whiskyMessage'] = "Only .png, .jpg, .jpeg and .gif files are allowed.";
             }
         }
 
@@ -180,7 +180,7 @@ if(isset($_POST['whiskySaveBtn'])) {
 
         if ($editWhisky == false) throw new FuckedUpException();
 
-        $_SESSION['whiskyMesage'] = "success";
+        $_SESSION['whiskyMessage'] = "success";
 
         $updatedPath = "CP_whisky_edit.php?id=" . $whisky_id . "&updated=1";
         header("Location: $updatedPath");
@@ -188,15 +188,15 @@ if(isset($_POST['whiskySaveBtn'])) {
     }
     catch (EmptyDataException $e)
     {
-        $_SESSION['whiskyMesage'] = "missing";
+        $_SESSION['whiskyMessage'] = "missing";
     }
     catch (NoImageException $e)
     {
-        $_SESSION['whiskyMesage'] = "image_missing";
+        $_SESSION['whiskyMessage'] = "image_missing";
     }
     catch (FuckedUpException $e)
     {
-        $_SESSION['whiskyMesage'] = "error";
+        $_SESSION['whiskyMessage'] = "error";
     }
 
 
@@ -207,7 +207,7 @@ if(isset($_POST['whiskySaveBtn'])) {
 $loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation");
 $twig = new Twig_Environment($loader);
 
-$view = $twig->render("CP_whisky_edit.twig", array("user" => $_SESSION['user'], "msg" => $_SESSION['whiskyMesage'], "whisky" => $whisky_data, "distilleries" => $distillery_data, "barrels" => $barrel_data, "msg" => $_SESSION['whiskyMesage'], "savedData" => $_SESSION['savedData']));
+$view = $twig->render("CP_whisky_edit.twig", array("user" => $_SESSION['user'], "msg" => $_SESSION['whiskyMessage'], "whisky" => $whisky_data, "distilleries" => $distillery_data, "barrels" => $barrel_data, "msg" => $_SESSION['whiskyMessage'], "savedData" => $_SESSION['savedData']));
 
 print($view);
 
@@ -219,7 +219,7 @@ print($view);
 /**
  * Handling messages removal and appearance
  */
-if (isset($_GET['updated']) && (empty($_SESSION['whiskyMesage'])))
+if (isset($_GET['updated']) && (empty($_SESSION['whiskyMessage'])))
 {
     $updatedPath = "CP_whisky_edit.php?id=" . $whisky_id;
     header("Location: $updatedPath");
@@ -229,7 +229,7 @@ if (isset($_GET['updated']) && (empty($_SESSION['whiskyMesage'])))
 if(isset($_GET['updated']) && ($_GET['updated'] == 1))
 {
     $_SESSION['savedData'] = "";
-    $_SESSION['whiskyMesage'] = "";
+    $_SESSION['whiskyMessage'] = "";
 }
 
 
