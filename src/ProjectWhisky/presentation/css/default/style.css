@@ -65,6 +65,7 @@
 }
 html {
     font-size: 62.5%;
+    height: 100%;
 }
 
 ul{
@@ -99,6 +100,7 @@ h1{
 .bottom{
     bottom: 0;
     margin-bottom: 0;
+    height: 100%;
 }
 .center{
     margin-left: auto;
@@ -258,9 +260,19 @@ input.blue{
     background-repeat: no-repeat;
     font-family: 'open_sansbold';
 }
+#header_logo{
+    height: 14em;
+    width: 14em;
+    background: url("../../logo/logo_white_big.png") center center;
+    background-size: 14em;
+    background-repeat: no-repeat;
+    position: absolute;   
+    top: -1em;
+    left: -1em;
+}
 
-/* Desktop */
-@media (min-width: 769px){
+/* Desktop
+@media (min-width: 769px){*/
 
     .container{
         width: 90%;
@@ -923,10 +935,10 @@ input.blue{
         color: #7F5B1C;
     }
 
-
+/*
 }
 
-/* Portrait Tablet */
+/* Portrait Tablet 
 @media (min-width: 481px) and (max-width: 768px){
 
     #navbar{
@@ -1002,18 +1014,16 @@ input.blue{
 
 }
 
-/* Landscape smart phone */
+/* Landscape smart phone 
 @media (min-width: 321px) and (max-width: 480px){
 
 }
 
-/* Portrait smart phone */
+/* Portrait smart phone 
 @media (max-width: 320px){
 
 }
-
-
-
+*/
 
 
 

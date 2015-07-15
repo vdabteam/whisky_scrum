@@ -34,27 +34,27 @@
         <nav id="navbar" class="fullwidth top">
             <!-- Full top navigator -->
             <div class="navbar_icons clearfix">
-                <ul class="left">
-                    <li id="logo" class="navbutton fa left"><a href="index.php">Home</a></li>
-                </ul>
                 <ul class="right">
                     <li class="navbutton fa fa-search left"><a href="search.php">Search</a></li>
+                    <li id="logo" class="navbutton fa left"><a href="index.php">Website</a></li>
 
                     {# Show specific menu items to particular users #}
                     {% if user.role == 0 %}
+
                         <li class="navbutton fa fa-sign-in left"><a class="show-login" href="#">Login</a></li>
                         <li class="navbutton fa fa-user-plus left"><a class="show-register" href="#">Register</a></li>
                         
-
                     {% elseif user.role == 1 %}
                         
                         <li class="navbutton fa fa-user left"><a href="profile.php">Profile</a></li>
                         <li class="navbutton fa fa-sign-out left"><a href="logout.php?logout=true">Logout</a></li>
+
                     {% elseif user.role == 2 %}
                         
                         <li class="navbutton fa fa-cogs left"><a href="cp_user.php">Control Panel</a></li>
                         <li class="navbutton fa fa-user left"><a href="profile.php">Profile</a></li>
                         <li class="navbutton fa fa-sign-out left"><a href="logout.php?logout=true">Logout</a></li>
+
                     {% endif %}
                 </ul>
             </div>

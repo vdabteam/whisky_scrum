@@ -653,22 +653,22 @@ input[type="file"]{
 }
 
 /* ///// RESPONSIVENESS ///// */
-/* Desktop */
+/* Desktop 
 @media (min-width: 769px){
 
 }
 
-/* Portrait Tablet */
+/* Portrait Tablet 
 @media (min-width: 481px) and (max-width: 768px){
 
 }
 
-/* Landscape smart phone */
+/* Landscape smart phone 
 @media (min-width: 321px) and (max-width: 480px){
 
 }
 
-/* Portrait smart phone */
+/* Portrait smart phone 
 @media (max-width: 320px){
 
-}
+}*/
