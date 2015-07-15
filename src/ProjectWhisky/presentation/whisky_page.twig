@@ -58,6 +58,14 @@
 
                             <!--bar-->
                             <div class="clearfix">
+                                <span class="left">Color</span>
+                                <span class="right">{{ whisky.ratingColor * 0.5 }} / 10</span>
+                            </div>
+                            <div class="rating_base"></div>
+                            <div class="rating" style="width: {{ whisky.ratingColor * 5 }}%;"></div>
+
+                            <!--bar-->
+                            <div class="clearfix">
                                 <span class="left">Taste</span>
                                 <span class="right">{{ whisky.ratingTaste * 0.5 }} / 10</span>
                             </div>
@@ -71,14 +79,6 @@
                             </div>
                             <div class="rating_base"></div>
                             <div class="rating" style="width: {{ whisky.ratingAftertaste * 5 }}%;"></div>
-
-                            <!--bar-->
-                            <div class="clearfix">
-                                <span class="left">Color</span>
-                                <span class="right">{{ whisky.ratingColor * 0.5 }} / 10</span>
-                            </div>
-                            <div class="rating_base"></div>
-                            <div class="rating" style="width: {{ whisky.ratingColor * 5 }}%;"></div>
                         </div>
                     </div>
                     <div id="contentbox">
@@ -89,16 +89,16 @@
                                 <p>{{ whisky.textAroma|raw }}</p>
                             </div>
                             <div class="review_box">
+                                <h3>Color</h3>
+                                <p>{{ whisky.textColor|raw }}</p>
+                            </div>
+                            <div class="review_box">
                                 <h3>Taste</h3>
                                 <p>{{ whisky.textTaste|raw }}</p>
                             </div>
                             <div class="review_box">
                                 <h3>Aftertaste</h3>
                                 <p>{{ whisky.textAftertaste|raw }}</p>
-                            </div>
-                            <div class="review_box">
-                                <h3>Color</h3>
-                                <p>{{ whisky.textColor|raw }}</p>
                             </div>
                             <h2 id="review_header">Review:</h2>
                             <div class="review_box">
