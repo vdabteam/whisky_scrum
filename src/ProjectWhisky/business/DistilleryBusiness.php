@@ -44,5 +44,12 @@ class DistilleryBusiness
         $distilleryDAO = new DistilleryDAO();
         $editDistillery = $distilleryDAO->editDistillery($id, $name, $address, $city, $country, $region);
         return $editDistillery;
-    }        
+    } 
+    //search for distilleries by string in name
+    public function getDistilleriesByName($name)
+    {
+        $distilleryDAO = new DistilleryDAO;
+        $distillerylist = $distilleryDAO->getDistilleriesByName($name);
+        return $distillerylist;
+    }   
 }

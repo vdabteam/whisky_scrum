@@ -7,6 +7,7 @@ ini_set("display_errors", 1);
 
 use src\ProjectWhisky\business\UserBusiness;
 use src\ProjectWhisky\business\ProfileBusiness;
+use src\ProjectWhisky\helpers\ValidationHelpers;
 use src\ProjectWhisky\exceptions\ImageException;
 use src\ProjectWhisky\exceptions\UserExistsException;
 use src\ProjectWhisky\exceptions\EmptyDataException;
@@ -53,6 +54,17 @@ if(isset($_POST["userUsername"]))
         {
             throw new EmptyDataException("missing");
         }
+
+        /**
+         * Validate data
+         */
+        $validator = new ValidationHelpers();
+        if(($validator->validateEmail($_SESSION['savedData']['email'])) == false) throw new EmptyDataException("wrong_email_pattern");
+        if((($validator->validateName($_SESSION['savedData']['firstname'])) == false) || (($validator->validateName($_SESSION['savedData']['lastname'])) == false)) throw new EmptyDataException("wrong_name_pattern");
+        if(($validator->validatePassword($_SESSION['savedData']['password'])) == false) throw new EmptyDataException("wrong_password_pattern");
+        if(($validator->validateUsername($_SESSION['savedData']['username'])) == false) throw new EmptyDataException("wrong_username_pattern");
+
+
 
 
         /**
@@ -153,7 +165,6 @@ if(isset($_POST["userUsername"]))
 }    
 
 
-
 $loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation");
 $twig = new Twig_Environment($loader);
 
@@ -175,7 +186,7 @@ if (isset($_GET['updated']) && (empty($_SESSION['userDialogBlock'])))
 if(isset($_GET['updated']) && ($_GET['updated'] == 1))
 {
     $_SESSION['userDialogBlock'] = "";
-    $_SESSION['savedData'] = "";
+//    $_SESSION['savedData'] = "";
 }
 
 

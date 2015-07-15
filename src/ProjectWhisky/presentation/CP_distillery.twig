@@ -11,13 +11,16 @@
 
                     <form class="cpanel_form cp_subform"><h2>Search Distillery</h2>
 
-                        <input type="text" name="search_distilleryname" id="search_distilleryname" placeholder="Distillery Name">
-                        <input type="text" name="search_distilleryregion" id="search_distilleryregion" placeholder="Region">
+                        <input type="text" name="search_distilleryname" value="{{searchInput is defined ? searchInput : ""}}" id="search_distilleryname" placeholder="Distillery Name">
                         <input class="btn btn-primary" type="submit" value="Search">
 
                     </form>
 
-                    <a class="btn btn-primary" href="CP_distillery_add.php"><i class="fa fa-plus"></i> Add new distillery</a>
+                    <a class="btn btn-primary" href="CP_distillery_add.php"><i class="fa fa-plus"></i> Add a distillery</a>
+                    
+                    {% if searchInput is defined and not empty %}
+                        <a href="CP_distillery.php" class="btn btn-primary">Show all</a>
+                    {% endif %}
 
                     <table class="cpanel_table">
 

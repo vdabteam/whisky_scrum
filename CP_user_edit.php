@@ -7,6 +7,7 @@ ini_set("display_errors", 1);
 
 use src\ProjectWhisky\business\UserBusiness;
 use src\ProjectWhisky\business\ProfileBusiness;
+use src\ProjectWhisky\helpers\ValidationHelpers;
 use src\ProjectWhisky\exceptions\ImageException;
 use src\ProjectWhisky\exceptions\UserExistsException;
 use src\ProjectWhisky\exceptions\EmptyDataException;
@@ -84,6 +85,18 @@ if (isset($_POST['userUsername']))
          */
         $currentUserImagePath = $userdata->getImagePath();
 
+
+
+        /**
+         * Validate data
+         */
+        $validator = new ValidationHelpers();
+        if(($validator->validateEmail($email)) == false) throw new EmptyDataException("wrong_email_pattern");
+        if(($validator->validateName($firstname) == false) || ($validator->validateName($lastname) == false)) throw new EmptyDataException("wrong_name_pattern");
+        if(($validator->validatePassword($password)) == false) throw new EmptyDataException("wrong_password_pattern");
+        if(($validator->validateUsername($username)) == false) throw new EmptyDataException("wrong_username_pattern");
+
+
         if($userdata->getUsername() != $username)
         {
             /**
@@ -99,6 +112,8 @@ if (isset($_POST['userUsername']))
              */
             if(!empty($userBiz->checkUserByEmail($email))) throw new UserExistsException("email_exists");
         }
+
+
 
 
 

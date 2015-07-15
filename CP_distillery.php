@@ -19,16 +19,31 @@ require_once("lib/Twig/Autoloader.php");
 Twig_Autoloader::register();
 
 $distilleryBiz = new DistilleryBusiness;
-$distilleryList = $distilleryBiz->getDistilleryList();
 
-$loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation");
-$twig = new Twig_Environment($loader);
+if (isset($_GET['search_distilleryname']) && (!empty($_GET['search_distilleryname'])))
+{
+    
+    $distilleryNameTrim = trim($_GET['search_distilleryname']);
+    $distilleryList = $distilleryBiz->getDistilleriesByName($distilleryNameTrim);
+    
+    $loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation");
+    $twig = new Twig_Environment($loader);
+    
+    $view = $twig->render("CP_distillery.twig", array("user" => $_SESSION['user'], "distilleries"=>$distilleryList, 'searchInput'=>$distilleryNameTrim));
+    
+}
+else 
+{
 
-$view = $twig->render("CP_distillery.twig", array("user" => $_SESSION['user'], "distilleries"=>$distilleryList));
+    $distilleryList = $distilleryBiz->getDistilleryList();
+    
+    $loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation");
+    $twig = new Twig_Environment($loader);
+    
+    $view = $twig->render("CP_distillery.twig", array("user" => $_SESSION['user'], "distilleries"=>$distilleryList));
 
+}
 print($view);
-
-
 
 
 ob_flush();
