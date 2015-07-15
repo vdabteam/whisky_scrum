@@ -107,11 +107,11 @@ class UserBusiness extends ValidationHelpers
     }
 	
 
-	//search for users with a certain string in their email
-	public function getUsersByEmail($email)
+	//search for users with a certain string in their username
+	public function getUsersByUsername($username)
 	{
 		$userDAO = new UserDAO();
-		$userlist = $userDAO -> getUsersByEmail($email);
+		$userlist = $userDAO -> getUsersByUsername($username);
 		
 		return $userlist;
 	}
