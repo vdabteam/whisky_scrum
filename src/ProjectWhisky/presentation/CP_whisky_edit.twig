@@ -83,17 +83,17 @@
                     <div class="flex_parent">
                         <div class="flex_child">
                             <h3>Rating Aroma:</h3>
-                            <input name="rating_aroma" id="rating_aroma" class="" type="range" min="0" max="10" step="0.5" value="{{ whisky.ratingaroma / 2 }}">
+                            <input name="rating_aroma" id="rating_aroma" class="" type="range" min="0" max="10" step="0.5" value="{{ whisky.ratingaroma / 2 }}" list="slider-datalist">
                             <output name="aroma_amount" for="rating_aroma">{{ whisky.ratingaroma / 2 }}</output>
                         </div>
                         <div class="flex_child">
                             <h3>Rating Color:</h3>
-                            <input name="rating_color" id="rating_color" class="" type="range" min="0" max="10" step="0.5" value="{{ whisky.ratingcolor / 2 }}">
+                            <input name="rating_color" id="rating_color" class="" type="range" min="0" max="10" step="0.5" value="{{ whisky.ratingcolor / 2 }}" list="slider-datalist">
                             <output name="color_amount" for="rating_color">{{ whisky.ratingcolor / 2 }}</output>
                         </div>
                         <div class="flex_child">
                             <h3>Rating Taste:</h3>
-                            <input name="rating_taste" id="rating_taste" class="" type="range" min="0" max="10" step="0.5" value="{{ whisky.ratingtaste / 2 }}">
+                            <input name="rating_taste" id="rating_taste" class="" type="range" min="0" max="10" step="0.5" value="{{ whisky.ratingtaste / 2 }}" list="slider-datalist">
                             <output name="taste_amount" for="rating_taste">{{ whisky.ratingtaste / 2 }}</output>
                         </div>
                         <div class="flex_child">
