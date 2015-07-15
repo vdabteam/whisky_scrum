@@ -11,13 +11,17 @@
                 
                     <form class="cpanel_form cp_subform"><h2>Search Users</h2>
 
-                        <input type="text" name="search_username" id="search_username" placeholder="Username">
-                        <input type="text" name="search_email" id="search_email" placeholder="Email">
+                        <input type="text" name="search_username" id="search_username" value="{{searchInputUsername is defined ? searchInputUsername : ""}}" placeholder="Username">
+                        {# <input type="text" name="search_email" id="search_email" placeholder="Email"> #}
                         <input class="btn btn-primary" type="submit" value="Search">
 
                     </form>
                     
                     <a class="btn btn-primary" href="cp_user_add.php"><i class="fa fa-plus"></i> Add new user</a>
+                    
+                    {% if searchInputUsername is defined and not empty %}
+                        <a href="CP_user.php" class="btn btn-primary">Show all</a>
+                    {% endif %}
 
                     <table class="cpanel_table">
 

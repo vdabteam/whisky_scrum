@@ -480,7 +480,7 @@ class UserDAO
 
         $this->sql = "SELECT * 
         			FROM users
-        			WHERE users.username = ?";
+        			WHERE users.username LIKE ?";
 
         try
         {
@@ -510,7 +510,7 @@ class UserDAO
 
         $this->sql = "SELECT * 
         			FROM users
-        			WHERE users.email = ?";
+        			WHERE users.email LIKE ?";
 
         try
         {

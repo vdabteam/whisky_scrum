@@ -20,20 +20,33 @@ Twig_Autoloader::register();
 
 $userBiz = new UserBusiness;
 
-if (isset($_GET['search_username']))
+if (isset($_GET['search_username']) && (!empty($_GET['search_username'])))
 {
+    
+    $usernameTrim = trim($_GET['search_username']);
+    
+    $userlist = $userBiz -> getUsersByUsername($usernameTrim);
+    
+    $loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation");
+    $twig = new Twig_Environment($loader);
+
+    $view = $twig->render("CP_user.twig", array("user" => $_SESSION['user'], "users"=>$userlist, "searchInputUsername"=>$usernameTrim));
+    
+}
+else {
+    
+    $userlist = $userBiz->getAllUsers();
+
+    $loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation");
+    $twig = new Twig_Environment($loader);
+
+    $view = $twig->render("CP_user.twig", array("user" => $_SESSION['user'], "users"=>$userlist));
     
 }
 
 
 
 
-$userlist = $userBiz->getAllUsers();
-
-$loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation");
-$twig = new Twig_Environment($loader);
-
-$view = $twig->render("CP_user.twig", array("user" => $_SESSION['user'], "users"=>$userlist));
 
 print($view);
 
