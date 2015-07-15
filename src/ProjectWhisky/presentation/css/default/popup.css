@@ -128,35 +128,14 @@
     position: relative;
     margin: 0 auto;
     margin-top: 1em;
-    display: inline-block;
+    width: 100%;
 }
 .close a{
-    color: #CC952D;
-}
-.close a:hover{
-    text-decoration: underline;
-}
-a.close-panel-login.fa{
-    font-size: 3em;
-    position: absolute;
-    top: -318px;
-    right: -255px;
-    text-decoration: none;
-    text-shadow: 0px 1px 0px rgba(127,91,28,1), 0px 2px 0px rgba(127,91,28,0.6), 0px 3px 0px rgba(127,91,28,0.3);
-}
-a.close-panel-register.fa{
-    font-size: 3em;
-    position: absolute;
-    top: -500px;
-    right: -271px;
-    text-decoration: none;
-    text-shadow: 0px 1px 0px rgba(127,91,28,1), 0px 2px 0px rgba(127,91,28,0.6), 0px 3px 0px rgba(127,91,28,0.3);
+    color: #FFBA39;
+    display: block;
+    margin: 1em;
 }
 
-a.fa.fa-times-circle:hover{
-    text-shadow: 0px 0px 3px rgba(0,0,0,0.5);
-    padding-top: 3px;
-}  
 
 /**
 * Password styling:

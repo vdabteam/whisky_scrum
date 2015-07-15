@@ -641,10 +641,18 @@ input.blue{
         border-top: 1px dashed lightgray;
     }
 
-    .messageBlock{ 
+    .messageBlock, .editorReplacement{ 
         margin: 1em;
         padding: 1em 1.2em;
         color: white;
+    }
+
+    .editorReplacement a{
+        color:rgb(110, 110, 110);
+    }
+    .editorReplacement a:hover{
+        color:darkblue;
+        text-decoration: underline;
     }
 
     .flex5{
