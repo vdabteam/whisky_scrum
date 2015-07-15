@@ -17,7 +17,7 @@
 
                     <a href="CP_whisky_add.php" class="btn btn-primary"><i class="fa fa-plus"></i> Add Whisky</a><br>
                     
-                    {% if searchInput is defined %}
+                    {% if searchInput is defined and not empty %}
                         <a href="CP_whisky.php" class="btn btn-primary">Show all</a>
                     {% endif %}
 
