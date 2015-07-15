@@ -30,25 +30,26 @@ if(isset($_POST["userUsername"]))
         $userBiz = new UserBusiness();
 
         //form POST data
-        $username = $_POST['userUsername'];
-        $password = $_POST['userPassword'];
-        $email = $_POST['userEmail'];
-        $firstname = $_POST['userFirstName'];
-        $lastname = $_POST['userLastName'];
+        $_SESSION['savedData']['username'] = $_POST['userUsername'];
+        $_SESSION['savedData']['password'] = $_POST['userPassword'];
+        $_SESSION['savedData']['email'] = $_POST['userEmail'];
+        $_SESSION['savedData']['firstname'] = $_POST['userFirstName'];
+        $_SESSION['savedData']['lastname'] = $_POST['userLastName'];
 
-        $admin = false;
-        if(isset($_POST['userAdmin'])){
-            $admin = true;
+        $_SESSION['savedData']['admin'] = false;
+        if(isset($_POST['userAdmin']))
+        {
+            $_SESSION['savedData']['admin'] = true;
         }
 
-        $blocked = false;
-        if(isset($_POST['userBlocked'])){
-            $blocked = true;
+        $_SESSION['savedData']['blocked'] = false;
+        if(isset($_POST['userBlocked']))
+        {
+            $_SESSION['savedData']['blocked'] = true;
         }
 
 
-
-        if(empty($username) || empty($password) || empty($email) || empty($firstname) || empty($lastname))
+        if(empty($_SESSION['savedData']['username']) || empty($_SESSION['savedData']['password']) || empty($_SESSION['savedData']['email']) || empty($_SESSION['savedData']['firstname']) || empty($_SESSION['savedData']['lastname']))
         {
             throw new EmptyDataException("missing");
         }
@@ -57,13 +58,13 @@ if(isset($_POST["userUsername"]))
         /**
          * Look if user with entered username already exists
          */
-        if(!empty($userBiz->checkUserByUsername($username))) throw new UserExistsException("username_exists");
+        if(!empty($userBiz->checkUserByUsername($_SESSION['savedData']['username']))) throw new UserExistsException("username_exists");
 
 
         /**
          * Look if user with entered e-mail already exists
          */
-        if(!empty($userBiz->checkUserByEmail($email))) throw new UserExistsException("email_exists");
+        if(!empty($userBiz->checkUserByEmail($_SESSION['savedData']['email']))) throw new UserExistsException("email_exists");
 
 
         $userImage = "default.jpg";
@@ -124,7 +125,8 @@ if(isset($_POST["userUsername"]))
         }
 
 
-        $newUser = $userBiz->addCPUser($username, $password, $email, $firstname, $lastname, $admin, $blocked, $userImage);
+        $newUser = $userBiz->addCPUser($_SESSION['savedData']['username'], $_SESSION['savedData']['password'], $_SESSION['savedData']['email'], $_SESSION['savedData']['firstname'], $_SESSION['savedData']['lastname'], $_SESSION['savedData']['admin'], $_SESSION['savedData']['blocked'], $userImage);
+
         if ($newUser == true)
         {
             $_SESSION['userDialogBlock'] = "success";
@@ -155,7 +157,7 @@ if(isset($_POST["userUsername"]))
 $loader = new Twig_Loader_Filesystem("src/ProjectWhisky/presentation");
 $twig = new Twig_Environment($loader);
 
-$view = $twig->render("CP_user_add.twig", array("user" => $_SESSION['user'], "msg" => $_SESSION['userDialogBlock']));
+$view = $twig->render("CP_user_add.twig", array("user" => $_SESSION['user'], "msg" => $_SESSION['userDialogBlock'], "savedData" => $_SESSION['savedData']));
 
 print($view);
 
@@ -173,7 +175,10 @@ if (isset($_GET['updated']) && (empty($_SESSION['userDialogBlock'])))
 if(isset($_GET['updated']) && ($_GET['updated'] == 1))
 {
     $_SESSION['userDialogBlock'] = "";
+    $_SESSION['savedData'] = "";
 }
+
+
 
 
 ob_flush();
