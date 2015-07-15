@@ -45,7 +45,7 @@
                     {% for whisky in whiskies %}
                         <tr>
                             <td class="text_center"><img alt="picture of {{ whisky.name }}" src="src/ProjectWhisky/presentation/img/{{ whisky.imagePath }}"></td>
-                            <td>{{ whisky.name }}</td>
+                            <td><a target="_blanc" href="whisky.php?id={{ whisky.id }}">{{ whisky.name }}</a></td>
                             <td class="text_right">&euro; {{ whisky.price }}</td>
                             <td class="text_right">{{ whisky.age }}</td>
                             <td class="text_center">{{ whisky.creationDate }}</td>
